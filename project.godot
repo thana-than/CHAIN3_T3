@@ -37,7 +37,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 FmodManager="*res://addons/fmod/FmodManager.gd"
-Chain3="*res://addons/chain3/chain3.gd"
 chain3="*res://addons/chain3/autoload.gd"
 
 [dotnet]
@@ -46,4 +45,4 @@ project/assembly_name="New Game Project"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
+enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/fmod/plugin.cfg")

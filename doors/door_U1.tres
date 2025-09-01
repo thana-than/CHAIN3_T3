@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChainDoor" load_steps=2 format=3 uid="uid://bjggf1v6kftk1"]
+
+[ext_resource type="Script" uid="uid://cxwaj3fou46qh" path="res://addons/chain3/CHAIN_Door.gd" id="1_vxv3e"]
+
+[resource]
+script = ExtResource("1_vxv3e")
+door_id = "U1"
+target_scene = "uid://cx7j17m1f60wn"
+streaming_assets_folder = "./StreamingAssets"
+description = "@mikeklubnika
+Week 35"
+metadata/_custom_type_script = "uid://cxwaj3fou46qh"

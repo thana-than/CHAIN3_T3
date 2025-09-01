@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cx7j17m1f60wn"]
+
+[node name="SceneStart" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.81245)
+
+[node name="FmodListener3D" type="FmodListener3D" parent="Camera3D"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]

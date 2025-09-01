@@ -79,10 +79,10 @@ func _ready() -> void:
 		# Once we are done switch to a packed scene (using the default if no matching
 		# ID was found
 		if (matching_door):
-			get_tree().change_scene_to_packed(matching_door)
+			get_tree().call_deferred("change_scene_to_packed", matching_door)
 	else:
 		# Load the default scene if the enter.door file was not found
 		if (default_scene):
-			get_tree().change_scene_to_packed(default_scene)
+			get_tree().call_deferred("change_scene_to_packed", default_scene)
 
 #endregion
