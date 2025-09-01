@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{930a6f48-e157-4cac-8500-1930d5bb2e86}">
+		<property name="assetPath">
+			<value>BS-Big Grind.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>4.5333333333333332</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{50e3ec1b-356a-491b-a9d7-e4db98f7364d}</destination>
+		</relationship>
+	</object>
+</objects>
