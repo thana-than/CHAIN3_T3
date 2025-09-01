@@ -30,12 +30,15 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="CHAIN3_T3"
+run/main_scene="uid://cv5ho4r8agiy0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 FmodManager="*res://addons/fmod/FmodManager.gd"
+Chain3="*res://addons/chain3/chain3.gd"
+chain3="*res://addons/chain3/autoload.gd"
 
 [dotnet]
 

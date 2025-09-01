@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv5ho4r8agiy0"]
+
+[ext_resource type="Script" uid="uid://81ppjlr11v4s" path="res://addons/chain3/CHAIN_SceneSelector.gd" id="1_0ocx7"]
+
+[node name="Sceneselector" type="Node"]
+script = ExtResource("1_0ocx7")
