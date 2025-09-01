@@ -1,0 +1,13 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv5ho4r8agiy0"]
+
+[ext_resource type="Script" uid="uid://81ppjlr11v4s" path="res://addons/chain3/CHAIN_SceneSelector.gd" id="1_0ocx7"]
+[ext_resource type="PackedScene" uid="uid://cx7j17m1f60wn" path="res://scenes/scene_start.tscn" id="2_j882h"]
+[ext_resource type="Script" uid="uid://cxwaj3fou46qh" path="res://addons/chain3/CHAIN_Door.gd" id="3_jt4ss"]
+[ext_resource type="Resource" uid="uid://5c1y2opl4h6y" path="res://doors/door_S2.tres" id="4_sxdtb"]
+[ext_resource type="Resource" uid="uid://d2d5eiuxkjc7f" path="res://doors/door_T4.tres" id="5_p3l84"]
+[ext_resource type="Resource" uid="uid://bjggf1v6kftk1" path="res://doors/door_U1.tres" id="6_kyc0o"]
+
+[node name="Sceneselector" type="Node"]
+script = ExtResource("1_0ocx7")
+default_scene = ExtResource("2_j882h")
+door_scene_array = Array[ExtResource("3_jt4ss")]([ExtResource("4_sxdtb"), ExtResource("5_p3l84"), ExtResource("6_kyc0o")])

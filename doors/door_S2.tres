@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChainDoor" load_steps=2 format=3 uid="uid://5c1y2opl4h6y"]
+
+[ext_resource type="Script" uid="uid://cxwaj3fou46qh" path="res://addons/chain3/CHAIN_Door.gd" id="1_schuf"]
+
+[resource]
+script = ExtResource("1_schuf")
+door_id = "S2"
+target_scene = "uid://cx7j17m1f60wn"
+streaming_assets_folder = "./StreamingAssets"
+description = "@eva.codes
+Week 32"
+metadata/_custom_type_script = "uid://cxwaj3fou46qh"
