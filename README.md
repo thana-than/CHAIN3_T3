@@ -2,8 +2,9 @@
 Repository of my team's node for the C.H.A.I.N. 3 collaboration.
 ## Tools
 ### Engine:
+Please install even if you aren't planning on working in engine!
 [Godot 4.4.1 (.NET Version)](https://godotengine.org/download/archive/4.4.1-stable/)
-Please install this even if you aren't planning on working in engine! 
+[.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 ### Visuals
 [Blender 4.5](https://www.blender.org/download/lts/4-5/)
 ### Audio
