@@ -1,13 +1,12 @@
-[gd_scene format=3 uid="uid://cx7j17m1f60wn"]
+[gd_scene load_steps=2 format=3 uid="uid://cx7j17m1f60wn"]
+
+[ext_resource type="PackedScene" uid="uid://db2h3t17k37pe" path="res://addons/player_controller/Examples/MovementTestbed/MovementTestbed.tscn" id="1_yeq8t"]
 
 [node name="SceneStart" type="Node3D"]
+
+[node name="World" parent="." instance=ExtResource("1_yeq8t")]
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod/Build/Desktop/Master.strings.bank", "res://fmod/Build/Desktop/Master.bank", "res://fmod/Build/Desktop/Music.bank", "res://fmod/Build/Desktop/SFX.bank", "res://fmod/Build/Desktop/UI.bank", "res://fmod/Build/Desktop/VO.bank"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.81245)
-
-[node name="FmodListener3D" type="FmodListener3D" parent="Camera3D"]
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[editable path="World"]

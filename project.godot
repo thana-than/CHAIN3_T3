@@ -41,7 +41,7 @@ chain3="*res://addons/chain3/autoload.gd"
 
 [dotnet]
 
-project/assembly_name="New Game Project"
+project/assembly_name="CHAIN3_T3"
 
 [editor_plugins]
 
