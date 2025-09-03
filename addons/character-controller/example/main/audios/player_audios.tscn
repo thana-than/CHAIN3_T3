@@ -13,8 +13,8 @@
 [node name="Player Audios" type="Node3D"]
 script = ExtResource("1_5jhob")
 audio_interact = ExtResource("2_m88gv")
-physic_materials = [ExtResource("3_pjbyl"), ExtResource("4_qrhb1"), ExtResource("5_vfwfh")]
-audio_interacts = [ExtResource("2_m88gv"), ExtResource("5_fv0qi"), ExtResource("7_483qj")]
+physic_materials = Array[PhysicsMaterial]([ExtResource("3_pjbyl"), ExtResource("4_qrhb1"), ExtResource("5_vfwfh")])
+audio_interacts = Array[Resource]([ExtResource("2_m88gv"), ExtResource("5_fv0qi"), ExtResource("7_483qj")])
 water_audio_interact = ExtResource("6_fohsf")
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="."]
