@@ -39,7 +39,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed(input_fly_mode_action_name):
 			fly_ability.set_active(not fly_ability.is_actived())
 		var input_axis = Input.get_vector(input_left_action_name, input_right_action_name, input_back_action_name, input_forward_action_name)
-		var input_jump = Input.is_action_just_pressed(input_jump_action_name)
+		var input_jump = Input.is_action_pressed(input_jump_action_name)
 		var input_crouch = Input.is_action_pressed(input_crouch_action_name)
 		var input_sprint = Input.is_action_pressed(input_sprint_action_name)
 		var input_swim_down = Input.is_action_pressed(input_crouch_action_name)

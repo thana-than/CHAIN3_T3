@@ -6,6 +6,9 @@
 
 [node name="Level" parent="." instance=ExtResource("1_yeq8t")]
 
+[node name="Player" parent="Level" index="9"]
+underwater_env = null
+
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod/Build/Desktop/Master.strings.bank", "res://fmod/Build/Desktop/Master.bank", "res://fmod/Build/Desktop/Music.bank", "res://fmod/Build/Desktop/SFX.bank", "res://fmod/Build/Desktop/UI.bank", "res://fmod/Build/Desktop/VO.bank"]
 

@@ -20,6 +20,11 @@ signal deactived
 func get_speed_modifier() -> float:
 	return 1.0
 
+## Returns a gravity modifier, 
+## useful for abilities that when active can change the overall gravity of the [CharacterController3D], for example the [GravityAbility3D].
+func get_gravity_multiplier() -> float:
+	return 1.0
+
 
 ## Returns true if ability is active
 func is_actived() -> bool:
@@ -27,7 +32,7 @@ func is_actived() -> bool:
 
 
 ## Defines whether or not to activate the ability
-func set_active(a : bool) -> void:
+func set_active(a: bool) -> void:
 	_last_active = _active
 	_active = a
 	if _last_active != _active:
@@ -39,5 +44,5 @@ func set_active(a : bool) -> void:
 
 ## Change current velocity of [CharacterController3D].
 ## In this function abilities can change the way the character controller behaves based on speeds and other parameters received.
-func apply(velocity : Vector3, speed : float, is_on_floor : bool, direction : Vector3, _delta : float) -> Vector3:
+func apply(velocity: Vector3, speed: float, is_on_floor: bool, direction: Vector3, _delta: float) -> Vector3:
 	return velocity
