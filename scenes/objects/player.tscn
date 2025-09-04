@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://2oxdgu03lnbk"]
+
+[ext_resource type="PackedScene" uid="uid://8oy3xm2sff8" path="res://addons/character-controller/fps/fps_controller_3d.tscn" id="1_54rde"]
+[ext_resource type="Script" uid="uid://b1l8cxk2wm3p1" path="res://addons/character-controller/example/main/player.gd" id="2_q8hb4"]
+[ext_resource type="Environment" uid="uid://b3cn01u84faiy" path="res://addons/character-controller/example/main/underwater.tres" id="3_ksjmp"]
+[ext_resource type="Script" uid="uid://yxva63l5fkp1" path="res://addons/character-controller/abilities/gravity_ability_3d.gd" id="4_2rlf8"]
+
+[node name="Player" instance=ExtResource("1_54rde")]
+script = ExtResource("2_q8hb4")
+input_back_action_name = "move_backward"
+input_forward_action_name = "move_forward"
+input_left_action_name = "move_left"
+input_right_action_name = "move_right"
+input_sprint_action_name = "move_sprint"
+input_jump_action_name = "move_jump"
+input_crouch_action_name = "move_crouch"
+input_fly_mode_action_name = "move_fly_mode"
+underwater_env = ExtResource("3_ksjmp")
+rotation_to_move = false
+abilities_path = Array[NodePath]([NodePath("Crouch Ability 3D"), NodePath("Sprint Ability 3D"), NodePath("Walk Ability 3D"), NodePath("Jump Ability 3D"), NodePath("Fly Ability 3D"), NodePath("Swim Ability 3D"), NodePath("Gravity Ability 3D")])
+
+[node name="Gravity Ability 3D" type="Node3D" parent="." index="8"]
+script = ExtResource("4_2rlf8")
+
+[node name="FmodListener3D" type="FmodListener3D" parent="." index="10"]

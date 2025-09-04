@@ -12,6 +12,8 @@ Please install even if you aren't planning on working in engine!
 ## Plugins
 - Internally used C.H.A.I.N. 3 Plugin
 - [FMOD Studio GDExtension](https://github.com/utopia-rise/fmod-gdextension)
+- [Character Controller](https://godotengine.org/asset-library/asset/1567)
+- [Phantom Camera](https://phantom-camera.dev/)
 ## Collaborators
 ### [Than](https://thanathan.com)
   Director, Game Design, Programming

@@ -1,12 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://cx7j17m1f60wn"]
 
-[ext_resource type="PackedScene" uid="uid://db2h3t17k37pe" path="res://addons/player_controller/Examples/MovementTestbed/MovementTestbed.tscn" id="1_yeq8t"]
+[ext_resource type="PackedScene" uid="uid://c2t6smyr8xtty" path="res://addons/character-controller/example/main/level.tscn" id="1_yeq8t"]
 
 [node name="SceneStart" type="Node3D"]
 
-[node name="World" parent="." instance=ExtResource("1_yeq8t")]
+[node name="Level" parent="." instance=ExtResource("1_yeq8t")]
+
+[node name="Player" parent="Level" index="9"]
+underwater_env = null
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod/Build/Desktop/Master.strings.bank", "res://fmod/Build/Desktop/Master.bank", "res://fmod/Build/Desktop/Music.bank", "res://fmod/Build/Desktop/SFX.bank", "res://fmod/Build/Desktop/UI.bank", "res://fmod/Build/Desktop/VO.bank"]
 
-[editable path="World"]
+[editable path="Level"]
+[editable path="Level/Player"]
