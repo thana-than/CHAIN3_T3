@@ -1,28 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx7j17m1f60wn"]
+[gd_scene load_steps=7 format=3 uid="uid://cx7j17m1f60wn"]
 
-[ext_resource type="PackedScene" uid="uid://c2t6smyr8xtty" path="res://addons/character-controller/example/main/level.tscn" id="1_yeq8t"]
-[ext_resource type="PackedScene" uid="uid://ch4igfx0hng23" path="res://scenes/dialogue/actionable.tscn" id="2_3rtiw"]
-[ext_resource type="Resource" uid="uid://bhcp6jljxq8pj" path="res://dialogue/dialogue/test_001.dialogue" id="3_lmhdf"]
-[ext_resource type="PackedScene" uid="uid://d2nw21rtn1pq6" path="res://dialogue/styles/gothic_silent_hill/Balloon.tscn" id="3_u456e"]
+[ext_resource type="PackedScene" uid="uid://d1vsbmyl6krlc" path="res://scenes/traincar/prototype/scene_traincar_proto.tscn" id="1_3rtiw"]
+[ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://scenes/objects/player.tscn" id="2_lmhdf"]
+[ext_resource type="Texture2D" uid="uid://svijnbaaeuol" path="res://addons/character-controller/example/main/textures/Free DEMO Pixel Skies Background pack by Digital Moons/demo01_PixelSky.png" id="3_lmhdf"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u456e"]
+panorama = ExtResource("3_lmhdf")
+filter = false
+
+[sub_resource type="Sky" id="Sky_t5ash"]
+sky_material = SubResource("PanoramaSkyMaterial_u456e")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_1herx"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_t5ash")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="SceneStart" type="Node3D"]
-
-[node name="Level" parent="." instance=ExtResource("1_yeq8t")]
-
-[node name="Player" parent="Level" index="9"]
-underwater_env = null
-
-[node name="test_001_actionable" parent="Level" instance=ExtResource("2_3rtiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40309, -4.67038)
-custom_balloon_resource = ExtResource("3_u456e")
-dialogue_resource = ExtResource("3_lmhdf")
-
-[node name="CollisionShape3D" parent="Level/test_001_actionable" index="0"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.92396, -12.6516)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod/Build/Desktop/Master.strings.bank", "res://fmod/Build/Desktop/Master.bank", "res://fmod/Build/Desktop/Music.bank", "res://fmod/Build/Desktop/SFX.bank", "res://fmod/Build/Desktop/UI.bank", "res://fmod/Build/Desktop/VO.bank"]
 
-[editable path="Level"]
-[editable path="Level/Player"]
-[editable path="Level/test_001_actionable"]
+[node name="Train" type="Node3D" parent="."]
+
+[node name="SceneTraincarProto" parent="Train" instance=ExtResource("1_3rtiw")]
+
+[node name="Player" parent="Train" instance=ExtResource("2_lmhdf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26716, 0)
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_1herx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866026, -0.5, 0.75, -0.433013, 0, 5, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 250.0

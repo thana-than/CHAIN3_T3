@@ -65,14 +65,14 @@ data = PackedVector3Array(-7, 0.25, 2, 7, 0.25, 2, -7, -0.25, 2, 7, 0.25, 2, 7, 
 panorama = ExtResource("12_olhen")
 filter = false
 
-[sub_resource type="Sky" id="Sky_t5ash"]
+[sub_resource type="Sky" id="Sky_frivk"]
 sky_material = SubResource("PanoramaSkyMaterial_l566q")
 radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_7ofk6"]
 background_mode = 2
 background_energy_multiplier = 0.5
-sky = SubResource("Sky_t5ash")
+sky = SubResource("Sky_frivk")
 ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
