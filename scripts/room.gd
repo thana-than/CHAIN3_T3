@@ -6,7 +6,7 @@ signal exited
 
 @export var require_portal := false
 
-@onready var enter_trigger: Area3D = get_node(NodePath("enter_trigger"))
+@onready var enter_trigger: Area3D = get_node(NodePath("room_area"))
 
 var room_index := 0
 
