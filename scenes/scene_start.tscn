@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1vsbmyl6krlc" path="res://scenes/traincar/prototype/scene_traincar_proto.tscn" id="1_3rtiw"]
 [ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://scenes/objects/player.tscn" id="2_lmhdf"]
-[ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/train_manager.gd" id="2_u456e"]
+[ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="2_u456e"]
 [ext_resource type="Texture2D" uid="uid://svijnbaaeuol" path="res://addons/character-controller/example/main/textures/Free DEMO Pixel Skies Background pack by Digital Moons/demo01_PixelSky.png" id="3_lmhdf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u456e"]
@@ -31,7 +31,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26716, 0)
 
 [node name="Train" type="Node3D" parent="."]
 script = ExtResource("2_u456e")
-starting_car = ExtResource("1_3rtiw")
+
+[node name="SceneTraincarProto" parent="Train" instance=ExtResource("1_3rtiw")]
+
+[node name="SceneTraincarProto2" parent="Train" instance=ExtResource("1_3rtiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+
+[node name="SceneTraincarProto3" parent="Train" instance=ExtResource("1_3rtiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42)
+
+[node name="SceneTraincarProto4" parent="Train" instance=ExtResource("1_3rtiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63)
 
 [node name="Lighting" type="Node" parent="."]
 
