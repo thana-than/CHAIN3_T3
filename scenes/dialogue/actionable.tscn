@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch4igfx0hng23"]
+
+[ext_resource type="Script" uid="uid://ykwin06c3kic" path="res://scripts/dialogue/actionable.gd" id="1_mlxuv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlxuv"]
+size = Vector3(1, 1.99512, 2.22766)
+
+[node name="Actionable" type="Area3D"]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_mlxuv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mlxuv")
