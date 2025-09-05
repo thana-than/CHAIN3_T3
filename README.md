@@ -15,6 +15,7 @@ Please install even if you aren't planning on working in engine!
 - [Character Controller](https://godotengine.org/asset-library/asset/1567)
 - [Phantom Camera](https://phantom-camera.dev/)
 - [Portals 3D](https://godotengine.org/asset-library/asset/4022)
+- [Ultimate Retro Shader Collection](https://godotengine.org/asset-library/asset/2989)
 ## Collaborators
 ### [Than](https://thanathan.com)
   Director, Game Design, Programming
