@@ -14,6 +14,7 @@ Please install even if you aren't planning on working in engine!
 - [FMOD Studio GDExtension](https://github.com/utopia-rise/fmod-gdextension)
 - [Character Controller](https://godotengine.org/asset-library/asset/1567)
 - [Phantom Camera](https://phantom-camera.dev/)
+- [Portals 3D](https://godotengine.org/asset-library/asset/4022)
 ## Collaborators
 ### [Than](https://thanathan.com)
   Director, Game Design, Programming

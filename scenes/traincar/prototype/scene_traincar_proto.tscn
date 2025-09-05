@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1vsbmyl6krlc"]
+[gd_scene load_steps=7 format=3 uid="uid://d1vsbmyl6krlc"]
 
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://models/prototype/mdl_traincar_proto.glb" id="1_gxko3"]
+[ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/traincar.gd" id="1_j51fj"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="2_j51fj"]
-[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/obj_door_proto.tscn" id="2_kl8s6"]
+[ext_resource type="PackedScene" uid="uid://b17vxku38en07" path="res://scenes/traincar/prototype/scene_traincar_proto_2.tscn" id="3_hc8lx"]
+[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_doorway.tscn" id="3_kl8s6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
+size = Vector3(7, 2, 19)
 
 [node name="SceneTraincarProto" type="Node3D"]
+script = ExtResource("1_j51fj")
+prefab_exit_traincar = ExtResource("3_hc8lx")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -12,12 +19,27 @@
 
 [node name="collider_standard_car" parent="Environment" instance=ExtResource("2_j51fj")]
 
-[node name="door_back" type="Node3D" parent="."]
+[node name="door_enter" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10.25)
 
-[node name="mdl_door_proto" parent="door_back" instance=ExtResource("2_kl8s6")]
+[node name="doorway" parent="door_enter" instance=ExtResource("3_kl8s6")]
 
-[node name="door_forward" type="Node3D" parent="."]
+[node name="mdl_door_proto" parent="door_enter/doorway" index="0"]
+visible = false
+
+[node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
 
-[node name="mdl_door_proto" parent="door_forward" instance=ExtResource("2_kl8s6")]
+[node name="doorway" parent="door_exit" instance=ExtResource("3_kl8s6")]
+
+[node name="mdl_door_proto" parent="door_exit/doorway" index="0"]
+visible = false
+
+[node name="enter_trigger" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enter_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_j51fj")
+
+[editable path="door_enter/doorway"]
+[editable path="door_exit/doorway"]

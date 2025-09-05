@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://yxva63l5fkp1" path="res://addons/character-controller/abilities/gravity_ability_3d.gd" id="4_2rlf8"]
 
 [node name="Player" instance=ExtResource("1_54rde")]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 32769
 script = ExtResource("2_q8hb4")
 input_back_action_name = "move_backward"
 input_forward_action_name = "move_forward"
@@ -33,5 +32,6 @@ script = ExtResource("4_2rlf8")
 curve_multiplier = Vector2(1, 1)
 
 [node name="Camera3D" type="Camera3D" parent="Head/FirstPersonCameraReference" index="0"]
+near = 0.001
 
 [node name="FmodListener3D" type="FmodListener3D" parent="." index="10"]
