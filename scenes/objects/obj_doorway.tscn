@@ -4,4 +4,6 @@
 
 [node name="doorway" type="Node3D"]
 
-[node name="mdl_door_proto" parent="." instance=ExtResource("1_pshq8")]
+[node name="slide_transform" type="Marker3D" parent="."]
+
+[node name="mdl_door_proto" parent="slide_transform" instance=ExtResource("1_pshq8")]
