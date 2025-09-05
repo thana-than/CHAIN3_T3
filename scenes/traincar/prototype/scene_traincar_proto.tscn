@@ -22,20 +22,14 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="doorway" parent="door_enter" instance=ExtResource("3_kl8s6")]
 
-[node name="mdl_door_proto" parent="door_enter/doorway" index="0"]
-visible = false
-
 [node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
 
 [node name="doorway" parent="door_exit" instance=ExtResource("3_kl8s6")]
 
-[node name="mdl_door_proto" parent="door_exit/doorway" index="0"]
-visible = false
+[node name="room_area" type="Area3D" parent="."]
 
-[node name="enter_trigger" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="enter_trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_j51fj")
 

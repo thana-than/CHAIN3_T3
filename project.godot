@@ -50,6 +50,7 @@ Nathan: For more information see the online documentation.
 FmodManager="*res://addons/fmod/FmodManager.gd"
 chain3="*res://addons/chain3/autoload.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogue_manager]
 
