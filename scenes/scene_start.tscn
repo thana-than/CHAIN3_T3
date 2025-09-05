@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx7j17m1f60wn"]
+[gd_scene load_steps=5 format=3 uid="uid://cx7j17m1f60wn"]
 
 [ext_resource type="PackedScene" uid="uid://c2t6smyr8xtty" path="res://addons/character-controller/example/main/level.tscn" id="1_yeq8t"]
+[ext_resource type="PackedScene" uid="uid://ch4igfx0hng23" path="res://scenes/dialogue/actionable.tscn" id="2_3rtiw"]
+[ext_resource type="Resource" uid="uid://bhcp6jljxq8pj" path="res://dialogue/dialogue/test_001.dialogue" id="3_lmhdf"]
+[ext_resource type="PackedScene" uid="uid://d2nw21rtn1pq6" path="res://dialogue/styles/gothic_silent_hill/Balloon.tscn" id="3_u456e"]
 
 [node name="SceneStart" type="Node3D"]
 
@@ -9,8 +12,17 @@
 [node name="Player" parent="Level" index="9"]
 underwater_env = null
 
+[node name="test_001_actionable" parent="Level" instance=ExtResource("2_3rtiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40309, -4.67038)
+custom_balloon_resource = ExtResource("3_u456e")
+dialogue_resource = ExtResource("3_lmhdf")
+
+[node name="CollisionShape3D" parent="Level/test_001_actionable" index="0"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.92396, -12.6516)
+
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod/Build/Desktop/Master.strings.bank", "res://fmod/Build/Desktop/Master.bank", "res://fmod/Build/Desktop/Music.bank", "res://fmod/Build/Desktop/SFX.bank", "res://fmod/Build/Desktop/UI.bank", "res://fmod/Build/Desktop/VO.bank"]
 
 [editable path="Level"]
 [editable path="Level/Player"]
+[editable path="Level/test_001_actionable"]

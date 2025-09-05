@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://yxva63l5fkp1" path="res://addons/character-controller/abilities/gravity_ability_3d.gd" id="4_2rlf8"]
 
 [node name="Player" instance=ExtResource("1_54rde")]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2_q8hb4")
 input_back_action_name = "move_backward"
 input_forward_action_name = "move_forward"

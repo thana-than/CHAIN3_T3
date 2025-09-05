@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch4igfx0hng23"]
+
+[ext_resource type="Script" uid="uid://ykwin06c3kic" path="res://scripts/dialogue/actionable.gd" id="1_mlxuv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlxuv"]
+
+[node name="Actionable" type="Area3D"]
+script = ExtResource("1_mlxuv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mlxuv")
