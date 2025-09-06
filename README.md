@@ -16,6 +16,7 @@ Please install even if you aren't planning on working in engine!
 - [Phantom Camera](https://phantom-camera.dev/)
 - [Portals 3D](https://godotengine.org/asset-library/asset/4022)
 - [Ultimate Retro Shader Collection](https://godotengine.org/asset-library/asset/2989)
+- [Interaction Kit 3D](https://godotengine.org/asset-library/asset/3409)
 ## Assets
 - [Seamless Sky Background](https://screamingbrainstudios.itch.io/seamless-sky-backgrounds)
 - [Dither Matrix Texture](https://github.com/tromero/BayerMatrix)

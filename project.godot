@@ -48,8 +48,8 @@ Nathan: For more information see the online documentation.
 [autoload]
 
 FmodManager="*res://addons/fmod/FmodManager.gd"
-chain3="*res://addons/chain3/autoload.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GlobalInteraction3D="*res://addons/ninetailsrabbit.interaction_kit_3d/src/autoload/global_interaction.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogue_manager]
@@ -67,7 +67,7 @@ project/assembly_name="CHAIN3_T3"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg")
+enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/ninetailsrabbit.interaction_kit_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg")
 
 [input]
 
@@ -114,6 +114,16 @@ move_fly_mode={
 move_jump={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+cancel_interact={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 
