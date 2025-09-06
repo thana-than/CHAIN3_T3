@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2oxdgu03lnbk"]
+[gd_scene load_steps=6 format=3 uid="uid://2oxdgu03lnbk"]
 
 [ext_resource type="PackedScene" uid="uid://8oy3xm2sff8" path="res://addons/character-controller/fps/fps_controller_3d.tscn" id="1_54rde"]
 [ext_resource type="Script" uid="uid://b1l8cxk2wm3p1" path="res://addons/character-controller/example/main/player.gd" id="2_q8hb4"]
 [ext_resource type="Environment" uid="uid://b3cn01u84faiy" path="res://addons/character-controller/example/main/underwater.tres" id="3_ksjmp"]
 [ext_resource type="Script" uid="uid://yxva63l5fkp1" path="res://addons/character-controller/abilities/gravity_ability_3d.gd" id="4_2rlf8"]
+[ext_resource type="PackedScene" uid="uid://3twkpxbwc2hh" path="res://scenes/objects/camera_3d.tscn" id="5_q8hb4"]
 
 [node name="Player" instance=ExtResource("1_54rde")]
 collision_layer = 32769
@@ -31,7 +32,6 @@ script = ExtResource("4_2rlf8")
 [node name="Head Bob" parent="Head" index="0"]
 curve_multiplier = Vector2(1, 1)
 
-[node name="Camera3D" type="Camera3D" parent="Head/FirstPersonCameraReference" index="0"]
-near = 0.001
+[node name="Camera3D" parent="Head/FirstPersonCameraReference" index="0" instance=ExtResource("5_q8hb4")]
 
 [node name="FmodListener3D" type="FmodListener3D" parent="." index="10"]

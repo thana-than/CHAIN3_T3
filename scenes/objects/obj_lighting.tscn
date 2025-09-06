@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://feif7oxlvc5x"]
+
+[sub_resource type="Environment" id="Environment_1joer"]
+ambient_light_source = 2
+ambient_light_color = Color(0.5896, 0.67, 0.67, 1)
+tonemap_mode = 3
+
+[node name="Lighting" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1joer")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866026, -0.5, 0.75, -0.433013, 0, 5, 0)
+visible = false
+shadow_enabled = true
+directional_shadow_max_distance = 250.0
