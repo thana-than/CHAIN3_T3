@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://3twkpxbwc2hh"]
+
+[ext_resource type="Material" uid="uid://tt3mnmqir3h0" path="res://materials/sky_material.tres" id="1_8l7e7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hp712"]
+material = ExtResource("1_8l7e7")
+flip_faces = true
+size = Vector3(1000, 1000, 1000)
+
+[node name="Camera3D" type="Camera3D"]
+near = 0.001
+
+[node name="Sky" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hp712")

@@ -1,25 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgd71lt1wckmy"]
+[gd_scene load_steps=5 format=3 uid="uid://cgd71lt1wckmy"]
 
 [ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://scenes/objects/player.tscn" id="1_4wyf3"]
 [ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://d1vsbmyl6krlc" path="res://scenes/traincar/prototype/scene_traincar_proto.tscn" id="3_71j4m"]
-[ext_resource type="Texture2D" uid="uid://svijnbaaeuol" path="res://addons/character-controller/example/main/textures/Free DEMO Pixel Skies Background pack by Digital Moons/demo01_PixelSky.png" id="4_53212"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rm1t0"]
-panorama = ExtResource("4_53212")
-filter = false
-
-[sub_resource type="Sky" id="Sky_t5ash"]
-sky_material = SubResource("PanoramaSkyMaterial_rm1t0")
-radiance_size = 0
-
-[sub_resource type="Environment" id="Environment_1joer"]
-background_mode = 2
-background_energy_multiplier = 0.5
-sky = SubResource("Sky_t5ash")
-ambient_light_color = Color(1, 1, 1, 1)
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://feif7oxlvc5x" path="res://scenes/objects/obj_lighting.tscn" id="4_53212"]
 
 [node name="World" type="Node3D"]
 
@@ -40,12 +24,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42)
 [node name="SceneTraincarProto4" parent="Train" instance=ExtResource("3_71j4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63)
 
-[node name="Lighting" type="Node" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
-environment = SubResource("Environment_1joer")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866026, -0.5, 0.75, -0.433013, 0, 5, 0)
-shadow_enabled = true
-directional_shadow_max_distance = 250.0
+[node name="Lighting" parent="." instance=ExtResource("4_53212")]
