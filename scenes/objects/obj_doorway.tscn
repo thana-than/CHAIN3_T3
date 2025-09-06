@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn5wqjq65fhl5"]
+
+[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/obj_door_proto.tscn" id="1_pshq8"]
+
+[node name="doorway" type="Node3D"]
+
+[node name="slide_transform" type="Marker3D" parent="."]
+
+[node name="mdl_door_proto" parent="slide_transform" instance=ExtResource("1_pshq8")]

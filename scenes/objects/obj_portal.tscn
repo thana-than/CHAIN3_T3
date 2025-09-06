@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0vkqyc06mhrf"]
+
+[ext_resource type="PackedScene" uid="uid://db5r8b88bfofb" path="res://addons/portals/portal_prefab.tscn" id="1_v76oc"]
+
+[node name="PortalPrefab" instance=ExtResource("1_v76oc")]
+portal_size = Vector2(2, 2.5)

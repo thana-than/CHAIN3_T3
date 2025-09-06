@@ -50,6 +50,7 @@ Nathan: For more information see the online documentation.
 FmodManager="*res://addons/fmod/FmodManager.gd"
 chain3="*res://addons/chain3/autoload.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogue_manager]
 
@@ -58,6 +59,7 @@ editor/new_file_template="~ start
 
 => END"
 runtime/balloon_path="res://dialogue/styles/gothic_silent_hill/Balloon.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dotnet]
 
@@ -65,7 +67,7 @@ project/assembly_name="CHAIN3_T3"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg")
+enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg")
 
 [input]
 
