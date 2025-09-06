@@ -49,7 +49,7 @@ shadows_disabled;
 // Global uniforms
 #if !defined(TEXTURE_DISABLED) && !defined(SHINY)
 	#if !defined(TEXTURE_METAL)
-		global uniform bool affine_texture_mapping;
+		global uniform float affine_texture_strength;
 	#endif
 
 	global uniform bool texture_filtering;
@@ -59,7 +59,7 @@ shadows_disabled;
 #if defined(OVERRIDE_VERTEX_SNAP_RESOLUTION)
 	global uniform ivec2 vertex_snap_resolution;
 #else
-	global uniform int vertex_snap_intensity;
+	global uniform float vertex_snap_intensity;
 #endif
 
 #if !defined(FOG_DISABLED) && !defined(USE_ENVIRONMENT_FOG)
@@ -121,6 +121,7 @@ uniform bool convert_vertex_colors = false;
 // Varyings
 #if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
 	varying float position_w;
+	varying vec2 uv_times_w;
 #endif
 
 #if !defined(TEXTURE_DISABLED) && !defined(SHINY)
@@ -305,10 +306,10 @@ void vertex()
 
 			POSITION.xyz = snapped_position.xyz;
 		#else
-			if (vertex_snap_intensity > 0 && vertex_snap_intensity <= 2)
+			if (vertex_snap_intensity > 0.0 && vertex_snap_intensity <= 2.0)
 			{
 				vec2 real_vertex_snap_resolution =
-					vec2(VERTEX_SNAP_RESOLUTION) * (1.0 / float(vertex_snap_intensity));
+					vec2(VERTEX_SNAP_RESOLUTION) * (1.0 / vertex_snap_intensity);
 
 				vec4 snapped_position = POSITION;
 				snapped_position.xyz = POSITION.xyz / POSITION.w;
@@ -329,11 +330,8 @@ void vertex()
 	}
 
 	#if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
-		if (affine_texture_mapping)
-		{
-			position_w = POSITION.w;
-			UV *= abs(POSITION.w);
-		}
+		position_w = POSITION.w;
+		uv_times_w = UV * abs(POSITION.w);
 	#endif
 }
 
@@ -369,10 +367,9 @@ void fragment()
 			#if defined(TEXTURE_METAL)
 				uv = vec2(NORMAL.x / 2.0 + 0.5, (-NORMAL.y) / 2.0 + 0.5);
 			#else
-				uv = UV;
-
-				if (affine_texture_mapping)
-					uv /= abs(position_w);
+				vec2 uv_persp = UV;
+				vec2 uv_aff = uv_times_w / max(position_w, 1e-6);
+				uv = mix(UV, uv_aff, clamp(affine_texture_strength, 0.0, 1.0));
 			#endif
 
 			vec4 sampled_color;

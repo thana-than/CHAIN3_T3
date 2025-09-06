@@ -11,9 +11,9 @@ extends EditorScript
 
 
 var shader_globals := {
-	"affine_texture_mapping": {
-		"type": "bool",
-		"value": true
+	"affine_texture_strength": {
+		"type": "float",
+		"value": 1.0
 	},
 	"fog_color": {
 		"type": "color",
@@ -40,8 +40,8 @@ var shader_globals := {
 		"value": 0.0
 	},
 	"vertex_snap_intensity": {
-		"type": "int",
-		"value": 2
+		"type": "float",
+		"value": 2.0
 	}
 }
 

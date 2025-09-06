@@ -141,10 +141,6 @@ textures/canvas_textures/default_texture_filter=0
 
 [shader_globals]
 
-affine_texture_mapping={
-"type": "bool",
-"value": true
-}
 fog_color={
 "type": "color",
 "value": Color(0, 0, 0, 1)
@@ -169,7 +165,11 @@ texture_lod_halve_distance={
 "type": "float",
 "value": 0.0
 }
+affine_texture_strength={
+"type": "float",
+"value": 1.0
+}
 vertex_snap_intensity={
-"type": "int",
-"value": 2
+"type": "float",
+"value": 0.5
 }
