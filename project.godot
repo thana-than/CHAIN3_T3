@@ -8,6 +8,12 @@
 
 config_version=5
 
+[CHAIN3_T3]
+
+config/ninetailsrabbit.interaction_kit_3d/update_notification_enabled=true
+config/ninetailsrabbit.interaction_kit_3d/interactables_collision_layer=6
+config/ninetailsrabbit.interaction_kit_3d/grabbables_collision_layer=7
+
 [Fmod]
 
 General/auto_initialize=true
@@ -48,9 +54,10 @@ Nathan: For more information see the online documentation.
 [autoload]
 
 FmodManager="*res://addons/fmod/FmodManager.gd"
-chain3="*res://addons/chain3/autoload.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GlobalInteraction3D="*res://addons/ninetailsrabbit.interaction_kit_3d/src/autoload/global_interaction.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+chain3="*res://addons/chain3/autoload.gd"
 
 [dialogue_manager]
 
@@ -67,7 +74,7 @@ project/assembly_name="CHAIN3_T3"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg")
+enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/ninetailsrabbit.interaction_kit_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg")
 
 [input]
 
