@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://bbq31duk344jw" path="res://addons/ninetailsrabbit.interaction_kit_3d/src/interactors/raycast_interactor_3d.gd" id="6_ksjmp"]
 
 [node name="Player" instance=ExtResource("1_54rde")]
-collision_layer = 32769
+collision_layer = 32771
+collision_mask = 3
 script = ExtResource("2_q8hb4")
 input_back_action_name = "move_backward"
 input_forward_action_name = "move_forward"

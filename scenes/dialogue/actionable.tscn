@@ -5,6 +5,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlxuv"]
 
 [node name="Actionable" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_mlxuv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

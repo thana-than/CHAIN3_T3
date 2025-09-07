@@ -3,7 +3,7 @@
 #shape 3d is triggered.
 extends Area3D
 
-@export var custom_balloon_resource: PackedScene
+@export var custom_balloon_resource: PackedScene = preload("res://dialogue/styles/gothic_silent_hill/Balloon.tscn")
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
 @export var is_repeatable: bool = false
@@ -27,4 +27,4 @@ func _on_body_entered(body: Node3D) -> void:
 		if _shown:
 			return
 		_shown = true
-	DialogueManager.show_dialogue_balloon_scene(custom_balloon_resource, dialogue_resource);
+	DialogueManager.show_dialogue_balloon_scene(custom_balloon_resource, dialogue_resource, dialogue_start);
