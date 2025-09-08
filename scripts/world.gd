@@ -30,7 +30,9 @@ func try_move_player_to_room_id(room_id: String):
 				#TODO rotation mapping
 				#player.global_rotation = -room_transform.global_rotation
 				player.translate(Vector3.FORWARD)
-				logger.log("Moved player to room " + room.name)
+				logger.log("Moved player to room " + room_id)
 			else:
-				logger.log("Failed to move player to room " + room.name + ". Room requires Node3D named: " + debug_room_spawn_path)
-			break
+				logger.err("Failed to move player to room " + room_id + ". Room requires Node3D named: " + debug_room_spawn_path)
+			return
+	if room_id != "":
+		logger.err("Failed to move player to room " + room_id + ". Room does not exist.")
