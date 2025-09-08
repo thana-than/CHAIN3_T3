@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1vsbmyl6krlc"]
+[gd_scene load_steps=7 format=3 uid="uid://d1vsbmyl6krlc"]
 
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://models/prototype/mdl_traincar_proto.glb" id="1_gxko3"]
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_j51fj"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="2_j51fj"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_doorway.tscn" id="3_kl8s6"]
+[ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_rg2xb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
@@ -16,6 +17,14 @@ script = ExtResource("1_j51fj")
 [node name="mdl_traincar_proto" parent="Environment" instance=ExtResource("1_gxko3")]
 
 [node name="collider_standard_car" parent="Environment" instance=ExtResource("2_j51fj")]
+
+[node name="GPUParticles3D" parent="Environment" instance=ExtResource("4_rg2xb")]
+
+[node name="Volumetrics" type="Node" parent="Environment"]
+
+[node name="Dust" parent="Environment/Volumetrics" instance=ExtResource("4_rg2xb")]
+transform = Transform3D(2.93574, 0, 0, 0, 1.4679, 0, 0, 0, 9.67199, 0, 1.45843, 0)
+amount = 250
 
 [node name="door_enter" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10.25)
