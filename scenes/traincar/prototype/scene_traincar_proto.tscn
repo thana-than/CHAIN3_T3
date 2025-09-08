@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1vsbmyl6krlc"]
 
-[ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://models/prototype/mdl_traincar_proto.glb" id="1_gxko3"]
+[ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="1_gxko3"]
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_j51fj"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="2_j51fj"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_doorway.tscn" id="3_kl8s6"]

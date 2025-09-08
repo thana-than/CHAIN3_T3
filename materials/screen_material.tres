@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bc5mcdu40f8wv"]
-
-[ext_resource type="Shader" uid="uid://ba6ywwq8ij8bx" path="res://ursc/canvas_item/dithering.gdshader" id="1_socls"]
-[ext_resource type="Texture2D" uid="uid://cncdu8parm00w" path="res://textures/bayer16.png" id="2_ee8py"]
-
-[resource]
-shader = ExtResource("1_socls")
-shader_parameter/color_depth = 24.0
-shader_parameter/dithering_pattern_texture = ExtResource("2_ee8py")
