@@ -9,6 +9,7 @@ export_credentials.cfg
 
 /[Bb]uilds/*
 /[Ww]orkspace/*
+/[Ll]ocal/*
 
 /StreamingAssets/*
 !/StreamingAssets/.gdignore
