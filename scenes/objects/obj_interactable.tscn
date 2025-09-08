@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqgaiuwrr6168"]
+
+[ext_resource type="Script" uid="uid://b5hkmjg3mc753" path="res://addons/ninetailsrabbit.interaction_kit_3d/src/interactable_3d.gd" id="1_q4yvs"]
+
+[node name="Interactable3D" type="Area3D"]
+script = ExtResource("1_q4yvs")
+disable_after_interaction = true
+change_cursor_on_focus = false
+change_screen_pointer_focus = false
+metadata/_custom_type_script = "uid://b5hkmjg3mc753"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="interacted" from="." to="Timer" method="start"]
+[connection signal="timeout" from="Timer" to="." method="activate"]
