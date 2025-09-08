@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1vsbmyl6krlc"]
+[gd_scene load_steps=9 format=3 uid="uid://d1vsbmyl6krlc"]
 
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="1_gxko3"]
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_j51fj"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="2_j51fj"]
-[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_doorway.tscn" id="3_kl8s6"]
+[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="3_kl8s6"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_rg2xb"]
 [ext_resource type="PackedScene" uid="uid://c72r07ql7orfd" path="res://scenes/lighting/managed_light.tscn" id="5_hu7ox"]
+[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="6_hu7ox"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
@@ -32,28 +33,27 @@ flicker_amp = 2.5
 
 [node name="ManagedLight_001" type="SpotLight3D" parent="Environment/FlickeringLights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, -6.517)
-light_energy = 2.0
+light_energy = 2.89035
 spot_range = 5.5
 spot_angle = 60.0
 
 [node name="ManagedLight_002" type="SpotLight3D" parent="Environment/FlickeringLights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, 6.517)
+light_energy = 1.00863
 
 [node name="door_enter" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10.25)
 
-[node name="doorway" parent="door_enter" instance=ExtResource("3_kl8s6")]
-
 [node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
 
-[node name="doorway" parent="door_exit" instance=ExtResource("3_kl8s6")]
+[node name="doorway" parent="door_exit" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("3_kl8s6")]
+door_mesh_node = NodePath("obj_door_proto")
+
+[node name="obj_door_proto" parent="door_exit/doorway" instance=ExtResource("6_hu7ox")]
 
 [node name="room_area" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_j51fj")
-
-[editable path="door_enter/doorway"]
-[editable path="door_exit/doorway"]
