@@ -45,3 +45,6 @@ script = ExtResource("6_ksjmp")
 [node name="FmodListener3D" type="FmodListener3D" parent="." index="10"]
 
 [node name="HUD" parent="." index="11" instance=ExtResource("7_2rlf8")]
+
+[connection signal="on_focus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_focus"]
+[connection signal="on_unfocus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_unfocus"]
