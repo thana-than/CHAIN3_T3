@@ -8,6 +8,12 @@
 
 config_version=5
 
+[CHAIN3_T3]
+
+config/ninetailsrabbit.interaction_kit_3d/update_notification_enabled=true
+config/ninetailsrabbit.interaction_kit_3d/interactables_collision_layer=6
+config/ninetailsrabbit.interaction_kit_3d/grabbables_collision_layer=7
+
 [Fmod]
 
 General/auto_initialize=true
@@ -51,6 +57,7 @@ FmodManager="*res://addons/fmod/FmodManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalInteraction3D="*res://addons/ninetailsrabbit.interaction_kit_3d/src/autoload/global_interaction.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+chain3="*res://addons/chain3/autoload.gd"
 
 [dialogue_manager]
 
