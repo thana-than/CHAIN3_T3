@@ -56,6 +56,16 @@ func _cache_base_energy() -> void:
 			'phase': rng.randf() * 1000.0,
 		}
 
+func _restore_cached_values() -> void:
+	var lights := get_lights()
+	for c in lights:
+		if not _base_energy_cache.has(c.name):
+			continue
+		if not _base_energy_cache[c.name].has("base_energy"):
+			continue
+		c.light_energy = _base_energy_cache[c.name]["base_energy"]
+	return
+
 func _apply_flicker() -> void:
 	var t := _flicker_time
 	var freq_scale: float = max(0.001, flicker_freq_hz)
@@ -141,3 +151,9 @@ func _create_light() -> void:
 		new_light.transform = xform
 	
 	property_list_changed.emit()
+
+func _notification(what):
+	match what:
+		NOTIFICATION_EDITOR_PRE_SAVE:
+			_restore_cached_values()
+			self.preview_in_editor = false
