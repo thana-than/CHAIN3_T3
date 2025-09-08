@@ -11,6 +11,8 @@ var current_interactable: Interactable3D
 var focused: bool = false
 var interacting: bool = false
 
+func _input(_event: InputEvent):
+	_unhandled_input(_event)
 
 func _unhandled_input(_event: InputEvent):
 	if InputMap.has_action(interact_input_action) && Input.is_action_just_pressed(interact_input_action) and current_interactable and not interacting:
