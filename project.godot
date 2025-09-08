@@ -79,9 +79,14 @@ enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/charac
 [file_customization]
 
 folder_colors={
+"res://Builds/": "gray",
 "res://addons/": "gray",
+"res://assets/": "blue",
+"res://fmod/": "purple",
+"res://local/": "teal",
 "res://scenes/": "red",
-"res://scripts/": "yellow"
+"res://scripts/": "yellow",
+"res://ursc/": "gray"
 }
 
 [input]
