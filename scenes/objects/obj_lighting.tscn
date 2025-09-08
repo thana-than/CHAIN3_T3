@@ -2,8 +2,11 @@
 
 [sub_resource type="Environment" id="Environment_1joer"]
 ambient_light_source = 2
-ambient_light_color = Color(0.5896, 0.67, 0.67, 1)
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.05
 tonemap_mode = 3
+fog_light_color = Color(0.423791, 0.457421, 0.510277, 1)
+volumetric_fog_enabled = true
 
 [node name="Lighting" type="Node"]
 
