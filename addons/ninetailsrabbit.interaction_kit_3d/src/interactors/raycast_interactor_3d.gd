@@ -4,6 +4,9 @@ class_name RayCastInteractor3D extends RayCast3D
 @export var cancel_interact_input_action: String = "cancel_interact"
 
 
+signal on_focus(Interactable3D)
+signal on_unfocus(Interactable3D)
+
 var current_interactable: Interactable3D
 var focused: bool = false
 var interacting: bool = false
@@ -60,6 +63,7 @@ func focus(interactable: Interactable3D):
 	focused = true
 	
 	interactable.focused.emit()
+	on_focus.emit(interactable)
 	
 	
 func unfocus(interactable: Interactable3D = current_interactable):
@@ -71,6 +75,7 @@ func unfocus(interactable: Interactable3D = current_interactable):
 		
 		interactable.unfocused.emit()
 		
+	on_unfocus.emit(interactable)
 
 func on_canceled_interaction(_interactable: Interactable3D) -> void:
 	current_interactable = null
