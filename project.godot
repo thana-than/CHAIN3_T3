@@ -175,7 +175,7 @@ fog_end_distance={
 }
 cull_distance={
 "type": "float",
-"value": 64.0
+"value": 128.0
 }
 texture_filtering={
 "type": "bool",
@@ -187,9 +187,9 @@ texture_lod_halve_distance={
 }
 affine_texture_strength={
 "type": "float",
-"value": 1.0
+"value": 0.05
 }
 vertex_snap_intensity={
 "type": "float",
-"value": 0.5
+"value": 0.25
 }

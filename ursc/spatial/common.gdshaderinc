@@ -25,7 +25,7 @@ render_mode
 	unshaded,
 #else
 	diffuse_lambert_wrap,
-	vertex_lighting,
+	//vertex_lighting,
 #endif
 
 #if defined(AMBIENT_LIGHT_DISABLED)

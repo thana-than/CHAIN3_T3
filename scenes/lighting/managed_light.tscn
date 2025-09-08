@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c72r07ql7orfd"]
+
+[ext_resource type="Script" uid="uid://cg4to6v7xjlug" path="res://scripts/lighting/managed_light.gd" id="1_qtjnj"]
+
+[node name="Lighting" type="Node3D"]
+script = ExtResource("1_qtjnj")
+light_type = 2
+flicker_mode = 1
+preview_in_editor = true

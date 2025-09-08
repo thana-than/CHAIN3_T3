@@ -20,7 +20,7 @@ billboard_keep_scale = true
 material = SubResource("StandardMaterial3D_kyqcx")
 size = Vector2(0.1, 0.1)
 
-[node name="GPUParticles3D" type="GPUParticles3D"]
+[node name="Dust" type="GPUParticles3D"]
 transform = Transform3D(1.28482, 0, 0, 0, 1.28482, 0, 0, 0, 1.28482, 0, 0, 0)
 amount = 120
 amount_ratio = 0.8
