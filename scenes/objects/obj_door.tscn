@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn5wqjq65fhl5"]
+
+[ext_resource type="Script" uid="uid://db0rkuhdiokox" path="res://scripts/objects/door.gd" id="1_6hthx"]
+[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="2_7sns6"]
+[ext_resource type="Script" uid="uid://b5hkmjg3mc753" path="res://addons/ninetailsrabbit.interaction_kit_3d/src/interactable_3d.gd" id="3_uwx7g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6w2k"]
+size = Vector3(1.5, 2.1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pcjw8"]
+size = Vector3(1.2, 1.9, 0.4)
+
+[sub_resource type="Animation" id="Animation_pcjw8"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("root_transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("root_transform/hinge")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_70mvp"]
+resource_name = "anim_door_slide"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("root_transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, -1.5, 0, 0)
+
+[sub_resource type="Animation" id="Animation_0buvb"]
+resource_name = "anim_door_hinge"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("root_transform/hinge")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, -0.94, 0, 0.342)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0buvb"]
+_data = {
+&"RESET": SubResource("Animation_pcjw8"),
+&"anim_door_hinge": SubResource("Animation_0buvb"),
+&"anim_door_slide": SubResource("Animation_70mvp")
+}
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_6hthx")
+anim_type = 1
+
+[node name="root_transform" type="Marker3D" parent="."]
+
+[node name="hinge" type="Node3D" parent="root_transform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="pivot" type="Node3D" parent="root_transform/hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="editor_door_preview" parent="root_transform/hinge/pivot" instance=ExtResource("2_7sns6")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_f6w2k")
+
+[node name="Interactable3D" type="Area3D" parent="."]
+script = ExtResource("3_uwx7g")
+disable_after_interaction = true
+change_cursor_on_focus = false
+change_screen_pointer_focus = false
+metadata/_custom_type_script = "uid://b5hkmjg3mc753"
+
+[node name="InteractionArea" type="CollisionShape3D" parent="Interactable3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, 1.1, 0)
+shape = SubResource("BoxShape3D_pcjw8")
+
+[node name="Timer" type="Timer" parent="Interactable3D"]
+wait_time = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0buvb")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="interacted" from="Interactable3D" to="Interactable3D/Timer" method="start"]
+[connection signal="timeout" from="Interactable3D/Timer" to="Interactable3D" method="activate"]

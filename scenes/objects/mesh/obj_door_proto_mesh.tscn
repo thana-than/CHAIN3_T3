@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://coxwwdigundl0"]
+
+[ext_resource type="PackedScene" uid="uid://g8fsnqisjimq" path="res://assets/models/prototype/mdl_door_proto.glb" id="1_fq1qc"]
+
+[node name="obj_door_proto_mesh" instance=ExtResource("1_fq1qc")]
+
+[node name="Door" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
