@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://coxwwdigundl0"]
 
-[ext_resource type="PackedScene" uid="uid://g8fsnqisjimq" path="res://models/prototype/mdl_door_proto.glb" id="1_0fcu8"]
+[ext_resource type="PackedScene" uid="uid://g8fsnqisjimq" path="res://assets/models/prototype/mdl_door_proto.glb" id="1_0fcu8"]
 
 [node name="obj_door_proto" instance=ExtResource("1_0fcu8")]
 

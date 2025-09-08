@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx7j17m1f60wn"]
 
-[ext_resource type="Material" uid="uid://bc5mcdu40f8wv" path="res://materials/screen_material.tres" id="2_1herx"]
+[ext_resource type="Material" uid="uid://bc5mcdu40f8wv" path="res://assets/materials/screen_material.tres" id="2_1herx"]
 [ext_resource type="PackedScene" uid="uid://cgd71lt1wckmy" path="res://scenes/scene_world.tscn" id="3_u456e"]
 
 [node name="SceneStart" type="Node3D"]
