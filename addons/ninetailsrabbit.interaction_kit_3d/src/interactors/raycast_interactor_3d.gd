@@ -11,17 +11,18 @@ var current_interactable: Interactable3D
 var focused: bool = false
 var interacting: bool = false
 
+var last_interaction_frame = -1
+
 func _input(_event: InputEvent):
 	_unhandled_input(_event)
 
 func _unhandled_input(_event: InputEvent):
-	var interacted_this_frame := false
-	if InputMap.has_action(interact_input_action) && Input.is_action_just_pressed(interact_input_action) and current_interactable and not interacting:
+	var current_frame := Engine.get_frames_drawn()
+	if InputMap.has_action(interact_input_action) && current_frame != last_interaction_frame && Input.is_action_just_pressed(interact_input_action) and current_interactable and not interacting:
 		interact(current_interactable)
-		interacted_this_frame = true
 		
 	
-	if InputMap.has_action(cancel_interact_input_action) && not interacted_this_frame && Input.is_action_just_pressed(cancel_interact_input_action) and current_interactable:
+	if InputMap.has_action(cancel_interact_input_action) && current_frame != last_interaction_frame && Input.is_action_just_pressed(cancel_interact_input_action) and current_interactable:
 		cancel_interact(current_interactable)
 	
 
@@ -50,6 +51,7 @@ func interact(interactable: Interactable3D = current_interactable):
 		interacting = interactable.lock_player_on_interact
 		
 		interactable.interacted.emit()
+		last_interaction_frame = Engine.get_frames_drawn()
 
 
 func cancel_interact(interactable: Interactable3D = current_interactable):
@@ -59,6 +61,7 @@ func cancel_interact(interactable: Interactable3D = current_interactable):
 		enabled = true
 				
 		interactable.canceled_interaction.emit()
+		last_interaction_frame = Engine.get_frames_drawn()
 
 
 func focus(interactable: Interactable3D):
