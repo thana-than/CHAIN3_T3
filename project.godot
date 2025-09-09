@@ -53,11 +53,13 @@ Nathan: For more information see the online documentation.
 
 [autoload]
 
+Config="*res://scripts/autoload/config_reader.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalInteraction3D="*res://addons/ninetailsrabbit.interaction_kit_3d/src/autoload/global_interaction.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 chain3="*res://addons/chain3/autoload.gd"
+QuitProcess="*res://scripts/autoload/quit_process.gd"
 
 [dialogue_manager]
 
