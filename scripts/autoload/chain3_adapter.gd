@@ -22,51 +22,51 @@ func _ready() -> void:
 	_entry_door_id = _chain3.door_id
 	_LOGGER.log("Entry door id: {}".format(_entry_door_id))
 
-func qualify_local(name: String) -> String:
+func qualify_local(_name: String) -> String:
 	# Prefix the string
-	return "{}_{}".format(GAME_PREFIX, name)
+	return "{}_{}".format(GAME_PREFIX, _name)
 
 ## Raw functions - avoid calling unless to check for other flags
 
-func set_flag(name: String) -> void:
-	_LOGGER.info("Setting flag with name {name}".format({"name": name}))
-	_chain3.create_flag(name)
-	flags_changed.emit([name], FlagChangeType.CREATED)
+func set_flag(_name: String) -> void:
+	_LOGGER.info("Setting flag with name {name}".format({"name": _name}))
+	_chain3.create_flag(_name)
+	flags_changed.emit([_name], FlagChangeType.CREATED)
 
-func is_flag_set(name: String) -> bool:
-	var is_set: bool = _chain3.does_flag_exist(name)
-	_LOGGER.info("Checking if we have flag {} set - {}".format(name, "T" if is_set else "F"))
+func is_flag_set(_name: String) -> bool:
+	var is_set: bool = _chain3.does_flag_exist(_name)
+	_LOGGER.info("Checking if we have flag {} set - {}".format(_name, "T" if is_set else "F"))
 	return is_set
 
-func unset_flag(name: String) -> void:
-	_LOGGER.info("Unsetting flag with name {name}".format({"name": name}))
-	_chain3.delete_flag(name)
-	flags_changed.emit([name], FlagChangeType.DELETED)
+func unset_flag(_name: String) -> void:
+	_LOGGER.info("Unsetting flag with name {name}".format({"name": _name}))
+	_chain3.delete_flag(_name)
+	flags_changed.emit([_name], FlagChangeType.DELETED)
 
 ## Local functions - prefixes our own chain flags and prepands our code automatically
 
-func set_local_flag(name:String) -> void:
-	set_flag(qualify_local(name))
+func set_local_flag(_name:String) -> void:
+	set_flag(qualify_local(_name))
 
-func is_local_flag_set(name: String) -> bool:
-	return is_flag_set(qualify_local(name))
+func is_local_flag_set(_name: String) -> bool:
+	return is_flag_set(qualify_local(_name))
 	
-func unset_local_flag(name: String) -> void:
-	unset_flag(qualify_local(name))
+func unset_local_flag(_name: String) -> void:
+	unset_flag(qualify_local(_name))
 
 
 # Internal Functions - these flags are internal only and are not writing to chain at all.
 # This is useful for stuff we want to keep in game only...
-func set_internal_flag(name: String) -> void:
-	_LOGGER.log("Setting internal flag with name {}".format(name))
-	_internal_flags[name] = true
+func set_internal_flag(_name: String) -> void:
+	_LOGGER.log("Setting internal flag with name {}".format(_name))
+	_internal_flags[_name] = true
 
-func is_internal_flag_set(name: String) -> bool:
-	return _internal_flags.has(name) and _internal_flags[name]
+func is_internal_flag_set(_name: String) -> bool:
+	return _internal_flags.has(_name) and _internal_flags[_name]
 
-func unset_internal_flag(name: String) -> void:
-	_LOGGER.log("Unsetting internal flag with name {}".format(name))
-	_internal_flags.erase(name)
+func unset_internal_flag(_name: String) -> void:
+	_LOGGER.log("Unsetting internal flag with name {}".format(_name))
+	_internal_flags.erase(_name)
 
 func get_flags() -> Array:
 	var flags = _chain3.get_flags()
