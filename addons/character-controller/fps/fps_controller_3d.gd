@@ -24,13 +24,19 @@ class_name FPSController3D
 @export var swim_fov_multiplier := 1.0
 
 
-@export_group("Mouse")
+@export_group("Look")
 
 ## Mouse Sensitivity
 @export var mouse_sensitivity := 2.0:
 	set(value):
 			if head != null:
 				head.mouse_sensitivity = value
+				
+## Joystick Sensitivity
+@export var joystick_sensitivity := 1.0:
+	set(value):
+			if head != null:
+				head.joystick_sensitivity = value
 
 ## Maximum vertical angle the head can aim
 @export var vertical_angle_limit := 90.0
@@ -80,6 +86,7 @@ class_name FPSController3D
 func setup():
 	super.setup()
 	head.set_mouse_sensitivity(mouse_sensitivity)
+	head.set_joystick_sentitivity(joystick_sensitivity)
 	head.set_vertical_angle_limit(vertical_angle_limit)
 	head_bob.step_bob_enabled = step_bob_enabled
 	head_bob.jump_bob_enabled = jump_bob_enabled
@@ -91,8 +98,11 @@ func setup():
 
 ## Rotate head based on mouse axis parameter.
 ## This function call [b]head.rotate_camera()[/b].
-func rotate_head(mouse_axis : Vector2) -> void:
-	head.rotate_camera(mouse_axis)
+func rotate_head_mouse(mouse_axis : Vector2) -> void:
+	head.rotate_camera_mouse(mouse_axis)
+
+func rotate_head_joystick(mouse_axis : Vector2) -> void:
+	head.rotate_camera_joystick(mouse_axis)
 
 
 ## Call to move the character.

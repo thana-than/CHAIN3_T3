@@ -17,6 +17,10 @@ class_name Player
 @export var input_forward_action_name := "move_forward"
 @export var input_left_action_name := "move_left"
 @export var input_right_action_name := "move_right"
+@export var input_look_down_action_name := "look_down"
+@export var input_look_up_action_name := "look_up"
+@export var input_look_left_action_name := "look_left"
+@export var input_look_right_action_name := "look_right"
 @export var input_sprint_action_name := "move_sprint"
 @export var input_jump_action_name := "move_jump"
 @export var input_crouch_action_name := "move_crouch"
@@ -90,11 +94,12 @@ func _notification(notification):
 			_set_look_enabled_effects(look_enabled)
 		NOTIFICATION_APPLICATION_FOCUS_OUT:
 			_set_look_enabled_effects(false)
+			
 
 func _physics_process(delta):
 	var is_valid_input := move_enabled
 	
-	if is_valid_input:
+	if move_enabled:
 		if OS.is_debug_build() and Input.is_action_just_pressed(input_fly_mode_action_name):
 			fly_ability.set_active(not fly_ability.is_actived())
 		var input_axis = Input.get_vector(input_left_action_name, input_right_action_name, input_back_action_name, input_forward_action_name)
@@ -109,13 +114,19 @@ func _physics_process(delta):
 		## to process, as we still need to calculate gravity and collisions.
 		move(delta)
 
+func _process(delta):
+	if not look_enabled:
+		return
+	var look_motion = delta * Input.get_vector(input_look_left_action_name, input_look_right_action_name, input_look_up_action_name, input_look_down_action_name)
+	if look_motion != Vector2.ZERO:
+		rotate_head_joystick(look_motion)
 
 func _input(event: InputEvent) -> void:
 	if not look_enabled:
 		return
 	# Mouse look (only if the mouse is captured).
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		rotate_head(event.screen_relative)
+		rotate_head_mouse(event.screen_relative)
 
 
 #func _on_controller_emerged():
