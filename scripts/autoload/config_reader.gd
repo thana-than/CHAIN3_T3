@@ -8,10 +8,9 @@ var _file_name := "t3.cfg"
 
 func _enter_tree():
 	load_config()
-	set_value("Settings", "test", "shit")
 	
 func get_value(section: String, key: String, default: Variant = null):
-	_config.get_value(section, key, default)
+	return _config.get_value(section, key, default)
 
 func set_value(section: String, key: String, value: Variant = null):
 	_logger.log(str('Set Value: [',section,'] ',key, ': ', value))
