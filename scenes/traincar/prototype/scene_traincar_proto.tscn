@@ -20,11 +20,10 @@ script = ExtResource("1_j51fj")
 
 [node name="collider_standard_car" parent="Environment" instance=ExtResource("2_j51fj")]
 
-[node name="Volumetrics" type="Node" parent="Environment"]
+[node name="Volumetrics" type="Node3D" parent="Environment"]
 
 [node name="Dust" parent="Environment/Volumetrics" instance=ExtResource("4_rg2xb")]
-transform = Transform3D(2.93574, 0, 0, 0, 1.4679, 0, 0, 0, 9.67199, 0, 1.45843, 0)
-amount = 250
+transform = Transform3D(2.78722, 0, 0, 0, 1.79517, 0, 0, 0, 9.56034, 0, 1.78684, 0)
 
 [node name="FlickeringLights" parent="Environment" instance=ExtResource("5_hu7ox")]
 light_type = 1
