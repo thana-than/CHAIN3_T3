@@ -35,3 +35,6 @@ addons/fmod/libs/**/~*
 
 # Working
 working*.tscn
+
+# Game Config File
+/**/t3.cfg
