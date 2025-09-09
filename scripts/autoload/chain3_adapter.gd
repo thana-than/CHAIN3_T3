@@ -20,26 +20,26 @@ func _ready() -> void:
 	# programmatically.....
 	_chain3 = get_node_or_null("/root/chain3")
 	_entry_door_id = _chain3.door_id
-	_LOGGER.log("Entry door id: {}".format(_entry_door_id))
+	_LOGGER.log("Entry door id: {id}".format({"id": _entry_door_id}))
 
 func qualify_local(_name: String) -> String:
 	# Prefix the string
-	return "{}_{}".format(GAME_PREFIX, _name)
+	return "{prefix}_{name}".format({"prefix": GAME_PREFIX, "name": _name})
 
 ## Raw functions - avoid calling unless to check for other flags
 
 func set_flag(_name: String) -> void:
-	_LOGGER.info("Setting flag with name {name}".format({"name": _name}))
+	_LOGGER.log("Setting flag with name {name}".format({"name": _name}))
 	_chain3.create_flag(_name)
 	flags_changed.emit([_name], FlagChangeType.CREATED)
 
 func is_flag_set(_name: String) -> bool:
 	var is_set: bool = _chain3.does_flag_exist(_name)
-	_LOGGER.info("Checking if we have flag {} set - {}".format(_name, "T" if is_set else "F"))
+	_LOGGER.log("Checking if we have flag {name} set - {value}".format({"name": _name, "value": "T" if is_set else "F"}))
 	return is_set
 
 func unset_flag(_name: String) -> void:
-	_LOGGER.info("Unsetting flag with name {name}".format({"name": _name}))
+	_LOGGER.log("Unsetting flag with name {name}".format({"name": _name}))
 	_chain3.delete_flag(_name)
 	flags_changed.emit([_name], FlagChangeType.DELETED)
 
@@ -58,14 +58,14 @@ func unset_local_flag(_name: String) -> void:
 # Internal Functions - these flags are internal only and are not writing to chain at all.
 # This is useful for stuff we want to keep in game only...
 func set_internal_flag(_name: String) -> void:
-	_LOGGER.log("Setting internal flag with name {}".format(_name))
+	_LOGGER.log("Setting internal flag with name {name}".format({"name": _name}))
 	_internal_flags[_name] = true
 
 func is_internal_flag_set(_name: String) -> bool:
 	return _internal_flags.has(_name) and _internal_flags[_name]
 
 func unset_internal_flag(_name: String) -> void:
-	_LOGGER.log("Unsetting internal flag with name {}".format(_name))
+	_LOGGER.log("Unsetting internal flag with name {name}".format({"name": _name}))
 	_internal_flags.erase(_name)
 
 func get_flags() -> Array:
@@ -87,7 +87,7 @@ func get_internal_flags() -> Array:
 # Defer the call so that any subscribers have the time to clean up/write
 # to any flags they need.
 func exit_via_door(door_id: String) -> void:
-	_LOGGER.log("Exit requested via door with id: {}".format(door_id))
+	_LOGGER.log("Exit requested via door with id: {id}".format({"id": door_id}))
 	exit_requested.emit(door_id)
 	_chain3.call_deferred("exit_game", door_id)
 
