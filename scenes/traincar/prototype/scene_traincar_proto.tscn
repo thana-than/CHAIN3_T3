@@ -57,3 +57,5 @@ door_mesh_node = NodePath("obj_door_proto")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_j51fj")
+
+[node name="cull_root" type="Marker3D" parent="."]
