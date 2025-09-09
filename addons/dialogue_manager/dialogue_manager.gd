@@ -70,6 +70,8 @@ var _dotnet_dialogue_manager: RefCounted
 
 var _expression_parser: DMExpressionParser = DMExpressionParser.new()
 
+var _last_balloon : Node
+
 
 func _ready() -> void:
 	# Cache the known Node2D properties
@@ -444,7 +446,7 @@ func show_example_dialogue_balloon(resource: DialogueResource, title: String = "
 
 ## Implementation to show dialogue using the given settings resource
 func show_dialogue(settings: DialogueSettings, extra_game_states: Array = []):
-	show_dialogue_balloon_scene(settings.balloon_scene, settings.dialogue_resource, settings.dialogue_start, extra_game_states)
+	return show_dialogue_balloon_scene(settings.balloon_scene, settings.dialogue_resource, settings.dialogue_start, extra_game_states)
 
 ## Show the configured dialogue balloon
 func show_dialogue_balloon(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
@@ -477,9 +479,18 @@ func static_id_to_line_id(resource: DialogueResource, static_id: String) -> Stri
 func static_id_to_line_ids(resource: DialogueResource, static_id: String) -> PackedStringArray:
 	return resource.lines.values().filter(func(l): return l.get(&"translation_key", "") == static_id).map(func(l): return l.id)
 
+func _clear_last_dialogue():
+	if not _last_balloon:
+		return
+		
+	_last_balloon.queue_free()
+	dialogue_ended.emit(_last_balloon.resource)
 
 # Call "start" on the given balloon.
 func _start_balloon(balloon: Node, resource: DialogueResource, title: String, extra_game_states: Array) -> void:
+	_clear_last_dialogue()
+	
+	_last_balloon = balloon
 	get_current_scene.call().add_child(balloon)
 
 	if balloon.has_method(&"start"):
