@@ -68,6 +68,10 @@ editor/new_file_template="~ start
 runtime/balloon_path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
+[display]
+
+window/size/mode=4
+
 [dotnet]
 
 project/assembly_name="CHAIN3_T3"
