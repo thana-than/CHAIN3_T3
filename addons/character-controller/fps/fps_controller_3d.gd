@@ -26,17 +26,29 @@ class_name FPSController3D
 
 @export_group("Look")
 
-## Mouse Sensitivity
-@export var mouse_sensitivity := 2.0:
+## Mouse Sensitivity. This property is multiplied with the config mouse_sensitivity value to get the resulting sensitivity.
+@export var mouse_sensitivity_multiplier := 1.0:
 	set(value):
-			if head != null:
-				head.mouse_sensitivity = value
+		mouse_sensitivity_multiplier = value
+		if head != null:
+			head.mouse_sensitivity = get_mouse_sensitivity()
+	get:
+		return mouse_sensitivity_multiplier
+		
+func get_mouse_sensitivity() -> float:
+	return mouse_sensitivity_multiplier * Settings.setting_mouse_sensitivity
 				
-## Joystick Sensitivity
-@export var joystick_sensitivity := 1.0:
+## Joystick Sensitivity. This property is multiplied with the config joystick_sensitivity value to get the resulting sensitivity.
+@export var joystick_sensitivity_multiplier := 1.0:
 	set(value):
-			if head != null:
-				head.joystick_sensitivity = value
+		joystick_sensitivity_multiplier = value
+		if head != null:
+			head.joystick_sensitivity = get_joystick_sensitivity()
+	get:
+		return joystick_sensitivity_multiplier
+		
+func get_joystick_sensitivity():
+	return joystick_sensitivity_multiplier * Settings.setting_joystick_sensitivity
 
 ## Maximum vertical angle the head can aim
 @export var vertical_angle_limit := 90.0
@@ -85,8 +97,8 @@ class_name FPSController3D
 ## After call the base class setup [CharacterController3D].
 func setup():
 	super.setup()
-	head.set_mouse_sensitivity(mouse_sensitivity)
-	head.set_joystick_sentitivity(joystick_sensitivity)
+	head.set_mouse_sensitivity(get_mouse_sensitivity())
+	head.set_joystick_sentitivity(get_joystick_sensitivity())
 	head.set_vertical_angle_limit(vertical_angle_limit)
 	head_bob.step_bob_enabled = step_bob_enabled
 	head_bob.jump_bob_enabled = jump_bob_enabled
