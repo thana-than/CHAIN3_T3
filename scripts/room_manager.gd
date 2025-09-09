@@ -35,7 +35,6 @@ func room_culling() -> void:
 		var distance = abs(i - active_room.room_index)
 		if distance <= surrounded_room_culling:
 			if !rooms[i].is_inside_tree():
-				print(i)
 				add_child(rooms[i])
 		else:
 			if rooms[i].is_inside_tree():
