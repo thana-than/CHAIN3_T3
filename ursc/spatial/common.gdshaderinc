@@ -122,6 +122,7 @@ uniform bool convert_vertex_colors = false;
 #if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
 	varying float position_w;
 	varying vec2 uv_times_w;
+	uniform bool enable_affine_transform = false;
 #endif
 
 #if !defined(TEXTURE_DISABLED) && !defined(SHINY)
@@ -369,7 +370,11 @@ void fragment()
 			#else
 				vec2 uv_persp = UV;
 				vec2 uv_aff = uv_times_w / max(position_w, 1e-6);
-				uv = mix(UV, uv_aff, clamp(affine_texture_strength, 0.0, 1.0));
+				float k = 0.;
+				if (enable_affine_transform) {
+					k = clamp(affine_texture_strength, 0.0, 1.0);
+				}
+				uv = mix(UV, uv_aff, k);
 			#endif
 
 			vec4 sampled_color;
