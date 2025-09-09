@@ -62,6 +62,10 @@ Settings="*res://scripts/autoload/settings.gd"
 QuitProcess="*res://scripts/autoload/quit_process.gd"
 chain3="*res://addons/chain3/autoload.gd"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [dialogue_manager]
 
 runtime/advanced/uses_dotnet=true
