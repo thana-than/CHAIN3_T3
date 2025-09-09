@@ -12,7 +12,6 @@ script = ExtResource("1_rm1t0")
 
 [node name="Player" parent="." instance=ExtResource("1_4wyf3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26716, 0)
-joystick_sensitivity = 1.0
 
 [node name="Train" type="Node3D" parent="."]
 script = ExtResource("2_k0juu")

@@ -5,7 +5,7 @@ extends Node
 #region Fields
 var _section_display = "Display"
 #var _section_audio = "Audio"
-#var _section_control = "Controls"
+var _section_controls = "Controls"
 
 var _setting_prop_prefix = "setting_"
 #endregion
@@ -24,6 +24,18 @@ var setting_window_mode: DisplayServer.WindowMode:
 		DisplayServer.window_set_mode(window_mode)
 	get:
 		return Config.get_value(_section_display, "window_mode", DisplayServer.window_get_mode())
+		
+var setting_joystick_sensitivity : float:
+	set(sensitivity):
+		Config.set_value(_section_controls, "joystick_sensitivity", sensitivity)
+	get:
+		return Config.get_value(_section_controls, "joystick_sensitivity", 1.0)
+		
+var setting_mouse_sensitivity : float:
+	set(sensitivity):
+		Config.set_value(_section_controls, "mouse_sensitivity", sensitivity)
+	get:
+		return Config.get_value(_section_controls, "mouse_sensitivity", 2.0)
 #endregion
 
 #region Methods
