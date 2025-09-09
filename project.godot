@@ -59,6 +59,10 @@ GlobalInteraction3D="*res://addons/ninetailsrabbit.interaction_kit_3d/src/autolo
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 chain3="*res://addons/chain3/autoload.gd"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [dialogue_manager]
 
 runtime/advanced/uses_dotnet=true
