@@ -58,7 +58,6 @@ func _get_anim_name(_anim_type: AnimType):
 
 func _on_interaction(facing_front : bool):
 	_last_interaction_facing_front = facing_front
-	print(facing_front)
 	toggle_open()
 	pass
 
