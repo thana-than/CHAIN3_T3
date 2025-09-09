@@ -5,10 +5,11 @@ signal entered
 signal exited
 
 @export var require_portal := false
-@export var cull_distance := 30.0
+@export var cull_distance := 50.0
 
 @onready var enter_trigger: Area3D = get_node(NodePath("room_area"))
 @onready var cull_root: Node3D = get_node(NodePath("cull_root"))
+@onready var cull_position := cull_root.global_position
 
 var room_index := 0
 
