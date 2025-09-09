@@ -442,6 +442,9 @@ func show_example_dialogue_balloon(resource: DialogueResource, title: String = "
 	_start_balloon.call_deferred(balloon, resource, title, extra_game_states)
 	return balloon
 
+## Implementation to show dialogue using the given settings resource
+func show_dialogue(settings: DialogueSettings, extra_game_states: Array = []):
+	show_dialogue_balloon_scene(settings.balloon_scene, settings.dialogue_resource, settings.dialogue_start, extra_game_states)
 
 ## Show the configured dialogue balloon
 func show_dialogue_balloon(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
