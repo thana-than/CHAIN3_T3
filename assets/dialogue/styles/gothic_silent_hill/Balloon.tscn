@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2nw21rtn1pq6"]
 
-[ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_ag4sd"]
+[ext_resource type="Script" uid="uid://s8ufbrspdhl" path="res://assets/dialogue/styles/gothic_silent_hill/DialogueBalloon.cs" id="1_rq8u7"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_2o04a"]
 [ext_resource type="Theme" uid="uid://cvgeckhft2ira" path="res://assets/dialogue/styles/gothic_silent_hill/silent_hill_theme.tres" id="2_r5fcr"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_r5fcr"]
@@ -32,7 +32,7 @@ shader_parameter/shadow_threshold = 0.01
 
 [node name="GothicSilentHillBalloon" type="CanvasLayer"]
 layer = 100
-script = ExtResource("1_ag4sd")
+script = ExtResource("1_rq8u7")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -42,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("2_r5fcr")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
