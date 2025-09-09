@@ -4,6 +4,8 @@ extends Node
 var performance_display: PerformancesDisplay
 var wait_frames := 1
 
+var is_ready = false
+
 func _ready():
 	process_mode = PROCESS_MODE_ALWAYS
 	performance_display = PerformancesDisplay.new()
@@ -16,6 +18,8 @@ func _exit_tree() -> void:
 func _process(delta):
 	if wait_frames > 0:
 		wait_frames -= 1
+		if wait_frames == 0:
+			is_ready = true
 		return
 	
 	FmodServer.update()

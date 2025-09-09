@@ -4,7 +4,7 @@ extends Node
 
 #region Fields
 var _section_display = "Display"
-#var _section_audio = "Audio"
+var _section_audio = "Audio"
 var _section_controls = "Controls"
 
 var _setting_prop_prefix = "setting_"
@@ -43,11 +43,39 @@ var setting_mouse_sensitivity : float:
 		Config.set_value(_section_controls, "mouse_sensitivity", sensitivity)
 	get:
 		return Config.get_value(_section_controls, "mouse_sensitivity", 2.0)
+		
+var setting_master_volume : float:
+	set(volume):
+		Config.set_value(_section_audio, "volume_master", volume)
+		set_volume("Master Volume", volume)
+	get:
+		return Config.get_value(_section_audio, "volume_master", 0.7)
+		
+var setting_music_volume : float:
+	set(volume):
+		Config.set_value(_section_audio, "volume_music", volume)
+		set_volume("Music Volume", volume)
+	get:
+		return Config.get_value(_section_audio, "volume_music", 1.0)
+
+var setting_sfx_volume : float:
+	set(volume):
+		Config.set_value(_section_audio, "volume_sfx", volume)
+		set_volume("SFX Volume", volume)
+		set_volume("UI Volume", volume)
+		set_volume("VO Volume", volume)
+	get:
+		return Config.get_value(_section_audio, "volume_sfx", 1.0)
 #endregion
 
 #region Methods
 func _enter_tree():
 	reload()
+	
+func set_volume(_name : String, _value: float):
+	while not FmodManager.is_ready:
+		await get_tree().process_frame
+	FmodServer.get_vca("vca:/" + _name).volume = _value
 	
 func center_window():
 	var screen = setting_screen_index
