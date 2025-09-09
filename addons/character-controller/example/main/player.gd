@@ -84,6 +84,12 @@ func _ready():
 	#emerged.connect(_on_controller_emerged.bind())
 	#submerged.connect(_on_controller_subemerged.bind())
 
+func _notification(notification):
+	match notification:
+		NOTIFICATION_APPLICATION_FOCUS_IN:
+			_set_look_enabled_effects(look_enabled)
+		NOTIFICATION_APPLICATION_FOCUS_OUT:
+			_set_look_enabled_effects(false)
 
 func _physics_process(delta):
 	var is_valid_input := move_enabled
