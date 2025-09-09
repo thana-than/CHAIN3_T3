@@ -11,19 +11,19 @@ var _setting_prop_prefix = "setting_"
 #endregion
 
 #region Properties
-var setting_window_size: Vector2i:
-	set(window_size):
-		Config.set_value(_section_display, "window_size", window_size)
-		DisplayServer.window_set_size(window_size)
-	get:
-		return Config.get_value(_section_display, "window_size", DisplayServer.window_get_size())
-		
 var setting_window_mode: DisplayServer.WindowMode:
 	set(window_mode):
 		Config.set_value(_section_display, "window_mode", window_mode)
 		DisplayServer.window_set_mode(window_mode)
 	get:
 		return Config.get_value(_section_display, "window_mode", DisplayServer.window_get_mode())
+		
+var setting_window_size: Vector2i:
+	set(window_size):
+		Config.set_value(_section_display, "window_size", window_size)
+		DisplayServer.window_set_size(window_size)
+	get:
+		return Config.get_value(_section_display, "window_size", DisplayServer.window_get_size())
 		
 var setting_joystick_sensitivity : float:
 	set(sensitivity):
@@ -42,11 +42,21 @@ var setting_mouse_sensitivity : float:
 func _enter_tree():
 	reload()
 	
+func center_window():
+	var screen = DisplayServer.window_get_current_screen()
+	var screen_pos = DisplayServer.screen_get_position(screen)
+	var screen_size = DisplayServer.screen_get_size(screen)
+	var window_size = DisplayServer.window_get_size()
+	var centered = screen_pos + (screen_size - window_size) / 2
+	DisplayServer.window_set_position(centered)
+	
 func reload():
 	# Trigger all the settters for every property with the setting prefix
 	for prop in get_property_list():
 		if prop.name.begins_with(_setting_prop_prefix):
 			self.set(prop.name, self.get(prop.name))
+			
+	center_window()
 
 func save():
 	Config.save_config()
