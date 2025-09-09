@@ -15,13 +15,14 @@ func _input(_event: InputEvent):
 	_unhandled_input(_event)
 
 func _unhandled_input(_event: InputEvent):
+	var interacted_this_frame := false
 	if InputMap.has_action(interact_input_action) && Input.is_action_just_pressed(interact_input_action) and current_interactable and not interacting:
 		interact(current_interactable)
+		interacted_this_frame = true
 		
 	
-	if InputMap.has_action(cancel_interact_input_action) && Input.is_action_just_pressed(cancel_interact_input_action) and current_interactable:
+	if InputMap.has_action(cancel_interact_input_action) && not interacted_this_frame && Input.is_action_just_pressed(cancel_interact_input_action) and current_interactable:
 		cancel_interact(current_interactable)
-		
 	
 
 func _enter_tree():
