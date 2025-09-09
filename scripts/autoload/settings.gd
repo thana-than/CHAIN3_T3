@@ -24,6 +24,13 @@ var setting_window_size: Vector2i:
 		DisplayServer.window_set_size(window_size)
 	get:
 		return Config.get_value(_section_display, "window_size", DisplayServer.window_get_size())
+
+var setting_screen_index: int:
+	set(screen_index):
+		Config.set_value(_section_display, "screen_index", screen_index)
+		center_window()
+	get:
+		return Config.get_value(_section_display, "screen_index", DisplayServer.get_primary_screen())
 		
 var setting_joystick_sensitivity : float:
 	set(sensitivity):
@@ -43,11 +50,12 @@ func _enter_tree():
 	reload()
 	
 func center_window():
-	var screen = DisplayServer.window_get_current_screen()
+	var screen = setting_screen_index
 	var screen_pos = DisplayServer.screen_get_position(screen)
 	var screen_size = DisplayServer.screen_get_size(screen)
 	var window_size = DisplayServer.window_get_size()
 	var centered = screen_pos + (screen_size - window_size) / 2
+	DisplayServer.window_set_current_screen(screen)
 	DisplayServer.window_set_position(centered)
 	
 func reload():
@@ -55,8 +63,6 @@ func reload():
 	for prop in get_property_list():
 		if prop.name.begins_with(_setting_prop_prefix):
 			self.set(prop.name, self.get(prop.name))
-			
-	center_window()
 
 func save():
 	Config.save_config()
