@@ -24,16 +24,69 @@ class_name Player
 
 @export var underwater_env: Environment
 
+@onready var interactor : RayCastInteractor3D = get_node("Head/RayCastInteractor")
 
+var input_enabled := true:
+	set(enabled):
+		input_enabled = enabled
+		_set_look_enabled_effects(look_enabled)
+		_set_move_enabled_effects(move_enabled)
+		_set_interact_enabled_effects(interact_enabled)
+	get:
+		return input_enabled
+
+var look_enabled := true:
+	set(enabled):
+		look_enabled = enabled
+		_set_look_enabled_effects(look_enabled)
+	get:
+		return input_enabled and look_enabled
+
+var move_enabled := true:
+	set(enabled):
+		move_enabled = enabled
+		_set_move_enabled_effects(move_enabled)
+	get:
+		return input_enabled and move_enabled
+
+var interact_enabled := true:
+	set(enabled):
+		interact_enabled = enabled
+		_set_interact_enabled_effects(interact_enabled)
+	get:
+		return input_enabled and interact_enabled
+
+func set_input_enabled(enabled := true):
+	input_enabled = enabled
+
+func set_move_enabled(enabled := true):
+	move_enabled = enabled
+	
+func set_look_enabled(enabled := true):
+	look_enabled = enabled
+
+func set_interact_enabled(enabled := true):
+	interact_enabled = enabled
+
+func _set_look_enabled_effects(_mouse_look_enabled):
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if _mouse_look_enabled else Input.MOUSE_MODE_VISIBLE)
+
+func _set_move_enabled_effects(_move_enabled):
+	pass
+
+func _set_interact_enabled_effects(_interact_enabled):
+	interactor.enabled = _interact_enabled
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_set_look_enabled_effects(look_enabled)
+	_set_move_enabled_effects(move_enabled)
+	_set_interact_enabled_effects(interact_enabled)
 	setup()
 	#emerged.connect(_on_controller_emerged.bind())
 	#submerged.connect(_on_controller_subemerged.bind())
 
 
 func _physics_process(delta):
-	var is_valid_input := Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+	var is_valid_input := move_enabled
 	
 	if is_valid_input:
 		if Input.is_action_just_pressed(input_fly_mode_action_name):
@@ -52,6 +105,8 @@ func _physics_process(delta):
 
 
 func _input(event: InputEvent) -> void:
+	if not look_enabled:
+		return
 	# Mouse look (only if the mouse is captured).
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_head(event.screen_relative)
