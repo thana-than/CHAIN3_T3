@@ -1,0 +1,41 @@
+extends Node
+#TODO audio section with FMOD
+#TODO control section for mouse sensitivity
+
+#region Fields
+var _section_display = "Display"
+#var _section_audio = "Audio"
+#var _section_control = "Controls"
+
+var _setting_prop_prefix = "setting_"
+#endregion
+
+#region Properties
+var setting_window_size: Vector2i:
+	set(window_size):
+		Config.set_value(_section_display, "window_size", window_size)
+		DisplayServer.window_set_size(window_size)
+	get:
+		return Config.get_value(_section_display, "window_size", DisplayServer.window_get_size())
+		
+var setting_window_mode: DisplayServer.WindowMode:
+	set(window_mode):
+		Config.set_value(_section_display, "window_mode", window_mode)
+		DisplayServer.window_set_mode(window_mode)
+	get:
+		return Config.get_value(_section_display, "window_mode", DisplayServer.window_get_mode())
+#endregion
+
+#region Methods
+func _enter_tree():
+	reload()
+	
+func reload():
+	# Trigger all the settters for every property with the setting prefix
+	for prop in get_property_list():
+		if prop.name.begins_with(_setting_prop_prefix):
+			self.set(prop.name, self.get(prop.name))
+
+func save():
+	Config.save_config()
+#endregion

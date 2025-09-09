@@ -58,8 +58,9 @@ FmodManager="*res://addons/fmod/FmodManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalInteraction3D="*res://addons/ninetailsrabbit.interaction_kit_3d/src/autoload/global_interaction.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-chain3="*res://addons/chain3/autoload.gd"
+Settings="*res://scripts/autoload/settings.gd"
 QuitProcess="*res://scripts/autoload/quit_process.gd"
+chain3="*res://addons/chain3/autoload.gd"
 
 [dialogue_manager]
 
