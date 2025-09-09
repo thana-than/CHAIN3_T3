@@ -28,13 +28,13 @@ func _enter_tree() -> void:
 
 
 func _exit_tree() -> void:
-	MyPluginSettings.remove_settings()
 	
+	#MyPluginSettings.remove_settings()
 	if update_notify_tool_instance:
 		update_notify_tool_instance.free()
 		update_notify_tool_instance = null
 		
-	remove_autoload_singleton("GlobalInteraction3D")
+	#remove_autoload_singleton("GlobalInteraction3D")
 	
 	remove_custom_type("MouseRayCastInteractor3D")
 	remove_custom_type("RayCastInteractor3D")
