@@ -23,12 +23,15 @@ signal on_locked_attempt
 @export var anim_close_time := .5
 
 var _locked = false
+var _last_interaction_facing_front = true
 
 @onready var animation : AnimationPlayer = get_node("AnimationPlayer")
 @onready var collider : CollisionShape3D = get_node("CollisionShape3D")
-@onready var interactable : Interactable3D = get_node("Interactable3D")
+@onready var front_interactable : Interactable3D = get_node("InteractableFront")
+@onready var back_interactable : Interactable3D = get_node("InteractableBack")
 @onready var timer : Timer = get_node("Timer")
-@onready var mesh_parent : Node3D = get_node("root_transform/hinge/pivot") 
+@onready var root_transform : Node3D = get_node("root_transform")
+@onready var mesh_parent : Node3D = root_transform.get_node("hinge/pivot") 
 @onready var logger = Logger.new("door.gd: " + name)
 
 func _ready():
@@ -42,7 +45,8 @@ func _ready():
 	else:
 		close()
 		
-	interactable.interacted.connect(toggle_open)
+	front_interactable.interacted.connect(_on_interaction.bind(true))
+	back_interactable.interacted.connect(_on_interaction.bind(false))
 	timer.timeout.connect(close)
 	if door_mesh_node:
 		door_mesh_node.reparent(mesh_parent, false)
@@ -51,6 +55,12 @@ func _ready():
 		
 func _get_anim_name(_anim_type: AnimType):
 	return "anim_door_" + AnimType.keys()[_anim_type].to_lower()
+
+func _on_interaction(facing_front : bool):
+	_last_interaction_facing_front = facing_front
+	print(facing_front)
+	toggle_open()
+	pass
 
 func is_open() -> bool:
 	return collider.disabled
@@ -84,6 +94,10 @@ func open():
 	if is_locked():
 		on_locked_attempt.emit()
 		return
+	
+	# rotate the door so that it so the animation plays *away* from the player
+	var flip = -1.0 if _last_interaction_facing_front else 1.0
+	root_transform.scale = Vector3(1.0,1.0,flip)
 	
 	var speed = 1.0 / anim_open_time if anim_open_time > 0 else 1000.0
 	animation.play(_get_anim_name(anim_type), -1, speed)
