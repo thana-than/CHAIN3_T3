@@ -143,6 +143,8 @@ signal stopped_floating
 ## List of movement skills to be used in processing this class.
 @export var abilities_path: Array[NodePath]
 
+var _logger := Logger.new(name)
+
 ## List of movement skills to be used in processing this class.
 var _abilities: Array[MovementAbility3D]
  
@@ -211,7 +213,7 @@ func setup():
 
 ## Implements [member Portal3D.ON_TELEPORT_CALLBACK]
 func on_teleport(portal: Portal3D) -> void:
-	print("Teleported by portal: ", portal.name)
+	_logger.log("Teleported by portal: " + portal.name)
 	pass
 
 
