@@ -18,6 +18,7 @@ Please install even if you aren't planning on working in engine!
 - [Ultimate Retro Shader Collection](https://godotengine.org/asset-library/asset/2989)
 - [Interaction Kit 3D](https://godotengine.org/asset-library/asset/3409)
 - [dialogue_manager](https://github.com/nathanhoad/godot_dialogue_manager)
+- [Debug Draw 3D](https://github.com/DmitriySalnikov/godot_debug_draw_3d)
 ## Assets
 - [Seamless Sky Background](https://screamingbrainstudios.itch.io/seamless-sky-backgrounds)
 - [Dither Matrix Texture](https://github.com/tromero/BayerMatrix)
