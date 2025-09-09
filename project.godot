@@ -60,7 +60,7 @@ GlobalInteraction3D="*res://addons/ninetailsrabbit.interaction_kit_3d/src/autolo
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Settings="*res://scripts/autoload/settings.gd"
 QuitProcess="*res://scripts/autoload/quit_process.gd"
-Chain3Adapter="*res://scripts/chain3_adapter/chain3_adapter.gd"
+Chain3Adapter="*res://scripts/autoload/chain3_adapter.gd"
 chain3="*res://addons/chain3/autoload.gd"
 
 [debug_draw_3d]
