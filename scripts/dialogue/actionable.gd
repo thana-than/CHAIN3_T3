@@ -9,22 +9,26 @@ extends Area3D
 @export var is_repeatable: bool = false
 @export var debug_verbose: bool = false
 
-var _shown: bool = false
+var dialogue_player: DialoguePlayer = DialoguePlayer.new()
 var logger: Logger = null
 
 func _ready() -> void:
 	logger = Logger.new(self.name)
+	setup_dialogue_player()
 	self.body_entered.connect(_on_body_entered)
 	if debug_verbose:
 		logger.log("_on_body_entered has been connected to the body_entered signal.")
+
+func setup_dialogue_player() -> void:
+	dialogue_player.custom_balloon_resource = custom_balloon_resource
+	dialogue_player.dialogue_resource = dialogue_resource
+	dialogue_player.dialogue_start = dialogue_start
+	dialogue_player.is_repeatable = is_repeatable
 
 # When triggered run dialogue unless this is not a repeatable trigger and 
 # it has already triggered it once.
 func _on_body_entered(body: Node3D) -> void:
 	if debug_verbose:
 		logger.log("_on_body_entered signalled by {name}".format({ "name": body.name }))
-	if not is_repeatable:
-		if _shown:
-			return
-		_shown = true
-	DialogueManager.show_dialogue_balloon_scene(custom_balloon_resource, dialogue_resource, dialogue_start);
+	if dialogue_player:
+		dialogue_player.play_dialogue()
