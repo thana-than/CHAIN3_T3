@@ -117,6 +117,10 @@ func _physics_process(delta):
 		# NOTE: It is important to always call move() even if we have no inputs 
 		## to process, as we still need to calculate gravity and collisions.
 		move(delta)
+	
+## Implements [member Portal3D.ON_TELEPORT_CALLBACK]
+func on_teleport(portal: Portal3D) -> void:
+	_logger.log("Teleported by portal: " + portal.name)
 
 func _process(delta):
 	if not look_enabled:
