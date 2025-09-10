@@ -8,6 +8,8 @@ var _section_audio = "Audio"
 var _section_controls = "Controls"
 
 var _setting_prop_prefix = "setting_"
+
+var logger := Logger.new("Settings")
 #endregion
 
 #region Properties
@@ -75,7 +77,12 @@ func _enter_tree():
 func set_volume(_name : String, _value: float):
 	while not FmodManager.is_ready:
 		await get_tree().process_frame
-	FmodServer.get_vca("vca:/" + _name).volume = _value
+	var path = "vca:/" + _name
+	var vca = FmodServer.get_vca(path)
+	if not vca:
+		logger.err("Could not find FMOD VCA at path: " + path)
+		return
+	vca.volume = _value
 	
 func center_window():
 	var screen = setting_screen_index

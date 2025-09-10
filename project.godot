@@ -76,6 +76,7 @@ editor/new_file_template="~ start
 => END"
 runtime/balloon_path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+runtime/advanced/ignore_missing_state_values=true
 
 [display]
 
