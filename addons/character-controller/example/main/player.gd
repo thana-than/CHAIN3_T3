@@ -80,6 +80,10 @@ func _set_move_enabled_effects(_move_enabled):
 
 func _set_interact_enabled_effects(_interact_enabled):
 	interactor.enabled = _interact_enabled
+	
+func _enter_tree() -> void:
+	Global.player = self
+	
 func _ready():
 	_set_look_enabled_effects(look_enabled)
 	_set_move_enabled_effects(move_enabled)
