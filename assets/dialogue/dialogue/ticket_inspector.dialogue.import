@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://duvncsmuvdoj7"
+path="res://.godot/imported/ticket_inspector.dialogue-349124f5f1df701e29a33b09d95e8497.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/ticket_inspector.dialogue"
+dest_files=["res://.godot/imported/ticket_inspector.dialogue-349124f5f1df701e29a33b09d95e8497.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,8 @@
+~ start
+match interaction_index
+	when 0:
+		: Talk to me one more time and I'll send you back to the train!
+	else
+		: You asked for it!
+		do Global.send_player_to_room.emit("room_S2")
+=> END
