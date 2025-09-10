@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{4803bd92-99d9-41ea-8e8c-9effea6f4ee8}">
 		<property name="assetPath">
-			<value>SFX/Mouth Sounds/Mouth Sounds.wav</value>
+			<value>VO/Mouth Sounds/Mouth Sounds.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
