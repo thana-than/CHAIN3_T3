@@ -5,7 +5,7 @@ class_name DialogueInteractable
 @export var player_settings := DialoguePlayerSettings.new()
 @export var debug_verbose: bool = false
 
-@onready var dialogue_player: DialoguePlayer = DialoguePlayer.new(dialogue_settings, player_settings)
+@onready var dialogue_player := DialoguePlayer.new(dialogue_settings, player_settings)
 @onready var logger := Logger.new(name)
 
 func _ready() -> void:
