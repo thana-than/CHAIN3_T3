@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://l5domms1nvil"]
-
-[ext_resource type="Script" uid="uid://d2wivcj4mv8ah" path="res://scripts/audio_emitters/footstep_emitter.gd" id="1_t10n0"]
-
-[node name="Footstep Emitter" type="Node3D"]
-script = ExtResource("1_t10n0")
