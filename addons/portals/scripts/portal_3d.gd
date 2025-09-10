@@ -300,7 +300,7 @@ var start_deactivated: bool = false
 
 #region INTERNALS
 
-@export_storage var _portal_thickness: float = 0.05:
+@export var _portal_thickness: float = 0.5:
 	set(v):
 		_portal_thickness = v
 		if _caused_by_user_interaction(): _on_portal_size_changed()
@@ -431,7 +431,7 @@ func _on_portal_size_changed() -> void:
 	
 	var p: PortalBoxMesh = portal_mesh.mesh
 	p.size = Vector3(portal_size.x, portal_size.y, 1)
-	portal_mesh.scale.z = _portal_thickness
+	#portal_mesh.scale.z = _portal_thickness
 	
 	if is_teleport and teleport_collider:
 		var box: BoxShape3D = teleport_collider.shape
@@ -502,7 +502,7 @@ func _process_cameras() -> void:
 	var half_height: float = player_camera.near * tan(deg_to_rad(player_camera.fov * 0.5))
 	var half_width: float = half_height * pv_size.x / float(pv_size.y)
 	var near_diagonal: float = Vector3(half_width, half_height, player_camera.near).length()
-	portal_mesh.scale.z = near_diagonal
+	#portal_mesh.scale.z = near_diagonal
 	
 	var player_in_front_of_portal: bool = forward_distance(player_camera) > 0
 	var portal_shift: float = 0
