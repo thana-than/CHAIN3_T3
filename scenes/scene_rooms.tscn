@@ -1,18 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dogdtfihjht4g"]
+[gd_scene load_steps=7 format=3 uid="uid://dogdtfihjht4g"]
 
 [ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="1_5lcb8"]
-[ext_resource type="PackedScene" uid="uid://d1vsbmyl6krlc" path="res://scenes/rooms/scene_room_template.tscn" id="2_74wcl"]
+[ext_resource type="PackedScene" uid="uid://cr6dlu3tq7xfg" path="res://scenes/rooms/scene_room_s2.tscn" id="2_f13jm"]
+[ext_resource type="PackedScene" uid="uid://bs7vs2a5pvm87" path="res://scenes/rooms/scene_room_drop.tscn" id="3_34pdu"]
+[ext_resource type="PackedScene" uid="uid://4f17mbemrgyr" path="res://scenes/rooms/scene_room_landing.tscn" id="4_bynuf"]
+[ext_resource type="PackedScene" uid="uid://cr8dicw0xyaf2" path="res://scenes/rooms/scene_room_t4.tscn" id="4_doiwo"]
+[ext_resource type="PackedScene" uid="uid://bx5tm3fmqdsxv" path="res://scenes/rooms/scene_room_u1.tscn" id="5_bynuf"]
 
 [node name="Rooms" type="Node3D"]
 script = ExtResource("1_5lcb8")
 
-[node name="room_S2" parent="." instance=ExtResource("2_74wcl")]
+[node name="room_S2" parent="." instance=ExtResource("2_f13jm")]
 
-[node name="SceneTraincarProto2" parent="." instance=ExtResource("2_74wcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+[node name="room_drop" parent="." instance=ExtResource("3_34pdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
 
-[node name="room_T4" parent="." instance=ExtResource("2_74wcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42)
+[node name="room_landing" parent="." instance=ExtResource("4_bynuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 45)
 
-[node name="room_U1" parent="." instance=ExtResource("2_74wcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63)
+[node name="room_T4" parent="." instance=ExtResource("4_doiwo")]
+transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, -27, -20, 39)
+
+[node name="room_U1" parent="." instance=ExtResource("5_bynuf")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 20, -20, 43)
