@@ -35,6 +35,7 @@ input_fly_mode_action_name = "move_fly_mode"
 underwater_env = ExtResource("3_ksjmp")
 mouse_sensitivity_multiplier = 1.0
 joystick_sensitivity_multiplier = 1.0
+vertical_angle_limit = 85.0
 rotation_to_move = false
 angle_limit_for_rotation = 0.02
 speed = 5.0
