@@ -4,7 +4,6 @@ class_name Room
 signal entered
 signal exited
 
-@export var require_portal := false
 @export var cull_distance := 40.0
 
 @onready var enter_trigger: Area3D = get_node(NodePath("room_area"))
