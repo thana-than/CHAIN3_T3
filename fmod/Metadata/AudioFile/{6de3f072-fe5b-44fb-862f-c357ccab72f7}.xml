@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{6de3f072-fe5b-44fb-862f-c357ccab72f7}">
 		<property name="assetPath">
-			<value>Music/Wanna buy a fish? (VIP EX DX EXTREME Mix).wav</value>
+			<value>Music/Wanna buy a fish.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

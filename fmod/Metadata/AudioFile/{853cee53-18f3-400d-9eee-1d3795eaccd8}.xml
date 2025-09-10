@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{853cee53-18f3-400d-9eee-1d3795eaccd8}">
 		<property name="assetPath">
-			<value>Music/Haunted Train Spooky Track (VIP Mix) .wav</value>
+			<value>Music/Haunted Train Spooky Track .wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
