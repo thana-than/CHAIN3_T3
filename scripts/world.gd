@@ -42,9 +42,7 @@ func try_move_player_to_room_id(room_id: String):
 			if room_transform:
 				room.enter()
 				player.global_position = room_transform.global_position + Vector3.UP
-				#TODO rotation mapping
-				#player.global_rotation = -room_transform.global_rotation
-				player.translate(Vector3.FORWARD)
+				player.set_global_rotation_y(room_transform.global_rotation.y)
 				logger.log("Moved player to room " + room_id)
 				success = true
 			else:
