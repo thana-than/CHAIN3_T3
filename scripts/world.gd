@@ -29,6 +29,8 @@ func _ready() -> void:
 		if id == "START":
 			id = default_start_node_id.to_upper()
 		try_move_player_to_room_id(format_entry_node_room(id))
+	
+	Global.send_player_to_room.connect(try_move_player_to_room_id)
 
 func load_debug_config():
 	if ResourceLoader.exists(debug_config_path):
