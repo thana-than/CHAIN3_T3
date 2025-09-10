@@ -1,15 +1,15 @@
 extends Interactable3D
 class_name DialogueInteractable
 
-signal on_dialogue_start(title: String)
-
-@export var dialogue_settings: DialogueSettings = DialogueSettings.new()
-@export var restrict_player_input := true
+@export var dialogue_settings := DialogueSettings.new()
+@export var player_settings := DialoguePlayerSettings.new()
 @export var debug_verbose: bool = false
 
+@onready var dialogue_player: DialoguePlayer = DialoguePlayer.new(dialogue_settings, player_settings)
 @onready var logger := Logger.new(name)
 
 func _ready() -> void:
+	add_child(dialogue_player)
 	interacted.connect(_on_interact)
 	if debug_verbose:
 		logger.log("_on_body_entered has been connected to the body_entered signal.")
@@ -17,6 +17,5 @@ func _ready() -> void:
 func _on_interact() -> void:
 	if debug_verbose:
 		logger.log("_on_interact signalled")
-	
-	on_dialogue_start.emit(dialogue_settings.dialogue_start)
-	DialogueManager.show_dialogue(dialogue_settings);
+	if dialogue_player:
+		dialogue_player.play_dialogue()

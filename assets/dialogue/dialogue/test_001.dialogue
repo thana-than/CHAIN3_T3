@@ -1,5 +1,13 @@
 ~ start
 
-: Hey! Have you had any water today? Make sure to get some!
+match interaction_index
+	when 0:
+		: Hey! Have you had any water today? Make sure to get some!
+		: HAHAHAHAHA
+	when 1
+		: This is the next line!
+		: EHEHEHEHEHE
+	else
+		: Number is {{interaction_index}}
 
 => END

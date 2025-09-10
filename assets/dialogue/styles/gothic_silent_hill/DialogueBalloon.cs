@@ -18,6 +18,11 @@ namespace DialogueManagerRuntime
 	Array<Variant> temporaryGameStates = new Array<Variant>();
 	bool isWaitingForInput = false;
 	bool willHideBalloon = false;
+	
+	[Signal]
+	public delegate void OnStartEventHandler();
+	[Signal]
+	public delegate void OnNextEventHandler(DialogueLine dialogueLine);
 
 	DialogueLine dialogueLine;
 	DialogueLine DialogueLine
@@ -137,12 +142,18 @@ namespace DialogueManagerRuntime
 	  resource = dialogueResource;
 
 	  DialogueLine = await DialogueManager.GetNextDialogueLine(resource, title, temporaryGameStates);
+	  EmitSignal(SignalName.OnStart);
 	}
 
+	public async void Next()
+	{
+	  Next(dialogueLine.NextId);
+	}
 
 	public async void Next(string nextId)
 	{
 	  DialogueLine = await DialogueManager.GetNextDialogueLine(resource, nextId, temporaryGameStates);
+	  EmitSignal(SignalName.OnNext, DialogueLine);
 	}
 
 

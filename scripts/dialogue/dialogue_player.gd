@@ -3,17 +3,45 @@ class_name DialoguePlayer
 
 signal on_play_dialogue()
 
-var custom_balloon_resource: PackedScene = preload("res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn")
-var dialogue_resource: DialogueResource
-var dialogue_start: String = "start"
-var is_repeatable: bool = false
-
+@export var settings := DialogueSettings.new()
+@export var player_settings := DialoguePlayerSettings.new()
+var timer := Timer.new()
 var _shown: bool = false
+var current_balloon
+var dialogue_state := {
+	"interaction_index": 0
+}
+
+func _init(dialogue_settings := settings, dialogue_player_settings := player_settings):
+	settings = dialogue_settings
+	player_settings = dialogue_player_settings
+	
+func _ready():
+	add_child(timer)
+	timer.one_shot = false
+	timer.timeout.connect(cycle_next)
 
 func play_dialogue() -> void:
-	if not is_repeatable:
+	if current_balloon:
+		cycle_next()
+		return
+		
+	if not player_settings.is_repeatable:
 		if _shown:
 			return
 		_shown = true
-	DialogueManager.show_dialogue_balloon_scene(custom_balloon_resource, dialogue_resource, dialogue_start);
+	
+	current_balloon = DialogueManager.show_dialogue(settings, [dialogue_state.duplicate(true)]);
+	current_balloon.OnNext.connect(func(_line): restart_timer())
+	restart_timer()
 	on_play_dialogue.emit()
+	dialogue_state.interaction_index += 1
+
+func restart_timer():
+	if player_settings.next_after_seconds > 0:
+		timer.start(player_settings.next_after_seconds)
+
+func cycle_next():
+	if not current_balloon:
+		return
+	current_balloon.Next()
