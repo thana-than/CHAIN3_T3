@@ -11,7 +11,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
 
-[node name="SceneTraincarProto" type="Node3D"]
+[node name="RoomTemplate" type="Node3D"]
 script = ExtResource("1_j51fj")
 
 [node name="Environment" type="Node3D" parent="."]
