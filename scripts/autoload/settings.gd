@@ -64,8 +64,6 @@ var setting_sfx_volume : float:
 	set(volume):
 		Config.set_value(_section_audio, "volume_sfx", volume)
 		set_volume("SFX Volume", volume)
-		set_volume("UI Volume", volume)
-		set_volume("VO Volume", volume)
 	get:
 		return Config.get_value(_section_audio, "volume_sfx", 1.0)
 #endregion
