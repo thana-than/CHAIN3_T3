@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{14a3b176-d54c-4cd4-9c89-8ef7f4b44998}">
+		<property name="assetPath">
+			<value>VO/NPC Dialogue/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{50e3ec1b-356a-491b-a9d7-e4db98f7364d}</destination>
+		</relationship>
+	</object>
+</objects>
