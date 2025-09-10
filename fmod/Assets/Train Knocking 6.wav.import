@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckwtggrmhb3wr"
+path="res://.godot/imported/Train Knocking 6.wav-ecba9c1b9a25839b32bc0de2370e6f5a.sample"
+
+[deps]
+
+source_file="res://fmod/Assets/Train Knocking 6.wav"
+dest_files=["res://.godot/imported/Train Knocking 6.wav-ecba9c1b9a25839b32bc0de2370e6f5a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

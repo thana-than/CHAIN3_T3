@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bogwxamqehq5k"
+path="res://.godot/imported/Haunted Train Spooky Track (VIP Mix) .wav-7ad142d12d74ee2b23bd932b8e47e534.sample"
+
+[deps]
+
+source_file="res://fmod/Assets/Music/Haunted Train Spooky Track (VIP Mix) .wav"
+dest_files=["res://.godot/imported/Haunted Train Spooky Track (VIP Mix) .wav-7ad142d12d74ee2b23bd932b8e47e534.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
