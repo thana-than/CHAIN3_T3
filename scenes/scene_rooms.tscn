@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dogdtfihjht4g"]
+
+[ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="1_5lcb8"]
+[ext_resource type="PackedScene" uid="uid://d1vsbmyl6krlc" path="res://scenes/rooms/scene_room_template.tscn" id="2_74wcl"]
+
+[node name="Rooms" type="Node3D"]
+script = ExtResource("1_5lcb8")
+
+[node name="room_S2" parent="." instance=ExtResource("2_74wcl")]
+
+[node name="SceneTraincarProto2" parent="." instance=ExtResource("2_74wcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+
+[node name="room_T4" parent="." instance=ExtResource("2_74wcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42)
+
+[node name="room_U1" parent="." instance=ExtResource("2_74wcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63)
