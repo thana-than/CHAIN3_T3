@@ -119,6 +119,10 @@ func rotate_head_joystick(mouse_axis : Vector2) -> void:
 func set_global_rotation_y(y : float):
 	global_rotation.y = y
 	head.actual_rotation.y = y
+	
+func reset_head_rotation():
+	head.actual_rotation.x = 0
+	head.rotation.x = 0
 
 
 ## Call to move the character.

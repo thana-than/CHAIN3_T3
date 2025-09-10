@@ -45,6 +45,8 @@ func try_move_player_to_room_id(room_id: String):
 				room.enter()
 				player.global_position = room_transform.global_position + Vector3.UP
 				player.set_global_rotation_y(room_transform.global_rotation.y)
+				player.reset_head_rotation()
+				player.velocity = Vector3.ZERO
 				logger.log("Moved player to room " + room_id)
 				success = true
 			else:
