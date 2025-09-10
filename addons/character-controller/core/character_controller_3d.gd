@@ -214,11 +214,6 @@ func setup():
 	_connect_signals()
 	_start_variables()
 
-## Implements [member Portal3D.ON_TELEPORT_CALLBACK]
-func on_teleport(portal: Portal3D) -> void:
-	_logger.log("Teleported by portal: " + portal.name)
-	pass
-
 
 ## Moves the character controller.
 ## parameters are inputs that are sent to be handled by all abilities.
