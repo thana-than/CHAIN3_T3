@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://cm0c1d10446v"]
+
+[ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_rrhte"]
+[ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_0d1cb"]
+[ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_86kfd"]
+[ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_cidvs"]
+[ext_resource type="PackedScene" uid="uid://c72r07ql7orfd" path="res://scenes/lighting/managed_light.tscn" id="5_prbu0"]
+[ext_resource type="PackedScene" uid="uid://bj381qw0nex1s" path="res://scenes/objects/debug/obj_debug_dialogue.tscn" id="6_rrhte"]
+[ext_resource type="PackedScene" uid="uid://d2nw21rtn1pq6" path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn" id="9_cidvs"]
+[ext_resource type="Resource" uid="uid://duvncsmuvdoj7" path="res://assets/dialogue/dialogue/ticket_inspector.dialogue" id="10_cidvs"]
+[ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="11_ujgea"]
+[ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="12_oowqc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
+size = Vector3(7, 2, 19)
+
+[sub_resource type="Resource" id="Resource_0d1cb"]
+script = ExtResource("11_ujgea")
+balloon_scene = ExtResource("9_cidvs")
+dialogue_resource = ExtResource("10_cidvs")
+dialogue_start = "start"
+metadata/_custom_type_script = "uid://c1eo4j34dxno3"
+
+[sub_resource type="Resource" id="Resource_86kfd"]
+script = ExtResource("12_oowqc")
+is_repeatable = true
+next_after_seconds = 10.0
+metadata/_custom_type_script = "uid://d4mre44gaciao"
+
+[node name="room_link_back" type="Node3D"]
+script = ExtResource("1_rrhte")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="mdl_traincar_proto" parent="Environment" instance=ExtResource("2_0d1cb")]
+
+[node name="collider_standard_car" parent="Environment" instance=ExtResource("3_86kfd")]
+
+[node name="Volumetrics" type="Node3D" parent="Environment"]
+
+[node name="Dust" parent="Environment/Volumetrics" instance=ExtResource("4_cidvs")]
+transform = Transform3D(2.78722, 0, 0, 0, 1.79517, 0, 0, 0, 9.56034, 0, 1.78684, 0)
+
+[node name="FlickeringLights" parent="Environment" instance=ExtResource("5_prbu0")]
+light_type = 1
+flicker_freq_hz = 0.75
+flicker_amp = 2.5
+
+[node name="ManagedLight_001" type="SpotLight3D" parent="Environment/FlickeringLights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, -6.517)
+light_energy = 2.89035
+spot_range = 5.5
+spot_angle = 60.0
+
+[node name="ManagedLight_002" type="SpotLight3D" parent="Environment/FlickeringLights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, 6.517)
+light_energy = 1.00863
+
+[node name="door_enter" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -8.65)
+
+[node name="door_exit" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
+
+[node name="room_area" type="Area3D" parent="."]
+collision_mask = 8388608
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_j51fj")
+
+[node name="cull_root" type="Marker3D" parent="."]
+
+[node name="SendBackToS2" parent="." instance=ExtResource("6_rrhte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.4, 0)
+dialogue_settings = SubResource("Resource_0d1cb")
+player_settings = SubResource("Resource_86kfd")

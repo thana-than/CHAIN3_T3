@@ -62,6 +62,7 @@ Settings="*res://scripts/autoload/settings.gd"
 QuitProcess="*res://scripts/autoload/quit_process.gd"
 Chain3Adapter="*res://scripts/autoload/chain3_adapter.gd"
 chain3="*res://addons/chain3/autoload.gd"
+Global="*res://scripts/autoload/global.gd"
 
 [debug_draw_3d]
 
@@ -75,6 +76,7 @@ editor/new_file_template="~ start
 => END"
 runtime/balloon_path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+runtime/advanced/ignore_missing_state_values=true
 
 [display]
 
@@ -86,7 +88,7 @@ project/assembly_name="CHAIN3_T3"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/ninetailsrabbit.interaction_kit_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg")
+enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/ninetailsrabbit.interaction_kit_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg", "res://addons/room_gizmos/plugin.cfg")
 
 [file_customization]
 
@@ -201,11 +203,12 @@ cancel_interact={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://assets/dialogue/dialogue/test_001.dialogue")
+locale/translations_pot_files=PackedStringArray("res://assets/dialogue/dialogue/test_001.dialogue", "res://assets/dialogue/dialogue/ticket_inspector.dialogue")
 
 [layer_names]
 
 3d_physics/layer_2="Dialogue"
+3d_physics/layer_24="player"
 
 [rendering]
 

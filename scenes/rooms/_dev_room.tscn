@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyqyug562oeiu"]
+
+[ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_8s1xr"]
+[ext_resource type="Material" uid="uid://cxdytd34vohg3" path="res://assets/materials/psx_standard_opaque_material.tres" id="2_b1cpi"]
+[ext_resource type="PackedScene" uid="uid://bj381qw0nex1s" path="res://scenes/objects/debug/obj_debug_dialogue.tscn" id="2_oayh0"]
+[ext_resource type="PackedScene" uid="uid://d2nw21rtn1pq6" path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn" id="3_8s1xr"]
+[ext_resource type="Resource" uid="uid://bhcp6jljxq8pj" path="res://assets/dialogue/dialogue/test_001.dialogue" id="4_qj1vy"]
+[ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="5_psfxc"]
+[ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="6_mlrl3"]
+
+[sub_resource type="Resource" id="Resource_y1s2m"]
+script = ExtResource("5_psfxc")
+balloon_scene = ExtResource("3_8s1xr")
+dialogue_resource = ExtResource("4_qj1vy")
+dialogue_start = "start"
+metadata/_custom_type_script = "uid://c1eo4j34dxno3"
+
+[sub_resource type="Resource" id="Resource_voj3d"]
+script = ExtResource("6_mlrl3")
+is_repeatable = true
+next_after_seconds = 10.0
+metadata/_custom_type_script = "uid://d4mre44gaciao"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mlxij"]
+radius = 30.0
+
+[node name="_dev_room" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1000, 0)
+script = ExtResource("1_8s1xr")
+
+[node name="DialogueDebug" parent="." instance=ExtResource("2_oayh0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.5)
+dialogue_settings = SubResource("Resource_y1s2m")
+player_settings = SubResource("Resource_voj3d")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+light_energy = 0.75
+omni_range = 15.0
+omni_attenuation = -1.0
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Environment"]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+radius = 15.0
+height = 1.0
+material = ExtResource("2_b1cpi")
+
+[node name="door_enter" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="room_area" type="Area3D" parent="."]
+collision_mask = 8388608
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_mlxij")
+
+[node name="cull_root" type="Marker3D" parent="."]

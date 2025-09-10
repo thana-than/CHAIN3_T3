@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj381qw0nex1s"]
+
+[ext_resource type="Script" uid="uid://bat76x8xqttar" path="res://scripts/dialogue/dialogue_interactable.gd" id="1_f16ap"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrhte"]
+albedo_color = Color(0.786718, 0.0971642, 1, 1)
+emission = Color(0.327517, 0.1505, 0.43, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0d1cb"]
+
+[node name="DialogueDebug" type="Area3D"]
+script = ExtResource("1_f16ap")
+metadata/_custom_type_script = "uid://bat76x8xqttar"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material = SubResource("StandardMaterial3D_rrhte")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0d1cb")
