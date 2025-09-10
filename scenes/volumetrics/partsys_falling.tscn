@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckktp5vqrjk0t"]
+
+[sub_resource type="Curve" id="Curve_5wywr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.466165, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mo7e4"]
+curve = SubResource("Curve_5wywr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l7okt"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+gravity = Vector3(0, -0.02, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_mo7e4")
+turbulence_noise_strength = 0.01
+turbulence_noise_scale = 1.2
+
+[sub_resource type="Curve" id="Curve_olmxw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0603248, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2f5yu"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.905882)
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_sm1yd"]
+material = SubResource("StandardMaterial3D_2f5yu")
+shape = 0
+size = 0.05
+curve = SubResource("Curve_olmxw")
+
+[node name="FallingParticles" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+amount = 60
+amount_ratio = 0.8
+randomness = 1.0
+visibility_aabb = AABB(-4, 0, -4, 8, 8, 8)
+transform_align = 3
+trail_enabled = true
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_l7okt")
+draw_pass_1 = SubResource("RibbonTrailMesh_sm1yd")
