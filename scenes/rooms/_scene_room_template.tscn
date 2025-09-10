@@ -52,6 +52,7 @@ door_mesh_node = NodePath("obj_door_proto")
 [node name="obj_door_proto" parent="door_exit/doorway" instance=ExtResource("6_hu7ox")]
 
 [node name="room_area" type="Area3D" parent="."]
+collision_mask = 8388608
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

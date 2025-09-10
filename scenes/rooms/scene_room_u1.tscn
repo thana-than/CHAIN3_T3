@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx5tm3fmqdsxv"]
+[gd_scene load_steps=12 format=3 uid="uid://bx5tm3fmqdsxv"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_rbpki"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_te8g2"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://c72r07ql7orfd" path="res://scenes/lighting/managed_light.tscn" id="5_fqn87"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_43vnd"]
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_obaim"]
+[ext_resource type="Script" uid="uid://c85dht1emjd6a" path="res://scripts/chain3/chain3_exit_trigger.gd" id="8_laae3"]
+[ext_resource type="Resource" uid="uid://bjggf1v6kftk1" path="res://assets/resources/doors/door_U1.tres" id="9_4p538"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laae3"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
@@ -41,7 +46,21 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.3
 light_energy = 1.00863
 
 [node name="door_enter" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -8.65)
+
+[node name="game_exit_door" parent="." node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_43vnd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10.25)
+door_mesh_node = NodePath("CSGBox3D")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="game_exit_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0)
+material_override = SubResource("StandardMaterial3D_laae3")
+size = Vector3(1.6, 2.25, 0.25)
+
+[node name="Chain3ExitTrigger" type="Node3D" parent="game_exit_door"]
+script = ExtResource("8_laae3")
+door_ref = ExtResource("9_4p538")
+metadata/_custom_type_script = "uid://c85dht1emjd6a"
 
 [node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
@@ -52,9 +71,12 @@ door_mesh_node = NodePath("obj_door_proto")
 [node name="obj_door_proto" parent="door_exit/doorway" instance=ExtResource("7_obaim")]
 
 [node name="room_area" type="Area3D" parent="."]
+collision_mask = 8388608
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_j51fj")
 
 [node name="cull_root" type="Marker3D" parent="."]
+
+[connection signal="on_open" from="game_exit_door" to="game_exit_door/Chain3ExitTrigger" method="call_exit"]
