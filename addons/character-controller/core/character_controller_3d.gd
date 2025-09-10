@@ -70,6 +70,7 @@ signal stopped_floating
 ## your jump will be shorter.
 @export var gravity_multiplier: float = 3.0
 @export var jump_gravity_multiplier: float = 0.666
+@export var gravity_max = 45
 
 ## Controller base speed
 ## Note: this speed is used as a basis for abilities to multiply their 
@@ -164,6 +165,8 @@ var _horizontal_velocity: Vector3
 ## Used to differentiate fly mode/swim moves from regular character movement.
 var _direction_base_node: Node3D
 
+var fall_time := 0.0
+
 ## Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -223,11 +226,11 @@ func move(_delta: float, input_axis := Vector2.ZERO, input_jump := false, input_
 	var direction = _direction_input(input_axis, input_swim_down, input_swim_up, _direction_base_node)
 	if not swim_ability.is_floating():
 		_check_landed()
-	if not jump_ability.is_actived() and not is_fly_mode() and not is_submerged() and not is_floating():
+	if velocity.y > -gravity_max and not jump_ability.is_actived() and not is_fly_mode() and not is_submerged() and not is_floating():
 		var multiplier = gravity_multiplier
 		for ability in _abilities:
 			multiplier *= ability.get_gravity_multiplier()
-		velocity.y -= gravity * multiplier * _delta
+		velocity.y = maxf(-gravity_max, velocity.y - gravity * multiplier * _delta)
 	
 	swim_ability.set_active(!fly_ability.is_actived())
 	jump_ability.set_active(input_jump and is_on_floor() and not head_check.is_colliding())
@@ -243,6 +246,11 @@ func move(_delta: float, input_axis := Vector2.ZERO, input_jump := false, input_
 	
 	for ability in _abilities:
 		velocity = ability.apply(velocity, speed, is_on_floor(), direction, _delta)
+		
+	if is_on_floor():
+		fall_time = 0.0
+	else:
+		fall_time += _delta
 	
 	move_and_slide()
 	_horizontal_velocity = Vector3(velocity.x, 0.0, velocity.z)
