@@ -1,29 +1,30 @@
 extends Node3D
 
-@export var footstep_events: Array[String] = []
-@export var pitch_jitter: float = 0.08
+@export var volume: float = 2.0
 
 @onready var _logger := Logger.new(name)
-var controller: Player
 
-# Called when the node enters the scene tree for the first time.
+var _event: FmodEvent
+var controller: Player
+var footstep_event: String = "event:/SFX/Footsteps"
+
 func _ready() -> void:
+	_setup_fmod_event()
 	controller = get_parent() as Player
 	if controller:
 		controller.stepped.connect(_on_stepped)
 
+func _setup_fmod_event() -> void:
+	_event = FmodServer.create_event_instance(footstep_event)
+	_event.set_3d_attributes(controller.global_transform)
+	_event.volume = volume
+	_event.stop(FmodServer.FMOD_STUDIO_STOP_IMMEDIATE)
+
 func _on_stepped() -> void:
-	if footstep_events.is_empty():
+	if not _event:
 		return
+	if (_event.get_playback_state() == FmodEvent.FMOD_STUDIO_PLAYBACK_PLAYING):
+		_event.stop(FmodServer.FMOD_STUDIO_STOP_IMMEDIATE)
 	
-	var event_path: String = footstep_events.pick_random()
-	var instance := FmodServer.create_event_instance(event_path)
-	if instance == null:
-		_logger.err("Could not instantiate instance from foot step event at path: {event_path}".format({"event_path": event_path}))
-		return
-	
-	instance.set_pitch(1.0 + randf_range(-pitch_jitter, pitch_jitter))
-	instance.set_3d_attributes(controller.transform)
-	
-	instance.start()
-	instance.release()
+	_event.start()
+	_logger.log("_on_stepped called - played one shot")
