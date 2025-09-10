@@ -57,7 +57,7 @@ camera_3d_resource = ExtResource("7_dunks")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="RayCastInteractor" type="RayCast3D" parent="Head" index="3"]
-target_position = Vector3(0, 0, -1.4)
+target_position = Vector3(0, 0, -2.5)
 debug_shape_custom_color = Color(0.960935, 0.651945, 0.262363, 1)
 script = ExtResource("6_ksjmp")
 
