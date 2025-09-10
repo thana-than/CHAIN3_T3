@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://c55hkwojl0cgb" path="res://assets/resources/camera/settings_camera_main.tres" id="7_dunks"]
 [ext_resource type="PackedScene" uid="uid://ckktp5vqrjk0t" path="res://scenes/volumetrics/partsys_falling.tscn" id="10_4c2uj"]
 [ext_resource type="Script" uid="uid://d2wivcj4mv8ah" path="res://scripts/audio_emitters/footstep_emitter.gd" id="11_dunks"]
+[ext_resource type="Script" uid="uid://5jbcjkbrtxe5" path="res://scripts/animation/motion_sway.gd" id="11_dunks"]
 
 [sub_resource type="Resource" id="Resource_68atb"]
 script = ExtResource("6_4c2uj")
@@ -73,6 +74,8 @@ script = ExtResource("6_ksjmp")
 emitting = false
 
 [node name="Footstep Emitter" type="Node3D" parent="." index="13"]
+
+[node name="Motion Sway" type="Node3D" parent="." index="13"]
 script = ExtResource("11_dunks")
 
 [connection signal="on_focus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_focus"]
