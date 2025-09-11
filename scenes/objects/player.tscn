@@ -37,9 +37,6 @@ input_jump_action_name = "move_jump"
 input_crouch_action_name = "move_crouch"
 input_fly_mode_action_name = "move_fly_mode"
 underwater_env = ExtResource("3_ksjmp")
-start_fall_particles_after_seconds = 1.0
-mouse_sensitivity_multiplier = 1.0
-joystick_sensitivity_multiplier = 1.0
 vertical_angle_limit = 85.0
 rotation_to_move = false
 angle_limit_for_rotation = 0.02
@@ -83,5 +80,25 @@ script = ExtResource("11_dunks")
 script = ExtResource("12_68atb")
 audio_event_resource = ExtResource("13_2lybl")
 
+[node name="Jump" type="FmodEventEmitter2D" parent="." index="15"]
+event_name = "event:/SFX/Player/Jump land"
+event_guid = "{a33c7701-13a5-40e8-859e-ac0398ed1e4c}"
+fmod_parameters/jump_land_state/id = 7190312413333537063
+fmod_parameters/jump_land_state = "Jump"
+fmod_parameters/jump_land_state/labels = PackedStringArray("Jump", "Land")
+fmod_parameters/jump_land_state/variant_type = 4
+
+[node name="Land" type="FmodEventEmitter2D" parent="." index="16"]
+event_name = "event:/SFX/Player/Jump land"
+event_guid = "{a33c7701-13a5-40e8-859e-ac0398ed1e4c}"
+fmod_parameters/jump_land_state/id = 7190312413333537063
+fmod_parameters/jump_land_state = "Jump"
+fmod_parameters/jump_land_state/labels = PackedStringArray("Jump", "Land")
+fmod_parameters/jump_land_state/variant_type = 4
+
+[connection signal="jumped" from="." to="Jump" method="play_one_shot"]
+[connection signal="landed" from="." to="Land" method="play_one_shot"]
+[connection signal="landed" from="." to="FallingParticles" method="set_emitting" binds= [false]]
+[connection signal="long_fall_started" from="." to="FallingParticles" method="set_emitting" binds= [true]]
 [connection signal="on_focus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_focus"]
 [connection signal="on_unfocus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_unfocus"]
