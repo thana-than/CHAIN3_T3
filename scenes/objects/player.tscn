@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3v0flhlu1vtr" path="res://scenes/objects/UI/HUD.tscn" id="7_2rlf8"]
 [ext_resource type="Resource" uid="uid://c55hkwojl0cgb" path="res://assets/resources/camera/settings_camera_main.tres" id="7_dunks"]
 [ext_resource type="PackedScene" uid="uid://ckktp5vqrjk0t" path="res://scenes/volumetrics/partsys_falling.tscn" id="10_4c2uj"]
-[ext_resource type="Script" path="res://scripts/animation/motion_sway.gd" id="11_dunks"]
+[ext_resource type="Script" uid="uid://5jbcjkbrtxe5" path="res://scripts/animation/motion_sway.gd" id="11_dunks"]
 [ext_resource type="Script" uid="uid://d2wivcj4mv8ah" path="res://scripts/audio_emitters/footstep_emitter.gd" id="12_68atb"]
 [ext_resource type="Resource" uid="uid://cjfosfe8fpamv" path="res://assets/resources/audio_events/SFX_Player_Footsteps.tres" id="13_2lybl"]
 
@@ -82,7 +82,6 @@ script = ExtResource("11_dunks")
 [node name="Footstep Emitter" type="Node3D" parent="." index="14"]
 script = ExtResource("12_68atb")
 audio_event_resource = ExtResource("13_2lybl")
-debug = true
 
 [connection signal="on_focus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_focus"]
 [connection signal="on_unfocus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_unfocus"]
