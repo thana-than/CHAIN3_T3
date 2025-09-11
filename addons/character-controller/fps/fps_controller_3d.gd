@@ -107,6 +107,8 @@ func setup():
 	head_bob.angle_limit_for_rotation = angle_limit_for_rotation
 	head_bob.vertical_horizontal_ratio = vertical_horizontal_ratio
 	head_bob.setup_step_bob(step_interval * 2);
+	Settings.mouse_sensitivity_changed.connect(func(v): head.set_mouse_sensitivity(get_mouse_sensitivity()))
+	Settings.joystick_sensitivity_changed.connect(func(v): head.set_joystick_sentitivity(get_joystick_sensitivity()))
 
 ## Rotate head based on mouse axis parameter.
 ## This function call [b]head.rotate_camera()[/b].
