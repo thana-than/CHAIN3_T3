@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_mgufs")
 name = "event:/SFX/Player/Footsteps"
+vca_name = "vca:/SFX Volume"
 metadata/_custom_type_script = "uid://bett2366xr3o5"

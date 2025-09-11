@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr6dlu3tq7xfg"]
+[gd_scene load_steps=15 format=3 uid="uid://cr6dlu3tq7xfg"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_ygu77"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_2owkw"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c72r07ql7orfd" path="res://scenes/lighting/managed_light.tscn" id="5_45s05"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_fhc0n"]
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_do2ap"]
+[ext_resource type="Script" uid="uid://b7p11w32xynlb" path="res://scripts/audio_emitters/audio_emitter.gd" id="7_fhc0n"]
+[ext_resource type="Resource" uid="uid://cwtqyog736mdj" path="res://assets/resources/audio_events/SFX_Train_Train_in_motion.tres" id="8_do2ap"]
 [ext_resource type="Script" uid="uid://c85dht1emjd6a" path="res://scripts/chain3/chain3_exit_trigger.gd" id="8_oyay2"]
 [ext_resource type="Resource" uid="uid://5c1y2opl4h6y" path="res://assets/resources/doors/door_S2.tres" id="9_oyay2"]
 
@@ -80,6 +82,11 @@ spot_angle = 60.0
 [node name="ManagedLight_002" type="SpotLight3D" parent="Environment/FlickeringLights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, 6.517)
 light_energy = 1.00863
+
+[node name="AudioEmitter" type="Node3D" parent="Environment"]
+script = ExtResource("7_fhc0n")
+audio_event_resource = ExtResource("8_do2ap")
+metadata/_custom_type_script = "uid://b7p11w32xynlb"
 
 [node name="door_enter" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -8.75)
