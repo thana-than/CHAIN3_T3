@@ -80,7 +80,6 @@ script = ExtResource("11_dunks")
 [node name="Footstep Emitter" type="Node3D" parent="." index="14"]
 script = ExtResource("12_68atb")
 audio_event_resource = ExtResource("13_2lybl")
-debug = true
 
 [connection signal="on_focus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_focus"]
 [connection signal="on_unfocus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_unfocus"]

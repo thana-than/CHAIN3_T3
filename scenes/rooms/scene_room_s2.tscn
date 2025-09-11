@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr6dlu3tq7xfg"]
+[gd_scene load_steps=16 format=3 uid="uid://cr6dlu3tq7xfg"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_ygu77"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_2owkw"]
+[ext_resource type="PackedScene" uid="uid://cy2xqdnbxum71" path="res://assets/models/metro_car/metro_car_textured.glb" id="3_do2ap"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_j1n0f"]
 [ext_resource type="PackedScene" uid="uid://cl88v1ra5k0go" path="res://assets/models/train_seats/4_seats.glb" id="4_2owkw"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_oyay2"]
@@ -25,10 +26,14 @@ script = ExtResource("1_ygu77")
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="mdl_traincar_proto" parent="Environment" instance=ExtResource("2_2owkw")]
+visible = false
+
+[node name="metro_car_textured" parent="Environment" instance=ExtResource("3_do2ap")]
 
 [node name="collider_standard_car" parent="Environment" instance=ExtResource("3_j1n0f")]
 
 [node name="8_seats" type="Node3D" parent="Environment"]
+visible = false
 
 [node name="4_seats" parent="Environment/8_seats" instance=ExtResource("4_2owkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
@@ -38,6 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.4, 0)
 
 [node name="8_seats2" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+visible = false
 
 [node name="4_seats" parent="Environment/8_seats2" instance=ExtResource("4_2owkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
@@ -47,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.4, 0)
 
 [node name="8_seats3" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+visible = false
 
 [node name="4_seats" parent="Environment/8_seats3" instance=ExtResource("4_2owkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
@@ -56,6 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.4, 0)
 
 [node name="8_seats4" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+visible = false
 
 [node name="4_seats" parent="Environment/8_seats4" instance=ExtResource("4_2owkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
