@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3v0flhlu1vtr" path="res://scenes/objects/UI/HUD.tscn" id="7_2rlf8"]
 [ext_resource type="Resource" uid="uid://c55hkwojl0cgb" path="res://assets/resources/camera/settings_camera_main.tres" id="7_dunks"]
 [ext_resource type="PackedScene" uid="uid://ckktp5vqrjk0t" path="res://scenes/volumetrics/partsys_falling.tscn" id="10_4c2uj"]
-[ext_resource type="Script" uid="uid://5jbcjkbrtxe5" path="res://scripts/animation/motion_sway.gd" id="11_dunks"]
+[ext_resource type="Script" path="res://scripts/animation/motion_sway.gd" id="11_dunks"]
 [ext_resource type="Script" uid="uid://d2wivcj4mv8ah" path="res://scripts/audio_emitters/footstep_emitter.gd" id="12_68atb"]
 [ext_resource type="Resource" uid="uid://cjfosfe8fpamv" path="res://assets/resources/audio_events/SFX_Player_Footsteps.tres" id="13_2lybl"]
 
@@ -45,7 +45,8 @@ rotation_to_move = false
 angle_limit_for_rotation = 0.02
 speed = 5.0
 sprint_speed_multiplier = 1.33
-step_interval = 2.5
+step_lengthen = 1.0
+step_interval = 3.0
 jump_height = 5.0
 abilities_path = Array[NodePath]([NodePath("Crouch Ability 3D"), NodePath("Sprint Ability 3D"), NodePath("Walk Ability 3D"), NodePath("Jump Ability 3D"), NodePath("Fly Ability 3D"), NodePath("Swim Ability 3D"), NodePath("Gravity Ability 3D")])
 
@@ -53,6 +54,7 @@ abilities_path = Array[NodePath]([NodePath("Crouch Ability 3D"), NodePath("Sprin
 script = ExtResource("4_2rlf8")
 
 [node name="Head Bob" parent="Head" index="0"]
+bob_range = Vector2(0.07, 0.2)
 curve_multiplier = Vector2(1, 1)
 
 [node name="PhantomCamera3D" type="Node3D" parent="Head/FirstPersonCameraReference" index="0"]
