@@ -36,8 +36,8 @@ render_mode
 	fog_disabled,
 #endif
 
-specular_disabled,
-shadows_disabled;
+specular_disabled;
+//shadows_disabled;
 
 
 // Constants
@@ -117,7 +117,6 @@ uniform float cull_distance_override: hint_range(0.0, 1024.0, 2.0) = 0;
 
 uniform bool convert_vertex_colors = false;
 
-
 // Varyings
 #if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
 	varying float position_w;
@@ -132,6 +131,16 @@ uniform bool convert_vertex_colors = false;
 #if !defined(FOG_DISABLED) && !defined(USE_ENVIRONMENT_FOG)
 	varying float fog_mix_factor;
 #endif
+
+
+// Some emissivity stuff
+uniform bool use_emission = false;
+uniform vec3 emission_color: source_color = vec3(1.0, 1.0, 1.0);
+uniform float emission_strength : hint_range(0.0, 8.0, 0.05) = 1.0;
+
+uniform bool use_emission_mask_texture = false;
+uniform sampler2D emission_mask_texture: filter_nearest, repeat_disable;
+uniform float emission_threshold : hint_range(0.0, 1.0, 0.01) = 0.00;
 
 // Functions
 #if defined(SHINY)
@@ -417,6 +426,19 @@ void fragment()
 			#endif
 		#endif
 	#endif
+	
+	if (use_emission)
+	{
+		float mask = 1.0;
+		if (use_emission_mask_texture) 
+		{
+			mask = texture(emission_mask_texture, uv).r;
+		} else {
+			mask = sampled_color.a;
+		}
+		vec3 emissive = emission_color * mask;
+		EMISSION = emissive * emission_strength;
+	}
 
 	#if !defined(FOG_DISABLED) && !defined(USE_ENVIRONMENT_FOG)
 		FOG.a = fog_mix_factor;

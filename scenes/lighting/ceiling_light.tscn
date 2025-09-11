@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsmt4udg1sc83"]
+
+[ext_resource type="PackedScene" uid="uid://xjd2xv56nypt" path="res://assets/models/ceiling_lights/ceiling_lights.glb" id="1_hb0gx"]
+[ext_resource type="Script" uid="uid://cg4to6v7xjlug" path="res://scripts/lighting/managed_light.gd" id="2_5xrf0"]
+
+[node name="Ceiling Light" type="Node3D"]
+
+[node name="ceiling_lights" parent="." instance=ExtResource("1_hb0gx")]
+
+[node name="ManagedLight" type="Node3D" parent="."]
+script = ExtResource("2_5xrf0")
+light_type = 1
+flicker_mode = 1
+metadata/_custom_type_script = "uid://cg4to6v7xjlug"
+
+[node name="ManagedLight_001" type="SpotLight3D" parent="ManagedLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.102887, 0.774888)
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="ManagedLight_002" type="SpotLight3D" parent="ManagedLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.116952, -0.784891)
+spot_range = 10.0
+spot_angle = 60.0
