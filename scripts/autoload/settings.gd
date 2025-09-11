@@ -2,6 +2,9 @@ extends Node
 #TODO audio section with FMOD
 #TODO control section for mouse sensitivity
 
+signal mouse_sensitivity_changed(value: float)
+signal joystick_sensitivity_changed(value: float)
+
 #region Fields
 var _section_display = "Display"
 var _section_audio = "Audio"
@@ -45,12 +48,14 @@ var setting_screen_index: int:
 var setting_joystick_sensitivity : float:
 	set(sensitivity):
 		Config.set_value(_section_controls, "joystick_sensitivity", sensitivity)
+		joystick_sensitivity_changed.emit(sensitivity)
 	get:
 		return Config.get_value(_section_controls, "joystick_sensitivity", 1.0)
 		
 var setting_mouse_sensitivity : float:
 	set(sensitivity):
 		Config.set_value(_section_controls, "mouse_sensitivity", sensitivity)
+		mouse_sensitivity_changed.emit(sensitivity)
 	get:
 		return Config.get_value(_section_controls, "mouse_sensitivity", 2.0)
 		

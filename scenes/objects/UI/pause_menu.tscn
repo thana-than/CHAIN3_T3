@@ -34,7 +34,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Center" type="Control" parent="MarginContainer/AspectRatioContainer"]
-custom_minimum_size = Vector2(350, 350)
+custom_minimum_size = Vector2(350, 500)
 layout_mode = 2
 mouse_filter = 2
 
@@ -85,8 +85,38 @@ value = 0.7
 script = ExtResource("3_k4ewu")
 parameter = "setting_sfx_volume"
 
-[node name="Padding" type="Control" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
+[node name="Padding3" type="Control" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Mouse Sensitivity Label" type="Label" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
+layout_mode = 2
+text = "MOUSE SENSITIVITY"
+
+[node name="Mouse Sensitivity Slider" type="HSlider" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
+layout_mode = 2
+min_value = 0.1
+max_value = 3.0
+step = 0.05
+value = 1.0
+script = ExtResource("3_k4ewu")
+parameter = "setting_mouse_sensitivity"
+
+[node name="Joystick Sensitivity Label" type="Label" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
+layout_mode = 2
+text = "GAMEPAD SENSITIVITY"
+
+[node name="Joystick Sensitivity Slider" type="HSlider" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
+layout_mode = 2
+min_value = 0.1
+max_value = 6.0
+step = 0.05
+value = 2.0
+script = ExtResource("3_k4ewu")
+parameter = "setting_joystick_sensitivity"
+
+[node name="Padding" type="Control" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="Resume Button" type="Button" parent="MarginContainer/AspectRatioContainer/Center/VBoxContainer"]
