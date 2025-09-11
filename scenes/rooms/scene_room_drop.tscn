@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bs7vs2a5pvm87"]
+[gd_scene load_steps=25 format=3 uid="uid://bs7vs2a5pvm87"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_bonpo"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_5kx1f"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_fuf28"]
+[ext_resource type="PackedScene" uid="uid://cy2xqdnbxum71" path="res://assets/models/metro_car/metro_car_textured.glb" id="3_j0y30"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_48eor"]
 [ext_resource type="PackedScene" uid="uid://c72r07ql7orfd" path="res://scenes/lighting/managed_light.tscn" id="5_8ow3u"]
 [ext_resource type="Material" uid="uid://cxdytd34vohg3" path="res://assets/materials/psx_standard_opaque_material.tres" id="6_fuf28"]
@@ -74,6 +75,9 @@ cull_distance = 200.0
 [node name="Top" type="Node3D" parent="Environment"]
 
 [node name="mdl_traincar_proto" parent="Environment/Top" instance=ExtResource("2_5kx1f")]
+visible = false
+
+[node name="metro_car_textured" parent="Environment/Top" instance=ExtResource("3_j0y30")]
 
 [node name="collider_standard_car" parent="Environment/Top" instance=ExtResource("3_fuf28")]
 
@@ -132,6 +136,7 @@ debug_color = Color(0.784118, 0.234851, 0.894778, 0.42)
 transform = Transform3D(-1, 3.55271e-15, 8.74228e-08, 8.44439e-08, 0.258819, 0.965926, -2.26267e-08, 0.965926, -0.258819, 0, -89.8, 1.25)
 exit_portal = NodePath("../../Landing/LandingPortal")
 start_deactivated = true
+metadata/_edit_group_ = true
 
 [node name="Door Open" type="Node3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725256, -1.11572, -0.049408)
@@ -234,6 +239,7 @@ _teleport_area_path = NodePath("TeleportArea2")
 _teleport_collider_path = NodePath("TeleportArea2/Collider")
 exit_portal = NodePath("../../Fall/FallPortal")
 start_deactivated = true
+metadata/_edit_group_ = true
 
 [node name="TeleportArea2" type="Area3D" parent="Environment/Landing/LandingPortal"]
 
