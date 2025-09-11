@@ -294,6 +294,7 @@ event_name = "event:/SFX/Crystal collect"
 event_guid = "{a0841ef5-157a-46be-8f57-8a23c0680819}"
 attached = false
 
+[connection signal="on_collect" from="." to="obj/pivot/mdl_crystal/StaticBody3D" method="queue_free"]
 [connection signal="on_collect" from="." to="CollectSound" method="play_one_shot"]
 [connection signal="on_collect" from="." to="obj/pivot/mdl_crystal/AnimationPlayer" method="play" binds= ["anim_collect", 0.5]]
 [connection signal="on_collect" from="." to="obj/GPUParticles3D" method="set_emitting" binds= [false]]
