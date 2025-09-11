@@ -1,0 +1,302 @@
+[gd_scene load_steps=27 format=3 uid="uid://ccepluc0d5tfr"]
+
+[ext_resource type="PackedScene" uid="uid://byk016hak03qi" path="res://assets/models/crystal/mdl_crystal.glb" id="1_5lx7b"]
+[ext_resource type="Script" uid="uid://cax57ijrtrkj3" path="res://scripts/objects/collectable_crystal.gd" id="1_tx2sr"]
+[ext_resource type="Script" uid="uid://cg4to6v7xjlug" path="res://scripts/lighting/managed_light.gd" id="2_0x46w"]
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="3_htrxp"]
+[ext_resource type="Texture2D" uid="uid://5gvewp7i5cld" path="res://assets/textures/volumetrics/dust.png" id="3_w03r7"]
+[ext_resource type="Script" uid="uid://d2buxfewgw2p" path="res://scripts/chain3/chain3_flag.gd" id="5_tx2sr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0x46w"]
+radius = 0.253588
+height = 1.5
+
+[sub_resource type="Gradient" id="Gradient_4c4fu"]
+offsets = PackedFloat32Array(0.011236, 1)
+colors = PackedColorArray(0.273873, 0.273873, 0.273873, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ufcir"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_51mtl"]
+width = 64
+height = 64
+seamless_blend_skirt = 0.0
+color_ramp = SubResource("Gradient_4c4fu")
+noise = SubResource("FastNoiseLite_ufcir")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4vem"]
+render_priority = 0
+shader = ExtResource("3_htrxp")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = true
+shader_parameter/emission_color = Color(0.984249, 0, 0.334087, 1)
+shader_parameter/emission_strength = 0.75
+shader_parameter/use_emission_mask_texture = true
+shader_parameter/emission_mask_texture = SubResource("NoiseTexture2D_51mtl")
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="Animation" id="Animation_5lx7b"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mdl_crystal:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_tmsnu"]
+resource_name = "crystal_motion"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 5, 1, 0, 1, 0, 0)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.833333, 0, 0.1, -0.833333, 0, 0.833333, 0, 0, -0.833333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.5, 5)
+}
+
+[sub_resource type="Animation" id="Animation_t4vem"]
+resource_name = "anim_collect"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mdl_crystal:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.333333, 0, 1, -0.333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mdl_crystal:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2),
+"points": PackedFloat32Array(0.318, 0, 0, 0.111111, 0, 0.313, -0.111111, 0, 0.222222, 0, 0.4, -0.222222, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mdl_crystal:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2),
+"points": PackedFloat32Array(0.318, 0, 0, 0.111111, 0, 0.313, -0.111111, 0, 0.222222, 0, 0.4, -0.222222, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("mdl_crystal:scale:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2),
+"points": PackedFloat32Array(0.318, 0, 0, 0.111111, 0, 0.313, -0.111111, 0, 0.222222, 0, 0.4, -0.222222, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6an4u"]
+_data = {
+&"RESET": SubResource("Animation_5lx7b"),
+&"anim_collect": SubResource("Animation_t4vem"),
+&"anim_crystal": SubResource("Animation_tmsnu")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t4vem"]
+radius = 0.2
+height = 1.2
+
+[sub_resource type="Curve" id="Curve_tmsnu"]
+_data = [Vector2(0, 0.0421822), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6an4u"]
+curve = SubResource("Curve_tmsnu")
+
+[sub_resource type="Curve" id="Curve_c6uhu"]
+_limits = [0.0, 57.26, 0.0, 1.0]
+_data = [Vector2(0, 57.26), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3kdde"]
+curve = SubResource("Curve_c6uhu")
+
+[sub_resource type="Curve" id="Curve_3kdde"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.162857, 0.934196), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.53445, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ime47"]
+curve = SubResource("Curve_3kdde")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_24ie1"]
+emission_shape_scale = Vector3(0.1, 0.2, 0.1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 1.0
+radial_velocity_min = 0.199978
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_ime47")
+color = Color(0.91, 0.75439, 0.5642, 1)
+alpha_curve = SubResource("CurveTexture_6an4u")
+emission_curve = SubResource("CurveTexture_3kdde")
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 0.633
+turbulence_noise_speed = Vector3(0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3qjq"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_w03r7")
+emission = Color(1, 1, 1, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_7vfvr"]
+material = SubResource("StandardMaterial3D_g3qjq")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="Skin" id="Skin_ors55"]
+
+[node name="collectable_crystal_red" type="Area3D" node_paths=PackedStringArray("crystal_mesh", "light")]
+collision_layer = 6
+collision_mask = 0
+monitoring = false
+priority = 3
+script = ExtResource("1_tx2sr")
+collect_flag = "T4_CrystalRed"
+crystal_mesh = NodePath("obj/pivot/mdl_crystal/mdl_crystal")
+color = Color(0.984249, 0, 0.334087, 1)
+light = NodePath("obj/pivot/mdl_crystal/ManagedLight/Light_001")
+light_color = Color(0.762456, 0.515639, 0.135974, 1)
+metadata/_custom_type_script = "uid://b5hkmjg3mc753"
+
+[node name="obj" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("CapsuleShape3D_0x46w")
+debug_color = Color(0.395532, 0.604922, 0.22664, 0.42)
+
+[node name="pivot" type="Marker3D" parent="obj"]
+
+[node name="mdl_crystal" parent="obj/pivot" instance=ExtResource("1_5lx7b")]
+
+[node name="mdl_crystal" parent="obj/pivot/mdl_crystal" index="0"]
+transform = Transform3D(0.318, 0, 0, 0, 0.318, 0, 0, 0, 0.318, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_t4vem")
+
+[node name="ManagedLight" type="Node3D" parent="obj/pivot/mdl_crystal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+script = ExtResource("2_0x46w")
+light_name_base = "Light"
+flicker_mode = 1
+flicker_amp = 2.0
+flicker_seed = 6969
+metadata/_custom_type_script = "uid://cg4to6v7xjlug"
+
+[node name="Light_001" type="OmniLight3D" parent="obj/pivot/mdl_crystal/ManagedLight"]
+light_color = Color(0.762456, 0.515639, 0.135974, 1)
+omni_range = 1.11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="obj/pivot/mdl_crystal"]
+libraries = {
+&"": SubResource("AnimationLibrary_6an4u")
+}
+autoplay = "anim_crystal"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="obj/pivot/mdl_crystal"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="obj/pivot/mdl_crystal/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_t4vem")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="obj"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+amount = 20
+lifetime = 0.68
+preprocess = 1.0
+speed_scale = 0.25
+randomness = 1.0
+fixed_fps = 120
+visibility_aabb = AABB(-8, -4, -8, 16, 8, 16)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_24ie1")
+draw_pass_1 = SubResource("QuadMesh_7vfvr")
+draw_skin = SubResource("Skin_ors55")
+
+[node name="Chain3Flag" type="Node" parent="."]
+script = ExtResource("5_tx2sr")
+metadata/_custom_type_script = "uid://d2buxfewgw2p"
+
+[node name="CollectSound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Crystal collect"
+event_guid = "{a0841ef5-157a-46be-8f57-8a23c0680819}"
+attached = false
+
+[connection signal="on_collect" from="." to="obj/pivot/mdl_crystal/StaticBody3D" method="queue_free"]
+[connection signal="on_collect" from="." to="CollectSound" method="play_one_shot"]
+[connection signal="on_collect" from="." to="obj/pivot/mdl_crystal/AnimationPlayer" method="play" binds= ["anim_collect", 0.5]]
+[connection signal="on_collect" from="." to="obj/GPUParticles3D" method="set_emitting" binds= [false]]
+
+[editable path="obj/pivot/mdl_crystal"]

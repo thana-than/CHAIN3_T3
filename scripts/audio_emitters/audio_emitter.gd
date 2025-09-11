@@ -23,7 +23,7 @@ func _setup_fmod_event() -> void:
 	if auto_play:
 		play()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _event:
 		_event.set_3d_attributes(self.global_transform)
 

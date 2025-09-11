@@ -16,7 +16,7 @@ var _current_total_transform: float = 0.0
 var t: float = 0.0
 
 @onready var _player: Player = get_owner() as Player
-@onready var _logger := Logger.new(name)
+#@onready var _logger := Logger.new(name)
 
 func set_enable_disable(value: bool):
 	enabled = value
