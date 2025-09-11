@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx7j17m1f60wn"]
+[gd_scene load_steps=4 format=3 uid="uid://cx7j17m1f60wn"]
 
 [ext_resource type="Material" uid="uid://bc5mcdu40f8wv" path="res://assets/materials/screen_material.tres" id="2_1herx"]
+[ext_resource type="PackedScene" uid="uid://ywctfaorokxl" path="res://scenes/objects/UI/menu_manager.tscn" id="3_lmhdf"]
 [ext_resource type="PackedScene" uid="uid://cgd71lt1wckmy" path="res://scenes/scene_world.tscn" id="3_u456e"]
 
 [node name="SceneStart" type="Node3D"]
@@ -8,9 +9,9 @@
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod/Build/Desktop/Master.strings.bank", "res://fmod/Build/Desktop/Master.bank", "res://fmod/Build/Desktop/Music.bank", "res://fmod/Build/Desktop/SFX.bank", "res://fmod/Build/Desktop/UI.bank", "res://fmod/Build/Desktop/VO.bank"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Game" type="CanvasLayer" parent="."]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Game"]
 texture_filter = 1
 material = ExtResource("2_1herx")
 anchors_preset = 15
@@ -21,9 +22,11 @@ grow_vertical = 2
 stretch = true
 stretch_shrink = 4
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Game/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(288, 162)
 render_target_update_mode = 4
 
-[node name="World" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("3_u456e")]
+[node name="World" parent="Game/SubViewportContainer/SubViewport" instance=ExtResource("3_u456e")]
+
+[node name="Menu" parent="." instance=ExtResource("3_lmhdf")]
