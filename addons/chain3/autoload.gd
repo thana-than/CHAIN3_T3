@@ -109,5 +109,11 @@ func does_flag_exist(flag_name: String) -> bool:
 func save_flags(flags: Array) -> void:
 	var path: String = streaming_assets_folder + "/shareddata.data"
 	FileAccess.open(path,FileAccess.WRITE_READ).store_string("\n".join(flags))
+	
+func clear_flags() -> void:
+	var dir := DirAccess.open(streaming_assets_folder)
+	var file_name := "shareddata.data"
+	if dir.file_exists(file_name):
+		dir.remove(file_name)
 
 #endregion
