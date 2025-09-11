@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ccepluc0d5tfr"]
+[gd_scene load_steps=27 format=3 uid="uid://ccepluc0d5tfr"]
 
 [ext_resource type="PackedScene" uid="uid://byk016hak03qi" path="res://assets/models/crystal/mdl_crystal.glb" id="1_5lx7b"]
 [ext_resource type="Script" uid="uid://cax57ijrtrkj3" path="res://scripts/objects/collectable_crystal.gd" id="1_tx2sr"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://d2buxfewgw2p" path="res://scripts/chain3/chain3_flag.gd" id="5_tx2sr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0x46w"]
-radius = 0.2
+radius = 0.253588
 height = 1.5
 
 [sub_resource type="Gradient" id="Gradient_4c4fu"]
@@ -57,6 +57,17 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mdl_crystal:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_tmsnu"]
 resource_name = "crystal_motion"
@@ -81,11 +92,77 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5, 5)
 }
 
+[sub_resource type="Animation" id="Animation_t4vem"]
+resource_name = "anim_collect"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mdl_crystal:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.333333, 0, 1, -0.333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mdl_crystal:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2),
+"points": PackedFloat32Array(0.318, 0, 0, 0.111111, 0, 0.313, -0.111111, 0, 0.222222, 0, 0.4, -0.222222, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mdl_crystal:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2),
+"points": PackedFloat32Array(0.318, 0, 0, 0.111111, 0, 0.313, -0.111111, 0, 0.222222, 0, 0.4, -0.222222, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("mdl_crystal:scale:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2),
+"points": PackedFloat32Array(0.318, 0, 0, 0.111111, 0, 0.313, -0.111111, 0, 0.222222, 0, 0.4, -0.222222, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6an4u"]
 _data = {
 &"RESET": SubResource("Animation_5lx7b"),
+&"anim_collect": SubResource("Animation_t4vem"),
 &"anim_crystal": SubResource("Animation_tmsnu")
 }
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t4vem"]
+radius = 0.2
+height = 1.2
 
 [sub_resource type="Curve" id="Curve_tmsnu"]
 _data = [Vector2(0, 0.0421822), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -123,6 +200,7 @@ gravity = Vector3(0, 1, 0)
 scale_min = 0.2
 scale_max = 0.7
 scale_curve = SubResource("CurveTexture_ime47")
+color = Color(0.91, 0.75439, 0.5642, 1)
 alpha_curve = SubResource("CurveTexture_6an4u")
 emission_curve = SubResource("CurveTexture_3kdde")
 turbulence_enabled = true
@@ -159,12 +237,14 @@ metadata/_custom_type_script = "uid://b5hkmjg3mc753"
 [node name="obj" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("CapsuleShape3D_0x46w")
+debug_color = Color(0.395532, 0.604922, 0.22664, 0.42)
 
 [node name="pivot" type="Marker3D" parent="obj"]
 
 [node name="mdl_crystal" parent="obj/pivot" instance=ExtResource("1_5lx7b")]
 
 [node name="mdl_crystal" parent="obj/pivot/mdl_crystal" index="0"]
+transform = Transform3D(0.318, 0, 0, 0, 0.318, 0, 0, 0, 0.318, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_t4vem")
 
 [node name="ManagedLight" type="Node3D" parent="obj/pivot/mdl_crystal"]
@@ -186,33 +266,36 @@ libraries = {
 }
 autoplay = "anim_crystal"
 
+[node name="StaticBody3D" type="StaticBody3D" parent="obj/pivot/mdl_crystal"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="obj/pivot/mdl_crystal/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_t4vem")
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="obj"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
 amount = 20
 lifetime = 0.68
 preprocess = 1.0
+speed_scale = 0.25
 randomness = 1.0
+fixed_fps = 120
 visibility_aabb = AABB(-8, -4, -8, 16, 8, 16)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_24ie1")
 draw_pass_1 = SubResource("QuadMesh_7vfvr")
 draw_skin = SubResource("Skin_ors55")
 
-[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="obj"]
-event_name = "event:/SFX/Train/Train in motion"
-event_guid = "{3cb91e61-60ce-496c-846f-042f3b17ba07}"
-autoplay = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
-
 [node name="Chain3Flag" type="Node" parent="."]
 script = ExtResource("5_tx2sr")
 metadata/_custom_type_script = "uid://d2buxfewgw2p"
 
-[node name="CollectSound" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/SFX/Player/Footsteps"
-event_guid = "{d4f712f9-29b4-4718-94c1-4174364dbe63}"
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+[node name="CollectSound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Crystal collect"
+event_guid = "{a0841ef5-157a-46be-8f57-8a23c0680819}"
+attached = false
 
 [connection signal="on_collect" from="." to="CollectSound" method="play_one_shot"]
+[connection signal="on_collect" from="." to="obj/pivot/mdl_crystal/AnimationPlayer" method="play" binds= ["anim_collect", 0.5]]
+[connection signal="on_collect" from="." to="obj/GPUParticles3D" method="set_emitting" binds= [false]]
 
 [editable path="obj/pivot/mdl_crystal"]
