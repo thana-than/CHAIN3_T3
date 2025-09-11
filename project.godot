@@ -53,6 +53,7 @@ Nathan: For more information see the online documentation.
 
 [autoload]
 
+Global="*res://scripts/autoload/global.gd"
 Config="*res://scripts/autoload/config_reader.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
@@ -62,7 +63,6 @@ Settings="*res://scripts/autoload/settings.gd"
 QuitProcess="*res://scripts/autoload/quit_process.gd"
 Chain3Adapter="*res://scripts/autoload/chain3_adapter.gd"
 chain3="*res://addons/chain3/autoload.gd"
-Global="*res://scripts/autoload/global.gd"
 
 [debug_draw_3d]
 
