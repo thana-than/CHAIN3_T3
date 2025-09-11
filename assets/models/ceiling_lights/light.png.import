@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgw8iglqi402f"
-path.s3tc="res://.godot/imported/ceiling_lights_light_Emissor.png-64d64412bbe829e501cabf0fb7a9cc5c.s3tc.ctex"
+uid="uid://duu4e1tau5wip"
+path.s3tc="res://.godot/imported/light.png-a0dc80825d23119a985cf7d4fa4451fc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "f68f118f57c4a5a4f49a2d02c3f3fde9"
-}
 
 [deps]
 
-source_file="res://assets/models/ceiling_lights/ceiling_lights_light_Emissor.png"
-dest_files=["res://.godot/imported/ceiling_lights_light_Emissor.png-64d64412bbe829e501cabf0fb7a9cc5c.s3tc.ctex"]
+source_file="res://assets/models/ceiling_lights/light.png"
+dest_files=["res://.godot/imported/light.png-a0dc80825d23119a985cf7d4fa4451fc.s3tc.ctex"]
 
 [params]
 
