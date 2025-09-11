@@ -216,6 +216,8 @@ var _last_is_on_floor := false
 ## Default controller height, affects collider
 var _default_height: float
 
+## Allows us to avoid emitting the landed signal for a bit (for instance, initialization)
+@onready var ignore_landed_signal_timer := Timer.new()
 
 ## Loads all character controller skills and sets necessary variables
 func setup():
@@ -224,7 +226,13 @@ func setup():
 	_default_height = collision.shape.height
 	_connect_signals()
 	_start_variables()
-
+	add_child(ignore_landed_signal_timer)
+	_start_ignore_landed_signal_timer()
+	
+func _start_ignore_landed_signal_timer():
+	ignore_landed_signal_timer.wait_time = .5
+	ignore_landed_signal_timer.one_shot = true
+	ignore_landed_signal_timer.start()
 
 ## Moves the character controller.
 ## parameters are inputs that are sent to be handled by all abilities.
@@ -359,7 +367,8 @@ func _start_variables():
 
 func _check_landed():
 	if is_on_floor() and not _last_is_on_floor:
-		_on_landed()
+		if ignore_landed_signal_timer.is_stopped():
+			_on_landed()
 		_reset_step()
 	_last_is_on_floor = is_on_floor()
 	
