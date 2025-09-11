@@ -35,6 +35,7 @@ signal on_collect
 
 var mat_instance: ShaderMaterial
 var emission_param := "emission_color"
+var has_been_collected = false
 
 @onready var obj_root := get_node("obj")
 @onready var flag_controller: Chain3Flag = get_node("Chain3Flag")
@@ -46,12 +47,20 @@ func _ready():
 	flag_controller.flag = collect_flag
 	if flag_controller.is_flag_set():
 		queue_free()
-	else:
-		interacted.connect(collect)
+		return
+
+	interacted.connect(collect)
+	flag_controller.on_flag_changed.connect(_on_flag_changed)
+
+func _on_flag_changed(is_set : bool):
+	if has_been_collected:
+		return
+	if is_set:
+		queue_free()
 
 func collect():
+	has_been_collected = true
 	flag_controller.set_flag()
-	obj_root.queue_free()
 	on_collect.emit()
 
 func refresh_color(_color):
