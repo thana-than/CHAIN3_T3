@@ -27,6 +27,7 @@ size = Vector3(1.5, 2.25, 1)
 process_priority = 100
 process_physics_priority = 100
 script = ExtResource("1_f7fpi")
+portal_camera_use_layer = 1
 _portal_thickness = 0.2
 _portal_mesh_path = NodePath("Portal3D_Mesh")
 _teleport_area_path = NodePath("TeleportArea")
@@ -45,6 +46,7 @@ teleport_interactions = 3
 teleport_collision_mask = 32768
 start_deactivated = false
 metadata/_custom_type_script = "uid://cw1r4c1d7beyv"
+metadata/_edit_group_ = true
 
 [node name="Portal3D_Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)

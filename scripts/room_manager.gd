@@ -28,7 +28,6 @@ func bind_room(room: Room) -> void:
 func _on_room_entered(room) -> void:
 	if active_room == room:
 		return
-
 	active_room = room
 	room_culling()
 	

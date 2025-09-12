@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://duyea31mg4spc"]
+
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_h0yk7"]
+[ext_resource type="Texture2D" uid="uid://dghrrb8384e7y" path="res://assets/textures/door/tex_door_old.jpg" id="2_h0yk7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_h0yk7")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_h0yk7")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0

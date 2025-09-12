@@ -1,14 +1,75 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx5tm3fmqdsxv"]
+[gd_scene load_steps=20 format=3 uid="uid://bx5tm3fmqdsxv"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_rbpki"]
-[ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_te8g2"]
-[ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_laae3"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_4p538"]
-[ext_resource type="PackedScene" uid="uid://c72r07ql7orfd" path="res://scenes/lighting/managed_light.tscn" id="5_fqn87"]
+[ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="4_fqn87"]
+[ext_resource type="Script" uid="uid://ditqovotxswau" path="res://scripts/objects/node3d_spacer.gd" id="4_laae3"]
+[ext_resource type="PackedScene" uid="uid://b05cj3h7kwxbe" path="res://scenes/objects/hospital/obj_arch_hospital.tscn" id="4_te8g2"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_43vnd"]
+[ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="6_fqn87"]
+[ext_resource type="Shader" uid="uid://ce30qoo5h1bid" path="res://ursc/spatial/standard/standard_transparent.gdshader" id="7_fqn87"]
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_obaim"]
 [ext_resource type="Script" uid="uid://c85dht1emjd6a" path="res://scripts/chain3/chain3_exit_trigger.gd" id="8_laae3"]
 [ext_resource type="Resource" uid="uid://bjggf1v6kftk1" path="res://assets/resources/doors/door_U1.tres" id="9_4p538"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43vnd"]
+render_priority = 0
+shader = ExtResource("4_fqn87")
+shader_parameter/albedo_color = Color(0, 0, 0, 1)
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_43vnd"]
+flip_faces = true
+size = Vector2(6.5, 1)
+orientation = 1
+
+[sub_resource type="Gradient" id="Gradient_obaim"]
+offsets = PackedFloat32Array(0.222973, 0.422297, 0.570946, 0.888514, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.929412, 0, 0, 0, 0.827451, 0, 0, 0, 0.431373, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nxjmr"]
+gradient = SubResource("Gradient_obaim")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdba8"]
+render_priority = 0
+shader = ExtResource("7_fqn87")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = SubResource("GradientTexture1D_nxjmr")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_d55ec"]
+size = Vector2(6.5, 1)
+orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laae3"]
 albedo_color = Color(1, 0, 0, 1)
@@ -21,29 +82,81 @@ script = ExtResource("1_rbpki")
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="mdl_traincar_proto" parent="Environment" instance=ExtResource("2_te8g2")]
-
-[node name="collider_standard_car" parent="Environment" instance=ExtResource("3_laae3")]
-
 [node name="Volumetrics" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
 
 [node name="Dust" parent="Environment/Volumetrics" instance=ExtResource("4_4p538")]
-transform = Transform3D(2.78722, 0, 0, 0, 1.79517, 0, 0, 0, 9.56034, 0, 1.78684, 0)
+transform = Transform3D(1.435, 0, 0, 0, 5.425, 0, 0, 0, 14.88, 0, 5.855, 0)
 
-[node name="FlickeringLights" parent="Environment" instance=ExtResource("5_fqn87")]
-light_type = 1
-flicker_freq_hz = 0.75
-flicker_amp = 2.5
+[node name="Floor" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -49.6)
+use_collision = true
+size = Vector3(14, 0.5, 120)
 
-[node name="ManagedLight_001" type="SpotLight3D" parent="Environment/FlickeringLights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, -6.517)
-light_energy = 2.89035
-spot_range = 5.5
-spot_angle = 60.0
+[node name="Wall" type="CSGBox3D" parent="Environment/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 7.25, 0)
+use_collision = true
+size = Vector3(1, 15, 120)
 
-[node name="ManagedLight_002" type="SpotLight3D" parent="Environment/FlickeringLights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, 6.517)
-light_energy = 1.00863
+[node name="Wall2" type="CSGBox3D" parent="Environment/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 7.25, 0)
+use_collision = true
+size = Vector3(1, 15, 120)
+
+[node name="Ceiling" type="CSGBox3D" parent="Environment/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+use_collision = true
+size = Vector3(14, 0.5, 120)
+material = SubResource("ShaderMaterial_43vnd")
+
+[node name="Arches" type="Node3D" parent="Environment"]
+script = ExtResource("4_laae3")
+spacing = Vector3(0, 0, -20)
+anchor = Vector3(0.5, 0.5, 0)
+
+[node name="obj_arch_hospital" parent="Environment/Arches" instance=ExtResource("4_te8g2")]
+
+[node name="Ceiling Light" parent="Environment/Arches/obj_arch_hospital" instance=ExtResource("6_fqn87")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 11.4, 0)
+
+[node name="obj_arch_hospital2" parent="Environment/Arches" instance=ExtResource("4_te8g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="Ceiling Light" parent="Environment/Arches/obj_arch_hospital2" instance=ExtResource("6_fqn87")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 11.4, 0)
+
+[node name="obj_arch_hospital3" parent="Environment/Arches" instance=ExtResource("4_te8g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[node name="Ceiling Light" parent="Environment/Arches/obj_arch_hospital3" instance=ExtResource("6_fqn87")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 11.4, 0)
+
+[node name="obj_arch_hospital4" parent="Environment/Arches" instance=ExtResource("4_te8g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
+
+[node name="Ceiling Light" parent="Environment/Arches/obj_arch_hospital4" instance=ExtResource("6_fqn87")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 11.4, 0)
+
+[node name="obj_arch_hospital5" parent="Environment/Arches" instance=ExtResource("4_te8g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+
+[node name="Ceiling Light" parent="Environment/Arches/obj_arch_hospital5" instance=ExtResource("6_fqn87")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 11.4, 0)
+
+[node name="CeilShade" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 118, 0, 11.235, -50)
+
+[node name="Mesh" type="MeshInstance3D" parent="Environment/CeilShade"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 2.3, 0, 0)
+mesh = SubResource("QuadMesh_43vnd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_fdba8")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Environment/CeilShade"]
+transform = Transform3D(-0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0, 1, -2.3, 0, 0)
+mesh = SubResource("QuadMesh_d55ec")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_fdba8")
 
 [node name="door_enter" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -8.65)

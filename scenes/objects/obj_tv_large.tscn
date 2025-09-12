@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj63lwhjwoshn"]
+
+[ext_resource type="PackedScene" uid="uid://bs3kiulk6p5bv" path="res://assets/models/tv/mdl_tv_screen.glb" id="1_vo1yx"]
+[ext_resource type="Script" uid="uid://b00vhy210e84q" path="res://scripts/objects/tv.gd" id="2_xmmtk"]
+[ext_resource type="Material" uid="uid://c6ag8pf8s1ve4" path="res://assets/materials/tv/mat_tv_noise.tres" id="4_p6lps"]
+
+[node name="obj_large_screen" type="Node3D" node_paths=PackedStringArray("screen_mesh")]
+script = ExtResource("2_xmmtk")
+screen_mesh = NodePath("mdl_tv_screen/Screen")
+screen_material = ExtResource("4_p6lps")
+
+[node name="mdl_tv_screen" parent="." instance=ExtResource("1_vo1yx")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0)
+
+[node name="Screen" parent="mdl_tv_screen" index="0"]
+transform = Transform3D(9.78, 0, 0, 0, 9.78, 0, 0, 0, 9.78, 0, 0, 0)
+material_override = ExtResource("4_p6lps")
+surface_material_override/0 = ExtResource("4_p6lps")
+
+[editable path="mdl_tv_screen"]
