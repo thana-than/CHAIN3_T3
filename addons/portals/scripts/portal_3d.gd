@@ -230,6 +230,8 @@ var portal_render_layer: int = 1 << 19:
 		portal_render_layer = v
 		if _caused_by_user_interaction():
 			portal_mesh.layers = v
+			
+@export_flags_3d_render var portal_camera_use_layer: int = 1 << 1
 
 ## If [code]true[/code], the portal is also a teleport. If [code]false[/code], the portal is 
 ## visual-only.
@@ -650,7 +652,7 @@ func _setup_cameras() -> void:
 		portal_camera.environment = adjusted_env
 		
 		# Ensure that portals don't see other portals.
-		portal_camera.cull_mask = portal_camera.cull_mask ^ portal_render_layer
+		portal_camera.cull_mask = portal_camera_use_layer#portal_camera.cull_mask ^ portal_render_layer
 		
 		portal_viewport.add_child(portal_camera, true)
 		portal_camera.global_position = exit_portal.global_position

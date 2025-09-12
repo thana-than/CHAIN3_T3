@@ -1,16 +1,15 @@
-[gd_scene load_steps=31 format=4 uid="uid://cvo84c50b4cim"]
+[gd_scene load_steps=28 format=4 uid="uid://cvo84c50b4cim"]
 
 [ext_resource type="PackedScene" uid="uid://dynksben166x4" path="res://scenes/landings/scene_landing_no_disc.tscn" id="1_ptb8r"]
 [ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="2_dxl58"]
 [ext_resource type="Material" uid="uid://bwusqnt6e8ehb" path="res://assets/materials/mat_landing_sky.tres" id="2_f6751"]
 [ext_resource type="Material" uid="uid://cfwgnnw3bmb75" path="res://assets/materials/mat_landing_grass.tres" id="3_dxl58"]
 [ext_resource type="Script" uid="uid://cnigwmwopds1p" path="res://scripts/events/hook_outside_skybox.gd" id="3_hqrgt"]
-[ext_resource type="Shader" uid="uid://bkaicu26e6jm5" path="res://ursc/spatial/standard/standard_transparent_repeating.gdshader" id="4_mvyly"]
 [ext_resource type="Script" uid="uid://c7i2fdw0frx02" path="res://scripts/events/spawner.gd" id="5_bhlwa"]
 [ext_resource type="Material" uid="uid://c6ag8pf8s1ve4" path="res://assets/materials/tv/mat_tv_noise.tres" id="6_sal82"]
 [ext_resource type="PackedScene" uid="uid://04l60axpwane" path="res://scenes/landings/scene_landing_outside_skybox.tscn" id="6_y7o3m"]
+[ext_resource type="Script" uid="uid://cbjxjm6vh710a" path="res://scripts/events/noise_screen_player_distance.gd" id="7_bi0ie"]
 [ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="9_758g3"]
-[ext_resource type="Texture2D" uid="uid://qnotx6oagkj5" path="res://assets/textures/decals/rust/tex_rust_band.png" id="10_bi0ie"]
 
 [sub_resource type="Gradient" id="Gradient_sal82"]
 offsets = PackedFloat32Array(0.0949367, 0.401899, 1)
@@ -48,34 +47,6 @@ height = 128
 in_3d_space = true
 color_ramp = SubResource("Gradient_oslnh")
 noise = SubResource("FastNoiseLite_sliad")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_676x3"]
-render_priority = 0
-shader = ExtResource("4_mvyly")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("10_bi0ie")
-shader_parameter/albedo_texture_as_primary_color = true
-shader_parameter/mix_factor = 1.0
-shader_parameter/texture_lod_halve_distance_override = 0.0
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_scroll_speed = Vector2(0, 0)
-shader_parameter/uv_scroll_frames = Vector2(0, 0)
-shader_parameter/cull_distance_override = 0.0
-shader_parameter/convert_vertex_colors = false
-shader_parameter/enable_affine_transform = false
-shader_parameter/use_emission = false
-shader_parameter/emission_color = Color(1, 1, 1, 1)
-shader_parameter/emission_strength = 1.0
-shader_parameter/use_emission_texture = false
-shader_parameter/use_emission_mask_texture = false
-shader_parameter/emission_threshold = 0.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_oslnh"]
-material = SubResource("ShaderMaterial_676x3")
-flip_faces = true
-radial_segments = 32
-rings = 16
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hqrgt"]
 
@@ -198,14 +169,17 @@ hue_variation_max = 0.00999998
 [node name="scene_landing_has_disc" instance=ExtResource("1_ptb8r")]
 
 [node name="Ground" parent="." index="2"]
-layers = 5
 surface_material_override/0 = ExtResource("3_dxl58")
 
 [node name="Lightbath" type="OmniLight3D" parent="." index="3"]
+layers = 524289
 light_energy = 0.356
 light_volumetric_fog_energy = 0.0
 omni_range = 80.0
 omni_attenuation = -0.46
+
+[node name="Spotlight" parent="." index="4"]
+light_color = Color(0.922022, 0.777557, 0.543044, 1)
 
 [node name="Grime 1" type="Decal" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
@@ -225,23 +199,16 @@ cull_mask = 2
 
 [node name="Grime 3" type="Decal" parent="Grime 1/Grime 2" index="0"]
 transform = Transform3D(-0.866025, 0, -0.5, 4.37114e-08, -1, -7.57104e-08, -0.5, -8.74228e-08, 0.866025, 0, 22.5, 1.96701e-06)
-layers = 5
 size = Vector3(86, 21, 109)
 texture_albedo = SubResource("NoiseTexture2D_m6f3e")
 upper_fade = 0.52233
 lower_fade = 0.791704
-cull_mask = 4
+cull_mask = 32
 
 [node name="hide_until_activate" parent="." index="6"]
 script = ExtResource("3_hqrgt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="hide_until_activate" index="0"]
-transform = Transform3D(-3.52292e-06, -80.595, 0, 80.595, -3.52292e-06, 0, 0, 0, 80.595, 0, 1, 0)
-visible = false
-mesh = SubResource("SphereMesh_oslnh")
-skeleton = NodePath("")
-
-[node name="Sky" parent="hide_until_activate" index="1"]
+[node name="Sky" parent="hide_until_activate" index="0"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 layers = 3
 surface_material_override/0 = ExtResource("2_f6751")
@@ -249,7 +216,7 @@ surface_material_override/0 = ExtResource("2_f6751")
 [node name="Shade" parent="hide_until_activate/Sky" index="0"]
 visible = false
 
-[node name="obj_large_screen" parent="hide_until_activate" index="2"]
+[node name="obj_large_screen" parent="hide_until_activate" index="1"]
 screen_material = SubResource("ShaderMaterial_dcgml")
 
 [node name="Screen" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal" index="0"]
@@ -261,20 +228,23 @@ surface_material_override/0 = null
 
 [node name="NoiseScreen" type="MeshInstance3D" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal" index="1"]
 transform = Transform3D(1, 1.42109e-14, -8.52651e-14, 7.10543e-15, 1, -5.96046e-08, 5.68434e-14, 5.96046e-08, 1, 0, 0, -0.001)
-visible = false
 material_override = ExtResource("6_sal82")
-transparency = 0.99
 mesh = SubResource("ArrayMesh_hqrgt")
 skeleton = NodePath("")
+script = ExtResource("7_bi0ie")
+curve = 5.65685
+min_max_transparency = Vector2(0.99, 0)
+min_max_distance = Vector2(35, 45)
 
 [node name="ManagedLight" parent="hide_until_activate/obj_large_screen" index="1"]
+visible = false
 flicker_amp = 0.0
 
 [node name="TV Glow" parent="hide_until_activate/obj_large_screen/ManagedLight" index="0"]
 light_color = Color(1, 1, 1, 1)
 light_volumetric_fog_energy = 8.0
 
-[node name="landing_outside_skybox_root" type="Node3D" parent="hide_until_activate" index="3"]
+[node name="landing_outside_skybox_root" type="Node3D" parent="hide_until_activate" index="2"]
 script = ExtResource("5_bhlwa")
 scene = ExtResource("6_y7o3m")
 

@@ -20,6 +20,7 @@ script = ExtResource("1_5lcb8")
 
 [node name="room_T4" parent="." instance=ExtResource("3_34pdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+cull_distance = 220.0
 
 [node name="portal_hospital" parent="room_T4" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 25)
@@ -33,11 +34,12 @@ exit_portal = NodePath("../../portal_hospital_to_landing")
 
 [node name="Door Light" type="SpotLight3D" parent="room_T4/portal_hospital"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
+visible = false
 light_energy = 2.89035
 spot_attenuation = 0.29
 
 [node name="portal_hospital_to_landing" parent="room_T4" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 1.125, -6.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 1.125, -6.1)
 exit_portal = NodePath("../portal_hospital/to_hospital")
 
 [node name="InteractableLink" parent="room_T4/portal_hospital_to_landing" instance=ExtResource("7_b2dtt")]
@@ -48,11 +50,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("BoxShape3D_3lafk")
 
 [node name="room_link_back" parent="." instance=ExtResource("5_doiwo")]
-transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 150, 0, 25)
-cull_distance = 90.0
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 200, 0, 25)
+cull_distance = 120.0
 
 [node name="room_U1" parent="." instance=ExtResource("5_bynuf")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 150, 0, 45)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 200, 0, 45)
 cull_distance = 90.0
 
 [connection signal="interacted" from="room_T4/portal_hospital_to_landing/InteractableLink" to="room_T4/portal_hospital" method="toggle_open"]

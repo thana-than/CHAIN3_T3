@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b05cj3h7kwxbe"]
+
+[ext_resource type="PackedScene" uid="uid://wq0hfigt3wch" path="res://assets/models/mdl_pillar.glb" id="1_p2cqk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2cqk"]
+size = Vector3(2, 11, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_laae3"]
+size = Vector3(4.535, 2.665, 2)
+
+[node name="obj_arch_hospital" type="Node3D"]
+
+[node name="mdl_pillar" parent="." instance=ExtResource("1_p2cqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mdl_pillar"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mdl_pillar/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+shape = SubResource("BoxShape3D_p2cqk")
+
+[node name="mdl_pillar2" parent="." instance=ExtResource("1_p2cqk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mdl_pillar2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mdl_pillar2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+shape = SubResource("BoxShape3D_p2cqk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.6565, 0)
+mesh = SubResource("BoxMesh_laae3")
