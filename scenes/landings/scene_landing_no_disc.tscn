@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dynksben166x4"]
+[gd_scene load_steps=23 format=4 uid="uid://dynksben166x4"]
 
 [ext_resource type="Script" uid="uid://b7gwe0ja8mli3" path="res://scripts/events/landing_area.gd" id="1_a28vb"]
 [ext_resource type="Material" uid="uid://k04n3jrlianv" path="res://assets/materials/mat_landing_curtains.tres" id="2_7j07r"]
@@ -6,7 +6,9 @@
 [ext_resource type="Material" uid="uid://n27b6hhinpam" path="res://assets/materials/landing/mat_landing_noise.tres" id="5_3vh32"]
 [ext_resource type="Script" uid="uid://b00vhy210e84q" path="res://scripts/objects/tv.gd" id="8_5xkcu"]
 [ext_resource type="Material" uid="uid://c6ag8pf8s1ve4" path="res://assets/materials/tv/mat_tv_noise.tres" id="9_rbfrf"]
+[ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="10_l2bbr"]
 [ext_resource type="PackedScene" uid="uid://cyn1e2rqvlb78" path="res://assets/models/tv/mdl_tv_screen_flipped_normal.glb" id="10_m4s3y"]
+[ext_resource type="Texture2D" uid="uid://5gvewp7i5cld" path="res://assets/textures/volumetrics/dust.png" id="11_a28vb"]
 [ext_resource type="Material" uid="uid://bdngwshu8xti5" path="res://assets/materials/tv/mat_tv_nodisc.tres" id="11_j17fn"]
 [ext_resource type="Script" uid="uid://cg4to6v7xjlug" path="res://scripts/lighting/managed_light.gd" id="12_0ypoq"]
 
@@ -76,6 +78,26 @@ radius = 37.0
 height = 75.0
 radial_segments = 12
 rings = 12
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_drtnl"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -0.02, 0)
+color = Color(1, 0, 0, 0.337255)
+hue_variation_min = -0.22
+hue_variation_max = 0.00999998
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2bbr"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("11_a28vb")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_f8n5e"]
+material = SubResource("StandardMaterial3D_l2bbr")
+size = Vector2(0.1, 0.1)
 
 [node name="scene_landing_no_disc" type="Node3D" node_paths=PackedStringArray("disable_until_active")]
 script = ExtResource("1_a28vb")
@@ -176,5 +198,11 @@ light_volumetric_fog_energy = 16.0
 spot_range = 51.235
 spot_angle = 49.1
 spot_angle_attenuation = 1.68179
+
+[node name="Dust" parent="." instance=ExtResource("10_l2bbr")]
+transform = Transform3D(30, 0, 0, 0, 11.69, 0, 0, 0, 30, -3, 0, 2)
+amount = 240
+process_material = SubResource("ParticleProcessMaterial_drtnl")
+draw_pass_1 = SubResource("QuadMesh_f8n5e")
 
 [editable path="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal"]

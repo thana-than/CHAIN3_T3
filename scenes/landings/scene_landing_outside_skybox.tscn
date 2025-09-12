@@ -96,6 +96,7 @@ size = Vector2i(170, 128)
 [node name="Root" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 cull_mask = 16384
 script = ExtResource("1_kr2gr")
 
@@ -250,8 +251,6 @@ layers = 16384
 layers = 16384
 
 [connection signal="on_open" from="Root/game_exit_door" to="Root/game_exit_door/Chain3ExitTrigger" method="call_exit"]
-[connection signal="timeout" from="Root/game_exit_door/InteractableFront/Timer" to="Root/game_exit_door/InteractableBack" method="activate"]
-[connection signal="timeout" from="Root/game_exit_door/InteractableBack/Timer" to="Root/game_exit_door/InteractableFront" method="activate"]
 
 [editable path="Root/Trees"]
 [editable path="Root/game_exit_door"]
