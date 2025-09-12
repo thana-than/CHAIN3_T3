@@ -36,8 +36,8 @@ render_mode
 	fog_disabled,
 #endif
 
-specular_disabled,
-shadows_disabled;
+specular_disabled;
+//shadows_disabled;
 
 
 // Constants
@@ -105,6 +105,7 @@ global uniform float cull_distance;
 		uniform vec2 uv_offset = vec2(0.0);
 		uniform vec2 uv_scale = vec2(1.0);
 		uniform vec2 uv_scroll_speed = vec2(0.0);
+		uniform vec2 uv_scroll_frames = vec2(0,0);
 	#endif
 #endif
 
@@ -116,7 +117,6 @@ global uniform float cull_distance;
 uniform float cull_distance_override: hint_range(0.0, 1024.0, 2.0) = 0;
 
 uniform bool convert_vertex_colors = false;
-
 
 // Varyings
 #if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
@@ -132,6 +132,26 @@ uniform bool convert_vertex_colors = false;
 #if !defined(FOG_DISABLED) && !defined(USE_ENVIRONMENT_FOG)
 	varying float fog_mix_factor;
 #endif
+
+
+// Some emissivity stuff
+uniform bool use_emission = false;
+uniform vec3 emission_color: source_color = vec3(1.0, 1.0, 1.0);
+uniform float emission_strength : hint_range(0.0, 8.0, 0.05) = 1.0;
+
+uniform bool use_emission_texture = false;
+uniform sampler2D emission_texture :
+		source_color,
+		filter_nearest,
+	#if defined(TEXTURE_REPEAT)
+		repeat_enable;
+	#else
+		repeat_disable;
+	#endif
+
+uniform bool use_emission_mask_texture = false;
+uniform sampler2D emission_mask_texture: filter_nearest, repeat_disable;
+uniform float emission_threshold : hint_range(0.0, 1.0, 0.01) = 0.00;
 
 // Functions
 #if defined(SHINY)
@@ -215,7 +235,22 @@ void vertex()
 		COLOR.rgb = fromLinear(COLOR.rgb);
 
 	#if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
-		UV = UV * uv_scale + uv_offset + (uv_scroll_speed * TIME);
+		vec2 _uv_scale = uv_scale;
+		vec2 _uv_scroll = uv_scroll_speed * TIME;
+		
+		if (uv_scroll_frames.x != 0.0)
+		{
+			_uv_scroll.x = ceil(_uv_scroll.x * uv_scroll_frames.x) / uv_scroll_frames.x;
+			_uv_scale.x /= uv_scroll_frames.x;
+		}
+		if (uv_scroll_frames.y != 0.0)
+		{
+			_uv_scroll.y = ceil(_uv_scroll.y * uv_scroll_frames.y) / uv_scroll_frames.y;
+			_uv_scale.y /= uv_scroll_frames.y;
+		}
+		
+		UV = UV * _uv_scale + uv_offset + _uv_scroll;
+			
 	#endif
 
 	#if defined(BILLBOARD)
@@ -417,6 +452,27 @@ void fragment()
 			#endif
 		#endif
 	#endif
+	
+	if (use_emission)
+	{
+		float mask = 1.0;
+		if (use_emission_mask_texture) 
+		{
+			mask = texture(emission_mask_texture, uv).r;
+		} else {
+			mask = sampled_color.a;
+		}
+		
+		vec3 e_col = emission_color;
+		if (use_emission_texture)
+		{
+			vec4 sampled_emissive = texture(emission_texture, uv);
+			e_col = vec3(sampled_emissive.r, sampled_emissive.g, sampled_emissive.b);
+		}
+		
+		vec3 emissive = e_col * mask;
+		EMISSION = emissive * emission_strength;
+	}
 
 	#if !defined(FOG_DISABLED) && !defined(USE_ENVIRONMENT_FOG)
 		FOG.a = fog_mix_factor;

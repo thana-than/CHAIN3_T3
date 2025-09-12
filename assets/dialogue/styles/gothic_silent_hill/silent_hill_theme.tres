@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://cvgeckhft2ira"]
 
-[ext_resource type="FontFile" uid="uid://c60buf57ne6p" path="res://assets/dialogue/styles/gothic_silent_hill/Jacquard12-Regular.ttf" id="1_7xrhm"]
+[ext_resource type="FontFile" uid="uid://c60buf57ne6p" path="res://assets/fonts/Jacquard12-Regular.ttf" id="1_7xrhm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fqmpl"]
 

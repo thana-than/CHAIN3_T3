@@ -5,7 +5,6 @@ extends Node
 var logger := Logger.new("world")
 
 #TODO config option to set / change chain flags?
-var debug_config : DebugConfig
 var local_path := "res://local/"
 var debug_config_path := local_path + "debug-config.tres"
 var debug_room_spawn_path := "door_enter"
@@ -30,13 +29,11 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	var load_from_chain = true
 	if OS.is_debug_build():
-		load_debug_config()
-		if debug_config:
-			var _room_id = debug_config.spawn_room_id
-			if debug_config.spawn_in_dev_room:
-				_room_id = dev_room_name
-			if try_move_player_to_room_id(_room_id):
-				load_from_chain = false
+		var _room_id = Global.debug_config.spawn_room_id
+		if Global.debug_config.spawn_in_dev_room:
+			_room_id = dev_room_name
+		if try_move_player_to_room_id(_room_id):
+			load_from_chain = false
 	if load_from_chain:
 		var id = Chain3Adapter._entry_door_id
 		if id == "START":
@@ -60,10 +57,6 @@ func _try_spawn_dev_room():
 	var _dev_room = load(_path).instantiate()
 	_room_manager.add_child(_dev_room)
 	logger.log("Spawned dev room from path " + _path)
-
-func load_debug_config():
-	if ResourceLoader.exists(debug_config_path):
-		debug_config = load(debug_config_path)
 		
 func try_move_player_to_room_id(room_id: String):
 	var success = false

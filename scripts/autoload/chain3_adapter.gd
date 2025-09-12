@@ -19,6 +19,9 @@ func _ready() -> void:
 	# proper door_id on start, but I can't actually see how they're doing this 
 	# programmatically.....
 	_chain3 = get_node_or_null("/root/chain3")
+	if OS.is_debug_build() and Global.debug_config.reset_chain_flags_on_start:
+		_LOGGER.log("Clearing CHAIN Flags")
+		_chain3.clear_flags()
 	_entry_door_id = _chain3.door_id
 	_LOGGER.log("Entry door id: {id}".format({"id": _entry_door_id}))
 

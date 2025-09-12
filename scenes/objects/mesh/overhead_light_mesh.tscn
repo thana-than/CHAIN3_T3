@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8rwbi7s2qk76"]
+
+[ext_resource type="PackedScene" uid="uid://bb0wsxch0irmb" path="res://assets/models/ceiling_lights/ceiling_light.gltf" id="1_1ywpn"]
+[ext_resource type="Material" uid="uid://ckt4biwyiidxf" path="res://assets/materials/ceiling_lights/ceiling_lights_body.tres" id="2_bci2y"]
+
+[node name="ceiling_light" instance=ExtResource("1_1ywpn")]
+
+[node name="light" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_bci2y")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bs7vs2a5pvm87"]
+[gd_scene load_steps=27 format=3 uid="uid://bs7vs2a5pvm87"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_bonpo"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_5kx1f"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_fuf28"]
+[ext_resource type="PackedScene" uid="uid://cy2xqdnbxum71" path="res://assets/models/metro_car/metro_car_textured.glb" id="3_j0y30"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_48eor"]
 [ext_resource type="PackedScene" uid="uid://c72r07ql7orfd" path="res://scenes/lighting/managed_light.tscn" id="5_8ow3u"]
 [ext_resource type="Material" uid="uid://cxdytd34vohg3" path="res://assets/materials/psx_standard_opaque_material.tres" id="6_fuf28"]
@@ -12,6 +13,8 @@
 [ext_resource type="Script" uid="uid://glr2uml18crh" path="res://scripts/animation/animation_sequencer.gd" id="9_48eor"]
 [ext_resource type="Script" uid="uid://dbcibpw5o28gm" path="res://scripts/events/area_fall_confiner.gd" id="10_8ow3u"]
 [ext_resource type="Script" uid="uid://b7gwe0ja8mli3" path="res://scripts/events/landing_area.gd" id="10_ijcfu"]
+[ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="13_ms84i"]
+[ext_resource type="Texture2D" uid="uid://kao5o5mh85rg" path="res://assets/textures/decals/ttc-map.png" id="14_cqmcx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
@@ -74,6 +77,9 @@ cull_distance = 200.0
 [node name="Top" type="Node3D" parent="Environment"]
 
 [node name="mdl_traincar_proto" parent="Environment/Top" instance=ExtResource("2_5kx1f")]
+visible = false
+
+[node name="metro_car_textured" parent="Environment/Top" instance=ExtResource("3_j0y30")]
 
 [node name="collider_standard_car" parent="Environment/Top" instance=ExtResource("3_fuf28")]
 
@@ -82,20 +88,13 @@ cull_distance = 200.0
 [node name="Dust" parent="Environment/Top/Volumetrics" instance=ExtResource("4_48eor")]
 transform = Transform3D(2.78722, 0, 0, 0, 1.79517, 0, 0, 0, 9.56034, 0, 1.78684, 0)
 
-[node name="FlickeringLights" parent="Environment/Top" instance=ExtResource("5_8ow3u")]
-light_type = 1
-flicker_freq_hz = 0.75
-flicker_amp = 2.5
+[node name="Train Car Lights" type="Node3D" parent="Environment/Top"]
 
-[node name="ManagedLight_001" type="SpotLight3D" parent="Environment/Top/FlickeringLights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, -6.517)
-light_energy = 2.89035
-spot_range = 5.5
-spot_angle = 60.0
+[node name="Ceiling Light" parent="Environment/Top/Train Car Lights" instance=ExtResource("13_ms84i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.018, -7.29236)
 
-[node name="ManagedLight_002" type="SpotLight3D" parent="Environment/Top/FlickeringLights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.316, 6.517)
-light_energy = 1.00863
+[node name="Ceiling Light2" parent="Environment/Top/Train Car Lights" instance=ExtResource("13_ms84i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.018, 5.46701)
 
 [node name="hide_sky" type="Area3D" parent="Environment/Top"]
 collision_mask = 8388608
@@ -132,6 +131,7 @@ debug_color = Color(0.784118, 0.234851, 0.894778, 0.42)
 transform = Transform3D(-1, 3.55271e-15, 8.74228e-08, 8.44439e-08, 0.258819, 0.965926, -2.26267e-08, 0.965926, -0.258819, 0, -89.8, 1.25)
 exit_portal = NodePath("../../Landing/LandingPortal")
 start_deactivated = true
+metadata/_edit_group_ = true
 
 [node name="Door Open" type="Node3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725256, -1.11572, -0.049408)
@@ -234,6 +234,7 @@ _teleport_area_path = NodePath("TeleportArea2")
 _teleport_collider_path = NodePath("TeleportArea2/Collider")
 exit_portal = NodePath("../../Fall/FallPortal")
 start_deactivated = true
+metadata/_edit_group_ = true
 
 [node name="TeleportArea2" type="Area3D" parent="Environment/Landing/LandingPortal"]
 
@@ -267,6 +268,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -166.5, 20)
 shape = SubResource("BoxShape3D_48eor")
 
 [node name="cull_root" type="Marker3D" parent="."]
+
+[node name="Decals" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.033302, 0)
+
+[node name="TTC Map" type="Decal" parent="Decals"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -2.66887, 1.72589, 1.23754)
+size = Vector3(0.691681, 0.5, 0.568481)
+texture_albedo = ExtResource("14_cqmcx")
+
+[node name="TTC Map2" type="Decal" parent="Decals"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -2.66887, 1.72589, -4.95065)
+size = Vector3(0.691681, 0.5, 0.568481)
+texture_albedo = ExtResource("14_cqmcx")
 
 [connection signal="body_entered" from="Environment/Top/hide_sky" to="Environment/Landing/Sky" method="hide" unbinds=1]
 [connection signal="body_entered" from="Environment/Fall/Fall Activator" to="Environment/Fall/FallConfiner" method="activate" unbinds=1]
