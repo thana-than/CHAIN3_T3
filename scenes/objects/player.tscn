@@ -83,7 +83,7 @@ script = ExtResource("12_68atb")
 audio_event_resource = ExtResource("13_2lybl")
 
 [node name="Jump" type="FmodEventEmitter2D" parent="." index="15"]
-event_name = "event:/SFX/Player/Jump land"
+event_name = "event:/SFX/Player/Jump"
 event_guid = "{a33c7701-13a5-40e8-859e-ac0398ed1e4c}"
 fmod_parameters/jump_land_state/id = 7190312413333537063
 fmod_parameters/jump_land_state = "Jump"
@@ -91,16 +91,24 @@ fmod_parameters/jump_land_state/labels = PackedStringArray("Jump", "Land")
 fmod_parameters/jump_land_state/variant_type = 4
 
 [node name="Land" type="FmodEventEmitter2D" parent="." index="16"]
-event_name = "event:/SFX/Player/Jump land"
-event_guid = "{a33c7701-13a5-40e8-859e-ac0398ed1e4c}"
-fmod_parameters/jump_land_state/id = 7190312413333537063
-fmod_parameters/jump_land_state = "Jump"
-fmod_parameters/jump_land_state/labels = PackedStringArray("Jump", "Land")
-fmod_parameters/jump_land_state/variant_type = 4
+event_name = "event:/SFX/Player/Land"
+event_guid = "{d4b4f519-e081-4ce1-bc00-e17458aebbd5}"
+fmod_parameters/land_state/id = -4688135898146721294
+fmod_parameters/land_state = "soft land"
+fmod_parameters/land_state/labels = PackedStringArray("soft land", "hard land")
+fmod_parameters/land_state/variant_type = 4
 
+[node name="Fall" type="FmodEventEmitter2D" parent="." index="17"]
+event_name = "event:/SFX/Falling"
+event_guid = "{1a0f09d3-5ad7-45d2-80a1-dbb3f4cfa4f3}"
+
+[connection signal="fall_started" from="." to="Land" method="set_parameter" binds= ["land_state", "soft land"]]
 [connection signal="jumped" from="." to="Jump" method="play_one_shot"]
-[connection signal="landed" from="." to="Land" method="play_one_shot"]
 [connection signal="landed" from="." to="FallingParticles" method="set_emitting" binds= [false]]
+[connection signal="landed" from="." to="Land" method="play" binds= [true]]
+[connection signal="long_fall_landed" from="." to="Fall" method="stop"]
+[connection signal="long_fall_started" from="." to="Fall" method="play"]
 [connection signal="long_fall_started" from="." to="FallingParticles" method="set_emitting" binds= [true]]
+[connection signal="long_fall_started" from="." to="Land" method="set_parameter" binds= ["land_state", "hard land"]]
 [connection signal="on_focus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_focus"]
 [connection signal="on_unfocus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_unfocus"]

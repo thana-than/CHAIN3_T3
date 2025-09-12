@@ -8,6 +8,9 @@ class_name CharacterController3D
 ## function when a move accumulator for a step has ended.
 signal stepped
 
+## Emitted after leaving the ground
+signal fall_started
+
 ## Emitted after being in the air for [long_fall] amount of time
 signal long_fall_started
 
@@ -239,7 +242,7 @@ func _start_ignore_landed_signal_timer():
 func move(_delta: float, input_axis := Vector2.ZERO, input_jump := false, input_crouch := false, input_sprint := false, input_swim_down := false, input_swim_up := false) -> void:
 	var direction = _direction_input(input_axis, input_swim_down, input_swim_up, _direction_base_node)
 	if not swim_ability.is_floating():
-		_check_landed()
+		_check_floor_state()
 	if velocity.y > -gravity_max and not jump_ability.is_actived() and not is_fly_mode() and not is_submerged() and not is_floating():
 		var multiplier = gravity_multiplier
 		for ability in _abilities:
@@ -365,11 +368,14 @@ func _start_variables():
 	swim_ability.submerged_speed_multiplier = submerged_speed_multiplier
 
 
-func _check_landed():
-	if is_on_floor() and not _last_is_on_floor:
-		if ignore_landed_signal_timer.is_stopped():
-			_on_landed()
-		_reset_step()
+func _check_floor_state():
+	if is_on_floor() != _last_is_on_floor:
+		if is_on_floor():
+			if ignore_landed_signal_timer.is_stopped():
+				_on_landed()
+			_reset_step()
+		else:
+			fall_started.emit()
 	_last_is_on_floor = is_on_floor()
 	
 
