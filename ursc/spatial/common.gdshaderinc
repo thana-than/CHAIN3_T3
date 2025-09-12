@@ -105,6 +105,7 @@ global uniform float cull_distance;
 		uniform vec2 uv_offset = vec2(0.0);
 		uniform vec2 uv_scale = vec2(1.0);
 		uniform vec2 uv_scroll_speed = vec2(0.0);
+		uniform vec2 uv_scroll_frames = vec2(0,0);
 	#endif
 #endif
 
@@ -224,7 +225,22 @@ void vertex()
 		COLOR.rgb = fromLinear(COLOR.rgb);
 
 	#if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
-		UV = UV * uv_scale + uv_offset + (uv_scroll_speed * TIME);
+		vec2 _uv_scale = uv_scale;
+		vec2 _uv_scroll = uv_scroll_speed * TIME;
+		
+		if (uv_scroll_frames.x != 0.0)
+		{
+			_uv_scroll.x = ceil(_uv_scroll.x * uv_scroll_frames.x) / uv_scroll_frames.x;
+			_uv_scale.x /= uv_scroll_frames.x;
+		}
+		if (uv_scroll_frames.y != 0.0)
+		{
+			_uv_scroll.y = ceil(_uv_scroll.y * uv_scroll_frames.y) / uv_scroll_frames.y;
+			_uv_scale.y /= uv_scroll_frames.y;
+		}
+		
+		UV = UV * _uv_scale + uv_offset + _uv_scroll;
+			
 	#endif
 
 	#if defined(BILLBOARD)
