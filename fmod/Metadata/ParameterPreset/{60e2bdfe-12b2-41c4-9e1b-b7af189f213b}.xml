@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{60e2bdfe-12b2-41c4-9e1b-b7af189f213b}">
+		<property name="name">
+			<value>land_state</value>
+		</property>
+		<relationship name="folder">
+			<destination>{974ba3f7-c656-4298-a37e-a4bfb7ebe5c6}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7810b56a-ed42-4923-b2c3-c322f4804273}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7810b56a-ed42-4923-b2c3-c322f4804273}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>soft land</value>
+			<value>hard land</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

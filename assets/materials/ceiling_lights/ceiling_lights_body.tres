@@ -1,8 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ckt4biwyiidxf"]
 
 [ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_dwy88"]
-[ext_resource type="Texture2D" uid="uid://bry0y25qbcugs" path="res://assets/models/ceiling_lights/ceiling_lights_light.png" id="2_f8bq8"]
-[ext_resource type="Texture2D" uid="uid://bgw8iglqi402f" path="res://assets/models/ceiling_lights/ceiling_lights_light_Emissor.png" id="3_f8bq8"]
+[ext_resource type="Texture2D" uid="uid://duu4e1tau5wip" path="res://assets/models/ceiling_lights/light.png" id="2_f8bq8"]
+[ext_resource type="Texture2D" uid="uid://btys5jtat11r7" path="res://assets/models/ceiling_lights/light_Emissor.png" id="3_o2ryq"]
 
 [resource]
 render_priority = 0
@@ -20,7 +20,8 @@ shader_parameter/convert_vertex_colors = false
 shader_parameter/enable_affine_transform = true
 shader_parameter/use_emission = true
 shader_parameter/emission_color = Color(1, 1, 1, 1)
-shader_parameter/emission_strength = 1.0
+shader_parameter/emission_strength = 0.5
+shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = true
-shader_parameter/emission_mask_texture = ExtResource("3_f8bq8")
+shader_parameter/emission_mask_texture = ExtResource("3_o2ryq")
 shader_parameter/emission_threshold = 0.01
