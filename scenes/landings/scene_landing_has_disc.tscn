@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cvo84c50b4cim"]
+[gd_scene load_steps=26 format=4 uid="uid://cvo84c50b4cim"]
 
 [ext_resource type="PackedScene" uid="uid://dynksben166x4" path="res://scenes/landings/scene_landing_no_disc.tscn" id="1_ptb8r"]
 [ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="2_dxl58"]
@@ -6,7 +6,46 @@
 [ext_resource type="Material" uid="uid://cfwgnnw3bmb75" path="res://assets/materials/mat_landing_grass.tres" id="3_dxl58"]
 [ext_resource type="Script" uid="uid://cnigwmwopds1p" path="res://scripts/events/hook_outside_skybox.gd" id="3_hqrgt"]
 [ext_resource type="Script" uid="uid://c7i2fdw0frx02" path="res://scripts/events/spawner.gd" id="5_bhlwa"]
+[ext_resource type="Material" uid="uid://c6ag8pf8s1ve4" path="res://assets/materials/tv/mat_tv_noise.tres" id="6_sal82"]
 [ext_resource type="PackedScene" uid="uid://04l60axpwane" path="res://scenes/landings/scene_landing_outside_skybox.tscn" id="6_y7o3m"]
+[ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="9_758g3"]
+
+[sub_resource type="Gradient" id="Gradient_sal82"]
+offsets = PackedFloat32Array(0.0949367, 0.401899, 1)
+colors = PackedColorArray(0.822963, 0.558248, 0.230947, 0, 0.37, 0.2072, 0.074, 0.180392, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_758g3"]
+noise_type = 4
+frequency = 0.0267
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bi0ie"]
+in_3d_space = true
+color_ramp = SubResource("Gradient_sal82")
+noise = SubResource("FastNoiseLite_758g3")
+
+[sub_resource type="Gradient" id="Gradient_mvyly"]
+offsets = PackedFloat32Array(0.0949367, 0.218354, 1)
+colors = PackedColorArray(0.163107, 0.0587463, 0.00787864, 0, 0.148, 0.37, 0.074, 0.266667, 1, 1, 1, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_676x3"]
+in_3d_space = true
+color_ramp = SubResource("Gradient_mvyly")
+noise = SubResource("FastNoiseLite_758g3")
+
+[sub_resource type="Gradient" id="Gradient_oslnh"]
+offsets = PackedFloat32Array(0, 0.455696, 0.579114, 0.721519, 0.848101)
+colors = PackedColorArray(0, 0, 0, 0.0745098, 0.2, 0.2, 0.07, 0.490196, 0.723323, 0.681572, 0.287877, 0, 0.132194, 0.0689001, 0.00093639, 0.533333, 0.723323, 0.681572, 0.287877, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sliad"]
+noise_type = 4
+frequency = 0.0524
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m6f3e"]
+width = 128
+height = 128
+in_3d_space = true
+color_ramp = SubResource("Gradient_oslnh")
+noise = SubResource("FastNoiseLite_sliad")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hqrgt"]
 
@@ -33,28 +72,47 @@ shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = false
 shader_parameter/emission_threshold = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqrgt"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_dxl58")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = SubResource("PlaceholderTexture2D_hqrgt")
-shader_parameter/albedo_texture_as_primary_color = true
-shader_parameter/mix_factor = 1.0
-shader_parameter/texture_lod_halve_distance_override = 0.0
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_scroll_speed = Vector2(0, 0)
-shader_parameter/uv_scroll_frames = Vector2(0, 0)
-shader_parameter/cull_distance_override = 0.0
-shader_parameter/convert_vertex_colors = false
-shader_parameter/enable_affine_transform = false
-shader_parameter/use_emission = false
-shader_parameter/emission_color = Color(1, 1, 1, 1)
-shader_parameter/emission_strength = 1.0
-shader_parameter/use_emission_texture = false
-shader_parameter/use_emission_mask_texture = false
-shader_parameter/emission_threshold = 0.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqrgt"]
+resource_name = "mat_crt_screen"
+cull_mode = 2
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sal82"]
+_surfaces = [{
+"aabb": AABB(-0.814907, -0.577417, 0.183976, 1.62981, 1.15483, 0.337227),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAAQAAIAEAAAAAMAAQACABAAEAADAAQAAQAQABEABAAFABAAEQAQAAUABQAEAAYABQAGAAcAEQAFAAgAEQAKAAEACAASABEAEQASAAoACAAJABIACwASAAkAEgALAAwAEgAMAA0ADQAKABIACgANAA4ACgAOAA8A"),
+"lods": [0.142002, PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABAAFAAEABQAEAAYABQAGAAcAAQAFAAgACAAJAAEAAQAJAAoACQALAAwACQAMAA0ADQAKAAkACgANAA4ACgAOAA8A")],
+"name": "mat_crt_screen",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 19,
+"vertex_data": PackedByteArray("ifdnDgAAAAD/fwAAEL8AAMLBmQIiiAAApv0lJ4MAAAD///9/1h4AAMLBZf0iiAAApv3Z2IMAAACJ95fxAAAAAP9///8QvwAAPD5l/SKIAAA8PpkCIogAAHUIl/EAAAAAWALZ2IMAAAAAAP9/1h4AAFgCJSeDAAAAdQhnDgAAAAAaxP9/9MUAAP9//3///wAA5Dv/f/TFAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_758g3"]
+resource_name = "mdl_tv_screen_flipped_normal_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.814907, -0.577417, 0.183976, 1.62981, 1.15483, 0.337227),
+"attribute_data": PackedByteArray("T/pP+k/6T/r/f/7//3/+//+//v//v/7//v//3/7//9/+//9//v//f/+/AAD/vwAA/v//H/7//x9P+q8FT/qvBf9/AAD/fwAA/z8AAP8/AAD/P/7//z/+/68FrwWvBa8FAAD/HwAA/x8AAP9/AAD/fwAA/98AAP/frwVP+q8FT/r/v/9//7//f/+//v//v/7//z//f/8//3//f/9//3//f/9//3//f/9//38AAP9/AAD/v/9//7//f/9//3//f/9//z//f/8//3//f/7//3/+//+//3//v/9//3//f/9//3/+//9//v//f/+/AAD/vwAA/7//f/+//3//P/9//z//f/8/AAD/PwAAAAD/fwAA/3//P/7//z/+//8//3//P/9/"),
+"format": 34896613431,
+"index_count": 60,
+"index_data": PackedByteArray("AAAQABEAEAAAAAMAEAADAAQACAASABMACAAJABIAFAAFABUAFAAWAAUAFwAKAAEAFwAYAAoAGQAaABsAGQACABoAHAAdAB4AHQAcAAYAHQAGAAcACwAfACAAHwALAAwAHwAMACEADQAiACMAIgANAA4AIgAOAA8A"),
+"lods": [0.142002, PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABAAFAAEABQAEAAYABQAGAAcAAQAFAAgACAAJAAEAAQAJAAoACQALAAwACQAMAA0ADQAKAAkACgANAA4ACgAOAA8A")],
+"material": SubResource("StandardMaterial3D_hqrgt"),
+"name": "mat_crt_screen",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("ifdnDgAAiQX/fwAAEL/8BcLBmQIiiPwFpv0lJ4MALQX///9/1h4MBcLBZf0iiPIFpv3Z2IMA2wWJ95fxAADcBf9///8Qv/IFPD5l/SKI/AU8PpkCIojyBXUIl/EAAIkFWALZ2IMALQUAAP9/1h5gBVgCJSeDANsFdQhnDgAA3AUaxP9/9MViBcLBmQIiiNEF5Dv/f/TF7QX/f/9////jBf9//3///+4F/3///xC//AUaxP9/9MXjBf9//3///+4F5Dv/f/TF4wX/fwAAEL/yBRrE/3/0xe0F/3//f///4wX///9/1h5gBcLBZf0iiH0FGsT/f/TFDAXkO/9/9MViBTw+Zf0iiNEFAAD/f9YeDAU8PpkCIoh9BeQ7/3/0xQwFXP+pmvv0HX8d/wOL2f7UZDb+SWRyCjaA1xs4gtgbOYI0AI914QD7dIz1yH+iAFVlJQEqm6rlKIAn5MZ9JuTFfeD/tGX3/bGbFwBair4A/opXCup/AwvhgP4KQX+n9RSAAPW9gMr/b4rn/6R1QP8AdVQa1n9+GmaAtRs3fh4ASpoHAk1kyAG1m4DlmH9J5MeB")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sal82")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11qle"]
 resource_name = "mat_crt_screen"
@@ -79,7 +137,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_sal82"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_hqrgt"]
 resource_name = "mdl_tv_screen_flipped_normal_Cube_001"
 _surfaces = [{
 "aabb": AABB(-0.814907, -0.577417, 0.183976, 1.62981, 1.15483, 0.337227),
@@ -100,7 +158,8 @@ shadow_mesh = SubResource("ArrayMesh_d7ypc")
 
 [node name="scene_landing_has_disc" instance=ExtResource("1_ptb8r")]
 
-[node name="Ground" parent="." index="1"]
+[node name="Ground" parent="." index="2"]
+layers = 5
 surface_material_override/0 = ExtResource("3_dxl58")
 
 [node name="Lightbath" type="OmniLight3D" parent="." index="3"]
@@ -109,30 +168,57 @@ light_volumetric_fog_energy = 0.0
 omni_range = 80.0
 omni_attenuation = -0.46
 
-[node name="hide_until_activate" parent="." index="4"]
+[node name="Grime 1" type="Decal" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
+size = Vector3(86, 44, 109)
+texture_albedo = SubResource("NoiseTexture2D_bi0ie")
+upper_fade = 0.52233
+lower_fade = 0.791704
+cull_mask = 2
+
+[node name="Grime 2" type="Decal" parent="Grime 1" index="0"]
+transform = Transform3D(-0.866025, 0, -0.5, 4.37114e-08, -1, -7.57104e-08, -0.5, -8.74228e-08, 0.866025, 0, 0, 0)
+size = Vector3(86, 44, 109)
+texture_albedo = SubResource("NoiseTexture2D_676x3")
+upper_fade = 0.52233
+lower_fade = 0.791704
+cull_mask = 2
+
+[node name="Grime 3" type="Decal" parent="Grime 1/Grime 2" index="0"]
+transform = Transform3D(-0.866025, 0, -0.5, 4.37114e-08, -1, -7.57104e-08, -0.5, -8.74228e-08, 0.866025, 0, 22.5, 1.96701e-06)
+layers = 5
+size = Vector3(86, 21, 109)
+texture_albedo = SubResource("NoiseTexture2D_m6f3e")
+upper_fade = 0.52233
+lower_fade = 0.791704
+cull_mask = 4
+
+[node name="hide_until_activate" parent="." index="6"]
 script = ExtResource("3_hqrgt")
 
 [node name="Sky" parent="hide_until_activate" index="0"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+layers = 3
 surface_material_override/0 = ExtResource("2_f6751")
 
 [node name="Shade" parent="hide_until_activate/Sky" index="0"]
 visible = false
 
-[node name="obj_large_screen" parent="hide_until_activate" index="1" node_paths=PackedStringArray("screen_mesh")]
-screen_mesh = NodePath("mdl_tv_screen_flipped_normal/Screen/Screen")
+[node name="obj_large_screen" parent="hide_until_activate" index="1"]
 screen_material = SubResource("ShaderMaterial_dcgml")
 
 [node name="Screen" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal" index="0"]
+material_override = SubResource("ShaderMaterial_dcgml")
 material_overlay = null
-transparency = 0.99
 cast_shadow = 0
+mesh = SubResource("ArrayMesh_758g3")
 surface_material_override/0 = null
 
-[node name="Screen" type="MeshInstance3D" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal/Screen" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
-material_override = SubResource("ShaderMaterial_hqrgt")
-mesh = SubResource("ArrayMesh_sal82")
+[node name="NoiseScreen" type="MeshInstance3D" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal" index="1"]
+transform = Transform3D(1, 1.42109e-14, -8.52651e-14, 7.10543e-15, 1, -5.96046e-08, 5.68434e-14, 5.96046e-08, 1, 0, 0, -0.001)
+material_override = ExtResource("6_sal82")
+transparency = 0.99
+mesh = SubResource("ArrayMesh_hqrgt")
 skeleton = NodePath("")
 
 [node name="ManagedLight" parent="hide_until_activate/obj_large_screen" index="1"]
@@ -145,6 +231,21 @@ light_volumetric_fog_energy = 8.0
 [node name="landing_outside_skybox_root" type="Node3D" parent="hide_until_activate" index="2"]
 script = ExtResource("5_bhlwa")
 scene = ExtResource("6_y7o3m")
+
+[node name="Ceiling Light Root" type="Node3D" parent="." index="7"]
+transform = Transform3D(0.770746, 0, 0.770746, 0, 1.09, 0, -0.770746, 0, 0.770746, 0, 0, 0)
+
+[node name="Ceiling Light6" parent="Ceiling Light Root" index="0" instance=ExtResource("9_758g3")]
+transform = Transform3D(1.36603, -1.36603, 0.517638, 1.41421, 1.41421, 0, -0.366025, 0.366025, 1.93185, -22.7379, 27, 6.0926)
+
+[node name="Ceiling Light5" parent="Ceiling Light Root" index="1" instance=ExtResource("9_758g3")]
+transform = Transform3D(0.366025, -0.366025, 1.93185, 1.41421, 1.41421, 0, -1.36603, 1.36603, 0.517638, -6.0926, 27, 22.7379)
+
+[node name="Ceiling Light3" parent="Ceiling Light Root" index="2" instance=ExtResource("9_758g3")]
+transform = Transform3D(0.707107, -0.707107, -1.73205, 1.41421, 1.41421, 0, 1.22474, -1.22474, 1, -11.77, 27, -20.3862)
+
+[node name="Ceiling Light2" parent="Ceiling Light Root" index="3" instance=ExtResource("9_758g3")]
+transform = Transform3D(-1.22475, 1.22475, 1, 1.41421, 1.41421, 0, -0.707107, 0.707107, -1.73205, 20.3862, 27, 11.77)
 
 [connection signal="on_activate" from="." to="hide_until_activate" method="activate"]
 
