@@ -27,6 +27,7 @@ size = Vector3(1.5, 2.25, 1)
 process_priority = 100
 process_physics_priority = 100
 script = ExtResource("1_f7fpi")
+portal_camera_use_layer = 1
 _portal_thickness = 0.2
 _portal_mesh_path = NodePath("Portal3D_Mesh")
 _teleport_area_path = NodePath("TeleportArea")

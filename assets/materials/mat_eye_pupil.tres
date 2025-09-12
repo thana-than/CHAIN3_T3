@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://27kx5gin752y"]
+
+[ext_resource type="Shader" uid="uid://ce30qoo5h1bid" path="res://ursc/spatial/standard/standard_transparent.gdshader" id="1_3ohsk"]
+
+[sub_resource type="Gradient" id="Gradient_yrs80"]
+offsets = PackedFloat32Array(0, 0.114583, 0.152778, 0.222222, 0.260417)
+colors = PackedColorArray(0, 0, 0, 1, 0.95, 0.285, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0.584314, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_omfgm"]
+gradient = SubResource("Gradient_yrs80")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.525641)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3ohsk")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = SubResource("GradientTexture2D_omfgm")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
