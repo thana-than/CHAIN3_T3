@@ -1,13 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://kmt7snac2yda"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b6qd30mcn3eoo"]
 
-[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_31kwc"]
-[ext_resource type="Texture2D" uid="uid://2q3eefhpp44j" path="res://assets/models/tree/psx_dead_tree_pack_0.jpg" id="2_qykdp"]
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_3iok0"]
+[ext_resource type="Texture2D" uid="uid://cx23yx5xl0fl3" path="res://assets/models/camper/psx_low-poly_camper_van_0.png" id="2_3iok0"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_31kwc")
+shader = ExtResource("1_3iok0")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("2_qykdp")
+shader_parameter/albedo_texture = ExtResource("2_3iok0")
 shader_parameter/albedo_texture_as_primary_color = true
 shader_parameter/mix_factor = 1.0
 shader_parameter/texture_lod_halve_distance_override = 0.0

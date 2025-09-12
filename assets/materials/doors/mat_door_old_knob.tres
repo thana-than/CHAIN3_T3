@@ -1,13 +1,24 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://kmt7snac2yda"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://biviv1fmipvel"]
 
-[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_31kwc"]
-[ext_resource type="Texture2D" uid="uid://2q3eefhpp44j" path="res://assets/models/tree/psx_dead_tree_pack_0.jpg" id="2_qykdp"]
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_ccmyt"]
+
+[sub_resource type="Gradient" id="Gradient_ldyw6"]
+colors = PackedColorArray(0.687215, 0.687215, 0.687215, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ccmyt"]
+frequency = 0.4846
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2qfi8"]
+width = 256
+height = 256
+color_ramp = SubResource("Gradient_ldyw6")
+noise = SubResource("FastNoiseLite_ccmyt")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_31kwc")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("2_qykdp")
+shader = ExtResource("1_ccmyt")
+shader_parameter/albedo_color = Color(0.162574, 0.130758, 0.0176473, 1)
+shader_parameter/albedo_texture = SubResource("NoiseTexture2D_2qfi8")
 shader_parameter/albedo_texture_as_primary_color = true
 shader_parameter/mix_factor = 1.0
 shader_parameter/texture_lod_halve_distance_override = 0.0

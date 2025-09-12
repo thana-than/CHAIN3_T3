@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvo84c50b4cim"]
+[gd_scene load_steps=14 format=4 uid="uid://cvo84c50b4cim"]
 
 [ext_resource type="PackedScene" uid="uid://dynksben166x4" path="res://scenes/landings/scene_landing_no_disc.tscn" id="1_ptb8r"]
 [ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="2_dxl58"]
@@ -33,6 +33,71 @@ shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = false
 shader_parameter/emission_threshold = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqrgt"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_dxl58")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = SubResource("PlaceholderTexture2D_hqrgt")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11qle"]
+resource_name = "mat_crt_screen"
+cull_mode = 2
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d7ypc"]
+_surfaces = [{
+"aabb": AABB(-0.814907, -0.577417, 0.183976, 1.62981, 1.15483, 0.337227),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAAQAAIAEAAAAAMAAQACABAAEAADAAQAAQAQABEABAAFABAAEQAQAAUABQAEAAYABQAGAAcAEQAFAAgAEQAKAAEACAASABEAEQASAAoACAAJABIACwASAAkAEgALAAwAEgAMAA0ADQAKABIACgANAA4ACgAOAA8A"),
+"lods": [0.142002, PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABAAFAAEABQAEAAYABQAGAAcAAQAFAAgACAAJAAEAAQAJAAoACQALAAwACQAMAA0ADQAKAAkACgANAA4ACgAOAA8A")],
+"name": "mat_crt_screen",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 19,
+"vertex_data": PackedByteArray("ifdnDgAAAAD/fwAAEL8AAMLBmQIiiAAApv0lJ4MAAAD///9/1h4AAMLBZf0iiAAApv3Z2IMAAACJ95fxAAAAAP9///8QvwAAPD5l/SKIAAA8PpkCIogAAHUIl/EAAAAAWALZ2IMAAAAAAP9/1h4AAFgCJSeDAAAAdQhnDgAAAAAaxP9/9MUAAP9//3///wAA5Dv/f/TFAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sal82"]
+resource_name = "mdl_tv_screen_flipped_normal_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.814907, -0.577417, 0.183976, 1.62981, 1.15483, 0.337227),
+"attribute_data": PackedByteArray("T/pP+k/6T/r/f/7//3/+//+//v//v/7//v//3/7//9/+//9//v//f/+/AAD/vwAA/v//H/7//x9P+q8FT/qvBf9/AAD/fwAA/z8AAP8/AAD/P/7//z/+/68FrwWvBa8FAAD/HwAA/x8AAP9/AAD/fwAA/98AAP/frwVP+q8FT/r/v/9//7//f/+//v//v/7//z//f/8//3//f/9//3//f/9//3//f/9//38AAP9/AAD/v/9//7//f/9//3//f/9//z//f/8//3//f/7//3/+//+//3//v/9//3//f/9//3/+//9//v//f/+/AAD/vwAA/7//f/+//3//P/9//z//f/8/AAD/PwAAAAD/fwAA/3//P/7//z/+//8//3//P/9/"),
+"format": 34896613431,
+"index_count": 60,
+"index_data": PackedByteArray("AAAQABEAEAAAAAMAEAADAAQACAASABMACAAJABIAFAAFABUAFAAWAAUAFwAKAAEAFwAYAAoAGQAaABsAGQACABoAHAAdAB4AHQAcAAYAHQAGAAcACwAfACAAHwALAAwAHwAMACEADQAiACMAIgANAA4AIgAOAA8A"),
+"lods": [0.142002, PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABAAFAAEABQAEAAYABQAGAAcAAQAFAAgACAAJAAEAAQAJAAoACQALAAwACQAMAA0ADQAKAAkACgANAA4ACgAOAA8A")],
+"material": SubResource("StandardMaterial3D_11qle"),
+"name": "mat_crt_screen",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("ifdnDgAAiQX/fwAAEL/8BcLBmQIiiPwFpv0lJ4MALQX///9/1h4MBcLBZf0iiPIFpv3Z2IMA2wWJ95fxAADcBf9///8Qv/IFPD5l/SKI/AU8PpkCIojyBXUIl/EAAIkFWALZ2IMALQUAAP9/1h5gBVgCJSeDANsFdQhnDgAA3AUaxP9/9MViBcLBmQIiiNEF5Dv/f/TF7QX/f/9////jBf9//3///+4F/3///xC//AUaxP9/9MXjBf9//3///+4F5Dv/f/TF4wX/fwAAEL/yBRrE/3/0xe0F/3//f///4wX///9/1h5gBcLBZf0iiH0FGsT/f/TFDAXkO/9/9MViBTw+Zf0iiNEFAAD/f9YeDAU8PpkCIoh9BeQ7/3/0xQwFXP+pmvv0HX8d/wOL2f7UZDb+SWRyCjaA1xs4gtgbOYI0AI914QD7dIz1yH+iAFVlJQEqm6rlKIAn5MZ9JuTFfeD/tGX3/bGbFwBair4A/opXCup/AwvhgP4KQX+n9RSAAPW9gMr/b4rn/6R1QP8AdVQa1n9+GmaAtRs3fh4ASpoHAk1kyAG1m4DlmH9J5MeB")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_d7ypc")
+
 [node name="scene_landing_has_disc" instance=ExtResource("1_ptb8r")]
 
 [node name="Ground" parent="." index="1"]
@@ -54,13 +119,21 @@ surface_material_override/0 = ExtResource("2_f6751")
 [node name="Shade" parent="hide_until_activate/Sky" index="0"]
 visible = false
 
-[node name="obj_large_screen" parent="hide_until_activate" index="1"]
+[node name="obj_large_screen" parent="hide_until_activate" index="1" node_paths=PackedStringArray("screen_mesh")]
+screen_mesh = NodePath("mdl_tv_screen_flipped_normal/Screen/Screen")
 screen_material = SubResource("ShaderMaterial_dcgml")
 
 [node name="Screen" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal" index="0"]
-material_override = SubResource("ShaderMaterial_dcgml")
 material_overlay = null
+transparency = 0.99
+cast_shadow = 0
 surface_material_override/0 = null
+
+[node name="Screen" type="MeshInstance3D" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal/Screen" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
+material_override = SubResource("ShaderMaterial_hqrgt")
+mesh = SubResource("ArrayMesh_sal82")
+skeleton = NodePath("")
 
 [node name="ManagedLight" parent="hide_until_activate/obj_large_screen" index="1"]
 flicker_amp = 0.0

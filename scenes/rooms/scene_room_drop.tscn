@@ -63,7 +63,7 @@ radius = 45.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_48eor"]
 size = Vector3(40, 338, 55)
 
-[node name="room_drop" type="Node3D"]
+[node name="room_T4" type="Node3D"]
 script = ExtResource("1_bonpo")
 cull_distance = 200.0
 
@@ -126,7 +126,6 @@ debug_color = Color(0.784118, 0.234851, 0.894778, 0.42)
 transform = Transform3D(-1, 3.55271e-15, 8.74228e-08, 8.44439e-08, 0.258819, 0.965926, -2.26267e-08, 0.965926, -0.258819, 0, -89.8, 0.25)
 exit_portal = NodePath("../../LandingPortal")
 start_deactivated = true
-metadata/_edit_group_ = true
 
 [node name="Door Open" type="Node3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725256, -1.11572, -0.049408)
@@ -160,7 +159,6 @@ _teleport_area_path = NodePath("TeleportArea2")
 _teleport_collider_path = NodePath("TeleportArea2/Collider")
 exit_portal = NodePath("../Fall/FallPortal")
 start_deactivated = true
-metadata/_edit_group_ = true
 
 [node name="TeleportArea2" type="Area3D" parent="Environment/LandingPortal"]
 
@@ -174,7 +172,7 @@ scene_no_disc = ExtResource("12_cqmcx")
 scene_has_disc = ExtResource("13_cefjk")
 
 [node name="door_enter" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 0)
 
 [node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
