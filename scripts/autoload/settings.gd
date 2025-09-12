@@ -2,6 +2,9 @@ extends Node
 #TODO audio section with FMOD
 #TODO control section for mouse sensitivity
 
+signal mouse_sensitivity_changed(value: float)
+signal joystick_sensitivity_changed(value: float)
+
 #region Fields
 var _section_display = "Display"
 var _section_audio = "Audio"
@@ -13,6 +16,14 @@ var logger := Logger.new("Settings")
 #endregion
 
 #region Properties
+
+## option_ prefixed parameters is set on _ready() as they indicate a shortcut to another setting
+var option_fullscreen: bool:
+	set(fullscreen):
+		setting_window_mode = DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN if fullscreen else DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN
+	get:
+		return setting_window_mode == DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN || setting_window_mode == DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN
+
 var setting_window_mode: DisplayServer.WindowMode:
 	set(window_mode):
 		Config.set_value(_section_display, "window_mode", window_mode)
@@ -37,12 +48,14 @@ var setting_screen_index: int:
 var setting_joystick_sensitivity : float:
 	set(sensitivity):
 		Config.set_value(_section_controls, "joystick_sensitivity", sensitivity)
+		joystick_sensitivity_changed.emit(sensitivity)
 	get:
 		return Config.get_value(_section_controls, "joystick_sensitivity", 1.0)
 		
 var setting_mouse_sensitivity : float:
 	set(sensitivity):
 		Config.set_value(_section_controls, "mouse_sensitivity", sensitivity)
+		mouse_sensitivity_changed.emit(sensitivity)
 	get:
 		return Config.get_value(_section_controls, "mouse_sensitivity", 2.0)
 		
@@ -51,23 +64,21 @@ var setting_master_volume : float:
 		Config.set_value(_section_audio, "volume_master", volume)
 		set_volume("Master Volume", volume)
 	get:
-		return Config.get_value(_section_audio, "volume_master", 0.7)
+		return Config.get_value(_section_audio, "volume_master", 1.0)
 		
 var setting_music_volume : float:
 	set(volume):
 		Config.set_value(_section_audio, "volume_music", volume)
 		set_volume("Music Volume", volume)
 	get:
-		return Config.get_value(_section_audio, "volume_music", 1.0)
+		return Config.get_value(_section_audio, "volume_music", 0.7)
 
 var setting_sfx_volume : float:
 	set(volume):
 		Config.set_value(_section_audio, "volume_sfx", volume)
 		set_volume("SFX Volume", volume)
-		set_volume("UI Volume", volume)
-		set_volume("VO Volume", volume)
 	get:
-		return Config.get_value(_section_audio, "volume_sfx", 1.0)
+		return Config.get_value(_section_audio, "volume_sfx", 0.7)
 #endregion
 
 #region Methods

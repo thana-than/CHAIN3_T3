@@ -8,6 +8,15 @@ class_name CharacterController3D
 ## function when a move accumulator for a step has ended.
 signal stepped
 
+## Emitted after leaving the ground
+signal fall_started
+
+## Emitted after being in the air for [long_fall] amount of time
+signal long_fall_started
+
+## Emitted after landing from a long fall - occurs before [landed]
+signal long_fall_landed
+
 ## Emitted when touching the ground after being airborne, called in the 
 ## [b]move()[/b] function.
 signal landed
@@ -161,6 +170,11 @@ var _next_step: float = 0
 ## Character controller horizontal speed.
 var _horizontal_velocity: Vector3
 
+
+var _in_long_fall := false
+
+@export var start_long_fall_after_seconds = 1.0
+
 ## Base transform node to direct player movement
 ## Used to differentiate fly mode/swim moves from regular character movement.
 var _direction_base_node: Node3D
@@ -205,6 +219,8 @@ var _last_is_on_floor := false
 ## Default controller height, affects collider
 var _default_height: float
 
+## Allows us to avoid emitting the landed signal for a bit (for instance, initialization)
+@onready var ignore_landed_signal_timer := Timer.new()
 
 ## Loads all character controller skills and sets necessary variables
 func setup():
@@ -213,14 +229,20 @@ func setup():
 	_default_height = collision.shape.height
 	_connect_signals()
 	_start_variables()
-
+	add_child(ignore_landed_signal_timer)
+	_start_ignore_landed_signal_timer()
+	
+func _start_ignore_landed_signal_timer():
+	ignore_landed_signal_timer.wait_time = .5
+	ignore_landed_signal_timer.one_shot = true
+	ignore_landed_signal_timer.start()
 
 ## Moves the character controller.
 ## parameters are inputs that are sent to be handled by all abilities.
 func move(_delta: float, input_axis := Vector2.ZERO, input_jump := false, input_crouch := false, input_sprint := false, input_swim_down := false, input_swim_up := false) -> void:
 	var direction = _direction_input(input_axis, input_swim_down, input_swim_up, _direction_base_node)
 	if not swim_ability.is_floating():
-		_check_landed()
+		_check_floor_state()
 	if velocity.y > -gravity_max and not jump_ability.is_actived() and not is_fly_mode() and not is_submerged() and not is_floating():
 		var multiplier = gravity_multiplier
 		for ability in _abilities:
@@ -242,16 +264,25 @@ func move(_delta: float, input_axis := Vector2.ZERO, input_jump := false, input_
 	for ability in _abilities:
 		velocity = ability.apply(velocity, speed, is_on_floor(), direction, _delta)
 		
-	if is_on_floor():
-		fall_time = 0.0
-	else:
-		fall_time += _delta
+	fall_check(_delta)
 	
 	move_and_slide()
 	_horizontal_velocity = Vector3(velocity.x, 0.0, velocity.z)
 	
 	if not is_fly_mode() and not swim_ability.is_floating() and not swim_ability.is_submerged():
 		_check_step(_delta)
+
+func fall_check(_delta : float):
+	if is_on_floor():
+		fall_time = 0.0
+	else:
+		fall_time += _delta
+		
+	var prev_in_long_fall = _in_long_fall
+	_in_long_fall = fall_time > start_long_fall_after_seconds
+	if _in_long_fall and not prev_in_long_fall:
+		long_fall_started.emit()
+
 
 
 ## Returns true if the character controller is crouched
@@ -337,10 +368,14 @@ func _start_variables():
 	swim_ability.submerged_speed_multiplier = submerged_speed_multiplier
 
 
-func _check_landed():
-	if is_on_floor() and not _last_is_on_floor:
-		_on_landed()
-		_reset_step()
+func _check_floor_state():
+	if is_on_floor() != _last_is_on_floor:
+		if is_on_floor():
+			if ignore_landed_signal_timer.is_stopped():
+				_on_landed()
+			_reset_step()
+		else:
+			fall_started.emit()
 	_last_is_on_floor = is_on_floor()
 	
 
@@ -414,6 +449,9 @@ func _on_jumped():
 
 
 func _on_landed():
+	if _in_long_fall:
+		emit_signal("long_fall_landed")
+		_in_long_fall = false
 	emit_signal("landed")
 
 

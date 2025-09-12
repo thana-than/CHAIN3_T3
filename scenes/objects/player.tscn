@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2oxdgu03lnbk"]
+[gd_scene load_steps=15 format=3 uid="uid://2oxdgu03lnbk"]
 
 [ext_resource type="PackedScene" uid="uid://8oy3xm2sff8" path="res://addons/character-controller/fps/fps_controller_3d.tscn" id="1_54rde"]
 [ext_resource type="Script" uid="uid://b1l8cxk2wm3p1" path="res://addons/character-controller/example/main/player.gd" id="2_q8hb4"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b3v0flhlu1vtr" path="res://scenes/objects/UI/HUD.tscn" id="7_2rlf8"]
 [ext_resource type="Resource" uid="uid://c55hkwojl0cgb" path="res://assets/resources/camera/settings_camera_main.tres" id="7_dunks"]
 [ext_resource type="PackedScene" uid="uid://ckktp5vqrjk0t" path="res://scenes/volumetrics/partsys_falling.tscn" id="10_4c2uj"]
+[ext_resource type="Script" uid="uid://5jbcjkbrtxe5" path="res://scripts/animation/motion_sway.gd" id="11_dunks"]
+[ext_resource type="Script" uid="uid://d2wivcj4mv8ah" path="res://scripts/audio_emitters/footstep_emitter.gd" id="12_68atb"]
+[ext_resource type="Resource" uid="uid://cjfosfe8fpamv" path="res://assets/resources/audio_events/SFX_Player_Footsteps.tres" id="13_2lybl"]
 
 [sub_resource type="Resource" id="Resource_68atb"]
 script = ExtResource("6_4c2uj")
@@ -34,7 +37,6 @@ input_jump_action_name = "move_jump"
 input_crouch_action_name = "move_crouch"
 input_fly_mode_action_name = "move_fly_mode"
 underwater_env = ExtResource("3_ksjmp")
-start_fall_particles_after_seconds = 1.0
 mouse_sensitivity_multiplier = 1.0
 joystick_sensitivity_multiplier = 1.0
 vertical_angle_limit = 85.0
@@ -42,7 +44,8 @@ rotation_to_move = false
 angle_limit_for_rotation = 0.02
 speed = 5.0
 sprint_speed_multiplier = 1.33
-step_interval = 2.5
+step_lengthen = 1.0
+step_interval = 3.0
 jump_height = 5.0
 abilities_path = Array[NodePath]([NodePath("Crouch Ability 3D"), NodePath("Sprint Ability 3D"), NodePath("Walk Ability 3D"), NodePath("Jump Ability 3D"), NodePath("Fly Ability 3D"), NodePath("Swim Ability 3D"), NodePath("Gravity Ability 3D")])
 
@@ -50,6 +53,7 @@ abilities_path = Array[NodePath]([NodePath("Crouch Ability 3D"), NodePath("Sprin
 script = ExtResource("4_2rlf8")
 
 [node name="Head Bob" parent="Head" index="0"]
+bob_range = Vector2(0.07, 0.2)
 curve_multiplier = Vector2(1, 1)
 
 [node name="PhantomCamera3D" type="Node3D" parent="Head/FirstPersonCameraReference" index="0"]
@@ -71,5 +75,40 @@ script = ExtResource("6_ksjmp")
 [node name="FallingParticles" parent="." index="12" instance=ExtResource("10_4c2uj")]
 emitting = false
 
+[node name="Motion Sway" type="Node3D" parent="." index="13"]
+script = ExtResource("11_dunks")
+
+[node name="Footstep Emitter" type="Node3D" parent="." index="14"]
+script = ExtResource("12_68atb")
+audio_event_resource = ExtResource("13_2lybl")
+
+[node name="Jump" type="FmodEventEmitter2D" parent="." index="15"]
+event_name = "event:/SFX/Player/Jump"
+event_guid = "{a33c7701-13a5-40e8-859e-ac0398ed1e4c}"
+fmod_parameters/jump_land_state/id = 7190312413333537063
+fmod_parameters/jump_land_state = "Jump"
+fmod_parameters/jump_land_state/labels = PackedStringArray("Jump", "Land")
+fmod_parameters/jump_land_state/variant_type = 4
+
+[node name="Land" type="FmodEventEmitter2D" parent="." index="16"]
+event_name = "event:/SFX/Player/Land"
+event_guid = "{d4b4f519-e081-4ce1-bc00-e17458aebbd5}"
+fmod_parameters/land_state/id = -4688135898146721294
+fmod_parameters/land_state = "soft land"
+fmod_parameters/land_state/labels = PackedStringArray("soft land", "hard land")
+fmod_parameters/land_state/variant_type = 4
+
+[node name="Fall" type="FmodEventEmitter2D" parent="." index="17"]
+event_name = "event:/SFX/Falling"
+event_guid = "{1a0f09d3-5ad7-45d2-80a1-dbb3f4cfa4f3}"
+
+[connection signal="fall_started" from="." to="Land" method="set_parameter" binds= ["land_state", "soft land"]]
+[connection signal="jumped" from="." to="Jump" method="play_one_shot"]
+[connection signal="landed" from="." to="FallingParticles" method="set_emitting" binds= [false]]
+[connection signal="landed" from="." to="Land" method="play" binds= [true]]
+[connection signal="long_fall_landed" from="." to="Fall" method="stop"]
+[connection signal="long_fall_started" from="." to="Fall" method="play"]
+[connection signal="long_fall_started" from="." to="FallingParticles" method="set_emitting" binds= [true]]
+[connection signal="long_fall_started" from="." to="Land" method="set_parameter" binds= ["land_state", "hard land"]]
 [connection signal="on_focus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_focus"]
 [connection signal="on_unfocus" from="Head/RayCastInteractor" to="HUD" method="_interactor_on_unfocus"]

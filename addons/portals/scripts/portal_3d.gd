@@ -685,7 +685,7 @@ func _on_teleport_body_exited(body: Node3D) -> void:
 	_erase_tp_metadata(body.get_instance_id())
 
 func _on_window_resize() -> void:
-	if portal_viewport:
+	if portal_viewport and is_inside_tree():
 		portal_viewport.size = _calculate_viewport_size()
 
 #endregion
