@@ -138,6 +138,16 @@ uniform bool use_emission = false;
 uniform vec3 emission_color: source_color = vec3(1.0, 1.0, 1.0);
 uniform float emission_strength : hint_range(0.0, 8.0, 0.05) = 1.0;
 
+uniform bool use_emission_texture = false;
+uniform sampler2D emission_texture :
+		source_color,
+		filter_nearest,
+	#if defined(TEXTURE_REPEAT)
+		repeat_enable;
+	#else
+		repeat_disable;
+	#endif
+
 uniform bool use_emission_mask_texture = false;
 uniform sampler2D emission_mask_texture: filter_nearest, repeat_disable;
 uniform float emission_threshold : hint_range(0.0, 1.0, 0.01) = 0.00;
@@ -436,7 +446,15 @@ void fragment()
 		} else {
 			mask = sampled_color.a;
 		}
-		vec3 emissive = emission_color * mask;
+		
+		vec3 e_col = emission_color;
+		if (use_emission_texture)
+		{
+			vec4 sampled_emissive = texture(emission_texture, uv);
+			e_col = vec3(sampled_emissive.r, sampled_emissive.g, sampled_emissive.b);
+		}
+		
+		vec3 emissive = e_col * mask;
 		EMISSION = emissive * emission_strength;
 	}
 
