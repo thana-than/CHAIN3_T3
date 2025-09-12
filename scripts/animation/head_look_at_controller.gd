@@ -44,7 +44,8 @@ func _ready() -> void:
 	_timer.timeout.connect(clear_look)
 	
 	# connect interactable signal to _on_interact
-	interactable.interacted.connect(_on_interacted)
+	if interactable:
+		interactable.interacted.connect(_on_interacted)
 
 #region public api
 
