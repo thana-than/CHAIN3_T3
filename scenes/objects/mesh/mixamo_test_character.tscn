@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqdcwxyw2er0p"]
+[gd_scene load_steps=18 format=3 uid="uid://bqdcwxyw2er0p"]
 
 [ext_resource type="PackedScene" uid="uid://d4imq1dqlcmdg" path="res://assets/models/prototype/mixamo_test_character/mixamo_test_character.fbx" id="1_1ndfd"]
 [ext_resource type="AnimationLibrary" uid="uid://cdlr0yiu6simk" path="res://assets/animations/All_Animations.tres" id="2_xn525"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="7_yq4fg"]
 [ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="8_c2pgk"]
 [ext_resource type="Script" uid="uid://pqedudvcybfr" path="res://scripts/animation/head_look_at_controller.gd" id="9_xyxy0"]
+[ext_resource type="Shader" uid="uid://c5dekd5fepgnf" path="res://ursc/spatial/mosaic_censor.gdshader" id="10_t55me"]
 
 [sub_resource type="Animation" id="Animation_7yojq"]
 resource_name = "Take 001"
@@ -699,6 +700,11 @@ metadata/_custom_type_script = "uid://d4mre44gaciao"
 radius = 0.34088
 height = 1.56803
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq4fg"]
+render_priority = 0
+shader = ExtResource("10_t55me")
+shader_parameter/mosaic_pixel_size = 8.0
+
 [node name="mixamo_test_character_mesh" instance=ExtResource("1_1ndfd")]
 
 [node name="Skeleton3D" parent="." index="0"]
@@ -781,3 +787,8 @@ skeleton = NodePath("../Skeleton3D")
 interactable = NodePath("../DialogueInteractable")
 follow_seconds = 10.0
 metadata/_custom_type_script = "uid://pqedudvcybfr"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17541, -0.171441)
+size = Vector3(0.25, 0.25, 0.25)
+material = SubResource("ShaderMaterial_yq4fg")
