@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr8dicw0xyaf2"]
+[gd_scene load_steps=13 format=3 uid="uid://bke355frrrhip"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_aoxg3"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_3epuy"]

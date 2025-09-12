@@ -1,0 +1,41 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cfwgnnw3bmb75"]
+
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_luxd3"]
+
+[sub_resource type="Gradient" id="Gradient_luxd3"]
+offsets = PackedFloat32Array(0, 0.210728, 0.59387, 1)
+colors = PackedColorArray(0.251909, 0.198598, 0.0415434, 1, 0.344436, 0.407082, 0.178638, 1, 0.450705, 0.489579, 0.216653, 1, 0.578297, 0.705338, 0.193225, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yfyph"]
+noise_type = 4
+frequency = 0.2291
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oi0j5"]
+width = 128
+height = 128
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_luxd3")
+noise = SubResource("FastNoiseLite_yfyph")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_luxd3")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = SubResource("NoiseTexture2D_oi0j5")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0

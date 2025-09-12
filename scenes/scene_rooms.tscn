@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dogdtfihjht4g"]
+[gd_scene load_steps=11 format=3 uid="uid://dogdtfihjht4g"]
 
 [ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="1_5lcb8"]
 [ext_resource type="PackedScene" uid="uid://cr6dlu3tq7xfg" path="res://scenes/rooms/scene_room_s2.tscn" id="2_f13jm"]
 [ext_resource type="PackedScene" uid="uid://bs7vs2a5pvm87" path="res://scenes/rooms/scene_room_drop.tscn" id="3_34pdu"]
-[ext_resource type="PackedScene" uid="uid://cr8dicw0xyaf2" path="res://scenes/rooms/scene_room_t4.tscn" id="4_doiwo"]
 [ext_resource type="PackedScene" uid="uid://0vkqyc06mhrf" path="res://scenes/objects/obj_portal.tscn" id="4_ggaeg"]
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="5_83fnd"]
 [ext_resource type="PackedScene" uid="uid://bx5tm3fmqdsxv" path="res://scenes/rooms/scene_room_u1.tscn" id="5_bynuf"]
@@ -19,68 +18,34 @@ script = ExtResource("1_5lcb8")
 
 [node name="room_S2" parent="." instance=ExtResource("2_f13jm")]
 
-[node name="room_drop" parent="." instance=ExtResource("3_34pdu")]
+[node name="room_T4" parent="." instance=ExtResource("3_34pdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
 
-[node name="portal_crt" parent="room_drop" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101, 0, -25.25)
+[node name="portal_hospital" parent="room_T4" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 25)
 door_mesh_node = NodePath("obj_door_proto")
 
-[node name="obj_door_proto" parent="room_drop/portal_crt" instance=ExtResource("5_83fnd")]
+[node name="obj_door_proto" parent="room_T4/portal_hospital" instance=ExtResource("5_83fnd")]
 
-[node name="to_crt" parent="room_drop/portal_crt" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, -0.125018)
-exit_portal = NodePath("../../portal_crt_to_landing")
-metadata/_edit_group_ = true
-
-[node name="Door Light" type="SpotLight3D" parent="room_drop/portal_crt"]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
-light_energy = 2.89035
-spot_attenuation = 0.29
-
-[node name="portal_hospital" parent="room_drop" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 110, 0, 23.75)
-door_mesh_node = NodePath("obj_door_proto")
-
-[node name="obj_door_proto" parent="room_drop/portal_hospital" instance=ExtResource("5_83fnd")]
-
-[node name="to_hospital" parent="room_drop/portal_hospital" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
+[node name="to_hospital" parent="room_T4/portal_hospital" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 1.125, -0.12809)
 exit_portal = NodePath("../../portal_hospital_to_landing")
-metadata/_edit_group_ = true
 
-[node name="Door Light" type="SpotLight3D" parent="room_drop/portal_hospital"]
+[node name="Door Light" type="SpotLight3D" parent="room_T4/portal_hospital"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
 light_energy = 2.89035
 spot_attenuation = 0.29
 
-[node name="portal_crt_to_landing" parent="room_drop" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 150, 1.125, -10.8)
-exit_portal = NodePath("../portal_crt/to_crt")
-metadata/_edit_group_ = true
-
-[node name="InteractableLink" parent="room_drop/portal_crt_to_landing" instance=ExtResource("7_b2dtt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)
-
-[node name="InteractionArea" type="CollisionShape3D" parent="room_drop/portal_crt_to_landing/InteractableLink"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_3lafk")
-
-[node name="portal_hospital_to_landing" parent="room_drop" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
+[node name="portal_hospital_to_landing" parent="room_T4" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 1.125, -6.1)
 exit_portal = NodePath("../portal_hospital/to_hospital")
-metadata/_edit_group_ = true
 
-[node name="InteractableLink" parent="room_drop/portal_hospital_to_landing" instance=ExtResource("7_b2dtt")]
+[node name="InteractableLink" parent="room_T4/portal_hospital_to_landing" instance=ExtResource("7_b2dtt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)
 
-[node name="InteractionArea" type="CollisionShape3D" parent="room_drop/portal_hospital_to_landing/InteractableLink"]
+[node name="InteractionArea" type="CollisionShape3D" parent="room_T4/portal_hospital_to_landing/InteractableLink"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("BoxShape3D_3lafk")
-
-[node name="room_T4" parent="." instance=ExtResource("4_doiwo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
-cull_distance = 90.0
 
 [node name="room_link_back" parent="." instance=ExtResource("5_doiwo")]
 transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 150, 0, 25)
@@ -90,5 +55,4 @@ cull_distance = 90.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 150, 0, 45)
 cull_distance = 90.0
 
-[connection signal="interacted" from="room_drop/portal_crt_to_landing/InteractableLink" to="room_drop/portal_crt" method="toggle_open"]
-[connection signal="interacted" from="room_drop/portal_hospital_to_landing/InteractableLink" to="room_drop/portal_hospital" method="toggle_open"]
+[connection signal="interacted" from="room_T4/portal_hospital_to_landing/InteractableLink" to="room_T4/portal_hospital" method="toggle_open"]

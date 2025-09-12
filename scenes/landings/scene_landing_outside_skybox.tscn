@@ -1,0 +1,260 @@
+[gd_scene load_steps=24 format=4 uid="uid://04l60axpwane"]
+
+[ext_resource type="Script" uid="uid://br66brmjsnacl" path="res://scripts/events/follow_relative_player.gd" id="1_kr2gr"]
+[ext_resource type="Shader" uid="uid://d3hi03pvfqd0e" path="res://ursc/spatial/flat_sky.gdshader" id="2_kr2gr"]
+[ext_resource type="Texture2D" uid="uid://b8it0g2o2nd45" path="res://assets/textures/sky/Gradient Sky/Gradient_Sky-Blue_04-512x512.png" id="3_kr2gr"]
+[ext_resource type="Shader" uid="uid://ce30qoo5h1bid" path="res://ursc/spatial/standard/standard_transparent.gdshader" id="4_cu11h"]
+[ext_resource type="PackedScene" uid="uid://buo5ms648g765" path="res://assets/models/tree/psx_dead_tree_pack.glb" id="5_7awiu"]
+[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_ibo6s"]
+[ext_resource type="PackedScene" uid="uid://dqt50c718861p" path="res://assets/models/door/model_door_old.glb" id="7_ttya4"]
+[ext_resource type="Material" uid="uid://cfwgnnw3bmb75" path="res://assets/materials/mat_landing_grass.tres" id="8_p3s0o"]
+[ext_resource type="Script" uid="uid://c85dht1emjd6a" path="res://scripts/chain3/chain3_exit_trigger.gd" id="9_ttya4"]
+[ext_resource type="Resource" uid="uid://d2d5eiuxkjc7f" path="res://assets/resources/doors/door_T4.tres" id="10_0ak64"]
+[ext_resource type="Script" uid="uid://cg4to6v7xjlug" path="res://scripts/lighting/managed_light.gd" id="11_0ak64"]
+[ext_resource type="PackedScene" uid="uid://crgott6sqlbb4" path="res://assets/models/camper/psx_low-poly_camper_van.glb" id="12_owdb1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cu11h"]
+render_priority = 0
+shader = ExtResource("2_kr2gr")
+shader_parameter/albedo_texture = ExtResource("3_kr2gr")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7awiu"]
+material = SubResource("ShaderMaterial_cu11h")
+flip_faces = true
+size = Vector3(1009, 1009, 1000)
+
+[sub_resource type="Environment" id="Environment_kr2gr"]
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_7awiu"]
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_blets"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ibo6s"]
+color_ramp = SubResource("Gradient_7awiu")
+noise = SubResource("FastNoiseLite_blets")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3s0o"]
+render_priority = 0
+shader = ExtResource("4_cu11h")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = SubResource("NoiseTexture2D_ibo6s")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_fek7x"]
+material = SubResource("ShaderMaterial_p3s0o")
+flip_faces = true
+radius = 100.0
+height = 65.426
+is_hemisphere = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ttya4"]
+material = SubResource("ShaderMaterial_p3s0o")
+flip_faces = true
+radius = 50.0
+height = 50.0
+is_hemisphere = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fek7x"]
+_surfaces = [{
+"aabb": AABB(-45, -0.5, -45, 90, 1, 90),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 180,
+"vertex_data": PackedByteArray("AABwwQAAAD8AAHDBAABwQQAAAD8AAHDBAABwQQAAAD8AAHBBAABwwQAAAD8AAHBBAABwwQAAAD8AAHDBAABwQQAAAD8AAHBBAABwwQAAAL8AAHBBAABwQQAAAL8AAHBBAABwQQAAAL8AAHDBAABwwQAAAL8AAHDBAABwwQAAAL8AAHBBAABwQQAAAL8AAHDBAAA0QgAAAD8AAHBBAABwQQAAAD8AAHBBAABwQQAAAD8AAHDBAAA0QgAAAL8AAHBBAAA0QgAAAD8AAHBBAAA0QgAAAL8AAHDBAABwQQAAAL8AAHBBAAA0QgAAAL8AAHBBAAA0QgAAAL8AAHDBAAA0QgAAAD8AAHBBAAA0QgAAAD8AAHDBAAA0QgAAAL8AAHDBAABwQQAAAL8AAHBBAAA0QgAAAL8AAHDBAABwQQAAAL8AAHDBAAA0QgAAAD8AAHBBAABwQQAAAD8AAHDBAAA0QgAAAD8AAHDBAABwwQAAAD8AAHBBAAA0wgAAAD8AAHBBAAA0wgAAAD8AAHDBAAA0wgAAAL8AAHBBAABwwQAAAL8AAHBBAABwwQAAAL8AAHDBAAA0wgAAAL8AAHBBAAA0wgAAAL8AAHDBAAA0wgAAAD8AAHDBAAA0wgAAAD8AAHDBAAA0wgAAAD8AAHBBAAA0wgAAAL8AAHBBAABwwQAAAD8AAHDBAABwwQAAAD8AAHBBAAA0wgAAAD8AAHDBAAA0wgAAAL8AAHDBAAA0wgAAAL8AAHBBAABwwQAAAL8AAHDBAABwwQAAAD8AADTCAABwQQAAAD8AAHDBAABwwQAAAD8AAHDBAABwwQAAAL8AAHDBAABwQQAAAL8AAHDBAABwQQAAAL8AADTCAABwQQAAAL8AADTCAABwQQAAAD8AADTCAABwwQAAAD8AADTCAABwQQAAAD8AADTCAABwQQAAAD8AAHDBAABwwQAAAD8AADTCAABwQQAAAL8AADTCAABwwQAAAD8AADTCAABwwQAAAL8AADTCAABwwQAAAL8AAHDBAABwQQAAAL8AADTCAABwwQAAAL8AADTCAAA0QgAAAL8AADTCAAA0QgAAAD8AADTCAABwQQAAAD8AADTCAAA0QgAAAD8AAHDBAAA0QgAAAD8AADTCAAA0QgAAAL8AADTCAABwQQAAAD8AADTCAAA0QgAAAD8AAHDBAABwQQAAAD8AAHDBAAA0QgAAAL8AAHDBAAA0QgAAAD8AAHDBAAA0QgAAAL8AADTCAAA0QgAAAL8AADTCAABwQQAAAD8AADTCAABwQQAAAL8AADTCAABwQQAAAL8AAHDBAAA0QgAAAL8AAHDBAAA0QgAAAL8AADTCAAA0QgAAAD8AADTCAAA0QgAAAD8AAHDBAABwQQAAAD8AADTCAABwQQAAAL8AAHDBAAA0QgAAAL8AADTCAABwQQAAAL8AADTCAAA0wgAAAL8AAHDBAABwwQAAAL8AAHDBAABwwQAAAL8AADTCAAA0wgAAAL8AADTCAAA0wgAAAL8AAHDBAABwwQAAAL8AADTCAAA0wgAAAL8AAHDBAAA0wgAAAL8AADTCAAA0wgAAAD8AADTCAABwwQAAAL8AADTCAAA0wgAAAD8AADTCAAA0wgAAAL8AADTCAAA0wgAAAD8AADTCAAA0wgAAAD8AAHDBAAA0wgAAAL8AAHDBAABwwQAAAD8AADTCAAA0wgAAAD8AADTCAABwwQAAAL8AADTCAABwwQAAAD8AADTCAABwwQAAAD8AAHDBAAA0wgAAAD8AADTCAAA0wgAAAD8AADTCAABwwQAAAD8AAHDBAAA0wgAAAD8AAHDBAABwwQAAAD8AADRCAABwQQAAAD8AADRCAABwwQAAAL8AADRCAABwQQAAAD8AAHBBAABwQQAAAD8AADRCAABwwQAAAD8AAHBBAABwwQAAAL8AADRCAABwQQAAAL8AAHBBAABwwQAAAL8AAHBBAABwwQAAAD8AAHBBAABwQQAAAD8AADRCAABwwQAAAD8AADRCAABwQQAAAD8AADRCAABwQQAAAL8AADRCAABwwQAAAL8AADRCAABwwQAAAL8AADRCAABwQQAAAL8AADRCAABwQQAAAL8AAHBBAABwQQAAAL8AADRCAAA0QgAAAL8AAHBBAABwQQAAAL8AAHBBAAA0QgAAAD8AADRCAABwQQAAAD8AAHBBAAA0QgAAAD8AAHBBAABwQQAAAD8AAHBBAAA0QgAAAD8AADRCAABwQQAAAD8AADRCAAA0QgAAAD8AADRCAAA0QgAAAD8AAHBBAAA0QgAAAL8AAHBBAABwQQAAAD8AADRCAAA0QgAAAD8AADRCAABwQQAAAL8AADRCAAA0QgAAAL8AADRCAAA0QgAAAD8AADRCAAA0QgAAAL8AAHBBAABwQQAAAL8AADRCAAA0QgAAAD8AADRCAAA0QgAAAL8AADRCAABwQQAAAL8AADRCAAA0QgAAAL8AADRCAAA0QgAAAL8AAHBBAAA0wgAAAL8AAHBBAAA0wgAAAD8AAHBBAAA0wgAAAL8AADRCAAA0wgAAAL8AADRCAABwwQAAAL8AADRCAABwwQAAAL8AAHBBAAA0wgAAAL8AAHBBAAA0wgAAAL8AADRCAABwwQAAAL8AAHBBAAA0wgAAAD8AADRCAABwwQAAAD8AADRCAAA0wgAAAL8AADRCAAA0wgAAAD8AAHBBAABwwQAAAD8AADRCAAA0wgAAAD8AADRCAABwwQAAAD8AAHBBAABwwQAAAD8AADRCAAA0wgAAAD8AAHBBAAA0wgAAAL8AADRCAABwwQAAAD8AADRCAABwwQAAAL8AADRCAAA0wgAAAD8AAHBBAAA0wgAAAD8AADRCAAA0wgAAAL8AADRC/3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA////f/9//n////9//3/+f////3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAAAAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA/////wAA/z//////AAD/P/////8AAP8//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/////f/9//n////9//3/+f////3//f/5//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAAAAD/f/9//n8AAP9//3/+fwAA/3//f/5//////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//38AAP//AAD/fwAA//8AAP9/AAD//wAAAAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5/")
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ttya4"]
+size = Vector3(2, 6, 3)
+
+[node name="scene_landing_outside_skybox" type="SubViewport"]
+handle_input_locally = false
+canvas_cull_mask = 4293935104
+size = Vector2i(170, 128)
+
+[node name="Root" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cull_mask = 16384
+script = ExtResource("1_kr2gr")
+
+[node name="Sky" type="MeshInstance3D" parent="Root/Camera3D"]
+layers = 16384
+mesh = SubResource("BoxMesh_7awiu")
+skeleton = NodePath("../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Root"]
+environment = SubResource("Environment_kr2gr")
+
+[node name="Trees" parent="Root" instance=ExtResource("5_7awiu")]
+transform = Transform3D(2.925, 0, 0, 0, 2.925, 0, 0, 0, 2.925, 0, 0, 0)
+
+[node name="Sketchfab_model" parent="Root/Trees" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Tree2m" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -2.59622, 104.214, -1502.5)
+
+[node name="Tree2m_Material_006_0" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode/Tree2m" index="0"]
+transform = Transform3D(1, 0, -1.69407e-21, 0, 1, 0, 0, 0, 1, -1.07475e-06, 7.52136, 1.43051e-06)
+layers = 16384
+
+[node name="Tree1M" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode" index="1"]
+transform = Transform3D(1.13247e-05, -150, -4.23195e-05, 0, -4.23195e-05, 150, -150, -1.13247e-05, -3.19744e-12, -269.812, -93.6834, -2291.94)
+
+[node name="Tree1M_Material_004_0" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode/Tree1M" index="0"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 3.30012e-15, 1.65006e-15, 3.74225e-15, 1, -3.75166, -7.27514, -3.07882e-14)
+layers = 16384
+
+[node name="Tree3m" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode" index="2"]
+transform = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -342.49, 93.0709, -1713.02)
+
+[node name="Tree3m_Material_007_0" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode/Tree3m" index="0"]
+layers = 16384
+
+[node name="Tree3" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode" index="3"]
+transform = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, 713.068, 93.0709, -2627.55)
+
+[node name="Tree3_Material_003_0" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode/Tree3" index="0"]
+layers = 16384
+
+[node name="Tree 1" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode" index="4"]
+transform = Transform3D(116.913, 82.5, 3.22056e-05, -8.85156e-06, -4.03053e-05, 180, 67.5, -142.894, -3.21776e-05, -1090.33, -93.6834, -1978.27)
+
+[node name="Tree 1_Material_001_0" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode/Tree 1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9, 0.3, -0.8, 0)
+layers = 16384
+
+[node name="Tree2" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode" index="5"]
+transform = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, 1364.07, 104.214, -1528.14)
+
+[node name="Tree2_Material_002_0" parent="Root/Trees/Sketchfab_model/DeadTreePack_fbx/RootNode/Tree2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, -1.3, 0)
+layers = 16384
+
+[node name="Fog1" type="MeshInstance3D" parent="Root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+layers = 16384
+mesh = SubResource("SphereMesh_fek7x")
+
+[node name="Fog2" type="MeshInstance3D" parent="Root/Fog1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+layers = 16384
+mesh = SubResource("SphereMesh_ttya4")
+
+[node name="Ground" type="MeshInstance3D" parent="Root"]
+transform = Transform3D(-5.72619e-08, 0, 1.31, 0, 1.31, 0, -1.31, 0, -5.72619e-08, 0, -0.5, -37)
+layers = 16384
+mesh = SubResource("ArrayMesh_fek7x")
+surface_material_override/0 = ExtResource("8_p3s0o")
+
+[node name="game_exit_door" parent="Root" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_ibo6s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -11.25)
+door_mesh_node = NodePath("model_door_old")
+
+[node name="CollisionShape3D" parent="Root/game_exit_door" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="InteractionArea2" type="CollisionShape3D" parent="Root/game_exit_door/InteractableFront" index="1"]
+transform = Transform3D(1, -7.10543e-15, 7.10543e-15, -1.06026e-14, 0.798635, 0.601815, 0, -0.601815, 0.798635, 1.74829e-08, 4.25, -1.45)
+shape = SubResource("BoxShape3D_ttya4")
+
+[node name="InteractionArea" parent="Root/game_exit_door/InteractableFront" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.0500002)
+
+[node name="model_door_old" parent="Root/game_exit_door" instance=ExtResource("7_ttya4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Door" parent="Root/game_exit_door/model_door_old" index="0"]
+layers = 16384
+
+[node name="Knob" parent="Root/game_exit_door/model_door_old/Door" index="0"]
+layers = 16384
+
+[node name="Chain3ExitTrigger" type="Node3D" parent="Root/game_exit_door"]
+script = ExtResource("9_ttya4")
+door_ref = ExtResource("10_0ak64")
+metadata/_custom_type_script = "uid://c85dht1emjd6a"
+
+[node name="ManagedLight" type="Node3D" parent="Root/game_exit_door"]
+script = ExtResource("11_0ak64")
+light_type = 1
+flicker_mode = 1
+flicker_freq_hz = 0.85
+metadata/_custom_type_script = "uid://cg4to6v7xjlug"
+
+[node name="ManagedLight_001" type="SpotLight3D" parent="Root/game_exit_door/ManagedLight"]
+transform = Transform3D(1, 8.44439e-08, 1.10049e-07, -8.44439e-08, -0.258819, 0.965926, 1.10049e-07, -0.965926, -0.258819, 8.74225e-08, 3.1, -1)
+layers = 16384
+light_color = Color(0.976955, 0.898994, 0.959374, 1)
+light_energy = 5.083
+light_cull_mask = 4293935104
+spot_attenuation = 0.12
+spot_angle_attenuation = 3.36359
+
+[node name="Van" parent="Root" instance=ExtResource("12_owdb1")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -26.364, 1, -33.364)
+
+[node name="Sketchfab_model" parent="Root/Van" index="0"]
+transform = Transform3D(1.6, 0, 0, 0, -6.99382e-08, 1.6, 0, -1.6, -6.99382e-08, 0, 0, 0)
+
+[node name="CamperVan_Material_001_0" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan" index="0"]
+layers = 16384
+
+[node name="Tire_013" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan" index="1"]
+transform = Transform3D(1.94707e-07, -1, 1.15703e-30, 1, 1.94707e-07, 0, 0, 0, 1, -1.64137, 2.49365, -0.0254614)
+
+[node name="Tire_013_tire1_001_0" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan/Tire_013" index="0"]
+layers = 16384
+
+[node name="Tire_014" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan" index="2"]
+transform = Transform3D(1.94707e-07, -1, 1.15703e-30, 1, 1.94707e-07, 0, 0, 0, 1, -1.39137, -1.34055, -0.0254614)
+
+[node name="Tire_014_tire1_001_0" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan/Tire_014" index="0"]
+layers = 16384
+
+[node name="Tire_015" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan" index="3"]
+transform = Transform3D(1.78814e-07, -1, 0, 1, 1.78814e-07, 0, -7.10543e-15, -7.10543e-15, 1, 1.13517, -1.34055, -0.0254614)
+
+[node name="Tire_015_tire1_001_0" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan/Tire_015" index="0"]
+layers = 16384
+
+[node name="Tire_016" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan" index="4"]
+transform = Transform3D(1.78814e-07, -1, 0, 1, 1.78814e-07, 0, -7.10543e-15, -7.10543e-15, 1, 1.13517, 2.49365, -0.0254614)
+
+[node name="Tire_016_tire1_001_0" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan/Tire_016" index="0"]
+layers = 16384
+
+[node name="LicensePlate_004_LicensePlate_0" parent="Root/Van/Sketchfab_model/79da3e735cdc4b3cbf18296469cf89a8_fbx/RootNode/CamperVan/LicensePlate_004" index="0"]
+layers = 16384
+
+[connection signal="on_open" from="Root/game_exit_door" to="Root/game_exit_door/Chain3ExitTrigger" method="call_exit"]
+
+[editable path="Root/Trees"]
+[editable path="Root/game_exit_door"]
+[editable path="Root/game_exit_door/InteractableFront"]
+[editable path="Root/game_exit_door/InteractableBack"]
+[editable path="Root/game_exit_door/model_door_old"]
+[editable path="Root/Van"]
