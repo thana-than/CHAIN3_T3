@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8it0g2o2nd45"
-path.s3tc="res://.godot/imported/Gradient_Sky-Blue_04-512x512.png-b1091fd1664a8b7f1f041806bce0fa79.s3tc.ctex"
+uid="uid://chyfu7d3shyxu"
+path.s3tc="res://.godot/imported/tex_tv_nodisc.png-4ac571804c230835a856472ac7835a91.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/sky/Gradient Sky/Gradient_Sky-Blue_04-512x512.png"
-dest_files=["res://.godot/imported/Gradient_Sky-Blue_04-512x512.png-b1091fd1664a8b7f1f041806bce0fa79.s3tc.ctex"]
+source_file="res://assets/textures/tv/tex_tv_nodisc.png"
+dest_files=["res://.godot/imported/tex_tv_nodisc.png-4ac571804c230835a856472ac7835a91.s3tc.ctex"]
 
 [params]
 

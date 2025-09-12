@@ -45,6 +45,7 @@ teleport_interactions = 3
 teleport_collision_mask = 32768
 start_deactivated = false
 metadata/_custom_type_script = "uid://cw1r4c1d7beyv"
+metadata/_edit_group_ = true
 
 [node name="Portal3D_Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)

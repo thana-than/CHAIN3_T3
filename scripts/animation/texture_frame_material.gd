@@ -14,7 +14,7 @@ class_name TextureFrameMaterial
 		emission_texture = _texture
 		_update_shader_parameters()
 	get:
-		return texture
+		return emission_texture
 		
 @export var frames := 1:
 	set(_frames):
@@ -53,4 +53,5 @@ func _update_shader_parameters():
 	set_shader_parameter("uv_scale", mult_vector + Vector2(mult_vector.y, mult_vector.x) / frames)
 	set_shader_parameter("albedo_texture", texture)
 	set_shader_parameter("emission_texture", emission_texture)
+	set_shader_parameter("use_emission_texture", emission_texture != null)
 	#set_shader_parameter("")

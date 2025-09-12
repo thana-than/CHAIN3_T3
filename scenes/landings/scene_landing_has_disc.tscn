@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvo84c50b4cim"]
+
+[ext_resource type="PackedScene" uid="uid://dynksben166x4" path="res://scenes/landings/scene_landing_no_disc.tscn" id="1_ptb8r"]
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="2_dxl58"]
+[ext_resource type="Material" uid="uid://bwusqnt6e8ehb" path="res://assets/materials/mat_landing_sky.tres" id="2_f6751"]
+[ext_resource type="Material" uid="uid://cfwgnnw3bmb75" path="res://assets/materials/mat_landing_grass.tres" id="3_dxl58"]
+[ext_resource type="Script" uid="uid://cnigwmwopds1p" path="res://scripts/events/hook_outside_skybox.gd" id="3_hqrgt"]
+[ext_resource type="Script" uid="uid://c7i2fdw0frx02" path="res://scripts/events/spawner.gd" id="5_bhlwa"]
+[ext_resource type="PackedScene" uid="uid://04l60axpwane" path="res://scenes/landings/scene_landing_outside_skybox.tscn" id="6_y7o3m"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hqrgt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dcgml"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_dxl58")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = SubResource("PlaceholderTexture2D_hqrgt")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[node name="scene_landing_has_disc" instance=ExtResource("1_ptb8r")]
+
+[node name="Ground" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_dxl58")
+
+[node name="Lightbath" type="OmniLight3D" parent="." index="3"]
+light_energy = 0.356
+light_volumetric_fog_energy = 0.0
+omni_range = 80.0
+omni_attenuation = -0.46
+
+[node name="hide_until_activate" parent="." index="4"]
+script = ExtResource("3_hqrgt")
+
+[node name="Sky" parent="hide_until_activate" index="0"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_f6751")
+
+[node name="Shade" parent="hide_until_activate/Sky" index="0"]
+visible = false
+
+[node name="obj_large_screen" parent="hide_until_activate" index="1"]
+screen_material = SubResource("ShaderMaterial_dcgml")
+
+[node name="Screen" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal" index="0"]
+material_override = SubResource("ShaderMaterial_dcgml")
+material_overlay = null
+surface_material_override/0 = null
+
+[node name="ManagedLight" parent="hide_until_activate/obj_large_screen" index="1"]
+flicker_amp = 0.0
+
+[node name="TV Glow" parent="hide_until_activate/obj_large_screen/ManagedLight" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_volumetric_fog_energy = 8.0
+
+[node name="landing_outside_skybox_root" type="Node3D" parent="hide_until_activate" index="2"]
+script = ExtResource("5_bhlwa")
+scene = ExtResource("6_y7o3m")
+
+[connection signal="on_activate" from="." to="hide_until_activate" method="activate"]
+
+[editable path="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal"]

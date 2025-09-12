@@ -23,7 +23,8 @@ script = ExtResource("1_5lcb8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
 
 [node name="portal_crt" parent="room_drop" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101, 0, -25.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -66)
+visible = false
 door_mesh_node = NodePath("obj_door_proto")
 
 [node name="obj_door_proto" parent="room_drop/portal_crt" instance=ExtResource("5_83fnd")]
@@ -31,7 +32,6 @@ door_mesh_node = NodePath("obj_door_proto")
 [node name="to_crt" parent="room_drop/portal_crt" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, -0.125018)
 exit_portal = NodePath("../../portal_crt_to_landing")
-metadata/_edit_group_ = true
 
 [node name="Door Light" type="SpotLight3D" parent="room_drop/portal_crt"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
@@ -39,7 +39,7 @@ light_energy = 2.89035
 spot_attenuation = 0.29
 
 [node name="portal_hospital" parent="room_drop" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 110, 0, 23.75)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 25)
 door_mesh_node = NodePath("obj_door_proto")
 
 [node name="obj_door_proto" parent="room_drop/portal_hospital" instance=ExtResource("5_83fnd")]
@@ -47,7 +47,6 @@ door_mesh_node = NodePath("obj_door_proto")
 [node name="to_hospital" parent="room_drop/portal_hospital" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 1.125, -0.12809)
 exit_portal = NodePath("../../portal_hospital_to_landing")
-metadata/_edit_group_ = true
 
 [node name="Door Light" type="SpotLight3D" parent="room_drop/portal_hospital"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
@@ -56,8 +55,8 @@ spot_attenuation = 0.29
 
 [node name="portal_crt_to_landing" parent="room_drop" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 150, 1.125, -10.8)
+visible = false
 exit_portal = NodePath("../portal_crt/to_crt")
-metadata/_edit_group_ = true
 
 [node name="InteractableLink" parent="room_drop/portal_crt_to_landing" instance=ExtResource("7_b2dtt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)
@@ -69,7 +68,6 @@ shape = SubResource("BoxShape3D_3lafk")
 [node name="portal_hospital_to_landing" parent="room_drop" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 1.125, -6.1)
 exit_portal = NodePath("../portal_hospital/to_hospital")
-metadata/_edit_group_ = true
 
 [node name="InteractableLink" parent="room_drop/portal_hospital_to_landing" instance=ExtResource("7_b2dtt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)

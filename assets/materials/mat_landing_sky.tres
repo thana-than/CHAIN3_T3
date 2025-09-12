@@ -1,13 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://7gfg4ol1owqp"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bwusqnt6e8ehb"]
 
-[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_2hi3y"]
-[ext_resource type="Texture2D" uid="uid://rh0vn7ljlqjf" path="res://assets/models/metro_car/metro_car_textured_Atlas_00001_red_seats.png" id="2_2hi3y"]
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="1_uh7x8"]
+[ext_resource type="Texture2D" uid="uid://dwf0b16n7r6j4" path="res://assets/textures/sky/Fuzzy Sky/Fuzzy_Sky-Blue_03-512x512.png" id="2_li6ys"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_2hi3y")
+shader = ExtResource("1_uh7x8")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("2_2hi3y")
+shader_parameter/albedo_texture = ExtResource("2_li6ys")
 shader_parameter/albedo_texture_as_primary_color = true
 shader_parameter/mix_factor = 1.0
 shader_parameter/texture_lod_halve_distance_override = 0.0
@@ -21,6 +21,6 @@ shader_parameter/enable_affine_transform = false
 shader_parameter/use_emission = false
 shader_parameter/emission_color = Color(1, 1, 1, 1)
 shader_parameter/emission_strength = 1.0
-shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_texture = true
 shader_parameter/use_emission_mask_texture = false
 shader_parameter/emission_threshold = 0.0

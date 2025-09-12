@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8it0g2o2nd45"
-path.s3tc="res://.godot/imported/Gradient_Sky-Blue_04-512x512.png-b1091fd1664a8b7f1f041806bce0fa79.s3tc.ctex"
+uid="uid://2q3eefhpp44j"
+path.s3tc="res://.godot/imported/psx_dead_tree_pack_0.jpg-f9d58b965cebf8beeb00efc83473c12d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "1870c63aff3a3c35d3c00c34879711fa"
+}
 
 [deps]
 
-source_file="res://assets/textures/sky/Gradient Sky/Gradient_Sky-Blue_04-512x512.png"
-dest_files=["res://.godot/imported/Gradient_Sky-Blue_04-512x512.png-b1091fd1664a8b7f1f041806bce0fa79.s3tc.ctex"]
+source_file="res://assets/models/tree/psx_dead_tree_pack_0.jpg"
+dest_files=["res://.godot/imported/psx_dead_tree_pack_0.jpg-f9d58b965cebf8beeb00efc83473c12d.s3tc.ctex"]
 
 [params]
 
