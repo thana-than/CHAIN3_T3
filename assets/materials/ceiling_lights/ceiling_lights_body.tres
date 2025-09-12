@@ -21,6 +21,7 @@ shader_parameter/enable_affine_transform = true
 shader_parameter/use_emission = true
 shader_parameter/emission_color = Color(1, 1, 1, 1)
 shader_parameter/emission_strength = 0.5
+shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = true
 shader_parameter/emission_mask_texture = ExtResource("3_o2ryq")
 shader_parameter/emission_threshold = 0.01

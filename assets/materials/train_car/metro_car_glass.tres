@@ -18,5 +18,6 @@ shader_parameter/enable_affine_transform = false
 shader_parameter/use_emission = false
 shader_parameter/emission_color = Color(1, 1, 1, 1)
 shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = false
 shader_parameter/emission_threshold = 0.0
