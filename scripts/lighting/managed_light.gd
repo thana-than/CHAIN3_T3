@@ -157,3 +157,25 @@ func _notification(what):
 		NOTIFICATION_EDITOR_PRE_SAVE:
 			_restore_cached_values()
 			self.preview_in_editor = false
+
+func get_current_flicker_multiplier(light: Light3D = null) -> float:
+	var should_run := flicker_mode != FlickerMode.OFF and (preview_in_editor or not Engine.is_editor_hint())
+	if not should_run:
+		return 1.0
+	
+	var freq_scale: float = max(0.001, flicker_freq_hz)
+	var t := _flicker_time * freq_scale
+	var v: float = 0.0
+
+	match flicker_mode:
+		FlickerMode.SYNCHRONIZED:
+			v = _noise_value(t, 0.0)
+		FlickerMode.INDEPENDENT:
+			var phase := 0.0
+			if light != null and _base_energy_cache.has(light.name) and _base_energy_cache[light.name].has("phase"):
+				phase = float(_base_energy_cache[light.name]["phase"])
+			v = _noise_value(t, phase)
+		_:
+			return 1.0  # safety
+
+	return _map_amp(v, flicker_amp)
