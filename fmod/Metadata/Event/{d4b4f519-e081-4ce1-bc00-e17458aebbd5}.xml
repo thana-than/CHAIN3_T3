@@ -5,7 +5,7 @@
 			<value>Land</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{4afab0a1-29d9-4d66-9b8b-00f754d3bed3}</destination>
@@ -64,6 +64,7 @@
 	<object class="GroupTrack" id="{6a602a35-f535-45ff-863f-50c410312af0}">
 		<relationship name="modules">
 			<destination>{1f1094d7-0a45-45ee-89ec-55ce7a109ecc}</destination>
+			<destination>{9db8f6df-9122-475b-a8e4-4998e86f1c44}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{0a16f7ba-1c39-4735-8e28-83dd843d6d0c}</destination>
@@ -77,6 +78,7 @@
 	<object class="ParameterProxy" id="{08ee2b76-b54d-4447-a324-31f33f3a438e}">
 		<relationship name="modules">
 			<destination>{1f1094d7-0a45-45ee-89ec-55ce7a109ecc}</destination>
+			<destination>{9db8f6df-9122-475b-a8e4-4998e86f1c44}</destination>
 		</relationship>
 		<relationship name="preset">
 			<destination>{7810b56a-ed42-4923-b2c3-c322f4804273}</destination>
@@ -112,6 +114,14 @@
 			<destination>{d8132a30-263c-4978-b88b-bd02d456044c}</destination>
 			<destination>{0b4de8b3-073d-499d-b3ef-3f8105864eac}</destination>
 			<destination>{30397147-0af3-4af3-9b25-21e82ffa8b27}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{9db8f6df-9122-475b-a8e4-4998e86f1c44}">
+		<property name="start">
+			<value>1</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{63a35293-6521-4b8f-ab77-ae10dfe6cd56}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{0a16f7ba-1c39-4735-8e28-83dd843d6d0c}">
