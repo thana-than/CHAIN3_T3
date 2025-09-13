@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bs7vs2a5pvm87"]
+[gd_scene load_steps=31 format=4 uid="uid://bs7vs2a5pvm87"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_bonpo"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_5kx1f"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_j0y30"]
 [ext_resource type="Script" uid="uid://glr2uml18crh" path="res://scripts/animation/animation_sequencer.gd" id="9_48eor"]
 [ext_resource type="Script" uid="uid://dbcibpw5o28gm" path="res://scripts/events/area_fall_confiner.gd" id="10_8ow3u"]
+[ext_resource type="PackedScene" uid="uid://dqt50c718861p" path="res://assets/models/door/model_door_old.glb" id="10_vgcon"]
+[ext_resource type="Script" uid="uid://bxcel82b180o3" path="res://addons/portals/scripts/portal_boxmesh.gd" id="11_gqqxf"]
 [ext_resource type="Script" uid="uid://c61wgc042cdwy" path="res://scripts/events/landing_loader.gd" id="11_quaa5"]
 [ext_resource type="PackedScene" uid="uid://dynksben166x4" path="res://scenes/landings/scene_landing_no_disc.tscn" id="12_cqmcx"]
 [ext_resource type="PackedScene" uid="uid://cvo84c50b4cim" path="res://scenes/landings/scene_landing_has_disc.tscn" id="13_cefjk"]
@@ -25,6 +27,22 @@ size = Vector3(31, 14, 42)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ow3u"]
 size = Vector3(33, 200, 35)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gqqxf"]
+_surfaces = [{
+"aabb": AABB(-0.785, -1.7625, -1, 1.57, 3.525, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("w/VIv5qZ4T8AAAAAw/VIP5qZ4T8AAAAAw/VIv5qZ4b8AAAAAw/VIP5qZ4b8AAAAAw/VIv5qZ4T8AAIC/w/VIP5qZ4T8AAIC/w/VIv5qZ4b8AAIC/w/VIP5qZ4b8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("11_gqqxf")
+size = Vector3(1.57, 3.525, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
 
 [sub_resource type="Animation" id="Animation_48eor"]
 length = 0.001
@@ -55,8 +73,24 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_fuf28"]
 radius = 26.808
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ncj3"]
+_surfaces = [{
+"aabb": AABB(-0.785, -1.7625, -1, 1.57, 3.525, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("w/VIv5qZ4T8AAAAAw/VIP5qZ4T8AAAAAw/VIv5qZ4b8AAAAAw/VIP5qZ4b8AAAAAw/VIv5qZ4T8AAIC/w/VIP5qZ4T8AAIC/w/VIv5qZ4b8AAIC/w/VIP5qZ4b8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("11_gqqxf")
+size = Vector3(1.57, 3.525, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0y30"]
-size = Vector3(1.5, 2.25, 1)
+size = Vector3(1.57, 3.525, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ow3u"]
 radius = 45.0
@@ -125,14 +159,15 @@ debug_color = Color(0.784118, 0.234851, 0.894778, 0.42)
 
 [node name="FallPortal" parent="Environment/Fall" node_paths=PackedStringArray("exit_portal") instance=ExtResource("7_48eor")]
 transform = Transform3D(-1, 3.55271e-15, 8.74228e-08, 8.44439e-08, 0.258819, 0.965926, -2.26267e-08, 0.965926, -0.258819, 0, -89.8, 0.25)
+portal_size = Vector2(1.57, 3.525)
 exit_portal = NodePath("../../LandingPortal")
 start_deactivated = true
 
+[node name="Portal3D_Mesh" parent="Environment/Fall/FallPortal" index="0"]
+mesh = SubResource("ArrayMesh_gqqxf")
+
 [node name="Door Open" type="Node3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725256, -1.11572, -0.049408)
-
-[node name="obj_door_proto" parent="Environment/Fall/FallPortal/Door Open" instance=ExtResource("7_j0y30")]
-transform = Transform3D(1, 0, 1.24345e-14, -7.10543e-15, 1, 0, -1.77636e-14, 0, 1, 0.724365, -0.0120926, 0.053894)
 
 [node name="OpenDoor" type="AnimationPlayer" parent="Environment/Fall/FallPortal/Door Open"]
 libraries = {
@@ -142,6 +177,9 @@ script = ExtResource("9_48eor")
 loop_sequence = true
 sequence = Array[String](["door_open"])
 metadata/_custom_type_script = "uid://glr2uml18crh"
+
+[node name="model_door_old" parent="Environment/Fall/FallPortal/Door Open" instance=ExtResource("10_vgcon")]
+transform = Transform3D(-6.20702e-08, 0, -1.42, 0, 1.42, 0, 1.42, 0, -6.20702e-08, 0.719385, -0.649013, 0.1)
 
 [node name="Door Light" type="SpotLight3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
@@ -158,8 +196,12 @@ shape = SubResource("SphereShape3D_fuf28")
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 100, 12.2, 0)
 _teleport_area_path = NodePath("TeleportArea2")
 _teleport_collider_path = NodePath("TeleportArea2/Collider")
+portal_size = Vector2(1.57, 3.525)
 exit_portal = NodePath("../Fall/FallPortal")
 start_deactivated = true
+
+[node name="Portal3D_Mesh" parent="Environment/LandingPortal" index="0"]
+mesh = SubResource("ArrayMesh_0ncj3")
 
 [node name="TeleportArea2" type="Area3D" parent="Environment/LandingPortal"]
 
@@ -228,4 +270,6 @@ transform = Transform3D(0.99949, -0.000585822, -0.031903, -0.0218197, 0.716977, 
 [connection signal="body_exited" from="Environment/Fall/FallPortal/door_trigger" to="Environment/Fall/FallPortal/Door Open/OpenDoor" method="stop" unbinds=1]
 [connection signal="on_activate" from="Environment/LandingRoot" to="Environment/LandingPortal" method="deactivate"]
 
+[editable path="Environment/Fall/FallPortal"]
+[editable path="Environment/LandingPortal"]
 [editable path="npc_sketchy"]

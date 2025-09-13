@@ -29,20 +29,17 @@ shader_parameter/emission_threshold = 0.0
 [node name="FakeDoor" instance=ExtResource("1_5r5g0")]
 start_locked = true
 
-[node name="InteractableFront" parent="." index="2"]
+[node name="InteractableFront" parent="." index="3"]
 activate_on_start = false
 
-[node name="InteractionArea" parent="InteractableFront" index="1"]
+[node name="InteractionArea" parent="InteractableFront" index="0"]
 disabled = true
 
-[node name="InteractableBack" parent="." index="3"]
+[node name="InteractableBack" parent="." index="4"]
 activate_on_start = false
 
-[node name="InteractionArea" parent="InteractableBack" index="1"]
+[node name="InteractionArea" parent="InteractableBack" index="0"]
 disabled = true
 
 [node name="MeshInstance3D" parent="." index="6"]
 surface_material_override/0 = SubResource("ShaderMaterial_puhmr")
-
-[editable path="InteractableFront"]
-[editable path="InteractableBack"]

@@ -53,7 +53,7 @@ func _ready():
 		door_mesh_node.reparent(mesh_parent, false)
 	else:
 		logger.err("Missing door_mesh_node!")
-		
+
 func _get_anim_name(_anim_type: AnimType):
 	return "anim_door_" + AnimType.keys()[_anim_type].to_lower()
 

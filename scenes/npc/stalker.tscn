@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://duvncsmuvdoj7" path="res://assets/dialogue/dialogue/ticket_inspector.dialogue" id="6_ucw7x"]
 [ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="7_nklu1"]
 [ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="8_6mfii"]
-[ext_resource type="Script" uid="uid://pqedudvcybfr" path="res://scripts/animation/head_look_at_controller.gd" id="9_7kdbt"]
+[ext_resource type="Script" path="res://scripts/animation/head_look_at_controller.gd" id="9_7kdbt"]
 
 [sub_resource type="Shader" id="Shader_kaq2p"]
 code = "shader_type spatial;
@@ -137,4 +137,3 @@ script = ExtResource("9_7kdbt")
 skeleton = NodePath("../Armature/Skeleton3D")
 interactable = NodePath("../DialogueInteractable")
 follow_seconds = 10.0
-metadata/_custom_type_script = "uid://pqedudvcybfr"

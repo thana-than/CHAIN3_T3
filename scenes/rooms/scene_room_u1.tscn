@@ -1,14 +1,12 @@
-[gd_scene load_steps=34 format=4 uid="uid://bx5tm3fmqdsxv"]
+[gd_scene load_steps=33 format=4 uid="uid://bx5tm3fmqdsxv"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_rbpki"]
 [ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="3_ootfe"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_4p538"]
 [ext_resource type="Script" uid="uid://ditqovotxswau" path="res://scripts/objects/node3d_spacer.gd" id="4_laae3"]
 [ext_resource type="PackedScene" uid="uid://b05cj3h7kwxbe" path="res://scenes/objects/hospital/obj_arch_hospital.tscn" id="4_te8g2"]
-[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_43vnd"]
 [ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="6_fqn87"]
 [ext_resource type="Shader" uid="uid://ce30qoo5h1bid" path="res://ursc/spatial/standard/standard_transparent.gdshader" id="7_fqn87"]
-[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_obaim"]
 [ext_resource type="Script" uid="uid://c85dht1emjd6a" path="res://scripts/chain3/chain3_exit_trigger.gd" id="8_laae3"]
 [ext_resource type="Resource" uid="uid://bjggf1v6kftk1" path="res://assets/resources/doors/door_U1.tres" id="9_4p538"]
 [ext_resource type="PackedScene" uid="uid://dcte5o7f5iw7n" path="res://scenes/objects/floor/obj_floor_tiled.tscn" id="9_nxjmr"]
@@ -18,12 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://crc0lsboxm2ib" path="res://scenes/objects/hospital/obj_bed.tscn" id="13_ootfe"]
 [ext_resource type="PackedScene" uid="uid://dyxv8k72nq4p" path="res://scenes/objects/hospital/obj_iv_pole_blood_bag.tscn" id="14_u0b27"]
 [ext_resource type="PackedScene" uid="uid://bc7eskk7vupi8" path="res://scenes/objects/door/obj_wooden_door_fake.tscn" id="15_fdba8"]
+[ext_resource type="PackedScene" uid="uid://83xtbr10b03f" path="res://scenes/npc/stalker.tscn" id="19_jg7nv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obaim"]
 size = Vector3(1, 16, 117)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nxjmr"]
-size = Vector3(15, 16, 1.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fdba8"]
 size = Vector3(6.4, 16, 1.4)
@@ -121,6 +117,9 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_dhqnb"]
 size = Vector3(3, 1.61511, 1.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxjmr"]
+size = Vector3(15, 16, 1.4)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(15, 6, 109)
 
@@ -145,10 +144,6 @@ shape = SubResource("BoxShape3D_obaim")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 7, -48.1)
 shape = SubResource("BoxShape3D_obaim")
 
-[node name="WallBack" type="CollisionShape3D" parent="Environment/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 7, 11.1)
-shape = SubResource("BoxShape3D_nxjmr")
-
 [node name="WallFrontLeft" type="CollisionShape3D" parent="Environment/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 7, -97.7)
 shape = SubResource("BoxShape3D_fdba8")
@@ -161,6 +156,14 @@ shape = SubResource("BoxShape3D_fdba8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.555664, -47.1039)
 shape = SubResource("BoxShape3D_gexht")
 debug_color = Color(0.795677, 0.400758, 0.381738, 0.42)
+
+[node name="WallBackLeft" type="CollisionShape3D" parent="Environment/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7, 11)
+shape = SubResource("BoxShape3D_fdba8")
+
+[node name="WallBackRight2" type="CollisionShape3D" parent="Environment/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7, 11)
+shape = SubResource("BoxShape3D_fdba8")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 12.75, -44.1)
@@ -662,11 +665,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.1
 [node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
 
-[node name="doorway" parent="door_exit" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_43vnd")]
-door_mesh_node = NodePath("obj_door_proto")
-
-[node name="obj_door_proto" parent="door_exit/doorway" instance=ExtResource("7_obaim")]
-
 [node name="Door" parent="." instance=ExtResource("10_nxjmr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -97.6)
 
@@ -679,6 +677,14 @@ shape = SubResource("BoxShape3D_j51fj")
 debug_color = Color(0.717296, 0.371869, 0.784025, 0.42)
 
 [node name="cull_root" type="Marker3D" parent="."]
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-9.59455e-08, 0.886122, 0.463452, 9.18349e-08, -0.463452, 0.886122, 1, 1.27581e-07, -3.69109e-08, 0, 11.7135, 0.205528)
+light_color = Color(0.586639, 0.367683, 0.220898, 1)
+spot_range = 24.847
+spot_attenuation = -0.19
+spot_angle = 13.6
+spot_angle_attenuation = 1.1487
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.517952, 0.85541, 0, -0.85541, 0.517952, 0, 14, -89.475)
@@ -861,5 +867,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0.5, -0.866025, -2.18557e-08, -0.86
 
 [node name="WoodenDoor9" parent="FakeDoors" instance=ExtResource("15_fdba8")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0.5, -0.866025, -2.18557e-08, -0.866025, -0.5, 3.78552e-08, 5.85, 7, -23.95)
+
+[node name="SendBackToS2-Stalker" parent="." instance=ExtResource("19_jg7nv")]
+transform = Transform3D(-0.0757792, 0, 0.997125, 0, 1, 0, -0.997125, 0, -0.0757792, -5.66335, 0.468952, 0.388839)
 
 [connection signal="interacted" from="Environment/Cell/game_exit_bed" to="Environment/Cell/game_exit_bed/Chain3ExitTrigger" method="call_exit"]
