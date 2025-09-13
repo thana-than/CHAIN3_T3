@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bke355frrrhip"]
+[gd_scene load_steps=14 format=3 uid="uid://bke355frrrhip"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_aoxg3"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_3epuy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://d2d5eiuxkjc7f" path="res://assets/resources/doors/door_T4.tres" id="9_dga71"]
 [ext_resource type="Texture2D" uid="uid://kao5o5mh85rg" path="res://assets/textures/decals/ttc-map.png" id="10_a1usj"]
 [ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="11_7gwjw"]
+[ext_resource type="PackedScene" uid="uid://ck8h1eqri8al" path="res://scenes/npc/npc_sitting_shinji.tscn" id="11_8sktb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dga71"]
 albedo_color = Color(1, 0, 0, 1)
@@ -83,4 +84,12 @@ transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4
 size = Vector3(0.691681, 0.5, 0.568481)
 texture_albedo = ExtResource("10_a1usj")
 
+[node name="npc_sitting_shinji" parent="." instance=ExtResource("11_8sktb")]
+transform = Transform3D(-0.0310793, 0, -0.999517, 0, 1, 0, 0.999517, 0, -0.0310793, 1.82055, 0.255735, 4.50042)
+
+[node name="BoneAttachment3D" parent="npc_sitting_shinji/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.9991, -0.0231564, -0.0355341, 0.00928375, 0.936886, -0.34951, 0.0413848, 0.348866, 0.936258, 0.00184951, 1.6084, -0.428857)
+
 [connection signal="on_open" from="game_exit_door" to="game_exit_door/Chain3ExitTrigger" method="call_exit"]
+
+[editable path="npc_sitting_shinji"]
