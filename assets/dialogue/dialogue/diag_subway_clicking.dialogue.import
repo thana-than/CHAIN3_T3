@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ddld7b2ku6tj6"
+path="res://.godot/imported/diag_subway_clicking.dialogue-f7e17e9ab3b53faca2bd40efd22d0663.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/diag_subway_clicking.dialogue"
+dest_files=["res://.godot/imported/diag_subway_clicking.dialogue-f7e17e9ab3b53faca2bd40efd22d0663.tres"]
+
+[params]
+
+defaults=true
