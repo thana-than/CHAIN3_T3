@@ -23,7 +23,7 @@ func _get_children_of_light() -> Array[Light3D]:
 			result.append(c)
 	return result
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not _mat:
 		return
 	var mult: float = 1.0

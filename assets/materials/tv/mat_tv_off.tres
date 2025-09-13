@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c5khybbxqud7l"]
+
+[ext_resource type="Shader" uid="uid://b12gqq8y1pdco" path="res://ursc/spatial/metallic/metallic_opaque.gdshader" id="1_kdr42"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_kdr42")
+shader_parameter/albedo_color = Color(0.385493, 0.385492, 0.385492, 1)
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
