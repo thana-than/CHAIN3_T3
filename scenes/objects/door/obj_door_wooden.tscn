@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=4 uid="uid://cpaep06umpf1b"]
+
+[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="1_6pcec"]
+[ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="2_le34e"]
+[ext_resource type="Texture2D" uid="uid://chv7mydk0geb8" path="res://assets/textures/door/tex_door_wood.png" id="3_uvjoh"]
+[ext_resource type="Material" uid="uid://biviv1fmipvel" path="res://assets/materials/doors/mat_door_old_knob.tres" id="4_p2ndr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g5p12"]
+size = Vector3(1.28, 2.66, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3wmm"]
+render_priority = 0
+shader = ExtResource("2_le34e")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_uvjoh")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(3, 2)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = true
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nrbvm"]
+_surfaces = [{
+"aabb": AABB(-0.197585, -0.0407403, -0.385738, 0.395169, 0.181554, 0.154437),
+"format": 34896613377,
+"index_count": 120,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAgAEAAAAAgADAAUAAgAFAAQAAwAGAAUABAAFAAcABQAGAAcAAAAEAAgABAAHAAgAAAAJAAEAAAAIAAkAAQAKAAMACgAGAAMACQAKAAEABwAGAAsACAAHAAsACwAGAAoACAALAAkACQALAAoADAANAA4ADgANAA8ADQAMABAADQARAA8ADQAQABEADAASABAAEAATABEAEAASABMADwARABQAEQATABQADgAPABUAFQAPABQADAAOABYAFgAOABUADAAWABIAEwAXABQAFwAVABQAEgAXABMAFgAVABcAEgAWABcA"),
+"name": "Knob",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("ZcsAAP9/AAAlu8FG//8AAPP1wUYazwAApts9uf//AADz9cFG5DAAAP//Pbn/fwAAZcv///9/AACm2z25AAAAACW7wUYAAAAAzJbBRv9/AADYoD25Gs8AANigPbnkMAAAmTQAAP9/AAALCsFGGs8AANlEwUb//wAAWCQ9uf//AAALCsFG5DAAAAAAPbn/fwAA2UTBRgAAAABYJD25AAAAAJk0////fwAAJl89uRrPAAAyacFG/38AACZfPbnkMAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tmmt7"]
+resource_name = "model_door_old_Icosphere"
+_surfaces = [{
+"aabb": AABB(-0.197585, -0.0407403, -0.385738, 0.395169, 0.181554, 0.154437),
+"attribute_data": PackedByteArray("IHcfJHl0hh/IeYYfyHmGHxd/hh9vfB8kXIwfJLWJhh8Ej4YfDYcfJGaEhh+1iYYfvoEfJBd/hh9mhIYfyHmGH2987RoXf4YfeXSGHyB37RrIeYYftYmGH1yM7RoEj4YfZoSGHw2H7Rq1iYYfF3+GH76B7RpmhIYfyHmGHyB37RpvfO0aeXSGH9Fx7Rogd+0atYmGHw2H7RpcjO0aZoSGH76B7RoNh+0aF3+GH2987Rq+ge0aIHftGsh5VBZvfO0a0XHtGnl0VBYgd+0aDYftGrWJVBZcjO0avoHtGmaEVBYNh+0ab3ztGhd/VBa+ge0aIHcfJMh5hh95dIYfyHmGH298HyQXf4YfXIwfJASPhh+1iYYfDYcfJLWJhh9mhIYfvoEfJGaEhh8Xf4YfyHmGHxd/hh9vfO0aeXSGH8h5hh8gd+0atYmGHwSPhh9cjO0aZoSGH7WJhh8Nh+0aF3+GH2aEhh++ge0ayHmGH2987Rogd+0aeXSGHyB37RrRce0atYmGH1yM7RoNh+0aZoSGHw2H7Rq+ge0aF3+GH76B7RpvfO0aIHftGm987RrIeVQW0XHtGiB37Rp5dFQWDYftGlyM7Rq1iVQWvoHtGg2H7RpmhFQWb3ztGr6B7RoXf1QW"),
+"format": 34896613399,
+"index_count": 120,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9AD4APwBAAEEAQgBDAEQARQBGAEcASABJAEoASwBMAE0ATgBPAFAAUQBSAFMAVABVAFYAVwBYAFkAWgBbAFwAXQBeAF8AYABhAGIAYwBkAGUAZgBnAGgAaQBqAGsAbABtAG4AbwBwAHEAcgBzAHQAdQB2AHcA"),
+"material": ExtResource("4_p2ndr"),
+"name": "Knob",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 120,
+"vertex_data": PackedByteArray("ZcsAAP9/Zaclu8FG//9lp/P1wUYaz2Wn8/XBRhrPDcjz9cFG5DANyGXLAAD/fw3IZcsAAP9/nLTMlsFG/3+ctCW7wUb//5y0ZcsAAP9/2N0lu8FGAADY3cyWwUb/f9jdZcsAAP9/iPTz9cFG5DCI9CW7wUYAAIj08/XBRhrPW8D//z25/39bwPP1wUbkMFvAJbvBRv//6Y6m2z25///pjvP1wUYaz+mOzJbBRv9/GafYoD25Gs8ZpyW7wUb//xmnJbvBRgAAyNnYoD255DDI2cyWwUb/f8jZ8/XBRuQwQfOm2z25AABB8yW7wUYAAEHz8/XBRhrPGaem2z25//8Zp///Pbn/fxmnJbvBRv//6Y7YoD25Gs/pjqbbPbn//+mOzJbBRv9/W8DYoD255DBbwNigPbkaz1vAJbvBRgAAQfOm2z25AABB89igPbnkMEHz8/XBRuQwyNn//z25/3/I2abbPbkAAMjZpts9uf//nLRly////3+ctP//Pbn/f5y02KA9uRrPZadly////39lp6bbPbn//2Wn2KA9ueQwDchly////38NyNigPbkazw3Ipts9uQAAiPRly////3+I9NigPbnkMIj0//89uf9/2N1ly////3/Y3abbPbkAANjdmTQAAP9/pwULCsFGGs+nBdlEwUb//6cFCwrBRhrP+hmZNAAA/3/6GQsKwUbkMPoZmTQAAP9/ghDZRMFG//+CEDJpwUb/f4IQmTQAAP9/FSEyacFG/38VIdlEwUYAABUhmTQAAP9/7CTZRMFGAADsJAsKwUbkMOwkCwrBRhrPbgULCsFG5DBuBQAAPbn/f24F2UTBRv//MwELCsFGGs8zAVgkPbn//zMBMmnBRv9/fAPZRMFG//98AyZfPbkaz3wD2UTBRgAA2QYyacFG/3/ZBiZfPbnkMNkGCwrBRuQwmAfZRMFGAACYB1gkPbkAAJgHCwrBRhrPfAMAAD25/398A1gkPbn//3wD2UTBRv//MwFYJD25//8zASZfPbkazzMBMmnBRv9/bgUmXz25Gs9uBSZfPbnkMG4F2UTBRgAAmAcmXz255DCYB1gkPbkAAJgHCwrBRuQw2QZYJD25AADZBgAAPbn/f9kGWCQ9uf//ghAAAD25/3+CEJk0////f4IQJl89uRrPpwVYJD25//+nBZk0////f6cFJl89ueQw+hkmXz25Gs/6GZk0////f/oZWCQ9uQAA7CQmXz255DDsJJk0////f+wkAAA9uf9/FSFYJD25AAAVIZk0////fxUhbylFZG8pRWRvKUVkLWCkPy1gpD8tYKQ/7DOZzewzmc3sM5nNSkmH7UpJh+1KSYftn3mdLp95nS6feZ0uz3VfFM91XxTPdV8UzFJcNMxSXDTMUlw092Nt7fdjbe33Y23t/2+Y+v9vmPr/b5j6RH6lDER+pQxEfqUMB5yREgeckRIHnJESMq2iyzKtossyraLLL4qf6y+Kn+svip/ruoFZ87qBWfO6gVnz/49mBf+PZgX/j2YFEsxlMhLMZTISzGUyj9a5m4/WuZuP1rmb0Z9awNGfWsDRn1rAX4Zh0V+GYdFfhmHRtLZ3ErS2dxK0tncSu3O0WbtztFm7c7RZr0ygZq9MoGavTKBmlR9z35Ufc9+VH3PfTxJUt08SVLdPElS3fxjkd38Y5Hd/GOR35EI2euRCNnrkQjZ60m9UdtJvVHbSb1R2jQdX140HV9eNB1fX9gPTrfYD0632A9Ot6RJcfukSXH7pElx+cfinKHH4pyhx+KcoLJCqiSyQqokskKqJGr3IhRq9yIUavciFFe2igRXtooEV7aKBCPwrUgj8K1II/CtSaeCLIGngiyBp4IsgQ4xKpkOMSqZDjEqmT7NemU+zXplPs16Zf+caiH/nGoh/5xqIr+2qSK/tqkiv7apI")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nrbvm")
+
+[node name="WoodenDoor" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("1_6pcec")]
+door_mesh_node = NodePath("MeshInstance3D")
+anim_type = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+mesh = SubResource("BoxMesh_g5p12")
+surface_material_override/0 = SubResource("ShaderMaterial_o3wmm")
+
+[node name="Knob" type="MeshInstance3D" parent="MeshInstance3D" index="0"]
+transform = Transform3D(-5.46392e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-08, 0, -0.15, 0)
+mesh = SubResource("ArrayMesh_tmmt7")
+skeleton = NodePath("")
+
+[editable path="InteractableFront"]
+[editable path="InteractableBack"]

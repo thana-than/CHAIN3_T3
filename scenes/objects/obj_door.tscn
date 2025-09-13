@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn5wqjq65fhl5"]
+[gd_scene load_steps=11 format=3 uid="uid://bn5wqjq65fhl5"]
 
 [ext_resource type="Script" uid="uid://db0rkuhdiokox" path="res://scripts/objects/door.gd" id="1_6hthx"]
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="2_7sns6"]
@@ -7,8 +7,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6w2k"]
 size = Vector3(1.5, 2.7, 0.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pcjw8"]
-size = Vector3(1.2, 2.1, 0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntopk"]
+size = Vector3(1.2, 2.4, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krhul"]
+size = Vector3(1.2, 2.4, 0.3)
 
 [sub_resource type="Animation" id="Animation_pcjw8"]
 length = 0.001
@@ -76,15 +79,15 @@ shape = SubResource("BoxShape3D_f6w2k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 
 [node name="InteractionArea" type="CollisionShape3D" parent="InteractableFront"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_pcjw8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_ntopk")
 
 [node name="InteractableBack" parent="." instance=ExtResource("3_6hthx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 
 [node name="InteractionArea" type="CollisionShape3D" parent="InteractableBack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_pcjw8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_krhul")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

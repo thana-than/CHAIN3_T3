@@ -47,7 +47,8 @@ func _ready():
 		
 	front_interactable.interacted.connect(_on_interaction.bind(true))
 	back_interactable.interacted.connect(_on_interaction.bind(false))
-	timer.timeout.connect(close)
+	if not timer.timeout.is_connected(close):
+		timer.timeout.connect(close)
 	if door_mesh_node:
 		door_mesh_node.reparent(mesh_parent, false)
 	else:

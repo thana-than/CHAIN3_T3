@@ -55,7 +55,7 @@ _data = {
 radius = 26.808
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0y30"]
-size = Vector3(2, 2.5, 1)
+size = Vector3(1.5, 2.25, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ow3u"]
 radius = 45.0
