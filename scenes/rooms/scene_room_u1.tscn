@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://crc0lsboxm2ib" path="res://scenes/objects/hospital/obj_bed.tscn" id="13_ootfe"]
 [ext_resource type="PackedScene" uid="uid://dyxv8k72nq4p" path="res://scenes/objects/hospital/obj_iv_pole_blood_bag.tscn" id="14_u0b27"]
 [ext_resource type="PackedScene" uid="uid://bc7eskk7vupi8" path="res://scenes/objects/door/obj_wooden_door_fake.tscn" id="15_fdba8"]
-[ext_resource type="PackedScene" uid="uid://83xtbr10b03f" path="res://scenes/npc/stalker.tscn" id="19_jg7nv"]
+[ext_resource type="PackedScene" uid="uid://6ksmm8jsigqh" path="res://scenes/npc/stalker.tscn" id="19_jg7nv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obaim"]
 size = Vector3(1, 16, 117)
