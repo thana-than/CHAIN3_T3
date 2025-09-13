@@ -21,7 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26716, 0)
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90716, 0)
 cull_mask = 1032191
-near = 0.01
+near = 0.0306667
 
 [node name="collectable_crystal_red" parent="." instance=ExtResource("6_c7fg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

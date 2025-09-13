@@ -1,14 +1,52 @@
-[gd_scene load_steps=11 format=3 uid="uid://dogdtfihjht4g"]
+[gd_scene load_steps=15 format=4 uid="uid://dogdtfihjht4g"]
 
 [ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="1_5lcb8"]
 [ext_resource type="PackedScene" uid="uid://cr6dlu3tq7xfg" path="res://scenes/rooms/scene_room_s2.tscn" id="2_f13jm"]
 [ext_resource type="PackedScene" uid="uid://bs7vs2a5pvm87" path="res://scenes/rooms/scene_room_drop.tscn" id="3_34pdu"]
 [ext_resource type="PackedScene" uid="uid://0vkqyc06mhrf" path="res://scenes/objects/obj_portal.tscn" id="4_ggaeg"]
-[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="5_83fnd"]
 [ext_resource type="PackedScene" uid="uid://bx5tm3fmqdsxv" path="res://scenes/rooms/scene_room_u1.tscn" id="5_bynuf"]
-[ext_resource type="PackedScene" uid="uid://cm0c1d10446v" path="res://scenes/rooms/scene_room_link_back.tscn" id="5_doiwo"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_83fnd"]
+[ext_resource type="Script" uid="uid://bxcel82b180o3" path="res://addons/portals/scripts/portal_boxmesh.gd" id="6_b2dtt"]
+[ext_resource type="PackedScene" uid="uid://c15b5xk7q1h22" path="res://scenes/objects/door/mesh_wooden_door.tscn" id="7_83fnd"]
 [ext_resource type="PackedScene" uid="uid://bqgaiuwrr6168" path="res://scenes/objects/obj_interactable.tscn" id="7_b2dtt"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ii4oj"]
+_surfaces = [{
+"aabb": AABB(-0.615, -1.335, -1, 1.23, 2.67, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("pHAdv0jhqj8AAAAApHAdP0jhqj8AAAAApHAdv0jhqr8AAAAApHAdP0jhqr8AAAAApHAdv0jhqj8AAIC/pHAdP0jhqj8AAIC/pHAdv0jhqr8AAIC/pHAdP0jhqr8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("6_b2dtt")
+size = Vector3(1.23, 2.67, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83fnd"]
+size = Vector3(1.54321, 3.2, 0.121491)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2dtt"]
+size = Vector3(1, 3, 0.118652)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6ak3f"]
+_surfaces = [{
+"aabb": AABB(-0.615, -1.335, -1, 1.23, 2.67, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("pHAdv0jhqj8AAAAApHAdP0jhqj8AAAAApHAdv0jhqr8AAAAApHAdP0jhqr8AAAAApHAdv0jhqj8AAIC/pHAdP0jhqj8AAIC/pHAdv0jhqr8AAIC/pHAdP0jhqr8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("6_b2dtt")
+size = Vector3(1.23, 2.67, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3lafk"]
 size = Vector3(1.2, 1.9, 0.2)
@@ -24,13 +62,20 @@ cull_distance = 220.0
 
 [node name="portal_hospital" parent="room_T4" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 25)
-door_mesh_node = NodePath("obj_door_proto")
+door_mesh_node = NodePath("door_mesh")
+anim_type = 1
 
-[node name="obj_door_proto" parent="room_T4/portal_hospital" instance=ExtResource("5_83fnd")]
+[node name="door_mesh" parent="room_T4/portal_hospital" instance=ExtResource("7_83fnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
 [node name="to_hospital" parent="room_T4/portal_hospital" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 1.125, -0.12809)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 1.10708, -0.0717506)
+portal_size = Vector2(1.23, 2.67)
 exit_portal = NodePath("../../portal_hospital_to_landing")
+
+[node name="Portal3D_Mesh" parent="room_T4/portal_hospital/to_hospital" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0.2, 0)
+mesh = SubResource("ArrayMesh_ii4oj")
 
 [node name="Door Light" type="SpotLight3D" parent="room_T4/portal_hospital"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
@@ -38,9 +83,27 @@ visible = false
 light_energy = 2.89035
 spot_attenuation = 0.29
 
+[node name="StaticBody3D" type="StaticBody3D" parent="room_T4/portal_hospital"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_T4/portal_hospital/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00386047, 1.09687, -1.0842)
+shape = SubResource("BoxShape3D_83fnd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="room_T4/portal_hospital/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.681908, 1.097, -0.525002)
+shape = SubResource("BoxShape3D_b2dtt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="room_T4/portal_hospital/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.682, 1.097, -0.525)
+shape = SubResource("BoxShape3D_b2dtt")
+
 [node name="portal_hospital_to_landing" parent="room_T4" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 1.125, -6.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 1.125, 13.7016)
+portal_size = Vector2(1.23, 2.67)
 exit_portal = NodePath("../portal_hospital/to_hospital")
+
+[node name="Portal3D_Mesh" parent="room_T4/portal_hospital_to_landing" index="0"]
+mesh = SubResource("ArrayMesh_6ak3f")
 
 [node name="InteractableLink" parent="room_T4/portal_hospital_to_landing" instance=ExtResource("7_b2dtt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)
@@ -49,12 +112,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("BoxShape3D_3lafk")
 
-[node name="room_link_back" parent="." instance=ExtResource("5_doiwo")]
-transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 200, 0, 25)
-cull_distance = 120.0
-
 [node name="room_U1" parent="." instance=ExtResource("5_bynuf")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 200, 0, 45)
-cull_distance = 90.0
+cull_distance = 135.825
 
 [connection signal="interacted" from="room_T4/portal_hospital_to_landing/InteractableLink" to="room_T4/portal_hospital" method="toggle_open"]
+
+[editable path="room_T4/portal_hospital/to_hospital"]
+[editable path="room_T4/portal_hospital_to_landing"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyxv8k72nq4p"]
+
+[ext_resource type="PackedScene" uid="uid://di5uvlgejwbbd" path="res://assets/models/hospital/iv_pole_blood_bag.glb" id="1_0r6hp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dkvw1"]
+size = Vector3(0.5, 1.7, 0.5)
+
+[node name="iv_pole_blood_bag" instance=ExtResource("1_0r6hp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.85, 0)
+shape = SubResource("BoxShape3D_dkvw1")

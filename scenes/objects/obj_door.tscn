@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn5wqjq65fhl5"]
+[gd_scene load_steps=11 format=3 uid="uid://bn5wqjq65fhl5"]
 
 [ext_resource type="Script" uid="uid://db0rkuhdiokox" path="res://scripts/objects/door.gd" id="1_6hthx"]
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="2_7sns6"]
-[ext_resource type="PackedScene" uid="uid://bqgaiuwrr6168" path="res://scenes/objects/obj_interactable.tscn" id="3_6hthx"]
+[ext_resource type="Script" uid="uid://b5hkmjg3mc753" path="res://addons/ninetailsrabbit.interaction_kit_3d/src/interactable_3d.gd" id="3_6hthx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6w2k"]
 size = Vector3(1.5, 2.7, 0.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pcjw8"]
-size = Vector3(1.2, 2.1, 0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntopk"]
+size = Vector3(1.2, 2.4, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krhul"]
+size = Vector3(1.2, 2.4, 0.3)
 
 [sub_resource type="Animation" id="Animation_pcjw8"]
 length = 0.001
@@ -72,19 +75,32 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("BoxShape3D_f6w2k")
 
-[node name="InteractableFront" parent="." instance=ExtResource("3_6hthx")]
+[node name="InteractableTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="InteractableFront" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+script = ExtResource("3_6hthx")
+disable_after_interaction = true
+change_cursor_on_focus = false
+change_screen_pointer_focus = false
+metadata/_custom_type_script = "uid://b5hkmjg3mc753"
 
 [node name="InteractionArea" type="CollisionShape3D" parent="InteractableFront"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_pcjw8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_ntopk")
 
-[node name="InteractableBack" parent="." instance=ExtResource("3_6hthx")]
+[node name="InteractableBack" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+script = ExtResource("3_6hthx")
+disable_after_interaction = true
+change_cursor_on_focus = false
+change_screen_pointer_focus = false
+metadata/_custom_type_script = "uid://b5hkmjg3mc753"
 
 [node name="InteractionArea" type="CollisionShape3D" parent="InteractableBack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_pcjw8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_krhul")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -93,10 +109,9 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="timeout" from="InteractableTimer" to="InteractableFront" method="activate"]
+[connection signal="timeout" from="InteractableTimer" to="InteractableBack" method="activate"]
+[connection signal="interacted" from="InteractableFront" to="InteractableTimer" method="start"]
 [connection signal="interacted" from="InteractableFront" to="InteractableBack" method="deactivate"]
-[connection signal="timeout" from="InteractableFront/Timer" to="InteractableBack" method="activate"]
+[connection signal="interacted" from="InteractableBack" to="InteractableTimer" method="start"]
 [connection signal="interacted" from="InteractableBack" to="InteractableFront" method="deactivate"]
-[connection signal="timeout" from="InteractableBack/Timer" to="InteractableFront" method="activate"]
-
-[editable path="InteractableFront"]
-[editable path="InteractableBack"]
