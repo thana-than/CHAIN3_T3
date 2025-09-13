@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm0c1d10446v"]
+[gd_scene load_steps=15 format=3 uid="uid://cm0c1d10446v"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_rrhte"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_0d1cb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bj381qw0nex1s" path="res://scenes/objects/debug/obj_debug_dialogue.tscn" id="6_rrhte"]
 [ext_resource type="PackedScene" uid="uid://d2nw21rtn1pq6" path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn" id="9_cidvs"]
 [ext_resource type="Resource" uid="uid://duvncsmuvdoj7" path="res://assets/dialogue/dialogue/ticket_inspector.dialogue" id="10_cidvs"]
+[ext_resource type="PackedScene" uid="uid://83xtbr10b03f" path="res://scenes/npc/stalker.tscn" id="11_86kfd"]
 [ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="11_ujgea"]
 [ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="12_oowqc"]
 
@@ -72,6 +73,10 @@ shape = SubResource("BoxShape3D_j51fj")
 [node name="cull_root" type="Marker3D" parent="."]
 
 [node name="SendBackToS2" parent="." instance=ExtResource("6_rrhte")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.4, 1.4985)
+visible = false
 dialogue_settings = SubResource("Resource_0d1cb")
 player_settings = SubResource("Resource_86kfd")
+
+[node name="npc" parent="." instance=ExtResource("11_86kfd")]
+transform = Transform3D(-0.0757792, 0, 0.997125, 0, 1, 0, -0.997125, 0, -0.0757792, -2.26335, 0.468952, 0.0427866)
