@@ -1,8 +1,16 @@
-[gd_resource type="AnimationLibrary" load_steps=2 format=3 uid="uid://cdlr0yiu6simk"]
+[gd_resource type="AnimationLibrary" load_steps=6 format=3 uid="uid://cdlr0yiu6simk"]
 
 [ext_resource type="Animation" uid="uid://dpuf0v1brq6hy" path="res://assets/animations/SittingAntsy.anim" id="1_iseg0"]
+[ext_resource type="Animation" uid="uid://c1qesmwodfplx" path="res://assets/animations/OldManIdle.anim" id="2_33ifj"]
+[ext_resource type="Animation" uid="uid://biwpwv5a07hg6" path="res://assets/animations/SittingShinji.anim" id="3_dkd62"]
+[ext_resource type="Animation" uid="uid://ci2sbpgf41kk3" path="res://assets/animations/SittingSketchy.anim" id="4_ck3sw"]
+[ext_resource type="Animation" uid="uid://cav4437uukk80" path="res://assets/animations/SittingWaiting.anim" id="5_3r0o2"]
 
 [resource]
 _data = {
-&"SittingAntsy": ExtResource("1_iseg0")
+&"OldManIdle": ExtResource("2_33ifj"),
+&"SittingAntsy": ExtResource("1_iseg0"),
+&"SittingShinji": ExtResource("3_dkd62"),
+&"SittingSketchy": ExtResource("4_ck3sw"),
+&"SittingWaiting": ExtResource("5_3r0o2")
 }
