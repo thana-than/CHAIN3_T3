@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c8jw3jflmbhs3"
+path="res://.godot/imported/diag_subway_joke.dialogue-31b20ed6a1b2e5187f9d4e04b4e89d00.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/diag_subway_joke.dialogue"
+dest_files=["res://.godot/imported/diag_subway_joke.dialogue-31b20ed6a1b2e5187f9d4e04b4e89d00.tres"]
+
+[params]
+
+defaults=true
