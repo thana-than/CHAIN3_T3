@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgd71lt1wckmy"]
+[gd_scene load_steps=7 format=3 uid="uid://cgd71lt1wckmy"]
 
 [ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://scenes/objects/player.tscn" id="1_4wyf3"]
 [ext_resource type="Script" uid="uid://dkqqitwataa5h" path="res://scripts/world.gd" id="1_rm1t0"]
 [ext_resource type="PackedScene" uid="uid://dogdtfihjht4g" path="res://scenes/scene_rooms.tscn" id="3_rm1t0"]
 [ext_resource type="PackedScene" uid="uid://feif7oxlvc5x" path="res://scenes/objects/obj_lighting.tscn" id="4_53212"]
 [ext_resource type="PackedScene" uid="uid://3twkpxbwc2hh" path="res://scenes/objects/camera_3d.tscn" id="6_1joer"]
+[ext_resource type="PackedScene" uid="uid://ccepluc0d5tfr" path="res://scenes/objects/collectable/obj_collectable_crystal_red.tscn" id="6_c7fg7"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_rm1t0")
@@ -19,4 +20,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26716, 0)
 [node name="Camera3D" parent="." instance=ExtResource("6_1joer")]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90716, 0)
+cull_mask = 1032191
 near = 0.01
+
+[node name="collectable_crystal_red" parent="." instance=ExtResource("6_c7fg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

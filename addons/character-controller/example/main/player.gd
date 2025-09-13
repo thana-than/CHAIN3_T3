@@ -28,10 +28,7 @@ class_name Player
 
 @export var underwater_env: Environment
 
-@export var start_fall_particles_after_seconds = 1.0
-
 @onready var interactor : RayCastInteractor3D = get_node("Head/RayCastInteractor")
-@onready var falling_particles : GPUParticles3D = get_node("FallingParticles")
 
 var input_enabled := true:
 	set(enabled):
@@ -120,12 +117,6 @@ func _physics_process(delta):
 		# NOTE: It is important to always call move() even if we have no inputs 
 		## to process, as we still need to calculate gravity and collisions.
 		move(delta)
-		
-	_fall_particle_check()
-		
-func _fall_particle_check():
-	falling_particles.emitting = fall_time > start_fall_particles_after_seconds
-	
 ## Implements [member Portal3D.ON_TELEPORT_CALLBACK]
 func on_teleport(portal: Portal3D) -> void:
 	#set_global_rotation_y(global_position.y)

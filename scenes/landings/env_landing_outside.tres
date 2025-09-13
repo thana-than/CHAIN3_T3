@@ -1,0 +1,4 @@
+[gd_resource type="Environment" format=3 uid="uid://da26u3wvnllq5"]
+
+[resource]
+background_energy_multiplier = 6.67

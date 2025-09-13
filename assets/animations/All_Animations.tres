@@ -1,0 +1,8 @@
+[gd_resource type="AnimationLibrary" load_steps=2 format=3 uid="uid://cdlr0yiu6simk"]
+
+[ext_resource type="Animation" uid="uid://dpuf0v1brq6hy" path="res://assets/animations/SittingAntsy.anim" id="1_iseg0"]
+
+[resource]
+_data = {
+&"SittingAntsy": ExtResource("1_iseg0")
+}
