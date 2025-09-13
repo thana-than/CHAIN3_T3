@@ -190,11 +190,11 @@ bones/47/rotation = Quaternion(-7.96997e-08, -1.01161e-07, 7.82139e-08, 1)
 bones/47/scale = Vector3(1, 1, 1)
 
 [node name="hat" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(-8.83756, 0.495918, 0.00136625, -0.126331, -3.54667, 2.90085, 0.380497, 10.3409, 0.994857, 0.000442898, 1.68085, 0.27498)
+transform = Transform3D(-8.83756, 0.495919, 0.00136644, -0.126331, -3.54668, 2.90085, 0.380497, 10.3408, 0.99486, 0.000442924, 1.68085, 0.27498)
 bone_idx = 7
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.998973, 0.0020244, 0.0452735, 0.01428, 0.93405, -0.356857, -0.0430101, 0.357137, 0.933062, -0.000271309, 1.48213, 0.192412)
+transform = Transform3D(0.998973, 0.00202446, 0.0452735, 0.01428, 0.934049, -0.356858, -0.0430102, 0.357138, 0.933061, -0.000271297, 1.48213, 0.192412)
 bone_name = "mixamorig1_Head"
 bone_idx = 5
 
@@ -213,7 +213,6 @@ loop_sequence = true
 sequence = Array[String](["All_Animations/OldManIdle"])
 
 [node name="DialogueInteractable" type="Area3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("4_bmurd")
 dialogue_settings = SubResource("Resource_c346g")
 player_settings = SubResource("Resource_e3p88")
