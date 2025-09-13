@@ -88,7 +88,7 @@ project/assembly_name="CHAIN3_T3"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/ninetailsrabbit.interaction_kit_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg", "res://addons/room_gizmos/plugin.cfg")
+enabled=PackedStringArray("res://addons/chain3/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/decal_with_alpha/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/ninetailsrabbit.interaction_kit_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/portals/plugin.cfg", "res://addons/room_gizmos/plugin.cfg")
 
 [file_customization]
 
