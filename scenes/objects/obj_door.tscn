@@ -30,16 +30,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_0buvb"]
-resource_name = "anim_door_hinge"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("root_transform/hinge")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, -0.94, 0, 0.342)
-
 [sub_resource type="Animation" id="Animation_70mvp"]
 resource_name = "anim_door_slide"
 tracks/0/type = "position_3d"
@@ -49,6 +39,16 @@ tracks/0/path = NodePath("root_transform")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, -1.5, 0, 0)
+
+[sub_resource type="Animation" id="Animation_0buvb"]
+resource_name = "anim_door_hinge"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("root_transform/hinge")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, -0.94, 0, 0.342)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0buvb"]
 _data = {
@@ -123,5 +123,7 @@ fmod_parameters/open_state/variant_type = 4
 [connection signal="timeout" from="InteractableTimer" to="InteractableBack" method="activate"]
 [connection signal="interacted" from="InteractableFront" to="InteractableTimer" method="start"]
 [connection signal="interacted" from="InteractableFront" to="InteractableBack" method="deactivate"]
+[connection signal="interacted" from="InteractableFront" to="." method="_on_interaction" binds= [true]]
 [connection signal="interacted" from="InteractableBack" to="InteractableTimer" method="start"]
 [connection signal="interacted" from="InteractableBack" to="InteractableFront" method="deactivate"]
+[connection signal="interacted" from="InteractableBack" to="." method="_on_interaction" binds= [false]]
