@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dogdtfihjht4g"]
+[gd_scene load_steps=33 format=4 uid="uid://dogdtfihjht4g"]
 
 [ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="1_5lcb8"]
 [ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="2_3lafk"]
@@ -14,7 +14,8 @@
 [ext_resource type="Script" uid="uid://bxcel82b180o3" path="res://addons/portals/scripts/portal_boxmesh.gd" id="6_b2dtt"]
 [ext_resource type="PackedScene" uid="uid://c15b5xk7q1h22" path="res://scenes/objects/door/mesh_wooden_door.tscn" id="7_83fnd"]
 [ext_resource type="PackedScene" uid="uid://bqgaiuwrr6168" path="res://scenes/objects/obj_interactable.tscn" id="7_b2dtt"]
-[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="7_kgker"]
+[ext_resource type="Shader" uid="uid://ce30qoo5h1bid" path="res://ursc/spatial/standard/standard_transparent.gdshader" id="7_vbojq"]
+[ext_resource type="Shader" uid="uid://dmookkx3koo4s" path="res://ursc/basic_moving_fog.gdshader" id="8_vbojq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_83fnd"]
 
@@ -62,13 +63,11 @@ shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = false
 shader_parameter/emission_threshold = 0.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ak3f"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgker"]
 render_priority = 0
 shader = ExtResource("2_3lafk")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = SubResource("CompressedTexture2D_6ak3f")
+shader_parameter/albedo_texture = ExtResource("3_8uw0h")
 shader_parameter/albedo_texture_as_primary_color = true
 shader_parameter/mix_factor = 1.0
 shader_parameter/texture_lod_halve_distance_override = 0.0
@@ -134,9 +133,9 @@ shader_parameter/emission_threshold = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20hxo"]
 render_priority = 0
-shader = ExtResource("7_kgker")
-shader_parameter/albedo_color = Color(0.086078, 0.0795943, 0.0739998, 1)
-shader_parameter/albedo_texture_as_primary_color = true
+shader = ExtResource("7_vbojq")
+shader_parameter/albedo_color = Color(0.0862745, 0.0784314, 0.0745098, 0.823529)
+shader_parameter/albedo_texture_as_primary_color = false
 shader_parameter/mix_factor = 1.0
 shader_parameter/texture_lod_halve_distance_override = 0.0
 shader_parameter/uv_offset = Vector2(0, 0)
@@ -152,6 +151,30 @@ shader_parameter/emission_strength = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = false
 shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0y8wo"]
+noise_type = 3
+seed = 42069
+frequency = 0.029
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_6an4u"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_0y8wo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmwjd"]
+shader = ExtResource("8_vbojq")
+shader_parameter/density = 0.5
+shader_parameter/albedo_color = Color(0.273873, 0.273873, 0.273873, 1)
+shader_parameter/emission_color = Color(0.266575, 0.266575, 0.266575, 1)
+shader_parameter/emission_energy = 3.8136
+shader_parameter/noise_tex = SubResource("NoiseTexture3D_6an4u")
+shader_parameter/noise_strength = 1.0
+shader_parameter/noise_scale = 0.15
+shader_parameter/noise_flow = Vector3(0, 0.5, 0.5)
+shader_parameter/height_falloff = 0.0
+shader_parameter/edge_fade = 0.049
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ii4oj"]
 _surfaces = [{
@@ -211,8 +234,20 @@ mesh = SubResource("PlaneMesh_83fnd")
 skeleton = NodePath("../../../room_S2")
 surface_material_override/0 = SubResource("ShaderMaterial_8uw0h")
 
+[node name="Sky5" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, -1, 4.37114e-07, 0, -4.37114e-08, -10, 30, -4.37114e-08, 1.91069e-14, 12.7764, 0, -49.284)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_6ak3f")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky5"]
+transform = Transform3D(1, -1.11022e-16, 5.29396e-23, 0, 1, -8.35188e-22, 4.23516e-22, -8.35187e-24, 1, 0.0941744, 0.120135, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_8uw0h")
+
 [node name="Sky2" type="MeshInstance3D" parent="ParallaxBackground"]
-transform = Transform3D(-1.31134e-06, 1, -4.37114e-07, 0, -4.37114e-08, -10, -30, -4.37114e-08, 1.91069e-14, -19.5288, 0, 10.614)
+transform = Transform3D(-1.31134e-06, 1, -4.37114e-07, 0, -4.37114e-08, -10, -30, -4.37114e-08, 1.91069e-14, -12.5844, 0, 10.614)
 mesh = SubResource("PlaneMesh_83fnd")
 skeleton = NodePath("../../room_S2")
 surface_material_override/0 = SubResource("ShaderMaterial_kgker")
@@ -223,16 +258,33 @@ mesh = SubResource("PlaneMesh_83fnd")
 skeleton = NodePath("../../../room_S2")
 surface_material_override/0 = SubResource("ShaderMaterial_vbojq")
 
+[node name="Sky4" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, 1, -4.37114e-07, 0, -4.37114e-08, -10, -30, -4.37114e-08, 1.91069e-14, -12.5844, 0, -49.3372)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_kgker")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky4"]
+transform = Transform3D(1, -1.11022e-16, 5.29396e-23, 0, 1, -8.35188e-22, 4.23516e-22, -8.35187e-24, 1, 0.0941744, 0.120135, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_vbojq")
+
 [node name="Sky3" type="MeshInstance3D" parent="ParallaxBackground"]
-transform = Transform3D(30, 0, 0, 0, -4.37114e-08, -10, 0, 1, -4.37114e-07, 0, 0, -13.1798)
+transform = Transform3D(30, 0, 0, 0, -0.96782, -0.470819, 0, 0.00623307, -73.1045, 0, 10.0661, -25.4973)
 mesh = SubResource("PlaneMesh_83fnd")
 skeleton = NodePath("../../room_S2")
 surface_material_override/0 = SubResource("ShaderMaterial_4vsdq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ParallaxBackground"]
-transform = Transform3D(6.14576, 0, 0, 0, 1, 0, 0, 0, 1.47692, 0, 0, -11.83)
+[node name="Ground" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(12.4376, 0, 0, 0, 1.00159, 0, 0, 0, 16.1509, 0.0234206, -4.61092, -22.3287)
 mesh = SubResource("PlaneMesh_vbojq")
 surface_material_override/0 = SubResource("ShaderMaterial_20hxo")
+
+[node name="FogVolume" type="FogVolume" parent="ParallaxBackground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0514526, 1.39416, -15.2725)
+size = Vector3(10.9242, 2.4436, 8.18484)
+material = SubResource("ShaderMaterial_wmwjd")
 
 [node name="room_S2" parent="." instance=ExtResource("2_f13jm")]
 
