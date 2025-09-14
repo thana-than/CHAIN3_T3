@@ -208,7 +208,10 @@ cull_mask = 32
 [node name="hide_until_activate" parent="." index="6"]
 script = ExtResource("3_hqrgt")
 
-[node name="Sky" parent="hide_until_activate" index="0"]
+[node name="obj_ps1_console" parent="hide_until_activate" index="0"]
+visible = false
+
+[node name="Sky" parent="hide_until_activate" index="1"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 layers = 3
 surface_material_override/0 = ExtResource("2_f6751")
@@ -216,7 +219,11 @@ surface_material_override/0 = ExtResource("2_f6751")
 [node name="Shade" parent="hide_until_activate/Sky" index="0"]
 visible = false
 
-[node name="obj_large_screen" parent="hide_until_activate" index="1"]
+[node name="landing_outside_skybox_root" type="Node3D" parent="hide_until_activate" index="2"]
+script = ExtResource("5_bhlwa")
+scene = ExtResource("6_y7o3m")
+
+[node name="obj_large_screen" parent="hide_until_activate" index="3"]
 screen_material = SubResource("ShaderMaterial_dcgml")
 
 [node name="Screen" parent="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal" index="0"]
@@ -243,10 +250,6 @@ flicker_amp = 0.0
 [node name="TV Glow" parent="hide_until_activate/obj_large_screen/ManagedLight" index="0"]
 light_color = Color(1, 1, 1, 1)
 light_volumetric_fog_energy = 8.0
-
-[node name="landing_outside_skybox_root" type="Node3D" parent="hide_until_activate" index="2"]
-script = ExtResource("5_bhlwa")
-scene = ExtResource("6_y7o3m")
 
 [node name="Ceiling Light Root" type="Node3D" parent="." index="7"]
 transform = Transform3D(0.770746, 0, 0.770746, 0, 1.09, 0, -0.770746, 0, 0.770746, 0, 0, 0)

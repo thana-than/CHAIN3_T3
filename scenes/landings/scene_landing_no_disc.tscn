@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=4 uid="uid://dynksben166x4"]
+[gd_scene load_steps=26 format=4 uid="uid://dynksben166x4"]
 
 [ext_resource type="Script" uid="uid://b7gwe0ja8mli3" path="res://scripts/events/landing_area.gd" id="1_a28vb"]
 [ext_resource type="Material" uid="uid://k04n3jrlianv" path="res://assets/materials/mat_landing_curtains.tres" id="2_7j07r"]
 [ext_resource type="Shader" uid="uid://ce30qoo5h1bid" path="res://ursc/spatial/standard/standard_transparent.gdshader" id="2_drtnl"]
+[ext_resource type="PackedScene" uid="uid://dtk7o8ar4if1o" path="res://scenes/objects/obj_ps_1_console.tscn" id="3_drtnl"]
 [ext_resource type="Material" uid="uid://n27b6hhinpam" path="res://assets/materials/landing/mat_landing_noise.tres" id="5_3vh32"]
 [ext_resource type="Script" uid="uid://b00vhy210e84q" path="res://scripts/objects/tv.gd" id="8_5xkcu"]
 [ext_resource type="Material" uid="uid://c6ag8pf8s1ve4" path="res://assets/materials/tv/mat_tv_noise.tres" id="9_rbfrf"]
@@ -163,6 +164,9 @@ spot_angle = 68.3
 spot_angle_attenuation = 1.68179
 
 [node name="hide_until_activate" type="Node3D" parent="."]
+
+[node name="obj_ps1_console" parent="hide_until_activate" instance=ExtResource("3_drtnl")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, -17)
 
 [node name="Sky" type="MeshInstance3D" parent="hide_until_activate"]
 mesh = SubResource("ArrayMesh_3vh32")
