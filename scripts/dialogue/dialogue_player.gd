@@ -2,6 +2,9 @@ extends Node
 class_name DialoguePlayer
 
 signal on_play_dialogue()
+signal on_next_dialogue()
+signal on_line_start()
+signal on_line_end()
 
 @export var settings := DialogueSettings.new()
 @export var player_settings := DialoguePlayerSettings.new()
@@ -18,7 +21,7 @@ func _init(dialogue_settings := settings, dialogue_player_settings := player_set
 	
 func _ready():
 	add_child(timer)
-	timer.one_shot = false
+	timer.one_shot = true
 	timer.timeout.connect(cycle_next)
 
 func play_dialogue() -> void:
@@ -39,6 +42,9 @@ func play_dialogue() -> void:
 	restart_timer()
 	on_play_dialogue.emit()
 	dialogue_state.interaction_index += 1
+	await current_balloon.ready
+	current_balloon.dialogueLabel.started_typing.connect(on_line_start.emit)
+	current_balloon.dialogueLabel.finished_typing.connect(on_line_end.emit)
 
 func restart_timer():
 	if player_settings.next_after_seconds > 0:
@@ -48,3 +54,4 @@ func cycle_next():
 	if not current_balloon:
 		return
 	current_balloon.Next()
+	on_next_dialogue.emit()
