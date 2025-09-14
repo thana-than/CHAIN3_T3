@@ -134,12 +134,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_puhmr")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/SFX/Player/Land"
-event_guid = "{d4b4f519-e081-4ce1-bc00-e17458aebbd5}"
-fmod_parameters/land_state/id = -4688135898146721294
-fmod_parameters/land_state = "soft land"
-fmod_parameters/land_state/labels = PackedStringArray("soft land", "hard land")
-fmod_parameters/land_state/variant_type = 4
+event_name = "event:/SFX/Door Slam"
+event_guid = "{d3748804-f00f-49c4-b02b-f063e810226e}"
 
 [node name="Inside" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1.263, 0)
