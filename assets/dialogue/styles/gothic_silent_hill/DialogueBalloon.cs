@@ -61,7 +61,7 @@ namespace DialogueManagerRuntime
 		  bool skipButtonWasPressed = @event.IsActionPressed(SkipAction);
 		  if (mouseWasClicked || skipButtonWasPressed)
 		  {
-			GetViewport().SetInputAsHandled();
+			//GetViewport().SetInputAsHandled();
 			dialogueLabel.Call("skip_typing");
 			return;
 		  }
@@ -70,7 +70,7 @@ namespace DialogueManagerRuntime
 		if (!isWaitingForInput) return;
 		if (dialogueLine.Responses.Count > 0) return;
 
-		GetViewport().SetInputAsHandled();
+		//GetViewport().SetInputAsHandled();
 
 		if (@event is InputEventMouseButton && @event.IsPressed() && (@event as InputEventMouseButton).ButtonIndex == MouseButton.Left)
 		{
@@ -113,11 +113,11 @@ namespace DialogueManagerRuntime
 	}
 
 
-	public override void _UnhandledInput(InputEvent @event)
-	{
-	  // Only the balloon is allowed to handle input while it's showing
-	  GetViewport().SetInputAsHandled();
-	}
+	//public override void _UnhandledInput(InputEvent @event)
+	//{
+	  //// Only the balloon is allowed to handle input while it's showing
+	  //GetViewport().SetInputAsHandled();
+	//}
 
 
 	public override async void _Notification(int what)
