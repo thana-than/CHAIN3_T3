@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://3twkpxbwc2hh"]
+[gd_scene load_steps=6 format=3 uid="uid://3twkpxbwc2hh"]
 
 [ext_resource type="Material" uid="uid://tt3mnmqir3h0" path="res://assets/materials/sky_material.tres" id="1_8l7e7"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hp712"]
@@ -7,6 +7,15 @@
 material = ExtResource("1_8l7e7")
 flip_faces = true
 size = Vector3(1000, 1000, 1000)
+
+[sub_resource type="Gradient" id="Gradient_hp712"]
+offsets = PackedFloat32Array(0.463415, 0.655488, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.301961, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ng7b"]
+gradient = SubResource("Gradient_hp712")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Camera3D" type="Camera3D"]
 near = 0.001
@@ -20,3 +29,20 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("2_hp712")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" type="TextureRect" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0ng7b")
