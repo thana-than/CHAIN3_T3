@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cb2gx244vsa4q"
+path="res://.godot/imported/diag_subway_tree.dialogue-59c0490db3147975e1f2eaeceb8c7958.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_tree.dialogue"
+dest_files=["res://.godot/imported/diag_subway_tree.dialogue-59c0490db3147975e1f2eaeceb8c7958.tres"]
+
+[params]
+
+defaults=true

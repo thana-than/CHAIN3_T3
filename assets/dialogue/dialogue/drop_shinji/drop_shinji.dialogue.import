@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://kdbn6pvnaom7"
+path="res://.godot/imported/drop_shinji.dialogue-032e02636ee27aa15efa8f32cd6c0723.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/drop_shinji/drop_shinji.dialogue"
+dest_files=["res://.godot/imported/drop_shinji.dialogue-032e02636ee27aa15efa8f32cd6c0723.tres"]
+
+[params]
+
+defaults=true

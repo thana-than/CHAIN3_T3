@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dgnbugf4lydit"
+path="res://.godot/imported/diag_subway_watch.dialogue-6b40a01e10c6e7534aa3621acd104b4f.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_watch.dialogue"
+dest_files=["res://.godot/imported/diag_subway_watch.dialogue-6b40a01e10c6e7534aa3621acd104b4f.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://hrddvhes3no6"
+path="res://.godot/imported/diag_subway_corner.dialogue-b23386605b813f8e11a197a520e629b5.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_corner.dialogue"
+dest_files=["res://.godot/imported/diag_subway_corner.dialogue-b23386605b813f8e11a197a520e629b5.tres"]
+
+[params]
+
+defaults=true

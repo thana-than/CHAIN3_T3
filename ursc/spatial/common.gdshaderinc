@@ -237,7 +237,7 @@ void vertex()
 	#if !defined(TEXTURE_DISABLED) && !defined(TEXTURE_METAL) && !defined(SHINY)
 		vec2 _uv_scale = uv_scale;
 		vec2 _uv_scroll = uv_scroll_speed * TIME;
-		
+
 		if (uv_scroll_frames.x != 0.0)
 		{
 			_uv_scroll.x = ceil(_uv_scroll.x * uv_scroll_frames.x) / uv_scroll_frames.x;
@@ -248,9 +248,9 @@ void vertex()
 			_uv_scroll.y = ceil(_uv_scroll.y * uv_scroll_frames.y) / uv_scroll_frames.y;
 			_uv_scale.y /= uv_scroll_frames.y;
 		}
-		
+
 		UV = UV * _uv_scale + uv_offset + _uv_scroll;
-			
+
 	#endif
 
 	#if defined(BILLBOARD)
@@ -452,24 +452,24 @@ void fragment()
 			#endif
 		#endif
 	#endif
-	
+
 	if (use_emission)
 	{
 		float mask = 1.0;
-		if (use_emission_mask_texture) 
+		if (use_emission_mask_texture)
 		{
 			mask = texture(emission_mask_texture, uv).r;
 		} else {
 			mask = sampled_color.a;
 		}
-		
+
 		vec3 e_col = emission_color;
 		if (use_emission_texture)
 		{
 			vec4 sampled_emissive = texture(emission_texture, uv);
 			e_col = vec3(sampled_emissive.r, sampled_emissive.g, sampled_emissive.b);
 		}
-		
+
 		vec3 emissive = e_col * mask;
 		EMISSION = emissive * emission_strength;
 	}
