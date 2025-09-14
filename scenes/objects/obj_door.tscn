@@ -109,6 +109,16 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/SFX/Train/Door"
+event_guid = "{f9430e25-6c4c-44f2-b996-c0a916beaf45}"
+fmod_parameters/open_state/id = 5406778287961775689
+fmod_parameters/open_state = "Open"
+fmod_parameters/open_state/labels = PackedStringArray("Open", "Close")
+fmod_parameters/open_state/variant_type = 4
+
+[connection signal="on_close" from="." to="FmodEventEmitter3D" method="play" binds= [true]]
+[connection signal="on_open" from="." to="FmodEventEmitter3D" method="play" binds= [true]]
 [connection signal="timeout" from="InteractableTimer" to="InteractableFront" method="activate"]
 [connection signal="timeout" from="InteractableTimer" to="InteractableBack" method="activate"]
 [connection signal="interacted" from="InteractableFront" to="InteractableTimer" method="start"]
