@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://eng24f4vaan5"
+path="res://.godot/imported/diag_subway_ticket.dialogue-920b1dc77d38c5855f89ffd0c4c1fa31.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_ticket.dialogue"
+dest_files=["res://.godot/imported/diag_subway_ticket.dialogue-920b1dc77d38c5855f89ffd0c4c1fa31.tres"]
+
+[params]
+
+defaults=true

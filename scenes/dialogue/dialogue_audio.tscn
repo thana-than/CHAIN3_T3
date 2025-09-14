@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0jqdg4ssfi2a"]
+
+[ext_resource type="Script" uid="uid://dvhr1y1vhatyp" path="res://scripts/dialogue/dialogue_audio.gd" id="1_764xo"]
+
+[node name="DialogueAudio" type="FmodEventEmitter3D"]
+event_guid = "{00000000-0000-0000-0000-000000000000}"
+script = ExtResource("1_764xo")
+metadata/_custom_type_script = "uid://dvhr1y1vhatyp"

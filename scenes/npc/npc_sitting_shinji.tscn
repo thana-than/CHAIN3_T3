@@ -1,0 +1,143 @@
+[gd_scene load_steps=16 format=3 uid="uid://ck8h1eqri8al"]
+
+[ext_resource type="PackedScene" uid="uid://hv3q4g1hg5ha" path="res://assets/models/npc/npc_001.fbx" id="1_mdi1e"]
+[ext_resource type="Material" uid="uid://ccr56i1abcnf1" path="res://assets/materials/npc/mat_npc_suit.tres" id="2_ma2gf"]
+[ext_resource type="AnimationLibrary" uid="uid://cdlr0yiu6simk" path="res://assets/animations/All_Animations.tres" id="2_q4mrh"]
+[ext_resource type="Script" uid="uid://glr2uml18crh" path="res://scripts/animation/animation_sequencer.gd" id="3_ma2gf"]
+[ext_resource type="Script" uid="uid://bat76x8xqttar" path="res://scripts/dialogue/dialogue_interactable.gd" id="4_cd2fu"]
+[ext_resource type="PackedScene" uid="uid://d2nw21rtn1pq6" path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn" id="5_mvp3c"]
+[ext_resource type="Resource" uid="uid://bhcp6jljxq8pj" path="res://assets/dialogue/dialogue/test_001.dialogue" id="6_4iju2"]
+[ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="7_p8x5w"]
+[ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="8_s1nrb"]
+[ext_resource type="Script" uid="uid://pqedudvcybfr" path="res://scripts/animation/head_look_at_controller.gd" id="9_ojkbh"]
+
+[sub_resource type="Shader" id="Shader_kaq2p"]
+code = "shader_type spatial;
+render_mode blend_mix, unshaded, cull_back;
+
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+
+// Mosaic controls
+uniform float mosaic_pixel_size = 8.0;
+
+void fragment() {	
+	// setup the mask as something 
+	//float mask = 1.0 - pow(clamp(base_col.a, 0.0, 1.0), mask_sharpness);
+	
+	vec2 suv = SCREEN_UV;
+	
+	// get pixels and quantize 
+	vec2 vp = vec2(VIEWPORT_SIZE); // viewport resolution
+	vec2 px_uv = suv * vp;
+	vec2 q = floor(px_uv / mosaic_pixel_size) * mosaic_pixel_size + (mosaic_pixel_size * 0.5);
+	vec2 mosaic_uv = q / vp;
+	
+	vec3 sampled_rgb = texture(screen_texture, mosaic_uv).rgb;
+	
+	EMISSION = sampled_rgb;
+	ALBEDO = sampled_rgb;
+	ALPHA = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdi1e"]
+render_priority = 0
+shader = SubResource("Shader_kaq2p")
+shader_parameter/mosaic_pixel_size = 5.0
+
+[sub_resource type="Resource" id="Resource_g1xht"]
+script = ExtResource("7_p8x5w")
+balloon_scene = ExtResource("5_mvp3c")
+dialogue_resource = ExtResource("6_4iju2")
+dialogue_start = "start"
+metadata/_custom_type_script = "uid://c1eo4j34dxno3"
+
+[sub_resource type="Resource" id="Resource_umgsa"]
+script = ExtResource("8_s1nrb")
+is_repeatable = true
+next_after_seconds = 5.0
+metadata/_custom_type_script = "uid://d4mre44gaciao"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ap2pf"]
+radius = 0.34088
+height = 1.56803
+
+[node name="npc_sitting_shinji" instance=ExtResource("1_mdi1e")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 4.52987e-08, 0, -4.52987e-08, 0.6, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0.0040594, 0.60389, -0.271505)
+bones/0/rotation = Quaternion(-0.282662, -0.0497734, -0.0170185, 0.957776)
+bones/1/rotation = Quaternion(0.0276126, 0.00537254, 0.00438698, 0.999595)
+bones/2/rotation = Quaternion(0.156985, 0.00630097, 0.0130788, 0.987494)
+bones/3/rotation = Quaternion(0.156613, 0.00747706, 0.0162477, 0.987498)
+bones/4/rotation = Quaternion(0.104729, 0.000726374, -0.0104414, 0.994446)
+bones/5/rotation = Quaternion(0.0186485, -0.000165764, -0.0104645, 0.999771)
+bones/8/rotation = Quaternion(0.558832, 0.408592, -0.633462, 0.345666)
+bones/9/rotation = Quaternion(0.386677, 0.16895, 0.277478, 0.863101)
+bones/10/rotation = Quaternion(0.0556249, -0.00246132, 0.466412, 0.882814)
+bones/11/rotation = Quaternion(-0.268885, 0.132177, 0.0171743, 0.953905)
+bones/12/rotation = Quaternion(0.22681, 0.102755, 0.217216, 0.94383)
+bones/13/rotation = Quaternion(-0.0402334, -0.0404355, -0.075233, 0.995533)
+bones/14/rotation = Quaternion(-0.046056, -0.0149037, 0.0425945, 0.997919)
+bones/17/rotation = Quaternion(-0.0309093, -0.000925474, 0.0478655, 0.998375)
+bones/18/rotation = Quaternion(0.0492488, 2.80931e-05, -0.0122211, 0.998712)
+bones/19/rotation = Quaternion(0.0246325, -2.02807e-06, -0.00571189, 0.99968)
+bones/22/rotation = Quaternion(0.598723, -0.38857, 0.597644, 0.365192)
+bones/23/rotation = Quaternion(0.395619, -0.037488, -0.143707, 0.906327)
+bones/24/rotation = Quaternion(0.064592, 0.00237351, -0.560494, 0.825632)
+bones/25/rotation = Quaternion(-0.152768, -0.334785, 0.0128466, 0.92974)
+bones/26/rotation = Quaternion(0.285462, -0.0906928, -0.226065, 0.92692)
+bones/27/rotation = Quaternion(-0.0451987, 0.0723871, 0.193446, 0.977392)
+bones/28/rotation = Quaternion(-0.0528067, 0.0323444, -0.00792104, 0.998049)
+bones/31/rotation = Quaternion(0.0398062, -0.00121949, -0.0327937, 0.998668)
+bones/32/rotation = Quaternion(0.0290243, -9.77097e-06, 0.00715082, 0.999553)
+bones/33/rotation = Quaternion(0.0145136, -3.55179e-05, 0.00193377, 0.999893)
+bones/36/rotation = Quaternion(0.093893, 0.464649, 0.872895, -0.115497)
+bones/37/rotation = Quaternion(-0.755071, 0.0476598, -0.00998055, 0.653833)
+bones/38/rotation = Quaternion(0.449271, 0.0239169, 0.0796947, 0.889513)
+bones/39/rotation = Quaternion(0.393945, -0.0843642, 0.0099486, 0.9152)
+bones/42/rotation = Quaternion(-0.100432, 0.458595, 0.880049, 0.0715429)
+bones/43/rotation = Quaternion(-0.758829, -0.043192, 0.0410772, 0.648557)
+bones/44/rotation = Quaternion(0.473154, -0.0443183, -0.117722, 0.871954)
+bones/45/rotation = Quaternion(0.389396, 0.064453, -0.0185278, 0.918626)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_ma2gf")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.9991, -0.0231564, -0.0355341, 0.00928375, 0.936886, -0.34951, 0.0413848, 0.348866, 0.936258, 0.00184951, 1.6084, -0.428857)
+bone_name = "mixamorig1_Head"
+bone_idx = 5
+
+[node name="CensoredBlur" type="CSGBox3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(1.00003, -5.04777e-07, 2.76603e-07, -2.79397e-07, 1, -1.72853e-06, -1.81608e-07, 2.98023e-08, 1, 0.0135806, 0.151993, 0.0100708)
+size = Vector3(0.343689, 0.576324, 0.439331)
+material = SubResource("ShaderMaterial_mdi1e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Armature" index="1"]
+libraries = {
+&"All_Animations": ExtResource("2_q4mrh")
+}
+script = ExtResource("3_ma2gf")
+play_on_ready = true
+loop_sequence = true
+sequence = Array[String](["All_Animations/SittingShinji"])
+
+[node name="DialogueInteractable" type="Area3D" parent="." index="1"]
+script = ExtResource("4_cd2fu")
+dialogue_settings = SubResource("Resource_g1xht")
+player_settings = SubResource("Resource_umgsa")
+metadata/_custom_type_script = "uid://bat76x8xqttar"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0241189, 0.552854, -0.0852549)
+shape = SubResource("CapsuleShape3D_ap2pf")
+
+[node name="HeadLookAtController" type="Node3D" parent="." index="2" node_paths=PackedStringArray("skeleton", "interactable")]
+script = ExtResource("9_ojkbh")
+skeleton = NodePath("../Armature/Skeleton3D")
+interactable = NodePath("../DialogueInteractable")
+follow_seconds = 10.0
+metadata/_custom_type_script = "uid://pqedudvcybfr"

@@ -3,13 +3,18 @@ class_name DialogueInteractable
 
 @export var dialogue_settings := DialogueSettings.new()
 @export var player_settings := DialoguePlayerSettings.new()
+@export var dialogue_audio_resource : AudioEventResource = preload("res://assets/resources/audio_events/SFX_Dialogue.tres")
+
 @export var debug_verbose: bool = false
 
 @onready var dialogue_player := DialoguePlayer.new(dialogue_settings, player_settings)
+@onready var dialogue_audio := DialogueAudio.new(dialogue_settings, dialogue_player, dialogue_audio_resource)
+
 @onready var logger := Logger.new(name)
 
 func _ready() -> void:
 	add_child(dialogue_player)
+	add_child(dialogue_audio)
 	interacted.connect(_on_interact)
 	if debug_verbose:
 		logger.log("_on_body_entered has been connected to the body_entered signal.")

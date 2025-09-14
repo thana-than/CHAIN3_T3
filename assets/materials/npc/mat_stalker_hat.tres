@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" script_class="TextureFrameMaterial" load_steps=4 format=3 uid="uid://ew5fg2uhdagg"]
+
+[ext_resource type="Script" uid="uid://6skajjn0uou7" path="res://scripts/animation/texture_frame_material.gd" id="1_1s0ne"]
+[ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="2_xftva"]
+[ext_resource type="Texture2D" uid="uid://ctgef5qsdryhe" path="res://assets/textures/npc/tex_stalker_hat.png" id="3_41lmd"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("2_xftva")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_41lmd")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(1, 0)
+shader_parameter/uv_scroll_frames = Vector2(1, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+script = ExtResource("1_1s0ne")
+texture = ExtResource("3_41lmd")
+frames = 1
+speed = 1
+direction = 0
+metadata/_custom_type_script = "uid://6skajjn0uou7"

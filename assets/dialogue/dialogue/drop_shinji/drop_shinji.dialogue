@@ -1,0 +1,29 @@
+import "res://assets/dialogue/dialogue/snippets/diag_subway_coffee.dialogue" as diag_subway_coffee
+import "res://assets/dialogue/dialogue/snippets/diag_subway_dreams.dialogue" as diag_subway_dreams
+import "res://assets/dialogue/dialogue/snippets/diag_subway_dust.dialogue" as diag_subway_dust
+import "res://assets/dialogue/dialogue/snippets/diag_subway_eyes.dialogue" as diag_subway_eyes
+import "res://assets/dialogue/dialogue/snippets/diag_subway_favourite.dialogue" as diag_subway_favourite
+import "res://assets/dialogue/dialogue/snippets/diag_subway_hmm.dialogue" as diag_subway_hmm
+import "res://assets/dialogue/dialogue/snippets/diag_subway_im_here.dialogue" as diag_subway_im_here
+import "res://assets/dialogue/dialogue/snippets/diag_subway_joke.dialogue" as diag_subway_joke
+import "res://assets/dialogue/dialogue/snippets/diag_subway_late.dialogue" as diag_subway_late
+import "res://assets/dialogue/dialogue/snippets/diag_subway_light.dialogue" as diag_subway_light
+import "res://assets/dialogue/dialogue/snippets/diag_subway_moving.dialogue" as diag_subway_moving
+import "res://assets/dialogue/dialogue/snippets/diag_subway_music.dialogue" as diag_subway_music
+import "res://assets/dialogue/dialogue/snippets/diag_subway_nextstop.dialogue" as diag_subway_nextstop
+import "res://assets/dialogue/dialogue/snippets/diag_subway_program.dialogue" as diag_subway_program
+import "res://assets/dialogue/dialogue/snippets/diag_subway_rocking.dialogue" as diag_subway_rocking
+import "res://assets/dialogue/dialogue/snippets/diag_subway_ticketman.dialogue" as diag_subway_ticketman
+import "res://assets/dialogue/dialogue/snippets/diag_subway_tree.dialogue" as diag_subway_tree
+import "res://assets/dialogue/dialogue/snippets/diag_subway_tv.dialogue" as diag_subway_tv
+import "res://assets/dialogue/dialogue/snippets/diag_subway_warm.dialogue" as diag_subway_warm
+import "res://assets/dialogue/dialogue/snippets/diag_subway_watch.dialogue" as diag_subway_watch
+
+~ start
+
+% => diag_subway_nextstop/start
+% => diag_subway_program/start
+% => diag_subway_eyes/start
+% => diag_subway_watch/start
+
+=> END

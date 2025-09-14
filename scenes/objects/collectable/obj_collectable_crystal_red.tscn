@@ -34,12 +34,14 @@ shader_parameter/texture_lod_halve_distance_override = 0.0
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
 shader_parameter/cull_distance_override = 0.0
 shader_parameter/convert_vertex_colors = false
 shader_parameter/enable_affine_transform = false
 shader_parameter/use_emission = true
 shader_parameter/emission_color = Color(0.984249, 0, 0.334087, 1)
 shader_parameter/emission_strength = 0.75
+shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = true
 shader_parameter/emission_mask_texture = SubResource("NoiseTexture2D_51mtl")
 shader_parameter/emission_threshold = 0.0
@@ -67,29 +69,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_tmsnu"]
-resource_name = "crystal_motion"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 5, 1, 0, 1, 0, 0)
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(2, 2, 2),
-"points": PackedFloat32Array(0, 0, 0, 0.833333, 0, 0.1, -0.833333, 0, 0.833333, 0, 0, -0.833333, 0, 0, 0),
-"times": PackedFloat32Array(0, 2.5, 5)
 }
 
 [sub_resource type="Animation" id="Animation_t4vem"]
@@ -151,6 +130,29 @@ tracks/4/keys = {
 "handle_modes": PackedInt32Array(2, 0, 2),
 "points": PackedFloat32Array(0.318, 0, 0, 0.111111, 0, 0.313, -0.111111, 0, 0.222222, 0, 0.4, -0.222222, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.2, 1)
+}
+
+[sub_resource type="Animation" id="Animation_tmsnu"]
+resource_name = "crystal_motion"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 5, 1, 0, 1, 0, 0)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.833333, 0, 0.1, -0.833333, 0, 0.833333, 0, 0, -0.833333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.5, 5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6an4u"]
@@ -252,7 +254,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 script = ExtResource("2_0x46w")
 light_name_base = "Light"
 flicker_mode = 1
-flicker_amp = 2.0
+flicker_freq_hz = 1.0
+flicker_amp = 4.0
 flicker_seed = 6969
 metadata/_custom_type_script = "uid://cg4to6v7xjlug"
 
@@ -285,6 +288,12 @@ process_material = SubResource("ParticleProcessMaterial_24ie1")
 draw_pass_1 = SubResource("QuadMesh_7vfvr")
 draw_skin = SubResource("Skin_ors55")
 
+[node name="AmbientNoise" type="FmodEventEmitter3D" parent="obj"]
+event_name = "event:/SFX/Crystal Idle"
+event_guid = "{1bfd1fad-74a8-4582-aa69-f3591710e3d3}"
+autoplay = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+
 [node name="Chain3Flag" type="Node" parent="."]
 script = ExtResource("5_tx2sr")
 metadata/_custom_type_script = "uid://d2buxfewgw2p"
@@ -295,6 +304,7 @@ event_guid = "{a0841ef5-157a-46be-8f57-8a23c0680819}"
 attached = false
 
 [connection signal="on_collect" from="." to="obj/pivot/mdl_crystal/StaticBody3D" method="queue_free"]
+[connection signal="on_collect" from="." to="obj/AmbientNoise" method="stop"]
 [connection signal="on_collect" from="." to="CollectSound" method="play_one_shot"]
 [connection signal="on_collect" from="." to="obj/pivot/mdl_crystal/AnimationPlayer" method="play" binds= ["anim_collect", 0.5]]
 [connection signal="on_collect" from="." to="obj/GPUParticles3D" method="set_emitting" binds= [false]]

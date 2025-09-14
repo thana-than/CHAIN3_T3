@@ -35,7 +35,7 @@ func _ready() -> void:
 		if try_move_player_to_room_id(_room_id):
 			load_from_chain = false
 	if load_from_chain:
-		var id = Chain3Adapter._entry_door_id
+		var id = Chain3Adapter.get_entry_door_id()
 		if id == "START":
 			id = default_start_node_id.to_upper()
 		try_move_player_to_room_id(format_entry_node_room(id))

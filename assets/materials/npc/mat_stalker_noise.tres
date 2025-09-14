@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" script_class="TextureFrameMaterial" load_steps=4 format=3 uid="uid://xafwae5jwjgd"]
+
+[ext_resource type="Texture2D" uid="uid://fge1hup60kie" path="res://assets/textures/npc/tex_stalker_noise_hor.png" id="1_4u65b"]
+[ext_resource type="Script" uid="uid://6skajjn0uou7" path="res://scripts/animation/texture_frame_material.gd" id="1_54arb"]
+[ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="2_q8br7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("2_q8br7")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("1_4u65b")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 0.25)
+shader_parameter/uv_scroll_speed = Vector2(2, 0)
+shader_parameter/uv_scroll_frames = Vector2(4, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+script = ExtResource("1_54arb")
+texture = ExtResource("1_4u65b")
+frames = 4
+speed = 2
+direction = 0

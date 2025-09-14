@@ -8,5 +8,6 @@ func _ready():
 	remove_child(disable_until_active)
 
 func activate():
-	add_child(disable_until_active)
+	if not disable_until_active.is_inside_tree():
+		add_child(disable_until_active)
 	on_activate.emit()

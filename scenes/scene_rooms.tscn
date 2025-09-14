@@ -1,20 +1,396 @@
-[gd_scene load_steps=11 format=3 uid="uid://dogdtfihjht4g"]
+[gd_scene load_steps=39 format=4 uid="uid://dogdtfihjht4g"]
 
 [ext_resource type="Script" uid="uid://c0lws4rqnnouf" path="res://scripts/room_manager.gd" id="1_5lcb8"]
+[ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="2_3lafk"]
+[ext_resource type="Shader" uid="uid://bkaicu26e6jm5" path="res://ursc/spatial/standard/standard_transparent_repeating.gdshader" id="2_6ak3f"]
 [ext_resource type="PackedScene" uid="uid://cr6dlu3tq7xfg" path="res://scenes/rooms/scene_room_s2.tscn" id="2_f13jm"]
+[ext_resource type="Texture2D" uid="uid://d3wjm3d5k30v7" path="res://assets/textures/parallax/forest/resized_moon_sky.png" id="3_8uw0h"]
 [ext_resource type="PackedScene" uid="uid://bs7vs2a5pvm87" path="res://scenes/rooms/scene_room_drop.tscn" id="3_34pdu"]
+[ext_resource type="Material" uid="uid://e40lhu45b4ex" path="res://assets/materials/mat_parralax.tres" id="4_20hxo"]
 [ext_resource type="PackedScene" uid="uid://0vkqyc06mhrf" path="res://scenes/objects/obj_portal.tscn" id="4_ggaeg"]
-[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="5_83fnd"]
+[ext_resource type="Texture2D" uid="uid://bit5e2270va6a" path="res://assets/textures/parallax/forest/resized_forest_long.png" id="5_6ak3f"]
 [ext_resource type="PackedScene" uid="uid://bx5tm3fmqdsxv" path="res://scenes/rooms/scene_room_u1.tscn" id="5_bynuf"]
-[ext_resource type="PackedScene" uid="uid://cm0c1d10446v" path="res://scenes/rooms/scene_room_link_back.tscn" id="5_doiwo"]
+[ext_resource type="Texture2D" uid="uid://bpugwph24toaw" path="res://assets/textures/parallax/forest/resized_moon_sky_vertical.png" id="6_8uw0h"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_83fnd"]
+[ext_resource type="Script" uid="uid://bxcel82b180o3" path="res://addons/portals/scripts/portal_boxmesh.gd" id="6_b2dtt"]
+[ext_resource type="PackedScene" uid="uid://c15b5xk7q1h22" path="res://scenes/objects/door/mesh_wooden_door.tscn" id="7_83fnd"]
 [ext_resource type="PackedScene" uid="uid://bqgaiuwrr6168" path="res://scenes/objects/obj_interactable.tscn" id="7_b2dtt"]
+[ext_resource type="Shader" uid="uid://ce30qoo5h1bid" path="res://ursc/spatial/standard/standard_transparent.gdshader" id="7_vbojq"]
+[ext_resource type="Shader" uid="uid://dmookkx3koo4s" path="res://ursc/basic_moving_fog.gdshader" id="8_vbojq"]
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="9_4vsdq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhm77"]
+render_priority = 0
+shader = ExtResource("9_4vsdq")
+shader_parameter/albedo_color = Color(0, 0, 0, 1)
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_v4gsr"]
+material = SubResource("ShaderMaterial_hhm77")
+flip_faces = true
+size = Vector3(0.355, 0.535, 126.99)
+
+[sub_resource type="BoxMesh" id="BoxMesh_20hxo"]
+material = SubResource("ShaderMaterial_hhm77")
+flip_faces = true
+size = Vector3(1.075, 0.535, 202.895)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v4gsr"]
+render_priority = 0
+shader = ExtResource("9_4vsdq")
+shader_parameter/albedo_color = Color(0, 0, 0, 1)
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1eejf"]
+material = SubResource("ShaderMaterial_v4gsr")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_83fnd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ak3f"]
+render_priority = 0
+shader = ExtResource("2_3lafk")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_8uw0h")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(3, 1)
+shader_parameter/uv_scroll_speed = Vector2(0.1, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgker"]
+render_priority = 0
+shader = ExtResource("2_3lafk")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_8uw0h")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(3, 1)
+shader_parameter/uv_scroll_speed = Vector2(-0.1, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbojq"]
+render_priority = 0
+shader = ExtResource("2_6ak3f")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("5_6ak3f")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(-0.2, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vsdq"]
+render_priority = 0
+shader = ExtResource("2_3lafk")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("6_8uw0h")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(3, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, -0.1)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vbojq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20hxo"]
+render_priority = 0
+shader = ExtResource("7_vbojq")
+shader_parameter/albedo_color = Color(0.0862745, 0.0784314, 0.0745098, 0.823529)
+shader_parameter/albedo_texture_as_primary_color = false
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0y8wo"]
+noise_type = 3
+seed = 42069
+frequency = 0.029
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_6an4u"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_0y8wo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmwjd"]
+shader = ExtResource("8_vbojq")
+shader_parameter/density = 0.5
+shader_parameter/albedo_color = Color(0.273873, 0.273873, 0.273873, 1)
+shader_parameter/emission_color = Color(0.266575, 0.266575, 0.266575, 1)
+shader_parameter/emission_energy = 3.8136
+shader_parameter/noise_tex = SubResource("NoiseTexture3D_6an4u")
+shader_parameter/noise_strength = 1.0
+shader_parameter/noise_scale = 0.15
+shader_parameter/noise_flow = Vector3(0, 0.5, 0.5)
+shader_parameter/height_falloff = 0.0
+shader_parameter/edge_fade = 0.049
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ii4oj"]
+_surfaces = [{
+"aabb": AABB(-0.615, -1.335, -1, 1.23, 2.67, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("pHAdv0jhqj8AAAAApHAdP0jhqj8AAAAApHAdv0jhqr8AAAAApHAdP0jhqr8AAAAApHAdv0jhqj8AAIC/pHAdP0jhqj8AAIC/pHAdv0jhqr8AAIC/pHAdP0jhqr8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("6_b2dtt")
+size = Vector3(1.23, 2.67, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83fnd"]
+size = Vector3(1.54321, 3.2, 0.121491)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2dtt"]
+size = Vector3(1, 3, 0.118652)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6ak3f"]
+_surfaces = [{
+"aabb": AABB(-0.615, -1.335, -1, 1.23, 2.67, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("pHAdv0jhqj8AAAAApHAdP0jhqj8AAAAApHAdv0jhqr8AAAAApHAdP0jhqr8AAAAApHAdv0jhqj8AAIC/pHAdP0jhqj8AAIC/pHAdv0jhqr8AAIC/pHAdP0jhqr8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("6_b2dtt")
+size = Vector3(1.23, 2.67, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3lafk"]
 size = Vector3(1.2, 1.9, 0.2)
 
 [node name="Rooms" type="Node3D"]
 script = ExtResource("1_5lcb8")
+
+[node name="ParallaxBackground" type="Node3D" parent="."]
+
+[node name="BlackBoxCover" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-29.19, 0, -1.50996e-07, 0, 24.73, 0, 4.40757e-06, 0, -1, -8.1, 2, -16.9)
+visible = false
+mesh = SubResource("BoxMesh_v4gsr")
+
+[node name="BlackBoxCover2" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-29.19, 0, -1.50996e-07, 0, 24.73, 0, 4.40757e-06, 0, -1, 8.1, 2, -16.9)
+visible = false
+mesh = SubResource("BoxMesh_v4gsr")
+
+[node name="BlackBoxCover3" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-29.19, 0, -1.50996e-07, 0, 24.73, 0, 4.40757e-06, 0, -1, -0.9, 2, 31.1)
+mesh = SubResource("BoxMesh_20hxo")
+
+[node name="BlackBoxCover4" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-29.19, 9.02378e-06, -3.82137e-15, 0, -4.51189e-06, -1, -2.55187e-06, -103.22, 4.37114e-08, 0.100001, -4.5, 41.7)
+mesh = SubResource("QuadMesh_1eejf")
+
+[node name="Sky1" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, -1, 4.37114e-07, 0, -4.37114e-08, -10, 30, -4.37114e-08, 1.91069e-14, 12.7764, 0, 10.614)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_6ak3f")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky1"]
+transform = Transform3D(1, -2.22045e-16, 1.58819e-22, 0, 1, -8.35188e-22, 8.47033e-22, -8.35187e-24, 1, 0.0941744, 0.120134, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = ExtResource("4_20hxo")
+
+[node name="Sky6" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, -1, 4.37114e-07, 0, -4.37114e-08, -10, 30, -4.37114e-08, 1.91069e-14, 12.7764, 0, 70.614)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_6ak3f")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky6"]
+transform = Transform3D(1, -2.22045e-16, 1.58819e-22, 0, 1, -8.35188e-22, 8.47033e-22, -8.35187e-24, 1, 0.0941744, 0.120134, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = ExtResource("4_20hxo")
+
+[node name="Sky5" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, -1, 4.37114e-07, 0, -4.37114e-08, -10, 30, -4.37114e-08, 1.91069e-14, 12.7764, 0, -49.284)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_6ak3f")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky5"]
+transform = Transform3D(1, -1.11022e-16, 5.29396e-23, 0, 1, -8.35188e-22, 4.23516e-22, -8.35187e-24, 1, 0.0941744, 0.120135, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = ExtResource("4_20hxo")
+
+[node name="Sky2" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, 1, -4.37114e-07, 0, -4.37114e-08, -10, -30, -4.37114e-08, 1.91069e-14, -12.5844, 0, 10.614)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_kgker")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky2"]
+transform = Transform3D(1, -1.11022e-16, 5.29396e-23, 0, 1, -8.35188e-22, 4.23516e-22, -8.35187e-24, 1, 0.0941744, 0.120135, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_vbojq")
+
+[node name="Sky8" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, 1, -4.37114e-07, 0, -4.37114e-08, -10, -30, -4.37114e-08, 1.91069e-14, -12.5844, 0, 70.614)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_kgker")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky8"]
+transform = Transform3D(1, -1.11022e-16, 5.29396e-23, 0, 1, -8.35188e-22, 4.23516e-22, -8.35187e-24, 1, 0.0941744, 0.120135, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_vbojq")
+
+[node name="Sky4" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-1.31134e-06, 1, -4.37114e-07, 0, -4.37114e-08, -10, -30, -4.37114e-08, 1.91069e-14, -12.5844, 0, -49.3372)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_kgker")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky4"]
+transform = Transform3D(1, -1.11022e-16, 5.29396e-23, 0, 1, -8.35188e-22, 4.23516e-22, -8.35187e-24, 1, 0.0941744, 0.120135, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_vbojq")
+
+[node name="Sky3" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(30, 0, 0, 0, -0.96782, -0.470819, 0, 0.00623307, -73.1045, 0, 10.0661, -25.4973)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_4vsdq")
+
+[node name="Sky7" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-7.76457, -0.965926, 4.2222e-07, 0, -4.37114e-08, -10, 28.9778, -0.258819, 1.13133e-07, 4.165, 0, 127.715)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_6ak3f")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky7"]
+transform = Transform3D(1, -2.22045e-16, 1.58819e-22, 0, 1, -8.35188e-22, 8.47033e-22, -8.35187e-24, 1, 0.00429977, 0.120134, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = ExtResource("4_20hxo")
+
+[node name="Sky9" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(-7.76457, 0.965926, -4.2222e-07, 6.35275e-21, -4.37114e-08, -10, -28.9778, -0.258819, 1.13133e-07, -4.16461, 4.03083e-08, 127.715)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_kgker")
+
+[node name="Mountain" type="MeshInstance3D" parent="ParallaxBackground/Sky9"]
+transform = Transform3D(1, -1.11022e-16, 5.29396e-23, 0, 1, -8.35188e-22, 4.23516e-22, -8.35187e-24, 1, 0.0941744, 0.120135, -0.523621)
+mesh = SubResource("PlaneMesh_83fnd")
+skeleton = NodePath("../../../room_S2")
+surface_material_override/0 = SubResource("ShaderMaterial_vbojq")
+
+[node name="Ground" type="MeshInstance3D" parent="ParallaxBackground"]
+transform = Transform3D(12.4376, 0, 0, 0, 1.00159, 0, 0, 0, 16.1509, 0.0234206, -4.61092, -22.3287)
+mesh = SubResource("PlaneMesh_vbojq")
+surface_material_override/0 = SubResource("ShaderMaterial_20hxo")
+
+[node name="FogVolume" type="FogVolume" parent="ParallaxBackground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0514526, 1.39416, -15.2725)
+size = Vector3(10.9242, 2.4436, 8.18484)
+material = SubResource("ShaderMaterial_wmwjd")
+
+[node name="FogVolume2" type="FogVolume" parent="ParallaxBackground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0514526, 1.11596, 122.728)
+size = Vector3(10.9242, 17, 8.18484)
+material = SubResource("ShaderMaterial_wmwjd")
 
 [node name="room_S2" parent="." instance=ExtResource("2_f13jm")]
 
@@ -24,13 +400,21 @@ cull_distance = 220.0
 
 [node name="portal_hospital" parent="room_T4" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_83fnd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 25)
-door_mesh_node = NodePath("obj_door_proto")
+door_mesh_node = NodePath("door_mesh")
+anim_type = 1
+anim_hinge_rotation = 1
 
-[node name="obj_door_proto" parent="room_T4/portal_hospital" instance=ExtResource("5_83fnd")]
+[node name="door_mesh" parent="room_T4/portal_hospital" instance=ExtResource("7_83fnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
 [node name="to_hospital" parent="room_T4/portal_hospital" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 1.125, -0.12809)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 1.10708, -0.0717506)
+portal_size = Vector2(1.23, 2.67)
 exit_portal = NodePath("../../portal_hospital_to_landing")
+
+[node name="Portal3D_Mesh" parent="room_T4/portal_hospital/to_hospital" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0.2, 0)
+mesh = SubResource("ArrayMesh_ii4oj")
 
 [node name="Door Light" type="SpotLight3D" parent="room_T4/portal_hospital"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
@@ -38,9 +422,27 @@ visible = false
 light_energy = 2.89035
 spot_attenuation = 0.29
 
+[node name="StaticBody3D" type="StaticBody3D" parent="room_T4/portal_hospital"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_T4/portal_hospital/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00386047, 1.09687, -1.0842)
+shape = SubResource("BoxShape3D_83fnd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="room_T4/portal_hospital/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.681908, 1.097, -0.525002)
+shape = SubResource("BoxShape3D_b2dtt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="room_T4/portal_hospital/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.682, 1.097, -0.525)
+shape = SubResource("BoxShape3D_b2dtt")
+
 [node name="portal_hospital_to_landing" parent="room_T4" node_paths=PackedStringArray("exit_portal") instance=ExtResource("4_ggaeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 1.125, -6.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 1.125, 13.7016)
+portal_size = Vector2(1.23, 2.67)
 exit_portal = NodePath("../portal_hospital/to_hospital")
+
+[node name="Portal3D_Mesh" parent="room_T4/portal_hospital_to_landing" index="0"]
+mesh = SubResource("ArrayMesh_6ak3f")
 
 [node name="InteractableLink" parent="room_T4/portal_hospital_to_landing" instance=ExtResource("7_b2dtt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)
@@ -49,12 +451,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("BoxShape3D_3lafk")
 
-[node name="room_link_back" parent="." instance=ExtResource("5_doiwo")]
-transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 200, 0, 25)
-cull_distance = 120.0
-
 [node name="room_U1" parent="." instance=ExtResource("5_bynuf")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 200, 0, 45)
-cull_distance = 90.0
+cull_distance = 135.825
 
 [connection signal="interacted" from="room_T4/portal_hospital_to_landing/InteractableLink" to="room_T4/portal_hospital" method="toggle_open"]
+
+[editable path="room_T4/portal_hospital/to_hospital"]
+[editable path="room_T4/portal_hospital_to_landing"]

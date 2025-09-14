@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cu3w5ld3hbtyf"
+path="res://.godot/imported/diag_subway_warm.dialogue-b1d276a7b888671789c3f91392546fd6.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_warm.dialogue"
+dest_files=["res://.godot/imported/diag_subway_warm.dialogue-b1d276a7b888671789c3f91392546fd6.tres"]
+
+[params]
+
+defaults=true

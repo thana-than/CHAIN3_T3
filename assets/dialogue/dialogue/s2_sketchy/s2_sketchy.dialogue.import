@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dnfb2hjf3npe7"
+path="res://.godot/imported/s2_sketchy.dialogue-ad04fb010af37a50e6c28000ed2743ae.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/s2_sketchy/s2_sketchy.dialogue"
+dest_files=["res://.godot/imported/s2_sketchy.dialogue-ad04fb010af37a50e6c28000ed2743ae.tres"]
+
+[params]
+
+defaults=true

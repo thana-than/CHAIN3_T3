@@ -18,7 +18,7 @@ func _ready():
 	
 	add_child(loaded_scene)
 	
-	var can_activate_immediately = activate_immediate_doors.has(Chain3Adapter._entry_door_id.to_upper())
+	var can_activate_immediately = activate_immediate_doors.has(Chain3Adapter.get_entry_door_id().to_upper())
 	if OS.is_debug_build() and Global.debug_config.spawn_room_id != "":
 		can_activate_immediately = true
 

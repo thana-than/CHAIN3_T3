@@ -223,12 +223,12 @@ door_mesh_node = NodePath("model_door_old")
 [node name="CollisionShape3D" parent="Root/game_exit_door" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
+[node name="InteractionArea" parent="Root/game_exit_door/InteractableFront" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.0500002)
+
 [node name="InteractionArea2" type="CollisionShape3D" parent="Root/game_exit_door/InteractableFront" index="1"]
 transform = Transform3D(1, -7.10543e-15, 7.10543e-15, -1.06026e-14, 0.798635, 0.601815, 0, -0.601815, 0.798635, 1.74829e-08, 4.25, -1.45)
 shape = SubResource("BoxShape3D_ttya4")
-
-[node name="InteractionArea" parent="Root/game_exit_door/InteractableFront" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.0500002)
 
 [node name="model_door_old" parent="Root/game_exit_door" instance=ExtResource("7_ttya4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -316,12 +316,8 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("15_wev70")
 
 [connection signal="on_open" from="Root/game_exit_door" to="Root/game_exit_door/Chain3ExitTrigger" method="call_exit"]
-[connection signal="timeout" from="Root/game_exit_door/InteractableFront/Timer" to="Root/game_exit_door/InteractableBack" method="activate"]
-[connection signal="timeout" from="Root/game_exit_door/InteractableBack/Timer" to="Root/game_exit_door/InteractableFront" method="activate"]
 
 [editable path="Root/Trees"]
 [editable path="Root/game_exit_door"]
-[editable path="Root/game_exit_door/InteractableFront"]
-[editable path="Root/game_exit_door/InteractableBack"]
 [editable path="Root/game_exit_door/model_door_old"]
 [editable path="Root/Van"]

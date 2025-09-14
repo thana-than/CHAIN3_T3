@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bke355frrrhip"]
+[gd_scene load_steps=18 format=3 uid="uid://bke355frrrhip"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_aoxg3"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_3epuy"]
@@ -10,6 +10,10 @@
 [ext_resource type="Resource" uid="uid://d2d5eiuxkjc7f" path="res://assets/resources/doors/door_T4.tres" id="9_dga71"]
 [ext_resource type="Texture2D" uid="uid://kao5o5mh85rg" path="res://assets/textures/decals/ttc-map.png" id="10_a1usj"]
 [ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="11_7gwjw"]
+[ext_resource type="PackedScene" uid="uid://ck8h1eqri8al" path="res://scenes/npc/npc_sitting_shinji.tscn" id="11_8sktb"]
+[ext_resource type="PackedScene" uid="uid://biohk52o6etgn" path="res://assets/dialogue/styles/nexa/Balloon.tscn" id="12_q4frp"]
+[ext_resource type="Resource" uid="uid://kdbn6pvnaom7" path="res://assets/dialogue/dialogue/drop_shinji/drop_shinji.dialogue" id="13_aw4me"]
+[ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="14_ejh4c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dga71"]
 albedo_color = Color(1, 0, 0, 1)
@@ -17,7 +21,17 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
 
+[sub_resource type="Resource" id="Resource_uhcp4"]
+script = ExtResource("14_ejh4c")
+balloon_scene = ExtResource("12_q4frp")
+dialogue_resource = ExtResource("13_aw4me")
+dialogue_start = "start"
+audio_ignore_player_name = "Slater"
+audio_stop_delay = 1.0
+metadata/_custom_type_script = "uid://c1eo4j34dxno3"
+
 [node name="room_T4" type="Node3D"]
+visible = false
 script = ExtResource("1_aoxg3")
 
 [node name="Environment" type="Node3D" parent="."]
@@ -83,4 +97,12 @@ transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4
 size = Vector3(0.691681, 0.5, 0.568481)
 texture_albedo = ExtResource("10_a1usj")
 
+[node name="npc_sitting_shinji" parent="." instance=ExtResource("11_8sktb")]
+transform = Transform3D(-0.0310793, 0, -0.999517, 0, 1, 0, 0.999517, 0, -0.0310793, 1.82055, 0.255735, 2.11088)
+
+[node name="DialogueInteractable" parent="npc_sitting_shinji" index="1"]
+dialogue_settings = SubResource("Resource_uhcp4")
+
 [connection signal="on_open" from="game_exit_door" to="game_exit_door/Chain3ExitTrigger" method="call_exit"]
+
+[editable path="npc_sitting_shinji"]

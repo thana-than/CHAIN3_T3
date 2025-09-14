@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://djo30ukbljui1"]
+[gd_scene load_steps=11 format=3 uid="uid://djo30ukbljui1"]
 
 [ext_resource type="PackedScene" uid="uid://ccepluc0d5tfr" path="res://scenes/objects/collectable/obj_collectable_crystal_red.tscn" id="1_qwjqw"]
 [ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="2_sqkg4"]
+[ext_resource type="Shader" uid="uid://dmookkx3koo4s" path="res://ursc/basic_moving_fog.gdshader" id="3_jtg4e"]
 
 [sub_resource type="Gradient" id="Gradient_4c4fu"]
 offsets = PackedFloat32Array(0.011236, 1)
@@ -26,15 +27,41 @@ shader_parameter/texture_lod_halve_distance_override = 0.0
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
 shader_parameter/cull_distance_override = 0.0
 shader_parameter/convert_vertex_colors = false
 shader_parameter/enable_affine_transform = false
 shader_parameter/use_emission = true
 shader_parameter/emission_color = Color(0.126183, 0.180794, 2.40654e-08, 1)
 shader_parameter/emission_strength = 0.75
+shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = true
 shader_parameter/emission_mask_texture = SubResource("NoiseTexture2D_51mtl")
 shader_parameter/emission_threshold = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0y8wo"]
+noise_type = 3
+seed = 42069
+frequency = 0.029
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_6an4u"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_0y8wo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jd73r"]
+shader = ExtResource("3_jtg4e")
+shader_parameter/density = 1.5
+shader_parameter/albedo_color = Color(0.273873, 0.273873, 0.273873, 1)
+shader_parameter/emission_color = Color(0.266575, 0.266575, 0.266575, 1)
+shader_parameter/emission_energy = 3.8136
+shader_parameter/noise_tex = SubResource("NoiseTexture3D_6an4u")
+shader_parameter/noise_strength = 1.0
+shader_parameter/noise_scale = 0.15
+shader_parameter/noise_flow = Vector3(0.5, 0, 0.5)
+shader_parameter/height_falloff = 0.0
+shader_parameter/edge_fade = 0.0
 
 [node name="collectable_crystal_smoke" instance=ExtResource("1_qwjqw")]
 collect_flag = "T4_CrystalSmoked"
@@ -45,6 +72,11 @@ material_override = SubResource("ShaderMaterial_qwjqw")
 
 [node name="Light_001" parent="obj/pivot/mdl_crystal/ManagedLight" index="0"]
 light_color = Color(0.894961, 0.413316, 1.92523e-07, 1)
+
+[node name="FogVolume" type="FogVolume" parent="obj" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0791, 0)
+shape = 1
+material = SubResource("ShaderMaterial_jd73r")
 
 [node name="Chain3Flag" parent="." index="1"]
 flag = "T4_CrystalSmoked"

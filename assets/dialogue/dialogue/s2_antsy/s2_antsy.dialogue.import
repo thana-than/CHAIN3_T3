@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b5i5ultykhcb8"
+path="res://.godot/imported/s2_antsy.dialogue-1e220dcc5ebb18bb601b769ff35b95f0.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/s2_antsy/s2_antsy.dialogue"
+dest_files=["res://.godot/imported/s2_antsy.dialogue-1e220dcc5ebb18bb601b769ff35b95f0.tres"]
+
+[params]
+
+defaults=true

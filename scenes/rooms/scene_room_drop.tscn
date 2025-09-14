@@ -1,20 +1,28 @@
-[gd_scene load_steps=26 format=3 uid="uid://bs7vs2a5pvm87"]
+[gd_scene load_steps=37 format=4 uid="uid://bs7vs2a5pvm87"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_bonpo"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_5kx1f"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_fuf28"]
 [ext_resource type="PackedScene" uid="uid://cy2xqdnbxum71" path="res://assets/models/metro_car/metro_car_textured.glb" id="3_j0y30"]
+[ext_resource type="Script" uid="uid://b7p11w32xynlb" path="res://scripts/audio_emitters/audio_emitter.gd" id="4_5rw1x"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_48eor"]
-[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_ijcfu"]
+[ext_resource type="Resource" uid="uid://cwtqyog736mdj" path="res://assets/resources/audio_events/SFX_Train_Train_in_motion.tres" id="5_quaa5"]
 [ext_resource type="PackedScene" uid="uid://0vkqyc06mhrf" path="res://scenes/objects/obj_portal.tscn" id="7_48eor"]
-[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_j0y30"]
+[ext_resource type="Script" uid="uid://cg4to6v7xjlug" path="res://scripts/lighting/managed_light.gd" id="7_pq87o"]
 [ext_resource type="Script" uid="uid://glr2uml18crh" path="res://scripts/animation/animation_sequencer.gd" id="9_48eor"]
 [ext_resource type="Script" uid="uid://dbcibpw5o28gm" path="res://scripts/events/area_fall_confiner.gd" id="10_8ow3u"]
+[ext_resource type="PackedScene" uid="uid://dqt50c718861p" path="res://assets/models/door/model_door_old.glb" id="10_vgcon"]
+[ext_resource type="Script" uid="uid://bxcel82b180o3" path="res://addons/portals/scripts/portal_boxmesh.gd" id="11_gqqxf"]
 [ext_resource type="Script" uid="uid://c61wgc042cdwy" path="res://scripts/events/landing_loader.gd" id="11_quaa5"]
 [ext_resource type="PackedScene" uid="uid://dynksben166x4" path="res://scenes/landings/scene_landing_no_disc.tscn" id="12_cqmcx"]
 [ext_resource type="PackedScene" uid="uid://cvo84c50b4cim" path="res://scenes/landings/scene_landing_has_disc.tscn" id="13_cefjk"]
 [ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="13_ms84i"]
 [ext_resource type="Texture2D" uid="uid://kao5o5mh85rg" path="res://assets/textures/decals/ttc-map.png" id="14_cqmcx"]
+[ext_resource type="PackedScene" uid="uid://d30cwkiq0bvdc" path="res://scenes/objects/door/obj_door_metro.tscn" id="16_22bnw"]
+[ext_resource type="PackedScene" uid="uid://ck8h1eqri8al" path="res://scenes/npc/npc_sitting_shinji.tscn" id="19_0ncj3"]
+[ext_resource type="PackedScene" uid="uid://biohk52o6etgn" path="res://assets/dialogue/styles/nexa/Balloon.tscn" id="19_22bnw"]
+[ext_resource type="Resource" uid="uid://kdbn6pvnaom7" path="res://assets/dialogue/dialogue/drop_shinji/drop_shinji.dialogue" id="20_pq87o"]
+[ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="21_dbyok"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
@@ -24,6 +32,22 @@ size = Vector3(31, 14, 42)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ow3u"]
 size = Vector3(33, 200, 35)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gqqxf"]
+_surfaces = [{
+"aabb": AABB(-0.785, -1.7625, -1, 1.57, 3.525, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("w/VIv5qZ4T8AAAAAw/VIP5qZ4T8AAAAAw/VIv5qZ4b8AAAAAw/VIP5qZ4b8AAAAAw/VIv5qZ4T8AAIC/w/VIP5qZ4T8AAIC/w/VIv5qZ4b8AAIC/w/VIP5qZ4b8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("11_gqqxf")
+size = Vector3(1.57, 3.525, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
 
 [sub_resource type="Animation" id="Animation_48eor"]
 length = 0.001
@@ -54,14 +78,39 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_fuf28"]
 radius = 26.808
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ncj3"]
+_surfaces = [{
+"aabb": AABB(-0.785, -1.7625, -1, 1.57, 3.525, 1),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPw=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAQABAABAAUAAQADAAUABQADAAcAAwACAAcABwACAAYAAgAAAAYABgAAAAQABAAFAAYABgAFAAcAAAABAAIAAgABAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("w/VIv5qZ4T8AAAAAw/VIP5qZ4T8AAAAAw/VIv5qZ4b8AAAAAw/VIP5qZ4b8AAAAAw/VIv5qZ4T8AAIC/w/VIP5qZ4T8AAIC/w/VIv5qZ4b8AAIC/w/VIP5qZ4b8AAIC//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
+}]
+script = ExtResource("11_gqqxf")
+size = Vector3(1.57, 3.525, 1)
+metadata/_custom_type_script = "uid://bxcel82b180o3"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0y30"]
-size = Vector3(2, 2.5, 1)
+size = Vector3(1.57, 3.525, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ow3u"]
 radius = 45.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48eor"]
 size = Vector3(40, 338, 55)
+
+[sub_resource type="Resource" id="Resource_5rw1x"]
+script = ExtResource("21_dbyok")
+balloon_scene = ExtResource("19_22bnw")
+dialogue_resource = ExtResource("20_pq87o")
+dialogue_start = "start"
+audio_ignore_player_name = "Slater"
+audio_stop_delay = 1.0
+metadata/_custom_type_script = "uid://c1eo4j34dxno3"
 
 [node name="room_T4" type="Node3D"]
 script = ExtResource("1_bonpo")
@@ -75,6 +124,20 @@ cull_distance = 200.0
 visible = false
 
 [node name="metro_car_textured" parent="Environment/Top" instance=ExtResource("3_j0y30")]
+
+[node name="AudioEmitter" type="Node3D" parent="Environment/Top/metro_car_textured"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.70757)
+script = ExtResource("4_5rw1x")
+audio_event_resource = ExtResource("5_quaa5")
+auto_play = true
+metadata/_custom_type_script = "uid://b7p11w32xynlb"
+
+[node name="AudioEmitter2" type="Node3D" parent="Environment/Top/metro_car_textured"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.0622)
+script = ExtResource("4_5rw1x")
+audio_event_resource = ExtResource("5_quaa5")
+auto_play = true
+metadata/_custom_type_script = "uid://b7p11w32xynlb"
 
 [node name="collider_standard_car" parent="Environment/Top" instance=ExtResource("3_fuf28")]
 
@@ -97,6 +160,22 @@ collision_mask = 8388608
 [node name="area" type="CollisionShape3D" parent="Environment/Top/hide_sky"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_j51fj")
+
+[node name="ManagedLight" type="Node3D" parent="Environment/Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+script = ExtResource("7_pq87o")
+light_type = 1
+flicker_mode = 1
+flicker_freq_hz = 0.5
+flicker_amp = 2.0
+metadata/_custom_type_script = "uid://cg4to6v7xjlug"
+
+[node name="ManagedLight_001" type="SpotLight3D" parent="Environment/Top/ManagedLight"]
+transform = Transform3D(1, 0, 0, 0, -0.374607, 0.927184, 0, -0.927184, -0.374607, 0, 4.74101, -3.63382)
+light_energy = 3.0
+spot_range = 9.83213
+spot_attenuation = 0.55
+spot_angle = 24.79
 
 [node name="Fall" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -109, 16)
@@ -124,14 +203,15 @@ debug_color = Color(0.784118, 0.234851, 0.894778, 0.42)
 
 [node name="FallPortal" parent="Environment/Fall" node_paths=PackedStringArray("exit_portal") instance=ExtResource("7_48eor")]
 transform = Transform3D(-1, 3.55271e-15, 8.74228e-08, 8.44439e-08, 0.258819, 0.965926, -2.26267e-08, 0.965926, -0.258819, 0, -89.8, 0.25)
+portal_size = Vector2(1.57, 3.525)
 exit_portal = NodePath("../../LandingPortal")
 start_deactivated = true
 
+[node name="Portal3D_Mesh" parent="Environment/Fall/FallPortal" index="0"]
+mesh = SubResource("ArrayMesh_gqqxf")
+
 [node name="Door Open" type="Node3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725256, -1.11572, -0.049408)
-
-[node name="obj_door_proto" parent="Environment/Fall/FallPortal/Door Open" instance=ExtResource("7_j0y30")]
-transform = Transform3D(1, 0, 1.24345e-14, -7.10543e-15, 1, 0, -1.77636e-14, 0, 1, 0.724365, -0.0120926, 0.053894)
 
 [node name="OpenDoor" type="AnimationPlayer" parent="Environment/Fall/FallPortal/Door Open"]
 libraries = {
@@ -141,6 +221,9 @@ script = ExtResource("9_48eor")
 loop_sequence = true
 sequence = Array[String](["door_open"])
 metadata/_custom_type_script = "uid://glr2uml18crh"
+
+[node name="model_door_old" parent="Environment/Fall/FallPortal/Door Open" instance=ExtResource("10_vgcon")]
+transform = Transform3D(-6.20702e-08, 0, -1.42, 0, 1.42, 0, 1.42, 0, -6.20702e-08, 0.719385, -0.649013, 0.1)
 
 [node name="Door Light" type="SpotLight3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.83867, 1.55125)
@@ -157,8 +240,12 @@ shape = SubResource("SphereShape3D_fuf28")
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 100, 12.2, 0)
 _teleport_area_path = NodePath("TeleportArea2")
 _teleport_collider_path = NodePath("TeleportArea2/Collider")
+portal_size = Vector2(1.57, 3.525)
 exit_portal = NodePath("../Fall/FallPortal")
 start_deactivated = true
+
+[node name="Portal3D_Mesh" parent="Environment/LandingPortal" index="0"]
+mesh = SubResource("ArrayMesh_0ncj3")
 
 [node name="TeleportArea2" type="Area3D" parent="Environment/LandingPortal"]
 
@@ -177,10 +264,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0
 [node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
 
-[node name="doorway" parent="door_exit" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_ijcfu")]
-door_mesh_node = NodePath("obj_door_proto")
-
-[node name="obj_door_proto" parent="door_exit/doorway" instance=ExtResource("7_j0y30")]
+[node name="Door" parent="door_exit" instance=ExtResource("16_22bnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0925531)
 
 [node name="room_area" type="Area3D" parent="."]
 collision_mask = 8388608
@@ -212,6 +297,15 @@ transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4
 size = Vector3(0.691681, 0.5, 0.568481)
 texture_albedo = ExtResource("14_cqmcx")
 
+[node name="npc_sitting_shinji" parent="." instance=ExtResource("19_0ncj3")]
+transform = Transform3D(-0.0310793, 0, -0.999517, 0, 1, 0, 0.999517, 0, -0.0310793, 1.82055, 0.255735, 2.15049)
+
+[node name="BoneAttachment3D" parent="npc_sitting_shinji/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.9991, -0.0231564, -0.0355341, 0.00928375, 0.936886, -0.34951, 0.0413848, 0.348866, 0.936258, 0.00184951, 1.6084, -0.428857)
+
+[node name="DialogueInteractable" parent="npc_sitting_shinji" index="1"]
+dialogue_settings = SubResource("Resource_5rw1x")
+
 [connection signal="body_entered" from="Environment/Fall/Fall Activator" to="Environment/Fall/FallConfiner" method="activate" unbinds=1]
 [connection signal="body_entered" from="Environment/Fall/Fall Activator" to="Environment/Fall/FallPortal" method="activate" unbinds=1]
 [connection signal="body_entered" from="Environment/Fall/Fall Activator" to="Environment/LandingPortal" method="activate" unbinds=1]
@@ -220,3 +314,7 @@ texture_albedo = ExtResource("14_cqmcx")
 [connection signal="body_entered" from="Environment/Fall/FallPortal/door_trigger" to="Environment/Fall/FallPortal/Door Open/OpenDoor" method="play_next" unbinds=1]
 [connection signal="body_exited" from="Environment/Fall/FallPortal/door_trigger" to="Environment/Fall/FallPortal/Door Open/OpenDoor" method="stop" unbinds=1]
 [connection signal="on_activate" from="Environment/LandingRoot" to="Environment/LandingPortal" method="deactivate"]
+
+[editable path="Environment/Fall/FallPortal"]
+[editable path="Environment/LandingPortal"]
+[editable path="npc_sitting_shinji"]

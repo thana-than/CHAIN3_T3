@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://brwwujja6qxjs"]
+
+[ext_resource type="Shader" uid="uid://d3hi03pvfqd0e" path="res://ursc/spatial/flat_sky.gdshader" id="1_roe05"]
+[ext_resource type="Texture2D" uid="uid://bk2dwgbq3ct3d" path="res://assets/textures/sky/Wispy Sky/Wispy_Sky-Night_03-512x512.png" id="2_roe05"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_roe05")
+shader_parameter/albedo_texture = ExtResource("2_roe05")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
