@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bj381qw0nex1s" path="res://scenes/objects/debug/obj_debug_dialogue.tscn" id="6_rrhte"]
 [ext_resource type="PackedScene" uid="uid://d2nw21rtn1pq6" path="res://assets/dialogue/styles/gothic_silent_hill/Balloon.tscn" id="9_cidvs"]
 [ext_resource type="Resource" uid="uid://duvncsmuvdoj7" path="res://assets/dialogue/dialogue/ticket_inspector.dialogue" id="10_cidvs"]
-[ext_resource type="PackedScene" uid="uid://83xtbr10b03f" path="res://scenes/npc/stalker.tscn" id="11_86kfd"]
+[ext_resource type="PackedScene" uid="uid://6ksmm8jsigqh" path="res://scenes/npc/stalker.tscn" id="11_86kfd"]
 [ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="11_ujgea"]
 [ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="12_oowqc"]
 

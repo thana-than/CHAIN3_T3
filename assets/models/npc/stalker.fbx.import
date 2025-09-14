@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://hv3q4g1hg5ha"
-path="res://.godot/imported/npc_001.fbx-b05f01336b9a57fc0c679089acaf49bf.scn"
+uid="uid://bom7j0ijqqvyx"
+path="res://.godot/imported/stalker.fbx-3ef87cf2ad8da7afccb1755fe1c77106.scn"
 
 [deps]
 
-source_file="res://assets/models/npc/npc_001.fbx"
-dest_files=["res://.godot/imported/npc_001.fbx-b05f01336b9a57fc0c679089acaf49bf.scn"]
+source_file="res://assets/models/npc/stalker.fbx"
+dest_files=["res://.godot/imported/stalker.fbx-3ef87cf2ad8da7afccb1755fe1c77106.scn"]
 
 [params]
 
@@ -34,9 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"character": {
+"character.001": {
 "use_external/enabled": true,
-"use_external/path": "uid://ckgfy8iavtbvu"
+"use_external/path": "uid://xafwae5jwjgd"
+},
+"hat": {
+"use_external/enabled": true,
+"use_external/path": "uid://ew5fg2uhdagg"
 }
 },
 "nodes": {
