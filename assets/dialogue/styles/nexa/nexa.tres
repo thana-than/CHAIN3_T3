@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bew0pmrrj378"]
+
+[ext_resource type="FontFile" uid="uid://bfyt12t8hbbgt" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_lysyg"]
+[ext_resource type="FontFile" uid="uid://cih7b4yluaamb" path="res://assets/fonts/Nexa-ExtraLight.ttf" id="2_lysyg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fqmpl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xrhm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ronty"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgsge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4lwkn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fahd0"]
+
+[resource]
+default_font_size = 45
+Button/font_sizes/font_size = 45
+Button/fonts/font = ExtResource("1_lysyg")
+Button/styles/disabled = SubResource("StyleBoxEmpty_fqmpl")
+Button/styles/focus = SubResource("StyleBoxEmpty_7xrhm")
+Button/styles/hover = SubResource("StyleBoxEmpty_ronty")
+Button/styles/normal = SubResource("StyleBoxEmpty_jgsge")
+Button/styles/pressed = SubResource("StyleBoxEmpty_4lwkn")
+MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_left = 30
+MarginContainer/constants/margin_right = 30
+MarginContainer/constants/margin_top = 15
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_fahd0")
+RichTextLabel/fonts/bold_font = ExtResource("1_lysyg")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_lysyg")
+RichTextLabel/fonts/italics_font = ExtResource("2_lysyg")
+RichTextLabel/fonts/mono_font = ExtResource("2_lysyg")
+RichTextLabel/fonts/normal_font = ExtResource("2_lysyg")

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://beijcqho3ytks"
+path="res://.godot/imported/diag_subway_coffee.dialogue-e80cc08121a82bc2f166529ce0a183dd.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_coffee.dialogue"
+dest_files=["res://.godot/imported/diag_subway_coffee.dialogue-e80cc08121a82bc2f166529ce0a183dd.tres"]
+
+[params]
+
+defaults=true

@@ -3,7 +3,7 @@
 [sub_resource type="Environment" id="Environment_1joer"]
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.03
+ambient_light_energy = 0.06
 tonemap_mode = 3
 glow_enabled = true
 fog_light_color = Color(0.423791, 0.457421, 0.510277, 1)

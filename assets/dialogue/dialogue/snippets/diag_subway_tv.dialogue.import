@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bmula3rrilgh8"
+path="res://.godot/imported/diag_subway_tv.dialogue-1a0038a1541bc7d2bd24d97ddaa00882.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_tv.dialogue"
+dest_files=["res://.godot/imported/diag_subway_tv.dialogue-1a0038a1541bc7d2bd24d97ddaa00882.tres"]
+
+[params]
+
+defaults=true

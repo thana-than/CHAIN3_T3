@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr6dlu3tq7xfg"]
+[gd_scene load_steps=24 format=3 uid="uid://cr6dlu3tq7xfg"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_ygu77"]
 [ext_resource type="PackedScene" uid="uid://boq1kru06ufv6" path="res://assets/models/prototype/mdl_traincar_proto.glb" id="2_2owkw"]
 [ext_resource type="PackedScene" uid="uid://cy2xqdnbxum71" path="res://assets/models/metro_car/metro_car_textured.glb" id="3_do2ap"]
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_j1n0f"]
-[ext_resource type="PackedScene" uid="uid://cl88v1ra5k0go" path="res://assets/models/train_seats/4_seats.glb" id="4_2owkw"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_oyay2"]
 [ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_fhc0n"]
 [ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_do2ap"]
@@ -16,12 +15,30 @@
 [ext_resource type="Texture2D" uid="uid://kao5o5mh85rg" path="res://assets/textures/decals/ttc-map.png" id="14_mx72k"]
 [ext_resource type="PackedScene" uid="uid://c1wskass0mpr7" path="res://scenes/npc/npc_sitting_antsy.tscn" id="15_ga0rm"]
 [ext_resource type="PackedScene" uid="uid://u6dc5jwacglb" path="res://scenes/npc/npc_sitting_sketchy.tscn" id="16_xi0d8"]
+[ext_resource type="Resource" uid="uid://b5i5ultykhcb8" path="res://assets/dialogue/dialogue/s2_antsy/s2_antsy.dialogue" id="17_wrukb"]
+[ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="18_sui7m"]
+[ext_resource type="Resource" uid="uid://dnfb2hjf3npe7" path="res://assets/dialogue/dialogue/s2_sketchy/s2_sketchy.dialogue" id="20_3on38"]
+[ext_resource type="PackedScene" uid="uid://biohk52o6etgn" path="res://assets/dialogue/styles/nexa/Balloon.tscn" id="20_sui7m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhc0n"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
 size = Vector3(7, 2, 19)
+
+[sub_resource type="Resource" id="Resource_7pjgc"]
+script = ExtResource("18_sui7m")
+balloon_scene = ExtResource("20_sui7m")
+dialogue_resource = ExtResource("17_wrukb")
+dialogue_start = "start"
+metadata/_custom_type_script = "uid://c1eo4j34dxno3"
+
+[sub_resource type="Resource" id="Resource_sui7m"]
+script = ExtResource("18_sui7m")
+balloon_scene = ExtResource("20_sui7m")
+dialogue_resource = ExtResource("20_3on38")
+dialogue_start = "start"
+metadata/_custom_type_script = "uid://c1eo4j34dxno3"
 
 [node name="room_S2" type="Node3D"]
 script = ExtResource("1_ygu77")
@@ -34,45 +51,6 @@ visible = false
 [node name="metro_car_textured" parent="Environment" instance=ExtResource("3_do2ap")]
 
 [node name="collider_standard_car" parent="Environment" instance=ExtResource("3_j1n0f")]
-
-[node name="8_seats" type="Node3D" parent="Environment"]
-visible = false
-
-[node name="4_seats" parent="Environment/8_seats" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
-
-[node name="4_seats2" parent="Environment/8_seats" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.4, 0)
-
-[node name="8_seats2" type="Node3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-visible = false
-
-[node name="4_seats" parent="Environment/8_seats2" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
-
-[node name="4_seats2" parent="Environment/8_seats2" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.4, 0)
-
-[node name="8_seats3" type="Node3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-visible = false
-
-[node name="4_seats" parent="Environment/8_seats3" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
-
-[node name="4_seats2" parent="Environment/8_seats3" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.4, 0)
-
-[node name="8_seats4" type="Node3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-visible = false
-
-[node name="4_seats" parent="Environment/8_seats4" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
-
-[node name="4_seats2" parent="Environment/8_seats4" instance=ExtResource("4_2owkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.4, 0)
 
 [node name="Volumetrics" type="Node3D" parent="Environment"]
 
@@ -90,6 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.018, 5.46701)
 [node name="AudioEmitter" type="Node3D" parent="Environment"]
 script = ExtResource("7_fhc0n")
 audio_event_resource = ExtResource("8_do2ap")
+auto_play = true
 metadata/_custom_type_script = "uid://b7p11w32xynlb"
 
 [node name="door_enter" type="Node3D" parent="."]
@@ -144,11 +123,17 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.7827
 [node name="BoneAttachment3D" parent="npc_antsy/Armature/Skeleton3D" index="1"]
 transform = Transform3D(0.999716, 0.00518142, -0.0232459, -0.0179088, 0.806975, -0.590314, 0.0157002, 0.590563, 0.806838, -0.0105975, 1.64502, -0.25364)
 
+[node name="DialogueInteractable" parent="npc_antsy" index="1"]
+dialogue_settings = SubResource("Resource_7pjgc")
+
 [node name="npc_sketchy" parent="." instance=ExtResource("16_xi0d8")]
 transform = Transform3D(-0.0693386, 0, 0.997593, 0, 1, 0, -0.997593, 0, -0.0693386, -1.73253, 0.412205, 4.07408)
 
 [node name="BoneAttachment3D" parent="npc_sketchy/Armature/Skeleton3D" index="1"]
 transform = Transform3D(0.99949, -0.000585822, -0.031903, -0.0218197, 0.716977, -0.696755, 0.0232818, 0.697097, 0.716599, -0.0162055, 1.62251, -0.237015)
+
+[node name="DialogueInteractable" parent="npc_sketchy" index="1"]
+dialogue_settings = SubResource("Resource_sui7m")
 
 [connection signal="on_open" from="game_exit_door" to="game_exit_door/Chain3ExitTrigger" method="call_exit"]
 

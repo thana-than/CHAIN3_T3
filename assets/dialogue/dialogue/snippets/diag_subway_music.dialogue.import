@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bo5r7ab2thq0h"
+path="res://.godot/imported/diag_subway_music.dialogue-4b5fad2e84f1d7ca9c4866a9e20e39cc.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/diag_subway_music.dialogue"
+dest_files=["res://.godot/imported/diag_subway_music.dialogue-4b5fad2e84f1d7ca9c4866a9e20e39cc.tres"]
+
+[params]
+
+defaults=true

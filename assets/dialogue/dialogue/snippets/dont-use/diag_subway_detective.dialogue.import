@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bu6msihkn86e3"
+path="res://.godot/imported/diag_subway_detective.dialogue-f049ab81b32de11a05280974f2a87884.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/dont-use/diag_subway_detective.dialogue"
+dest_files=["res://.godot/imported/diag_subway_detective.dialogue-f049ab81b32de11a05280974f2a87884.tres"]
+
+[params]
+
+defaults=true

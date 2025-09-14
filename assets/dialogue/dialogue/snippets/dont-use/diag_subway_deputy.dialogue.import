@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d0h05ye2xf2lg"
+path="res://.godot/imported/diag_subway_deputy.dialogue-f5e2ac75aba4b2097c6bcc850bcc3c7d.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dialogue/snippets/dont-use/diag_subway_deputy.dialogue"
+dest_files=["res://.godot/imported/diag_subway_deputy.dialogue-f5e2ac75aba4b2097c6bcc850bcc3c7d.tres"]
+
+[params]
+
+defaults=true
