@@ -12,6 +12,7 @@ size = Vector3(1000, 1000, 1000)
 near = 0.001
 
 [node name="Sky" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_hp712")
 
 [node name="PhantomCameraHost" type="Node" parent="."]
