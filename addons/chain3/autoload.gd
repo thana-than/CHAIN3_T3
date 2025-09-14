@@ -85,7 +85,10 @@ func get_flags() -> Array:
 		return []
 	
 	# Return flags
-	return FileAccess.open(path, FileAccess.READ).get_as_text().strip_edges().split("\n")
+	var lines = FileAccess.open(path, FileAccess.READ).get_as_text().strip_edges().split("\n")
+	for i in range(len(lines)):
+		lines[i] = lines[i].strip_edges()
+	return lines
 
 
 ## Delete the flag indicated by the passed argument
