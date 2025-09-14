@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dynksben166x4"]
+[gd_scene load_steps=29 format=4 uid="uid://dynksben166x4"]
 
 [ext_resource type="Script" uid="uid://b7gwe0ja8mli3" path="res://scripts/events/landing_area.gd" id="1_a28vb"]
 [ext_resource type="Material" uid="uid://k04n3jrlianv" path="res://assets/materials/mat_landing_curtains.tres" id="2_7j07r"]
@@ -13,6 +13,8 @@
 [ext_resource type="Material" uid="uid://bdngwshu8xti5" path="res://assets/materials/tv/mat_tv_nodisc.tres" id="11_j17fn"]
 [ext_resource type="Script" uid="uid://cg4to6v7xjlug" path="res://scripts/lighting/managed_light.gd" id="12_0ypoq"]
 [ext_resource type="Material" uid="uid://tt3mnmqir3h0" path="res://assets/materials/sky_material.tres" id="12_a28vb"]
+[ext_resource type="Script" uid="uid://bopdiqq7e3y5t" path="res://scripts/events/music_controller.gd" id="14_f8n5e"]
+[ext_resource type="Resource" uid="uid://bg0ion2mfx78m" path="res://assets/resources/audio_events/MUSIC_NoDiscRoom.tres" id="15_8htb3"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_drtnl"]
 data = PackedVector3Array(-15, 0.5, -15, 15, 0.5, -15, 15, 0.5, 15, -15, 0.5, 15, -15, 0.5, -15, 15, 0.5, 15, -15, -0.5, 15, 15, -0.5, 15, 15, -0.5, -15, -15, -0.5, -15, -15, -0.5, 15, 15, -0.5, -15, 45, 0.5, 15, 15, 0.5, 15, 15, 0.5, -15, 45, -0.5, 15, 45, 0.5, 15, 45, -0.5, -15, 15, -0.5, 15, 45, -0.5, 15, 45, -0.5, -15, 45, 0.5, 15, 45, 0.5, -15, 45, -0.5, -15, 15, -0.5, 15, 45, -0.5, -15, 15, -0.5, -15, 45, 0.5, 15, 15, 0.5, -15, 45, 0.5, -15, -15, 0.5, 15, -45, 0.5, 15, -45, 0.5, -15, -45, -0.5, 15, -15, -0.5, 15, -15, -0.5, -15, -45, -0.5, 15, -45, -0.5, -15, -45, 0.5, -15, -45, 0.5, -15, -45, 0.5, 15, -45, -0.5, 15, -15, 0.5, -15, -15, 0.5, 15, -45, 0.5, -15, -45, -0.5, -15, -45, -0.5, 15, -15, -0.5, -15, -15, 0.5, -45, 15, 0.5, -15, -15, 0.5, -15, -15, -0.5, -15, 15, -0.5, -15, 15, -0.5, -45, 15, -0.5, -45, 15, 0.5, -45, -15, 0.5, -45, 15, 0.5, -45, 15, 0.5, -15, -15, 0.5, -45, 15, -0.5, -45, -15, 0.5, -45, -15, -0.5, -45, -15, -0.5, -15, 15, -0.5, -45, -15, -0.5, -45, 45, -0.5, -45, 45, 0.5, -45, 15, 0.5, -45, 45, 0.5, -15, 45, 0.5, -45, 45, -0.5, -45, 15, 0.5, -45, 45, 0.5, -15, 15, 0.5, -15, 45, -0.5, -15, 45, 0.5, -15, 45, -0.5, -45, 45, -0.5, -45, 15, 0.5, -45, 15, -0.5, -45, 15, -0.5, -15, 45, -0.5, -15, 45, -0.5, -45, 45, 0.5, -45, 45, 0.5, -15, 15, 0.5, -45, 15, -0.5, -15, 45, -0.5, -45, 15, -0.5, -45, -45, -0.5, -15, -15, -0.5, -15, -15, -0.5, -45, -45, -0.5, -45, -45, -0.5, -15, -15, -0.5, -45, -45, -0.5, -15, -45, -0.5, -45, -45, 0.5, -45, -15, -0.5, -45, -45, 0.5, -45, -45, -0.5, -45, -45, 0.5, -45, -45, 0.5, -15, -45, -0.5, -15, -15, 0.5, -45, -45, 0.5, -45, -15, -0.5, -45, -15, 0.5, -45, -15, 0.5, -15, -45, 0.5, -45, -45, 0.5, -45, -15, 0.5, -15, -45, 0.5, -15, -15, 0.5, 45, 15, 0.5, 45, -15, -0.5, 45, 15, 0.5, 15, 15, 0.5, 45, -15, 0.5, 15, -15, -0.5, 45, 15, -0.5, 15, -15, -0.5, 15, -15, 0.5, 15, 15, 0.5, 45, -15, 0.5, 45, 15, 0.5, 45, 15, -0.5, 45, -15, -0.5, 45, -15, -0.5, 45, 15, -0.5, 45, 15, -0.5, 15, 15, -0.5, 45, 45, -0.5, 15, 15, -0.5, 15, 45, 0.5, 45, 15, 0.5, 15, 45, 0.5, 15, 15, 0.5, 15, 45, 0.5, 45, 15, 0.5, 45, 45, 0.5, 45, 45, 0.5, 15, 45, -0.5, 15, 15, 0.5, 45, 45, 0.5, 45, 15, -0.5, 45, 45, -0.5, 45, 45, 0.5, 45, 45, -0.5, 15, 15, -0.5, 45, 45, 0.5, 45, 45, -0.5, 45, 15, -0.5, 45, 45, -0.5, 45, 45, -0.5, 15, -45, -0.5, 15, -45, 0.5, 15, -45, -0.5, 45, -45, -0.5, 45, -15, -0.5, 45, -15, -0.5, 15, -45, -0.5, 15, -45, -0.5, 45, -15, -0.5, 15, -45, 0.5, 45, -15, 0.5, 45, -45, -0.5, 45, -45, 0.5, 15, -15, 0.5, 45, -45, 0.5, 45, -15, 0.5, 15, -15, 0.5, 45, -45, 0.5, 15, -45, -0.5, 45, -15, 0.5, 45, -15, -0.5, 45, -45, 0.5, 15, -45, 0.5, 45, -45, -0.5, 45)
@@ -104,6 +106,9 @@ size = Vector2(0.1, 0.1)
 [sub_resource type="SphereMesh" id="SphereMesh_drtnl"]
 radius = 40.0
 height = 80.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f8n5e"]
+radius = 47.224
 
 [node name="scene_landing_no_disc" type="Node3D" node_paths=PackedStringArray("disable_until_active")]
 script = ExtResource("1_a28vb")
@@ -219,5 +224,18 @@ transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 0, 0, 0)
 material_override = ExtResource("12_a28vb")
 mesh = SubResource("SphereMesh_drtnl")
 skeleton = NodePath("../..")
+
+[node name="MusicController" type="Node" parent="."]
+script = ExtResource("14_f8n5e")
+track = ExtResource("15_8htb3")
+metadata/_custom_type_script = "uid://bopdiqq7e3y5t"
+
+[node name="EnterLandingTrigger" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnterLandingTrigger"]
+shape = SubResource("SphereShape3D_f8n5e")
+
+[connection signal="body_entered" from="EnterLandingTrigger" to="MusicController" method="play" unbinds=1]
 
 [editable path="hide_until_activate/obj_large_screen/mdl_tv_screen_flipped_normal"]

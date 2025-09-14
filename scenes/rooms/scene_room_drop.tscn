@@ -193,11 +193,11 @@ collision_mask = 8388608
 shape = SubResource("BoxShape3D_ijcfu")
 debug_color = Color(0.28938, 0.60093, 0.535042, 0.42)
 
-[node name="Fall Music Stop" type="Area3D" parent="Environment/Fall"]
+[node name="Train Music Stop" type="Area3D" parent="Environment/Fall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 99, 0)
 collision_mask = 8388608
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Fall/Fall Music Stop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Fall/Train Music Stop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_6emg2")
 debug_color = Color(0.28938, 0.60093, 0.535042, 0.42)
@@ -232,6 +232,9 @@ start_deactivated = true
 
 [node name="Portal3D_Mesh" parent="Environment/Fall/FallPortal" index="0"]
 mesh = SubResource("ArrayMesh_gqqxf")
+
+[node name="Collider" parent="Environment/Fall/FallPortal/TeleportArea" index="0"]
+debug_color = Color(0.86, 0.972, 1, 0.0313726)
 
 [node name="Door Open" type="Node3D" parent="Environment/Fall/FallPortal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725256, -1.11572, -0.049408)
@@ -269,6 +272,9 @@ start_deactivated = true
 
 [node name="Portal3D_Mesh" parent="Environment/LandingPortal" index="0"]
 mesh = SubResource("ArrayMesh_0ncj3")
+
+[node name="Collider" parent="Environment/LandingPortal/TeleportArea" index="0"]
+debug_color = Color(0.86, 0.972, 1, 0.0313726)
 
 [node name="TeleportArea2" type="Area3D" parent="Environment/LandingPortal"]
 
@@ -337,8 +343,8 @@ metadata/_custom_type_script = "uid://bopdiqq7e3y5t"
 [connection signal="body_entered" from="Environment/Fall/Fall Activator" to="Environment/Fall/FallConfiner" method="activate" unbinds=1]
 [connection signal="body_entered" from="Environment/Fall/Fall Activator" to="Environment/Fall/FallPortal" method="activate" unbinds=1]
 [connection signal="body_entered" from="Environment/Fall/Fall Activator" to="Environment/LandingPortal" method="activate" unbinds=1]
-[connection signal="body_entered" from="Environment/Fall/Fall Music Stop" to="MusicController" method="stop"]
-[connection signal="body_entered" from="Environment/Fall/Fall Music Start" to="MusicController" method="play"]
+[connection signal="body_entered" from="Environment/Fall/Train Music Stop" to="MusicController" method="stop" unbinds=1]
+[connection signal="body_entered" from="Environment/Fall/Fall Music Start" to="MusicController" method="play" unbinds=1]
 [connection signal="on_teleport" from="Environment/Fall/FallPortal" to="Environment/Fall/FallConfiner" method="deactivate" unbinds=1]
 [connection signal="on_teleport" from="Environment/Fall/FallPortal" to="Environment/LandingRoot" method="activate" unbinds=1]
 [connection signal="body_entered" from="Environment/Fall/FallPortal/door_trigger" to="Environment/Fall/FallPortal/Door Open/OpenDoor" method="play_next" unbinds=1]

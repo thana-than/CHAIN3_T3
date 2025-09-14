@@ -25,3 +25,6 @@ func play_music(audio_resource : AudioEventResource):
 	
 	last_emitter = emitter
 	emitter.play()
+	
+func stop():
+	last_emitter.stop()
