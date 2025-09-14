@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AudioEventResource" load_steps=2 format=3 uid="uid://bg0ion2mfx78m"]
+
+[ext_resource type="Script" uid="uid://bett2366xr3o5" path="res://scripts/audio_emitters/audio_event_resource.gd" id="1_ck603"]
+
+[resource]
+script = ExtResource("1_ck603")
+name = "event:/Music/Looking Outside"
+metadata/_custom_type_script = "uid://bett2366xr3o5"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AudioEventResource" load_steps=2 format=3 uid="uid://ch3pqhbwlspyp"]
+
+[ext_resource type="Script" uid="uid://bett2366xr3o5" path="res://scripts/audio_emitters/audio_event_resource.gd" id="1_grilj"]
+
+[resource]
+script = ExtResource("1_grilj")
+name = "event:/Music/Train Reznor"
+metadata/_custom_type_script = "uid://bett2366xr3o5"
