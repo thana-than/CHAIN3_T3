@@ -5,9 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d0kjt7kpp8fw4" path="res://scenes/colliders/collider_standard_car.tscn" id="3_fuf28"]
 [ext_resource type="PackedScene" uid="uid://cy2xqdnbxum71" path="res://assets/models/metro_car/metro_car_textured.glb" id="3_j0y30"]
 [ext_resource type="PackedScene" uid="uid://xepm7xjvmb2i" path="res://scenes/volumetrics/dust.tscn" id="4_48eor"]
-[ext_resource type="PackedScene" uid="uid://bn5wqjq65fhl5" path="res://scenes/objects/obj_door.tscn" id="6_ijcfu"]
 [ext_resource type="PackedScene" uid="uid://0vkqyc06mhrf" path="res://scenes/objects/obj_portal.tscn" id="7_48eor"]
-[ext_resource type="PackedScene" uid="uid://coxwwdigundl0" path="res://scenes/objects/mesh/obj_door_proto_mesh.tscn" id="7_j0y30"]
 [ext_resource type="Script" uid="uid://glr2uml18crh" path="res://scripts/animation/animation_sequencer.gd" id="9_48eor"]
 [ext_resource type="Script" uid="uid://dbcibpw5o28gm" path="res://scripts/events/area_fall_confiner.gd" id="10_8ow3u"]
 [ext_resource type="PackedScene" uid="uid://dqt50c718861p" path="res://assets/models/door/model_door_old.glb" id="10_vgcon"]
@@ -17,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cvo84c50b4cim" path="res://scenes/landings/scene_landing_has_disc.tscn" id="13_cefjk"]
 [ext_resource type="PackedScene" uid="uid://bsmt4udg1sc83" path="res://scenes/lighting/ceiling_light.tscn" id="13_ms84i"]
 [ext_resource type="Texture2D" uid="uid://kao5o5mh85rg" path="res://assets/textures/decals/ttc-map.png" id="14_cqmcx"]
+[ext_resource type="PackedScene" uid="uid://xtomwijwg7ag" path="res://assets/models/door/mdl_door_metro.glb" id="15_pq87o"]
+[ext_resource type="PackedScene" uid="uid://d30cwkiq0bvdc" path="res://scenes/objects/door/obj_door_metro.tscn" id="16_22bnw"]
 [ext_resource type="PackedScene" uid="uid://ck8h1eqri8al" path="res://scenes/npc/npc_sitting_shinji.tscn" id="19_0ncj3"]
 [ext_resource type="PackedScene" uid="uid://biohk52o6etgn" path="res://assets/dialogue/styles/nexa/Balloon.tscn" id="19_22bnw"]
 [ext_resource type="Resource" uid="uid://kdbn6pvnaom7" path="res://assets/dialogue/dialogue/drop_shinji/drop_shinji.dialogue" id="20_pq87o"]
@@ -226,16 +226,17 @@ script = ExtResource("11_quaa5")
 scene_no_disc = ExtResource("12_cqmcx")
 scene_has_disc = ExtResource("13_cefjk")
 
+[node name="mdl_door_metro" parent="Environment" instance=ExtResource("15_pq87o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11)
+
 [node name="door_enter" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 0)
 
 [node name="door_exit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
 
-[node name="doorway" parent="door_exit" node_paths=PackedStringArray("door_mesh_node") instance=ExtResource("6_ijcfu")]
-door_mesh_node = NodePath("obj_door_proto")
-
-[node name="obj_door_proto" parent="door_exit/doorway" instance=ExtResource("7_j0y30")]
+[node name="Door" parent="door_exit" instance=ExtResource("16_22bnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0925531)
 
 [node name="room_area" type="Area3D" parent="."]
 collision_mask = 8388608
@@ -269,6 +270,9 @@ texture_albedo = ExtResource("14_cqmcx")
 
 [node name="npc_sitting_shinji" parent="." instance=ExtResource("19_0ncj3")]
 transform = Transform3D(-0.0310793, 0, -0.999517, 0, 1, 0, 0.999517, 0, -0.0310793, 1.82055, 0.255735, 2.15049)
+
+[node name="BoneAttachment3D" parent="npc_sitting_shinji/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.9991, -0.0231564, -0.0355341, 0.00928375, 0.936886, -0.34951, 0.0413848, 0.348866, 0.936258, 0.00184951, 1.6084, -0.428857)
 
 [node name="DialogueInteractable" parent="npc_sitting_shinji" index="1"]
 dialogue_settings = SubResource("Resource_5rw1x")
