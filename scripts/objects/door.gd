@@ -88,7 +88,6 @@ func unlock():
 	_locked = false
 	
 func toggle_open():
-	print(str(!is_open()))
 	if is_open():
 		close()
 	else:
