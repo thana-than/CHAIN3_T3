@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://u6dc5jwacglb"]
+[gd_scene load_steps=16 format=3 uid="uid://u6dc5jwacglb"]
 
 [ext_resource type="PackedScene" uid="uid://hv3q4g1hg5ha" path="res://assets/models/npc/npc_001.fbx" id="1_j388d"]
+[ext_resource type="Material" uid="uid://be2l5sg780re4" path="res://assets/materials/npc/mat_npc_work.tres" id="2_ln7ah"]
 [ext_resource type="AnimationLibrary" uid="uid://cdlr0yiu6simk" path="res://assets/animations/All_Animations.tres" id="2_x1qv3"]
 [ext_resource type="Script" uid="uid://glr2uml18crh" path="res://scripts/animation/animation_sequencer.gd" id="3_ln7ah"]
 [ext_resource type="Script" uid="uid://bat76x8xqttar" path="res://scripts/dialogue/dialogue_interactable.gd" id="4_t2r07"]
@@ -101,6 +102,9 @@ bones/42/rotation = Quaternion(-0.0824466, 0.453978, 0.885365, 0.0568792)
 bones/43/rotation = Quaternion(-0.750806, -0.0686161, 0.0544574, 0.654688)
 bones/44/rotation = Quaternion(0.561538, -0.0584689, -0.0769365, 0.821789)
 bones/45/rotation = Quaternion(0.29399, 0.0577608, -0.0173903, 0.953903)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_ln7ah")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(0.99949, -0.000585822, -0.031903, -0.0218197, 0.716977, -0.696755, 0.0232818, 0.697097, 0.716599, -0.0162055, 1.62251, -0.237015)
