@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cr6dlu3tq7xfg"]
+[gd_scene load_steps=40 format=4 uid="uid://cr6dlu3tq7xfg"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_ygu77"]
 [ext_resource type="PackedScene" uid="uid://cy2xqdnbxum71" path="res://assets/models/metro_car/metro_car_textured.glb" id="3_do2ap"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="18_sui7m"]
 [ext_resource type="Resource" uid="uid://dnfb2hjf3npe7" path="res://assets/dialogue/dialogue/s2_sketchy/s2_sketchy.dialogue" id="20_3on38"]
 [ext_resource type="PackedScene" uid="uid://biohk52o6etgn" path="res://assets/dialogue/styles/nexa/Balloon.tscn" id="20_sui7m"]
+[ext_resource type="Script" uid="uid://bopdiqq7e3y5t" path="res://scripts/events/music_controller.gd" id="24_f3myp"]
+[ext_resource type="Resource" uid="uid://che7j8ctrqqh1" path="res://assets/resources/audio_events/MUSIC_Train.tres" id="25_65kfi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfj0w"]
 resource_name = "metal_02"
@@ -643,6 +645,12 @@ transform = Transform3D(0.99538, 0.0248313, -0.0927433, -0.0210442, 0.998913, 0.
 [node name="DialogueInteractable" parent="npc_sketchy" index="1"]
 dialogue_settings = SubResource("Resource_sui7m")
 
+[node name="MusicController" type="Node" parent="."]
+script = ExtResource("24_f3myp")
+track = ExtResource("25_65kfi")
+metadata/_custom_type_script = "uid://bopdiqq7e3y5t"
+
+[connection signal="entered" from="." to="MusicController" method="play"]
 [connection signal="on_open" from="game_exit_door" to="game_exit_door/Chain3ExitTrigger" method="call_exit"]
 
 [editable path="door_exit/Door"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bx5tm3fmqdsxv"]
+[gd_scene load_steps=38 format=4 uid="uid://bx5tm3fmqdsxv"]
 
 [ext_resource type="Script" uid="uid://doixsucly5at" path="res://scripts/room.gd" id="1_rbpki"]
 [ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="3_ootfe"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://crc0lsboxm2ib" path="res://scenes/objects/hospital/obj_bed.tscn" id="13_ootfe"]
 [ext_resource type="PackedScene" uid="uid://dyxv8k72nq4p" path="res://scenes/objects/hospital/obj_iv_pole_blood_bag.tscn" id="14_u0b27"]
 [ext_resource type="PackedScene" uid="uid://bc7eskk7vupi8" path="res://scenes/objects/door/obj_wooden_door_fake.tscn" id="15_fdba8"]
+[ext_resource type="Script" uid="uid://bopdiqq7e3y5t" path="res://scripts/events/music_controller.gd" id="18_u0b27"]
+[ext_resource type="Resource" uid="uid://cwgtxs8g44bfs" path="res://assets/resources/audio_events/MUSIC_Hospital.tres" id="19_dhqnb"]
 [ext_resource type="PackedScene" uid="uid://6ksmm8jsigqh" path="res://scenes/npc/stalker.tscn" id="19_jg7nv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obaim"]
@@ -121,7 +123,7 @@ size = Vector3(3, 1.61511, 1.2)
 size = Vector3(15, 16, 1.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j51fj"]
-size = Vector3(15, 6, 109)
+size = Vector3(15, 9, 118)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ootfe"]
 size = Vector3(9, 39, 12)
@@ -681,7 +683,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -97.6)
 collision_mask = 8388608
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -43.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -48)
 shape = SubResource("BoxShape3D_j51fj")
 debug_color = Color(0.717296, 0.371869, 0.784025, 0.42)
 
@@ -903,6 +905,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0.5, -0.866025, -2.18557e-08, -0.86
 [node name="SendBackToS2-Stalker" parent="." instance=ExtResource("19_jg7nv")]
 transform = Transform3D(-0.0757792, 0, 0.997125, 0, 1, 0, -0.997125, 0, -0.0757792, -5.66335, 0.468952, 0.388839)
 
+[node name="MusicController" type="Node" parent="."]
+script = ExtResource("18_u0b27")
+track = ExtResource("19_dhqnb")
+metadata/_custom_type_script = "uid://bopdiqq7e3y5t"
+
+[connection signal="entered" from="." to="MusicController" method="play"]
 [connection signal="interacted" from="Environment/Cell/game_exit_bed" to="Environment/Cell/game_exit_bed/Chain3ExitTrigger" method="call_exit"]
 
 [editable path="FakeDoors/DoorSpread/DoorGroup/WoodenDoor"]

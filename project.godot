@@ -63,6 +63,7 @@ Settings="*res://scripts/autoload/settings.gd"
 QuitProcess="*res://scripts/autoload/quit_process.gd"
 Chain3Adapter="*res://scripts/autoload/chain3_adapter.gd"
 chain3="*res://addons/chain3/autoload.gd"
+MusicPlayer="*res://scripts/autoload/music-player.gd"
 
 [debug_draw_3d]
 
