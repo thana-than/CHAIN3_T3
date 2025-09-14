@@ -59,6 +59,8 @@ func _on_flag_changed(is_set : bool):
 		queue_free()
 
 func collect():
+	if has_been_collected:
+		return
 	has_been_collected = true
 	flag_controller.set_flag()
 	on_collect.emit()
