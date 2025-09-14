@@ -23,7 +23,10 @@ func _ready():
 
 func play_dialogue() -> void:
 	if current_balloon:
-		cycle_next()
+		if current_balloon.dialogueLabel.is_typing:
+			current_balloon.dialogueLabel.skip_typing()
+		else:
+			cycle_next()
 		return
 		
 	if not player_settings.is_repeatable:
