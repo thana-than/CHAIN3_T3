@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" script_class="TextureFrameMaterial" load_steps=4 format=3 uid="uid://djxs6gwvn35qs"]
+
+[ext_resource type="Texture2D" uid="uid://bi8dmj32nllga" path="res://assets/textures/tv/tex_tv_noise_hor.png" id="1_70mfq"]
+[ext_resource type="Script" uid="uid://6skajjn0uou7" path="res://scripts/animation/texture_frame_material.gd" id="2_trtfc"]
+[ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="3_0645o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("3_0645o")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("1_70mfq")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 0.25)
+shader_parameter/uv_scroll_speed = Vector2(2, 0)
+shader_parameter/uv_scroll_frames = Vector2(4, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 8.0
+shader_parameter/use_emission_texture = true
+shader_parameter/emission_texture = ExtResource("1_70mfq")
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
+script = ExtResource("2_trtfc")
+texture = ExtResource("1_70mfq")
+emission_texture = ExtResource("1_70mfq")
+frames = 4
+speed = 2
+direction = 0

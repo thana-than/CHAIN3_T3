@@ -7,6 +7,12 @@
 door_mesh_node = NodePath("MeshInstance3D")
 anim_type = 1
 
+[node name="hinge" parent="root_transform" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0, 0)
+
+[node name="pivot" parent="root_transform/hinge" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
+
 [node name="InteractableBack" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
 

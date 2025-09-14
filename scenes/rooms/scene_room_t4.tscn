@@ -26,6 +26,8 @@ script = ExtResource("14_ejh4c")
 balloon_scene = ExtResource("12_q4frp")
 dialogue_resource = ExtResource("13_aw4me")
 dialogue_start = "start"
+audio_ignore_player_name = "Slater"
+audio_stop_delay = 1.0
 metadata/_custom_type_script = "uid://c1eo4j34dxno3"
 
 [node name="room_T4" type="Node3D"]

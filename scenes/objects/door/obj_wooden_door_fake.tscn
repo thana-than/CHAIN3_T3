@@ -1,8 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc7eskk7vupi8"]
+[gd_scene load_steps=15 format=3 uid="uid://bc7eskk7vupi8"]
 
-[ext_resource type="PackedScene" uid="uid://cpaep06umpf1b" path="res://scenes/objects/door/obj_door_wooden.tscn" id="1_5r5g0"]
+[ext_resource type="Script" uid="uid://db0rkuhdiokox" path="res://scripts/objects/door.gd" id="1_ju53e"]
 [ext_resource type="Shader" uid="uid://s6ncyu2i7mre" path="res://ursc/spatial/standard/standard_opaque_repeating.gdshader" id="2_cqsir"]
 [ext_resource type="Texture2D" uid="uid://chv7mydk0geb8" path="res://assets/textures/door/tex_door_wood.png" id="3_lpg05"]
+[ext_resource type="PackedScene" uid="uid://c15b5xk7q1h22" path="res://scenes/objects/door/mesh_wooden_door.tscn" id="3_v63yx"]
+[ext_resource type="Shader" uid="uid://dll515i5bov6y" path="res://ursc/spatial/standard/standard_opaque.gdshader" id="4_lpg05"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6w2k"]
+size = Vector3(1.5, 2.7, 0.25)
+
+[sub_resource type="Animation" id="Animation_pcjw8"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("root_transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("root_transform/hinge")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_0buvb"]
+resource_name = "anim_door_hinge"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("root_transform/hinge")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, -0.94, 0, 0.342)
+
+[sub_resource type="Animation" id="Animation_70mvp"]
+resource_name = "anim_door_slide"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("root_transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, -1.5, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0buvb"]
+_data = {
+&"RESET": SubResource("Animation_pcjw8"),
+&"anim_door_hinge": SubResource("Animation_0buvb"),
+&"anim_door_slide": SubResource("Animation_70mvp")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_puhmr"]
 render_priority = 0
@@ -26,20 +75,89 @@ shader_parameter/use_emission_texture = false
 shader_parameter/use_emission_mask_texture = false
 shader_parameter/emission_threshold = 0.0
 
-[node name="FakeDoor" instance=ExtResource("1_5r5g0")]
-start_locked = true
+[sub_resource type="QuadMesh" id="QuadMesh_lpg05"]
+size = Vector2(1.16, 2.715)
 
-[node name="InteractableFront" parent="." index="3"]
-activate_on_start = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju53e"]
+render_priority = 0
+shader = ExtResource("4_lpg05")
+shader_parameter/albedo_color = Color(0, 0, 0, 1)
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/uv_scroll_frames = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+shader_parameter/enable_affine_transform = false
+shader_parameter/use_emission = false
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/use_emission_texture = false
+shader_parameter/use_emission_mask_texture = false
+shader_parameter/emission_threshold = 0.0
 
-[node name="InteractionArea" parent="InteractableFront" index="0"]
-disabled = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_puhmr"]
+size = Vector3(11, 39, 12)
 
-[node name="InteractableBack" parent="." index="4"]
-activate_on_start = false
+[node name="FakeDoor" type="StaticBody3D" node_paths=PackedStringArray("door_mesh_node")]
+script = ExtResource("1_ju53e")
+door_mesh_node = NodePath("MeshInstance3D")
+start_open = true
+anim_type = 1
+anim_open_time = -1.0
+anim_hinge_rotation = 1
 
-[node name="InteractionArea" parent="InteractableBack" index="0"]
-disabled = true
+[node name="root_transform" type="Marker3D" parent="."]
 
-[node name="MeshInstance3D" parent="." index="6"]
+[node name="hinge" type="Node3D" parent="root_transform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0, 0)
+
+[node name="pivot" type="Node3D" parent="root_transform/hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_f6w2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0buvb")
+}
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("3_v63yx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_puhmr")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/SFX/Player/Land"
+event_guid = "{d4b4f519-e081-4ce1-bc00-e17458aebbd5}"
+fmod_parameters/land_state/id = -4688135898146721294
+fmod_parameters/land_state = "soft land"
+fmod_parameters/land_state/labels = PackedStringArray("soft land", "hard land")
+fmod_parameters/land_state/variant_type = 4
+
+[node name="Inside" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1.263, 0)
+mesh = SubResource("QuadMesh_lpg05")
+surface_material_override/0 = SubResource("ShaderMaterial_ju53e")
+
+[node name="Inside2" type="MeshInstance3D" parent="Inside"]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, -7.64274e-15, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("QuadMesh_lpg05")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ju53e")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -12, 5.5)
+shape = SubResource("BoxShape3D_puhmr")
+
+[connection signal="on_close" from="." to="FmodEventEmitter3D" method="play" binds= [true]]
+[connection signal="body_entered" from="Area3D" to="." method="close" unbinds=1]
