@@ -13,7 +13,6 @@ var _chain3: Node
 
 var _internal_flags = {}
 
-var _entry_door_id: String
 func _ready() -> void:
 	# Based on the docs in CHAIN_SpawnPoint - chain3.door_id will be set to the 
 	# proper door_id on start, but I can't actually see how they're doing this 
@@ -22,8 +21,6 @@ func _ready() -> void:
 	if OS.is_debug_build() and Global.debug_config.reset_chain_flags_on_start:
 		_LOGGER.log("Clearing CHAIN Flags")
 		_chain3.clear_flags()
-	_entry_door_id = _chain3.door_id
-	_LOGGER.log("Entry door id: {id}".format({"id": _entry_door_id}))
 
 func qualify_local(_name: String) -> String:
 	# Prefix the string
@@ -95,4 +92,6 @@ func exit_via_door(door_id: String) -> void:
 	_chain3.call_deferred("exit_game", door_id)
 
 func get_entry_door_id() -> String:
+	var _entry_door_id = _chain3.door_id
+	_LOGGER.log("Entry door id: {id}".format({"id": _entry_door_id}))
 	return _entry_door_id

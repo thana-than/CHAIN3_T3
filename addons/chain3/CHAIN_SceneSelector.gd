@@ -73,7 +73,7 @@ func _ready() -> void:
 		for door in door_scene_array:
 			if (door_id == door.door_id.to_lower()):
 				matching_door = load(door.target_scene)
-				chain3.DoorID = door_id
+				chain3.door_id = door_id
 				break
 		
 		# Once we are done switch to a packed scene (using the default if no matching
