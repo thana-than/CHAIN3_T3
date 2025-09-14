@@ -21,6 +21,9 @@ signal on_locked_attempt
 @export var anim_type := AnimType.SLIDE
 @export var anim_open_time := .5
 @export var anim_close_time := .5
+@export var anim_hinge_rotation := HingeRotation.EITHER
+
+enum HingeRotation {EITHER, FRONT, BACK}
 
 var _locked = false
 var _last_interaction_facing_front = true
@@ -96,7 +99,11 @@ func open():
 		return
 	
 	# rotate the door so that it so the animation plays *away* from the player
-	var flip = -1.0 if _last_interaction_facing_front else 1.0
+	var hinge_forward = !_last_interaction_facing_front
+	if anim_hinge_rotation != HingeRotation.EITHER:
+		hinge_forward = anim_hinge_rotation == HingeRotation.FRONT
+	
+	var flip = 1.0 if hinge_forward else -1.0
 	root_transform.scale = Vector3(1.0,1.0,flip)
 	
 	var speed = 1.0 / anim_open_time if anim_open_time > 0 else 1000.0
