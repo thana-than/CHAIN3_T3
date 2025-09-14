@@ -13,8 +13,8 @@
 [ext_resource type="Material" uid="uid://boq7ccxl5me0l" path="res://assets/materials/wall/mat_wall_white_rust.tres" id="9_obaim"]
 [ext_resource type="PackedScene" uid="uid://cpaep06umpf1b" path="res://scenes/objects/door/obj_door_wooden.tscn" id="10_nxjmr"]
 [ext_resource type="Script" uid="uid://b5hkmjg3mc753" path="res://addons/ninetailsrabbit.interaction_kit_3d/src/interactable_3d.gd" id="11_u0b27"]
-[ext_resource type="PackedScene" uid="uid://crc0lsboxm2ib" path="res://scenes/objects/hospital/obj_bed.tscn" id="13_ootfe"]
-[ext_resource type="PackedScene" uid="uid://dyxv8k72nq4p" path="res://scenes/objects/hospital/obj_iv_pole_blood_bag.tscn" id="14_u0b27"]
+[ext_resource type="PackedScene" path="res://scenes/objects/hospital/obj_bed.tscn" id="13_ootfe"]
+[ext_resource type="PackedScene" path="res://scenes/objects/hospital/obj_iv_pole_blood_bag.tscn" id="14_u0b27"]
 [ext_resource type="PackedScene" uid="uid://bc7eskk7vupi8" path="res://scenes/objects/door/obj_wooden_door_fake.tscn" id="15_fdba8"]
 [ext_resource type="PackedScene" uid="uid://6ksmm8jsigqh" path="res://scenes/npc/stalker.tscn" id="19_jg7nv"]
 
