@@ -7,4 +7,7 @@ match interaction_index
 		Slater : Where would that be?
 		▇▇▇▇▇▇▇▇ : The train. Where else?
 		do Global.send_player_to_room.emit("room_S2")
+	else:
+		▇▇▇▇▇▇▇▇ : You again. Let's go.
+		do Global.send_player_to_room.emit("room_S2")
 => END
