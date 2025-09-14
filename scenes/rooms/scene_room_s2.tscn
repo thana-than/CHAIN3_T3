@@ -31,6 +31,8 @@ script = ExtResource("18_sui7m")
 balloon_scene = ExtResource("20_sui7m")
 dialogue_resource = ExtResource("17_wrukb")
 dialogue_start = "start"
+audio_ignore_player_name = "Slater"
+audio_stop_delay = 1.0
 metadata/_custom_type_script = "uid://c1eo4j34dxno3"
 
 [sub_resource type="Resource" id="Resource_sui7m"]
@@ -38,6 +40,8 @@ script = ExtResource("18_sui7m")
 balloon_scene = ExtResource("20_sui7m")
 dialogue_resource = ExtResource("20_3on38")
 dialogue_start = "start"
+audio_ignore_player_name = "Slater"
+audio_stop_delay = 1.0
 metadata/_custom_type_script = "uid://c1eo4j34dxno3"
 
 [node name="room_S2" type="Node3D"]
@@ -120,17 +124,11 @@ texture_albedo = ExtResource("14_mx72k")
 [node name="npc_antsy" parent="." instance=ExtResource("15_ga0rm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.78272, 0.279205, -1.61417)
 
-[node name="BoneAttachment3D" parent="npc_antsy/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999716, 0.00518142, -0.0232459, -0.0179088, 0.806975, -0.590314, 0.0157002, 0.590563, 0.806838, -0.0105975, 1.64502, -0.25364)
-
 [node name="DialogueInteractable" parent="npc_antsy" index="1"]
 dialogue_settings = SubResource("Resource_7pjgc")
 
 [node name="npc_sketchy" parent="." instance=ExtResource("16_xi0d8")]
 transform = Transform3D(-0.0693386, 0, 0.997593, 0, 1, 0, -0.997593, 0, -0.0693386, -1.73253, 0.412205, 4.07408)
-
-[node name="BoneAttachment3D" parent="npc_sketchy/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.99949, -0.000585822, -0.031903, -0.0218197, 0.716977, -0.696755, 0.0232818, 0.697097, 0.716599, -0.0162055, 1.62251, -0.237015)
 
 [node name="DialogueInteractable" parent="npc_sketchy" index="1"]
 dialogue_settings = SubResource("Resource_sui7m")

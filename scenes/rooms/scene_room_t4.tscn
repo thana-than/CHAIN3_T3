@@ -26,6 +26,8 @@ script = ExtResource("14_ejh4c")
 balloon_scene = ExtResource("12_q4frp")
 dialogue_resource = ExtResource("13_aw4me")
 dialogue_start = "start"
+audio_ignore_player_name = "Slater"
+audio_stop_delay = 1.0
 metadata/_custom_type_script = "uid://c1eo4j34dxno3"
 
 [node name="room_T4" type="Node3D"]
@@ -97,9 +99,6 @@ texture_albedo = ExtResource("10_a1usj")
 
 [node name="npc_sitting_shinji" parent="." instance=ExtResource("11_8sktb")]
 transform = Transform3D(-0.0310793, 0, -0.999517, 0, 1, 0, 0.999517, 0, -0.0310793, 1.82055, 0.255735, 2.11088)
-
-[node name="BoneAttachment3D" parent="npc_sitting_shinji/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.9991, -0.0231564, -0.0355341, 0.00928375, 0.936886, -0.34951, 0.0413848, 0.348866, 0.936258, 0.00184951, 1.6084, -0.428857)
 
 [node name="DialogueInteractable" parent="npc_sitting_shinji" index="1"]
 dialogue_settings = SubResource("Resource_uhcp4")
