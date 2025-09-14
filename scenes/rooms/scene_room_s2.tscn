@@ -292,6 +292,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.018, -7.29236)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.018, 5.46701)
 
 [node name="AudioEmitter" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.70757)
+script = ExtResource("7_fhc0n")
+audio_event_resource = ExtResource("8_do2ap")
+auto_play = true
+metadata/_custom_type_script = "uid://b7p11w32xynlb"
+
+[node name="AudioEmitter2" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.4012)
 script = ExtResource("7_fhc0n")
 audio_event_resource = ExtResource("8_do2ap")
 auto_play = true
@@ -330,6 +338,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9)
 
 [node name="Door" parent="door_exit/Door" index="8"]
 transform = Transform3D(-1.615, 0, -1.10982e-07, 0, 1, 0, 2.43858e-07, 0, -0.735, 0.616124, 1.275, 0.0286007)
+surface_material_override/1 = null
 
 [node name="Door2" type="MeshInstance3D" parent="door_exit/Door/Door" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -5.68434e-14, 0, 1, 5.96046e-08, 0, -0.888189)

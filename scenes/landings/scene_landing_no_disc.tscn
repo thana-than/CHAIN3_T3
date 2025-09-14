@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dynksben166x4"]
+[gd_scene load_steps=25 format=4 uid="uid://dynksben166x4"]
 
 [ext_resource type="Script" uid="uid://b7gwe0ja8mli3" path="res://scripts/events/landing_area.gd" id="1_a28vb"]
 [ext_resource type="Material" uid="uid://k04n3jrlianv" path="res://assets/materials/mat_landing_curtains.tres" id="2_7j07r"]
@@ -99,11 +99,6 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_f8n5e"]
 material = SubResource("StandardMaterial3D_l2bbr")
 size = Vector2(0.1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a28vb"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(0, 0, 0, 0.643137)
 
 [sub_resource type="SphereMesh" id="SphereMesh_drtnl"]
 radius = 40.0
@@ -218,7 +213,6 @@ draw_pass_1 = SubResource("QuadMesh_f8n5e")
 [node name="Hide" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 0, 0, 0)
 material_override = ExtResource("12_a28vb")
-material_overlay = SubResource("StandardMaterial3D_a28vb")
 mesh = SubResource("SphereMesh_drtnl")
 skeleton = NodePath("../..")
 

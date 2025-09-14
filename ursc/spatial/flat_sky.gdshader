@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode ambient_light_disabled;
 
 global uniform bool texture_filtering;
 
