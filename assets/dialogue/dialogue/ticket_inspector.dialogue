@@ -1,8 +1,10 @@
 ~ start
 match interaction_index
 	when 0:
-		: Talk to me one more time and I'll send you back to the train!
-	else
-		: You asked for it!
+		▇▇▇▇▇▇▇▇ : Ticket please.
+		Slater : I don't have one.
+		▇▇▇▇▇▇▇▇ : If you don't have a ticket, then I will have to escort you elsewhere.
+		Slater : Where would that be?
+		▇▇▇▇▇▇▇▇ : The train. Where else?
 		do Global.send_player_to_room.emit("room_S2")
 => END
