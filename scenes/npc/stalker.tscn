@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://6ksmm8jsigqh"]
+[gd_scene load_steps=16 format=3 uid="uid://6ksmm8jsigqh"]
 
 [ext_resource type="PackedScene" uid="uid://bom7j0ijqqvyx" path="res://assets/models/npc/stalker.fbx" id="1_yni30"]
 [ext_resource type="Script" uid="uid://glr2uml18crh" path="res://scripts/animation/animation_sequencer.gd" id="2_f4pcd"]
@@ -8,7 +8,8 @@
 [ext_resource type="Resource" uid="uid://duvncsmuvdoj7" path="res://assets/dialogue/dialogue/ticket_inspector.dialogue" id="6_jna8a"]
 [ext_resource type="Script" uid="uid://c1eo4j34dxno3" path="res://scripts/dialogue/dialogue_settings.gd" id="7_gxwdy"]
 [ext_resource type="Script" uid="uid://d4mre44gaciao" path="res://scripts/dialogue/dialogue_player_settings.gd" id="8_5plma"]
-[ext_resource type="Script" uid="uid://pqedudvcybfr" path="res://scripts/animation/head_look_at_controller.gd" id="9_6b0lx"]
+[ext_resource type="Script" path="res://scripts/animation/head_look_at_controller.gd" id="9_6b0lx"]
+[ext_resource type="Resource" uid="uid://dfvi3wuskg7us" path="res://assets/resources/audio_events/SFX_StalkerDialogue.tres" id="9_u34x5"]
 
 [sub_resource type="Shader" id="Shader_kaq2p"]
 code = "shader_type spatial;
@@ -48,12 +49,14 @@ script = ExtResource("7_gxwdy")
 balloon_scene = ExtResource("5_ucw7x")
 dialogue_resource = ExtResource("6_jna8a")
 dialogue_start = "start"
+audio_ignore_player_name = "Slater"
+audio_stop_delay = 1.0
 metadata/_custom_type_script = "uid://c1eo4j34dxno3"
 
 [sub_resource type="Resource" id="Resource_e3p88"]
 script = ExtResource("8_5plma")
 is_repeatable = true
-next_after_seconds = 10.0
+stop_after_seconds = 10.0
 metadata/_custom_type_script = "uid://d4mre44gaciao"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_igga2"]
@@ -216,6 +219,7 @@ sequence = Array[String](["All_Animations/OldManIdle"])
 script = ExtResource("4_bmurd")
 dialogue_settings = SubResource("Resource_c346g")
 player_settings = SubResource("Resource_e3p88")
+dialogue_audio_resource = ExtResource("9_u34x5")
 metadata/_custom_type_script = "uid://bat76x8xqttar"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractable" index="0"]

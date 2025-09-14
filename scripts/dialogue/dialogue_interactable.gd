@@ -3,11 +3,12 @@ class_name DialogueInteractable
 
 @export var dialogue_settings := DialogueSettings.new()
 @export var player_settings := DialoguePlayerSettings.new()
+@export var dialogue_audio_resource : AudioEventResource = preload("res://assets/resources/audio_events/SFX_Dialogue.tres")
 
 @export var debug_verbose: bool = false
 
 @onready var dialogue_player := DialoguePlayer.new(dialogue_settings, player_settings)
-@onready var dialogue_audio := DialogueAudio.new(dialogue_settings, dialogue_player)
+@onready var dialogue_audio := DialogueAudio.new(dialogue_settings, dialogue_player, dialogue_audio_resource)
 
 @onready var logger := Logger.new(name)
 

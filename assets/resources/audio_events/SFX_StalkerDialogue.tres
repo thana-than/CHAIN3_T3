@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AudioEventResource" load_steps=2 format=3 uid="uid://dfvi3wuskg7us"]
+
+[ext_resource type="Script" uid="uid://bett2366xr3o5" path="res://scripts/audio_emitters/audio_event_resource.gd" id="1_uvyg1"]
+
+[resource]
+script = ExtResource("1_uvyg1")
+name = "event:/VO/Dialogue"
+metadata/_custom_type_script = "uid://bett2366xr3o5"
