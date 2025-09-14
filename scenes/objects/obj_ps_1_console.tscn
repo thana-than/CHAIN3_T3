@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dtk7o8ar4if1o"]
+[gd_scene load_steps=8 format=4 uid="uid://dtk7o8ar4if1o"]
 
 [ext_resource type="Material" uid="uid://wd66sctn2p8j" path="res://assets/materials/ps1/mat_ps1_console.tres" id="1_f2t5c"]
 [ext_resource type="Material" uid="uid://gdm3b2gukd5w" path="res://assets/materials/ps1/mat_ps1_controller.tres" id="2_v8g6n"]
@@ -71,8 +71,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p0j5p")
 
-[node name="obj_ps1_console" type="Node3D"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2t5c"]
+size = Vector3(7.21072, 1.05983, 5.16345)
+
+[node name="obj_ps1_console" type="StaticBody3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="PS1_Pix" type="Node3D" parent="."]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0.9, 0)
@@ -89,3 +92,7 @@ transform = Transform3D(-2.18557e-08, -3.78552e-08, 1, -0.866025, 0.5, 0, -0.5, 
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_o46h8")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00959778, 0.53994, 0.101746)
+shape = SubResource("BoxShape3D_f2t5c")
