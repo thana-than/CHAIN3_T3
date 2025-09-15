@@ -64,7 +64,7 @@ shader_parameter/height_falloff = 0.0
 shader_parameter/edge_fade = 0.0
 
 [node name="collectable_crystal_smoke" instance=ExtResource("1_qwjqw")]
-collect_flag = "T4_CrystalSmoked"
+collect_flag = "T3_CrystalSmoked"
 color = Color(0.126183, 0.180794, 2.40654e-08, 1)
 
 [node name="mdl_crystal" parent="obj/pivot/mdl_crystal" index="0"]

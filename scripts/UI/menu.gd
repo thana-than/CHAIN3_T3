@@ -19,4 +19,4 @@ func _close():
 
 ## Quit the game by exiting through the door we initially entered through
 func command_call_application_quit():
-	Chain3Adapter.exit_via_door(Chain3Adapter._entry_door_id)
+	Chain3Adapter.exit_via_door(Chain3Adapter.get_entry_door_id())

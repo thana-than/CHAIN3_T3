@@ -38,6 +38,8 @@ DSP/dsp_buffer_count=4
 config/name="CHAIN3_T3"
 run/main_scene="uid://cv5ho4r8agiy0"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 boot_splash/new_file_template="~ start
 Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
