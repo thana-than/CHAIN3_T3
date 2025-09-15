@@ -86,7 +86,7 @@ func get_internal_flags() -> Array:
 
 # Defer the call so that any subscribers have the time to clean up/write
 # to any flags they need.
-func exit_via_door(door_id: String) -> void:
+func exit_via_door(door_id: String) -> void:		
 	_LOGGER.log("Exit requested via door with id: {id}".format({"id": door_id}))
 	exit_requested.emit(door_id)
 	_chain3.call_deferred("exit_game", door_id)
